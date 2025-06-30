@@ -5,9 +5,7 @@ import Link from 'next/link';
 export function Logo({ className }: { className?: string }) {
   return (
     <Link href="/" className={cn("flex items-center gap-2", className)}>
-      <div className="bg-primary text-primary-foreground p-2 rounded-md">
-        <Bolt className="h-6 w-6" />
-      </div>
+      <img src="https://firebasestorage.googleapis.com/v0/b/arp-electric-solution.firebasestorage.app/o/arp%20elctric%20solution%20logo.png?alt=media&token=8c341eac-e586-4c5c-9ab6-b47d7e1064f0" alt="ARP Electric Solutions Logo" className="h-6 w-6" />
       <div className="flex flex-col">
         <span className="font-headline text-lg font-bold text-primary">
           ARP Electric

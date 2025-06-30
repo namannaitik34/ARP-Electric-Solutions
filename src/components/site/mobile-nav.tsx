@@ -9,6 +9,7 @@ import {
   Sheet,
   SheetContent,
   SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
 import {
@@ -62,6 +63,7 @@ export function MobileNav() {
       <SheetContent side="left" className="w-[300px] sm:w-[340px]">
         <SheetHeader className="mb-4">
           <Logo />
+          <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
         </SheetHeader>
         <div className="flex flex-col space-y-2">
           {navItems.map((item) => (
