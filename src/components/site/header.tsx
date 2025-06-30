@@ -38,23 +38,19 @@ export function Header() {
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild>
                 <Link href="/" className={navigationMenuTriggerStyle()}>
                   Home
                 </Link>
-              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild>
                 <Link href="/about" className={navigationMenuTriggerStyle()}>
                   About Us
                 </Link>
-              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Product Services</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[600px] md:grid-cols-2">
+                <ul className="grid gap-3 p-4 md:w-[550px] md:grid-cols-2">
                   {services.map((service) => (
                     <ListItem
                       key={service.title}
@@ -69,11 +65,9 @@ export function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild>
                 <Link href="/contact" className={navigationMenuTriggerStyle()}>
                   Contact Us
                 </Link>
-              </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
