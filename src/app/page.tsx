@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CircuitBoard, Bolt, Zap, Wind } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import InteractiveCard from "@/components/InteractiveCard";
 
 const featuredServices = [
   {
@@ -88,9 +89,30 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Product Showcase Section */}
+      <section className="py-16 md:py-24 bg-gray-100"> {/* Added a light gray background */}
+        <div className="container">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold font-headline text-primary">Product Showcase</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+              Explore some of our featured products.
+            </p>
+          </div>
+          {/* Scrollable container */}
+          <div className="mt-12 flex overflow-x-auto space-x-6 pb-4 scrollbar-hide"> {/* Added horizontal scroll and spacing */}
+            {/* Generate 14 product cards */}
+            {[...Array(14)].map((_, index) => (
+              <div key={index} className="min-w-[250px] max-w-[300px] bg-card rounded-lg shadow-lg overflow-hidden"> {/* Styled individual product container */}
+                <InteractiveCard />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       
       {/* Featured Services Section */}
-      <section className="py-16 md:py-24 bg-secondary/20">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold font-headline text-primary">Our Core Services</h2>

@@ -23,6 +23,7 @@ export default {
       },
       colors: {
         background: 'hsl(var(--background))',
+        'navy-blue': '#000080', // Added custom color
         foreground: 'hsl(var(--foreground))',
         card: {
           DEFAULT: 'hsl(var(--card))',
