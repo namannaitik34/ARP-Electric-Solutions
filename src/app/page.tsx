@@ -1,9 +1,20 @@
+'use client';
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CircuitBoard, Bolt, Zap, Wind } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import InteractiveCard from "@/components/InteractiveCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useState } from "react";
 
 const featuredServices = [
   {
@@ -32,20 +43,46 @@ const featuredServices = [
   }
 ];
 
+const transformerAccessories = [
+  { id: 1, name: "Bushings", description: "High-voltage and low-voltage bushings" },
+  { id: 2, name: "Cooling Fans", description: "Efficient cooling systems" },
+  { id: 3, name: "Oil Conservators", description: "For oil expansion and contraction" },
+  { id: 4, name: "Buchholz Relays", description: "Gas and oil actuated protective relays" },
+  { id: 5, name: "Tap Changers", description: "On-load and off-load tap changers" },
+  { id: 6, name: "Pressure Relief Devices", description: "For protection against internal faults" },
+  { id: 7, name: "Temperature Indicators", description: "Winding and oil temperature indicators" },
+  { id: 8, name: "Moisture Absorbers", description: "Silica gel breathers" },
+  { id: 9, name: "Control Cabinets", description: "For monitoring and control" },
+  { id: 10, name: "Radiators", description: "For heat dissipation" },
+  { id: 11, name: "Terminal Connectors", description: "Various types and sizes" },
+  { id: 12, name: "Gaskets and Sealing", description: "Oil-resistant gaskets" },
+  { id: 13, name: "Insulating Paper", description: "For winding insulation" },
+  { id: 14, name: "Transformer Oil", description: "High-quality insulating oil" },
+  { id: 15, name: "Arresters", description: "Surge arresters for protection" },
+  { id: 16, name: "Monitoring Systems", description: "Online monitoring solutions" },
+  { id: 17, name: "Valves", description: "Drain and sampling valves" },
+  { id: 18, name: "Cable Boxes", description: "For cable termination" },
+  { id: 19, name: "Protective Relays", description: "Differential and overcurrent relays" },
+  { id: 20, name: "Bushings CTs", description: "Current transformers for metering and protection" },
+  { id: 21, name: "Fan Control Panels", description: "Automatic fan control systems" },
+];
+
+
+
 export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 lg:py-40 bg-secondary text-secondary-foreground">
         <div className="absolute inset-0">
-            <Image
-                src="https://placehold.co/1920x1080.png"
-                alt="Electrical components background"
-                data-ai-hint="electrical components"
-                fill
-                className="object-cover opacity-10"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/80 to-transparent"></div>
+          <Image
+            src="https://placehold.co/1920x1080.png"
+            alt="Electrical components background"
+            data-ai-hint="electrical components"
+            fill
+            className="object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/80 to-transparent"></div>
         </div>
         <div className="container relative text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline text-primary-foreground">
@@ -71,14 +108,17 @@ export default function Home() {
           <div>
             <h2 className="text-3xl font-bold font-headline text-primary">About ARP Electric Solution</h2>
             <p className="mt-4 text-muted-foreground">
-              For over a decade, ARP Electric Solution has been a leader in providing high-quality electrical components. Our commitment to excellence, innovation, and customer satisfaction drives us to deliver products that meet the highest industry standards. We specialize in creating solutions that are not only reliable but also energy-efficient, helping our clients reduce their operational costs and environmental footprint.
+              With over 20 years of experience, ARP Electric Solution is a trusted product solution provider in the fields of power transmission, distribution, and transformer technologies. Our expertise spans across raw materials, transformer accessories, CRGO, copper foil, CTC, PICC, super enameled wire, MV/LV APFC systems, harmonic filters, UPS and data centers, ring main units (RMU), and MV/LV switchgear.
+              <br/> We strictly adhere to ANSI, IEC, and BS standards, delivering cost-effective, reliable, and innovative solutions tailored to meet the evolving demands of clients worldwide.
+              <br/>At ARP Electric Solution, we are committed to providing superior service in a dynamic, market-driven environment. Our divisions are dedicated to delivering tailored, comprehensive, and technology-driven solutions in the electrical sector. We take pride in our forward-thinking approach and continuously strive to stay ahead through technological innovations and process expertise, offering one-stop solutions that ensure quality, efficiency, and customer satisfaction.
+
             </p>
             <Button asChild className="mt-6">
               <Link href="/about">Learn More About Us</Link>
             </Button>
           </div>
           <div className="rounded-lg overflow-hidden shadow-lg">
-            <Image 
+            <Image
               src="https://placehold.co/600x400.png"
               alt="Factory interior"
               data-ai-hint="factory interior"
@@ -99,18 +139,42 @@ export default function Home() {
               Explore some of our featured products.
             </p>
           </div>
-          {/* Scrollable container */}
-          <div className="mt-12 flex overflow-x-auto space-x-6 pb-4 scrollbar-hide"> {/* Added horizontal scroll and spacing */}
-            {/* Generate 14 product cards */}
-            {[...Array(14)].map((_, index) => (
-              <div key={index} className="min-w-[250px] max-w-[300px] bg-card rounded-lg shadow-lg overflow-hidden"> {/* Styled individual product container */}
-                <InteractiveCard />
-              </div>
-            ))}
+
+          <div className="mt-12">
+            <Carousel
+              autoPlay={true} // Enable automatic scrolling
+              opts={{
+                interval: 5000, // Set interval to 5000ms (5 seconds)
+                align: "start",
+              }}
+            >
+              <CarouselContent className="-ml-6">
+                {[...Array(14)].map((_, index) => (
+                  <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/4">
+                    <InteractiveCard />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section>
-      
+
+      {/* Transformer Accessories Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold font-headline text-primary">Transformer Accessories</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+              A comprehensive range of accessories to complement your transformers.
+            </p>
+          </div>
+          <div className="mt-12">
+            <TransformerAccessoriesTable />
+          </div>
+        </div>
+      </section>
+
       {/* Featured Services Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
@@ -131,7 +195,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="text-center text-muted-foreground">
                   <p>{service.description}</p>
-                   <Button asChild variant="link" className="mt-4 text-primary">
+                  <Button asChild variant="link" className="mt-4 text-primary">
                     <Link href={service.href}>Learn more</Link>
                   </Button>
                 </CardContent>
@@ -143,3 +207,35 @@ export default function Home() {
     </div>
   );
 }
+
+const TransformerAccessoriesTable = () => {
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleAccessories = showAll ? transformerAccessories : transformerAccessories.slice(0, 9);
+
+  return (
+    <div className="overflow-x-auto">
+      <Table className="border-collapse border border-gray-300">
+        <TableHeader>
+          <TableRow>
+            <TableHead className="border border-gray-300 px-4 py-2">Name</TableHead>
+            <TableHead className="border border-gray-300 px-4 py-2">Type</TableHead>
+            <TableHead className="border border-gray-300 px-4 py-2">Quality/Description</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {visibleAccessories.map((accessory) => (
+            <TableRow key={accessory.id}>
+              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100 font-medium">lorem ipsum</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100">lorem ipsum</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100">lorem ipsum</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      {!showAll && (
+        <div className="text-center mt-6"><Button onClick={() => setShowAll(true)}>Read More</Button></div>
+      )}
+    </div>
+  );
+};
