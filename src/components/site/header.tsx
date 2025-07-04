@@ -47,28 +47,28 @@ const services: { title: string; href: string; description: string, icon: React.
 export function Header() {
   return (
     <>
-      <div className="bg-primary text-primary-foreground text-xs py-2">
+      <div className="bg-primary text-primary-foreground text-s py-5">
         <div className="container flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-                <span className="font-semibold hidden md:block">Quality, Reliability, Innovation, Service</span>
-                <div className="flex space-x-3">
+            <div className="flex items-center space-x-4 md:space-x-10">
+                <span className="font-semibold italic hidden md:block ">Trusted partner in energy</span>
+                <div className="flex space-x-8 hidden md:flex">
                     <a href={siteConfig.links.facebook} target="_blank" rel="noreferrer" className="hover:text-primary-foreground/80 transition-colors duration-200">
-                        <Facebook className="h-4 w-4" />
+                        <Facebook className="h-6 w-6" />
                     </a>
                     <a href={siteConfig.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-primary-foreground/80 transition-colors duration-200">
-                        <Linkedin className="h-4 w-4" />
+                        <Linkedin className="h-6 w-6" />
                     </a>
                     <a href={siteConfig.links.instagram} target="_blank" rel="noreferrer" className="hover:text-primary-foreground/80 transition-colors duration-200">
-                        <Instagram className="h-4 w-4" />
+                        <Instagram className="h-6 w-6" />
                     </a>
                     <a href={`https://wa.me/${siteConfig.phone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="hover:text-primary-foreground/80 transition-colors duration-200">
-                        <FaWhatsapp className="h-4 w-4" />
+                        <FaWhatsapp className="h-6 w-6" />
                     </a>
                 </div>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 flex-col md:flex-row md:space-x-12">
                 <a href={`tel:${siteConfig.phone}`} className="flex items-center space-x-1 hover:text-primary-foreground/80 transition-colors duration-200">
-                    <Phone className="h-4 w-4" /><span>{siteConfig.phone}</span></a>
+                    <Phone className="h-4 w-4" /><span>{siteConfig.phone}</span></a>    
                 <a href={`mailto:${siteConfig.email}`} className="flex items-center space-x-1 hover:text-primary-foreground/80 transition-colors duration-200"><Mail className="h-4 w-4" /><span>{siteConfig.email}</span></a>
             </div>
         </div>

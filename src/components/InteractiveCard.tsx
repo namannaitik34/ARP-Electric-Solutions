@@ -16,7 +16,7 @@ export default function InteractiveCard() {
 
         <div className={`${styles.slide} ${styles.slide2}`}>
           <div className={styles.content}>
-            <h3>Hello there!</h3>
+            <h3>Transformers</h3>
             <p>Trust yourself and keep going.</p>
           </div>
         </div>
