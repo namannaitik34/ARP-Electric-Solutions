@@ -11,10 +11,10 @@ import {
   Linkedin,
   Mail,
   Phone,
-  Whatsapp,
   Wind,
   Zap,
 } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
@@ -62,7 +62,7 @@ export function Header() {
                         <Instagram className="h-4 w-4" />
                     </a>
                     <a href={`https://wa.me/${siteConfig.phone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="hover:text-primary-foreground/80 transition-colors duration-200">
-                        <Whatsapp className="h-4 w-4" />
+                        <FaWhatsapp className="h-4 w-4" />
                     </a>
                 </div>
             </div>
@@ -85,23 +85,23 @@ export function Header() {
             <NavigationMenu className="hidden md:flex">
                 <NavigationMenuList>
                     <NavigationMenuItem>
-                        <Link href="/" legacyBehavior passHref>
-                          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        <NavigationMenuLink asChild>
+                          <Link href="/" className={navigationMenuTriggerStyle()}>
                             Home
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/about" legacyBehavior passHref>
-                          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        <NavigationMenuLink asChild>
+                          <Link href="/about" className={navigationMenuTriggerStyle()}>
                             About Us
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                       <NavigationMenuTrigger>Product Services</NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <ul className="grid gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                           {services.map((service) => (
                             <ListItem
                               key={service.title}
@@ -116,11 +116,11 @@ export function Header() {
                       </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/contact" legacyBehavior passHref>
-                          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        <NavigationMenuLink asChild>
+                          <Link href="/contact" className={navigationMenuTriggerStyle()}>
                             Contact Us
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
