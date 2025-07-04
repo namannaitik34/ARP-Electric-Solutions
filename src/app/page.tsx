@@ -186,20 +186,23 @@ export default function Home() {
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredServices.map((service) => (
-              <Card key={service.title} className="bg-card hover:shadow-xl transition-shadow duration-300">
-                <CardHeader className="items-center text-center">
-                  <div className="p-4 bg-primary/10 rounded-full">
-                    <service.icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <CardTitle className="mt-4">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center text-muted-foreground">
-                  <p>{service.description}</p>
-                  <Button asChild variant="link" className="mt-4 text-primary">
-                    <Link href={service.href}>Learn more</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+              <Link key={service.title} href={service.href} className="group block rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                <Card className="h-full bg-card group-hover:bg-accent group-hover:shadow-xl transition-all duration-300 ease-in-out group-hover:-translate-y-2">
+                  <CardHeader className="items-center text-center">
+                    <div className="p-4 bg-primary/10 rounded-full transition-colors duration-300 group-hover:bg-primary">
+                      <service.icon className="w-8 h-8 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
+                    </div>
+                    <CardTitle className="mt-4">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-muted-foreground">{service.description}</p>
+                    <div className="mt-4 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1">
+                      Learn more
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
