@@ -277,7 +277,7 @@ export default function Home() {
         </div>
       </section>
             {/* Transformer Accessories Section */}
-            <section className="py-16 md:py-24 bg-background" id="transformer-accessories">
+      <section className="py-16 md:py-24 bg-background" id="transformer-accessories">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold font-headline text-primary">Transformer Accessories</h2>
@@ -286,18 +286,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-12">
-            <div className="relative overflow-hidden rounded-lg">
-              <div className="raining-electrical-elements pointer-events-none absolute inset-0 z-0">
-                {/* Generate raining elements */}
-                {Array.from({ length: 50 }).map((_, index) => (
-                  <div
-                    key={index}
-                    className="electrical-element"
-                  ></div>
-                ))}
-              </div>
-              <TransformerAccessoriesTable />
-            </div>
+            <TransformerAccessoriesTable />
           </div>
         </div>
       </section>
@@ -569,44 +558,32 @@ export default function Home() {
 
 const TransformerAccessoriesTable = () => {
   const [showAll, setShowAll] = useState(false);
-  const [elementStyles, setElementStyles] = useState<any[]>([]);
-
-  useEffect(() => {
-    const styles = Array.from({ length: 50 }).map(() => ({
-      left: `${Math.random() * 100}%`,
-      animationDelay: `${Math.random() * 5}s`,
-      animationDuration: `${2 + Math.random() * 3}s`,
-    }));
-    setElementStyles(styles);
-  }, []);
-
   const visibleAccessories = showAll ? transformerAccessories : transformerAccessories.slice(0, 9);
 
   return (
     <div className="overflow-x-auto">
-      <div className="raining-electrical-elements pointer-events-none absolute inset-0 z-0">
-        {elementStyles.map((style, index) => (
-          <div key={index} className="electrical-element" style={style}></div>
-        ))}
-      </div>
-      <Table className="border-collapse border border-gray-300">
+      <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="border border-gray-300 px-4 py-2">Name</TableHead>
-            <TableHead className="border border-gray-300 px-4 py-2">Description</TableHead>
+            <TableHead className="w-[100px]">ID</TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Description</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {visibleAccessories.map((accessory) => (
             <TableRow key={accessory.id}>
-              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100 font-medium">{accessory.name}</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100">{accessory.description}</TableCell>
+              <TableCell className="font-medium">{accessory.id}</TableCell>
+              <TableCell>{accessory.name}</TableCell>
+              <TableCell>{accessory.description}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
       {!showAll && (
-        <div className="text-center mt-6"><Button onClick={() => setShowAll(true)}>Read More</Button></div>
+        <div className="text-center mt-6">
+          <Button onClick={() => setShowAll(true)}>Read More</Button>
+        </div>
       )}
     </div>
   );
