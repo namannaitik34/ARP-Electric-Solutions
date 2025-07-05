@@ -388,6 +388,18 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-gray-100">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column */}
+                    <div className="flex justify-center items-center">
+             <Image
+                src="https://placehold.co/400x256.png"
+                alt="IEC Standard Compliance"
+                data-ai-hint="engineering blueprint"
+                width={400}
+                height={256}
+                className="w-full max-w-sm h-auto object-cover rounded-lg"
+            />
+          </div>
+
+          {/* Right Column (Image Placeholder) */}
           <div>
             <p className="text-sm uppercase tracking-wider text-gray-600">Precision Engineering</p>
             <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
@@ -406,17 +418,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          {/* Right Column (Image Placeholder) */}
-          <div className="flex justify-center items-center">
-             <Image
-                src="https://placehold.co/400x256.png"
-                alt="IEC Standard Compliance"
-                data-ai-hint="engineering blueprint"
-                width={400}
-                height={256}
-                className="w-full max-w-sm h-auto object-cover rounded-lg"
-            />
-          </div>
+
         </div>
       </section>
 
@@ -459,11 +461,11 @@ export default function Home() {
 
 
       {/* Request a Quote Section */}
-      <section className="py-16 md:py-24 bg-secondary" id="request-quote">
+      <section className="py-16 md:py-24 bg-teal-100" id="request-quote">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative overflow-hidden rounded-lg shadow-xl">
           {/* Background Pattern/Image */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-100/50 to-purple-100/50 dark:from-blue-900/50 dark:to-purple-900/50 opacity-60"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-teal-400 to-green-500 dark:from-blue-900/50 dark:to-purple-900/50 opacity-60"></div>
           <div className="absolute inset-0 bg-[url('/images/electrical-pattern.svg')] dark:bg-[url('/images/electrical-pattern-dark.svg')] opacity-10 pointer-events-none"></div>
 
           {/* Left Column: Text and Description */}
