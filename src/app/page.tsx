@@ -10,8 +10,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -46,32 +44,6 @@ const featuredServices = [
   },
 ];
 
-const products = [
-  {
-    id: 1,
-    name: "Power Transformer",
-    imageSrc: "/images/power-transformer.jpg", // Replace with actual image path
-    description: "High-quality transformers for efficient power transmission.",
-  },
-  {
-    id: 2,
-    name: "Distribution Transformer",
-    imageSrc: "/images/distribution-transformer.jpg", // Replace with actual image path
-    description: "Reliable distribution transformers for various applications.",
-  },
-  {
-    id: 3,
-    name: "Dry Type Transformer",
-    imageSrc: "/images/dry-type-transformer.jpg", // Replace with actual image path
-    description: "Safe and environmentally friendly dry type transformers.",
-  },
-  {
-    id: 4,
-    name: "Specialty Transformer",
-    imageSrc: "/images/specialty-transformer.jpg", // Replace with actual image path
-    description: "Custom-designed transformers for unique requirements.",
-  },
-];
 const transformerAccessories = [
   { id: 1, name: "Bushings", description: "High-voltage and low-voltage bushings" },
   { id: 2, name: "Cooling Fans", description: "Efficient cooling systems" },
@@ -227,7 +199,7 @@ export default function Home() {
       </section>
 
       {/* Product Showcase Section */}
-      <section className="py-16 md:py-24 bg-gray-100"> {/* Added a light gray background */}
+      <section className="py-16 md:py-24 bg-gray-100">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold font-headline text-primary">Product Showcase</h2>
@@ -258,102 +230,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* ANSI Standard Compliance Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
-          <div>
-            <p className="text-sm uppercase tracking-wider text-gray-600">Global Standards Compliance</p>
-            <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
-              ANSI Standard
-            </h2>
-            {/* Visual Separator Placeholder */}
-            <div className="w-16 h-1 bg-primary mt-4"></div>
-            <p className="mt-6 text-gray-700">
-              Our products are designed under ANSI standards are known for their robust performance, reliability, and compliance with global requirements. These products are engineered to cater to industrial needs where precision and dependability are paramount.
-            </p>
-            {/* Read More Link Placeholder */}
-            <div className="mt-6">
-              <Link href="#" className="text-primary font-semibold flex items-center group">
-                READ MORE
-                <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-          {/* Right Column (Image Placeholder) */}
-          <div className="flex justify-center items-center">
-            {/* Replace with your image or visual element */}
-            <div className="w-full max-w-sm h-64 bg-gray-200 flex items-center justify-center text-gray-500 rounded-lg">
-              Image Placeholder
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* IEC Standard Compliance Section */}
-      <section className="py-16 md:py-24 bg-gray-100">
-        <div className="container grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
-          <div>
-            <p className="text-sm uppercase tracking-wider text-gray-600">Precision Engineering</p>
-            <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
-              IEC Standard
-            </h2>
-            {/* Visual Separator Placeholder */}
-            <div className="w-16 h-1 bg-primary mt-4"></div>
-            <p className="mt-6 text-gray-700">
-              Our IEC compliant products are designed to deliver unparalleled efficiency and adaptability. Built to meet international standards, they ensure superior power distribution and long-term reliability for diverse applications.
-            </p>
-            {/* Read More Link Placeholder */}
-            <div className="mt-6">
-              <Link href="#" className="text-primary font-semibold flex items-center group">
-                READ MORE
-                <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-          {/* Right Column (Image Placeholder) */}
-          <div className="flex justify-center items-center">
-            {/* Replace with your image or visual element */}
-            <div className="w-full max-w-sm h-64 bg-gray-300 flex items-center justify-center text-gray-600 rounded-lg">
-              Image Placeholder
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* BS Standard Compliance Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
-          <div>
-            <p className="text-sm uppercase tracking-wider text-gray-600">Quality and Reliability</p>
-            <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
-              BS Standard
-            </h2>
-            {/* Visual Separator Placeholder */}
-            <div className="w-16 h-1 bg-primary mt-4"></div>
-            <p className="mt-6 text-gray-700">
-              Adhering to British Standards, our products guarantee exceptional quality and reliability. These standards ensure that our electrical solutions meet rigorous safety and performance benchmarks, providing peace of mind for critical applications.
-            </p>
-            {/* Read More Link Placeholder */}
-            <div className="mt-6">
-              <Link href="#" className="text-primary font-semibold flex items-center group">
-                READ MORE
-                <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-          {/* Right Column (Image Placeholder) */}
-          <div className="flex justify-center items-center">
-            <div className="w-full max-w-sm h-64 bg-gray-200 flex items-center justify-center text-gray-500 rounded-lg">
-              Image Placeholder
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Product Categories Section (Cards) */}
+      {/* Product Categories Section (Cards) */} 
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
@@ -396,9 +274,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
-      {/* Transformer Accessories Section */}
-      <section className="py-16 md:py-24 bg-background">
+            {/* Transformer Accessories Section */}
+            <section className="py-16 md:py-24 bg-background" id="transformer-accessories">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold font-headline text-primary">Transformer Accessories</h2>
@@ -424,7 +301,7 @@ export default function Home() {
       </section>
 
       {/* Oil-Immersed Transformers Section */}
-      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+      <section className="py-16 md:py-24 bg-primary text-primary-foreground" id="oil-immersed-transformers">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold font-headline text-primary-foreground">Oil-Immersed Transformers</h2>
@@ -444,7 +321,7 @@ export default function Home() {
       </section>
 
       {/* Cast Resin Transformers Section */}
-      <section className="py-16 md:py-24 bg-gray-200 text-gray-800">
+      <section className="py-16 md:py-24 bg-gray-200 text-gray-800" id="cast-resin-transformers">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           {/* Left column */}
           <div>
@@ -480,6 +357,200 @@ export default function Home() {
           </div>
         </div>
       </section>
+            {/* ANSI Standard Compliance Section */}
+            <section className="py-16 md:py-24 bg-white">
+        <div className="container grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Column */}
+          <div>
+            <p className="text-sm uppercase tracking-wider text-gray-600">Global Standards Compliance</p>
+            <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
+              ANSI Standard
+            </h2>
+            {/* Visual Separator Placeholder */}
+            <div className="w-16 h-1 bg-primary mt-4"></div>
+            <p className="mt-6 text-gray-700">
+              Our products are designed under ANSI standards are known for their robust performance, reliability, and compliance with global requirements. These products are engineered to cater to industrial needs where precision and dependability are paramount.
+            </p>
+            {/* Read More Link Placeholder */}
+            <div className="mt-6">
+              <Link href="#" className="text-primary font-semibold flex items-center group">
+                READ MORE
+                <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+              </Link>
+            </div>
+          </div>
+          {/* Right Column (Image Placeholder) */}
+          <div className="flex justify-center items-center">
+            <Image
+                src="https://placehold.co/400x256.png"
+                alt="ANSI Standard Compliance"
+                data-ai-hint="compliance certificate"
+                width={400}
+                height={256}
+                className="w-full max-w-sm h-auto object-cover rounded-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* IEC Standard Compliance Section */}
+      <section className="py-16 md:py-24 bg-gray-100">
+        <div className="container grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Column */}
+          <div>
+            <p className="text-sm uppercase tracking-wider text-gray-600">Precision Engineering</p>
+            <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
+              IEC Standard
+            </h2>
+            {/* Visual Separator Placeholder */}
+            <div className="w-16 h-1 bg-primary mt-4"></div>
+            <p className="mt-6 text-gray-700">
+              Our IEC compliant products are designed to deliver unparalleled efficiency and adaptability. Built to meet international standards, they ensure superior power distribution and long-term reliability for diverse applications.
+            </p>
+            {/* Read More Link Placeholder */}
+            <div className="mt-6">
+              <Link href="#" className="text-primary font-semibold flex items-center group">
+                READ MORE
+                <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+              </Link>
+            </div>
+          </div>
+          {/* Right Column (Image Placeholder) */}
+          <div className="flex justify-center items-center">
+             <Image
+                src="https://placehold.co/400x256.png"
+                alt="IEC Standard Compliance"
+                data-ai-hint="engineering blueprint"
+                width={400}
+                height={256}
+                className="w-full max-w-sm h-auto object-cover rounded-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* BS Standard Compliance Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Column */}
+          <div>
+            <p className="text-sm uppercase tracking-wider text-gray-600">Quality and Reliability</p>
+            <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
+              BS Standard
+            </h2>
+            {/* Visual Separator Placeholder */}
+            <div className="w-16 h-1 bg-primary mt-4"></div>
+            <p className="mt-6 text-gray-700">
+              Adhering to British Standards, our products guarantee exceptional quality and reliability. These standards ensure that our electrical solutions meet rigorous safety and performance benchmarks, providing peace of mind for critical applications.
+            </p>
+            {/* Read More Link Placeholder */}
+            <div className="mt-6">
+              <Link href="#" className="text-primary font-semibold flex items-center group">
+                READ MORE
+                <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+              </Link>
+            </div>
+          </div>
+          {/* Right Column (Image Placeholder) */}
+          <div className="flex justify-center items-center">
+            <Image
+                src="https://placehold.co/400x256.png"
+                alt="BS Standard Compliance"
+                data-ai-hint="quality control"
+                width={400}
+                height={256}
+                className="w-full max-w-sm h-auto object-cover rounded-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* Request a Quote Section */}
+      <section className="py-16 md:py-24 bg-secondary" id="request-quote">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative overflow-hidden rounded-lg shadow-xl">
+          {/* Background Pattern/Image */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-100/50 to-purple-100/50 dark:from-blue-900/50 dark:to-purple-900/50 opacity-60"></div>
+          <div className="absolute inset-0 bg-[url('/images/electrical-pattern.svg')] dark:bg-[url('/images/electrical-pattern-dark.svg')] opacity-10 pointer-events-none"></div>
+
+          {/* Left Column: Text and Description */}
+          <div className="relative z-10 p-8 md:p-12">
+            <h2 className="text-3xl font-bold font-headline text-primary dark:text-primary-foreground">Request a Free Quote</h2>
+            <p className="mt-4 text-muted-foreground dark:text-muted-foreground/90">
+                Get in touch with us to discuss your project requirements and receive a personalized quote.
+            </p>
+          </div>
+
+          {/* Right Column: Form */}
+          <div className="relative z-10 bg-card p-8 md:p-12 rounded-lg shadow-lg w-full max-w-md md:max-w-none mx-auto md:mx-0">
+            <form className="grid grid-cols-1 gap-6">
+                <div>
+                  <label htmlFor="fullName" className="block text-sm font-medium text-muted-foreground">Full Name</label>
+                  <input type="text" id="fullName" className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary-foreground dark:focus:ring-primary-foreground sm:text-sm p-3 bg-background dark:bg-card text-foreground dark:text-card-foreground transition-all duration-200"
+                    placeholder="Your Full Name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-muted-foreground">Email Address</label>
+                  <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary-foreground dark:focus:ring-primary-foreground sm:text-sm p-3 bg-background dark:bg-card text-foreground dark:text-card-foreground transition-all duration-200"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-muted-foreground">Phone Number (Optional)</label>
+                  <input
+                    type="tel"
+                    id="phone" className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary-foreground dark:focus:ring-primary-foreground sm:text-sm p-3 bg-background dark:bg-card text-foreground dark:text-card-foreground transition-all duration-200" placeholder="Your Phone Number"/>
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-muted-foreground">Message</label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2"
+                    placeholder="Tell us about your project and requirements..." > </textarea>
+                </div>
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg transition-colors duration-300 ease-in-out transform hover:scale-105">Submit Request</Button>
+            </form>
+          </div>
+        </div>
+      </div>
+      </section>
+
+
+      {/* Weekly Calendar Subscription Section */}
+      <section className="py-16 md:py-24 bg-white text-gray-800">
+        <div className="container">
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold font-headline text-primary">Stay Organized – Get Our Weekly Calendar</h2>
+            <p className="mt-4 text-muted-foreground">
+              Subscribe to receive our weekly calendar featuring important industry dates, product highlights, and helpful tips directly in your inbox.
+            </p>
+          </div>
+          <div className="mt-8 max-w-md mx-auto">
+            <form className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="email"
+                id="calendar-subscribe-email"
+                className="flex-grow rounded-md border border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-3"
+                placeholder="Enter your email address"
+              />
+              <Button
+                type="submit"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground py-3 px-6 text-lg transition-colors duration-300"
+              >
+                Subscribe
+              </Button>
+            </form>
+            <p className="mt-4 text-center text-sm text-muted-foreground">
+              We respect your inbox. Unsubscribe anytime.
+            </p>
+          </div>
+        </div>
+      </section>
+      
     </div>
   );
 }
@@ -510,16 +581,14 @@ const TransformerAccessoriesTable = () => {
         <TableHeader>
           <TableRow>
             <TableHead className="border border-gray-300 px-4 py-2">Name</TableHead>
-            <TableHead className="border border-gray-300 px-4 py-2">Type</TableHead>
-            <TableHead className="border border-gray-300 px-4 py-2">Quality/Description</TableHead>
+            <TableHead className="border border-gray-300 px-4 py-2">Description</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {visibleAccessories.map((accessory) => (
             <TableRow key={accessory.id}>
-              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100 font-medium">lorem ipsum</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100">lorem ipsum</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100">lorem ipsum</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100 font-medium">{accessory.name}</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2 bg-gray-100">{accessory.description}</TableCell>
             </TableRow>
           ))}
         </TableBody>
