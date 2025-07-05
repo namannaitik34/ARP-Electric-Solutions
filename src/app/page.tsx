@@ -16,6 +16,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import SkewedCubeStack from '@/components/SkewedCubeStack';
 import { useEffect } from 'react';
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const featuredServices = [
   {
@@ -488,29 +490,39 @@ export default function Home() {
             <form className="grid grid-cols-1 gap-6">
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium text-muted-foreground">Full Name</label>
-                  <input type="text" id="fullName" className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary-foreground dark:focus:ring-primary-foreground sm:text-sm p-3 bg-background dark:bg-card text-foreground dark:text-card-foreground transition-all duration-200"
+                  <Input
+                    type="text"
+                    id="fullName"
+                    className="mt-1"
                     placeholder="Your Full Name"
                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-muted-foreground">Email Address</label>
-                  <input type="email" id="email" className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary-foreground dark:focus:ring-primary-foreground sm:text-sm p-3 bg-background dark:bg-card text-foreground dark:text-card-foreground transition-all duration-200"
+                  <Input
+                    type="email"
+                    id="email"
+                    className="mt-1"
                     placeholder="Your Email"
                   />
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-muted-foreground">Phone Number (Optional)</label>
-                  <input
+                  <Input
                     type="tel"
-                    id="phone" className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary-foreground dark:focus:ring-primary-foreground sm:text-sm p-3 bg-background dark:bg-card text-foreground dark:text-card-foreground transition-all duration-200" placeholder="Your Phone Number"/>
+                    id="phone"
+                    className="mt-1"
+                    placeholder="Your Phone Number"
+                  />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-muted-foreground">Message</label>
-                  <textarea
+                  <Textarea
                     id="message"
                     rows={4}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-2"
-                    placeholder="Tell us about your project and requirements..." > </textarea>
+                    className="mt-1"
+                    placeholder="Tell us about your project and requirements..."
+                  />
                 </div>
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg transition-colors duration-300 ease-in-out transform hover:scale-105">Submit Request</Button>
             </form>
