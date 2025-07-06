@@ -47,7 +47,7 @@ const services: { title: string; href: string; description: string, icon: React.
 export function Header() {
   return (
     <>
-      <div className="bg-primary text-primary-foreground text-s py-5">
+      <div className="bg-teal-900 text-primary-foreground text-s py-5">
         <div className="container flex items-center justify-between">
             <div className="flex items-center space-x-4 md:space-x-10">
                 <span className="font-semibold italic hidden md:block ">Trusted partner in energy</span>

@@ -29,7 +29,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-teal-500 to-blue-800 text-primary-foreground dark:bg-navy-blue-900">
+    <footer className="bg-gradient-to-br from-teal-800 to-teal-950 text-primary-foreground dark:bg-navy-blue-900">
       <div className="container py-16 sm:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Company Info & Socials */}

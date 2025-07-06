@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,11 +11,10 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
+import Autoplay from 'embla-carousel-autoplay'; // Make sure this import is used if Autoplay is utilized
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import SkewedCubeStack from '@/components/SkewedCubeStack';
-import { useEffect } from 'react';
-import { useState } from "react";
+import SkewedCubeStack from '@/components/SkewedCubeStack'; // Make sure this import is used if SkewedCubeStack is utilized
+import { useEffect, useState, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -73,10 +72,44 @@ const transformerAccessories = [
 
 
 export default function Home() {
+  const heroSectionRef = useRef(null);
+  const aboutUsSectionRef = useRef(null);
+
+  const [isHeroSectionVisible, setIsHeroSectionVisible] = useState(false);
+  const [isAboutUsSectionVisible, setIsAboutUsSectionVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === heroSectionRef.current && entry.isIntersecting) {
+            setIsHeroSectionVisible(true);
+          } else if (entry.target === aboutUsSectionRef.current && entry.isIntersecting) {
+            setIsAboutUsSectionVisible(true);
+          }
+        });
+      },
+      { threshold: 0.3 } // Adjust the threshold as needed
+    );
+
+    if (heroSectionRef.current) observer.observe(heroSectionRef.current);
+    if (aboutUsSectionRef.current) observer.observe(aboutUsSectionRef.current);
+
+    return () => {
+      if (heroSectionRef.current) observer.unobserve(heroSectionRef.current);
+      if (aboutUsSectionRef.current) observer.unobserve(aboutUsSectionRef.current);
+    };
+  }, []); // Empty dependency array ensures this effect runs only once
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 lg:py-40 bg-primary text-secondary-foreground">
+      <section
+        ref={heroSectionRef}
+        className={`relative py-24 md:py-32 lg:py-40 bg-blue text-secondary-foreground ${
+          isHeroSectionVisible ? 'fade-in-visible' : 'fade-in-hidden'
+        }`}
+      >
         <div className="absolute inset-0">
           <Image
             src="https://placehold.co/1920x1080.png"
@@ -106,7 +139,12 @@ export default function Home() {
       </section>
 
       {/* About Us Snippet */}
-      <section className="py-16 md:py-24 bg-white">
+      <section
+        ref={aboutUsSectionRef}
+        className={`py-16 md:py-24 bg-white fade-in-section ${
+          isAboutUsSectionVisible ? 'fade-in-visible' : 'fade-in-hidden'
+        }`}
+      >
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold font-headline text-primary hover-underline">About ARP Electric Solution</h2>
