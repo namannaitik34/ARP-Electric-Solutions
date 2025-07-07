@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CircuitBoard, Bolt, Zap, Wind } from "lucide-react";
+import { CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import InteractiveCard from "@/components/InteractiveCard";
@@ -43,6 +43,49 @@ const featuredServices = [
     description: "High-grade copper foils and busbars for superior electrical conductivity.",
     icon: Zap,
     href: "/services#copper-foil"
+  },
+];
+
+const productCategories = [
+  {
+    title: "Power Distribution",
+    icon: Network,
+    features: [
+      "High-Voltage Transformers",
+      "Switchgear Panels",
+      "Circuit Breakers",
+      "Busbar Systems",
+    ],
+  },
+  {
+    title: "Industrial Automation",
+    icon: Cpu,
+    features: [
+      "Programmable Logic Controllers",
+      "Human-Machine Interfaces",
+      "Variable Frequency Drives",
+      "Motor Control Centers",
+    ],
+  },
+  {
+    title: "Renewable Energy",
+    icon: Wind,
+    features: [
+      "Solar Inverters",
+      "Battery Storage Solutions",
+      "Wind Turbine Components",
+      "Grid-Tie Systems",
+    ],
+  },
+  {
+    title: "Safety & Protection",
+    icon: Shield,
+    features: [
+      "Surge Protection Devices",
+      "Protective Relays",
+      "Ground Fault Monitors",
+      "Arc Flash Prevention",
+    ],
   },
 ];
 
@@ -174,6 +217,42 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Solutions by Category Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold font-headline text-primary">
+              Solutions by Category
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+              We provide tailored solutions across various industrial sectors to meet your specific needs.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {productCategories.map((category) => (
+              <Card key={category.title} className="group flex h-full flex-col text-left transition-all duration-300 hover:border-primary hover:shadow-lg">
+                <CardHeader>
+                  <div className="flex items-start gap-4">
+                    <div className="rounded-full bg-primary/10 p-3 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                      <category.icon className="h-6 w-6" />
+                    </div>
+                    <CardTitle className="mt-1 text-xl">{category.title}</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <ul className="ml-4 list-disc space-y-2 text-muted-foreground">
+                    {category.features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Product Showcase Intro Section */}
       <section className="py-20 md:py-28 bg-teal-950 text-white">
         <div className="container grid md:grid-cols-2 gap-12 items-center relative">
