@@ -4,41 +4,41 @@ import { Zap, Wind, CircuitBoard, Bolt, Component } from "lucide-react";
 
 const products = [
     { 
-        id: 'power-transformer', 
-        title: 'Power Transformer', 
-        description: 'High-efficiency power transformers for industrial and commercial use, ensuring stable power distribution.', 
+        id: 'transformers', 
+        title: 'Transformers', 
+        description: 'A comprehensive range of transformers for various applications, ensuring efficient power transfer and distribution.', 
         icon: CircuitBoard,
         image: 'https://placehold.co/600x400.png',
         hint: 'power transformer'
     },
     { 
-        id: 'ups-system', 
-        title: 'UPS System', 
-        description: 'Reliable Uninterruptible Power Supply systems to safeguard your critical equipment from power surges.', 
-        icon: Bolt,
-        image: 'https://placehold.co/600x400.png',
-        hint: 'server room'
-    },
-    { 
-        id: 'amorphous-core', 
-        title: 'Amorphous Core', 
-        description: 'Advanced amorphous cores that reduce energy loss and improve transformer efficiency.', 
+        id: 'copper', 
+        title: 'Copper', 
+        description: 'High-quality copper products for electrical applications, known for their excellent conductivity.', 
         icon: Wind,
-        image: 'https://placehold.co/600x400.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solution.firebasestorage.app/o/Products%2Fcopper-picc.jpg?alt=media&token=61977413-c47b-4dec-9236-efaf4c24d1ac',
         hint: 'metal core'
     },
     { 
-        id: 'copper-foil', 
-        title: 'Copper Foil', 
-        description: 'High-conductivity copper foil for applications in electronics, batteries, and shielding.', 
+        id: 'aluminium', 
+        title: 'Aluminium', 
+        description: 'Lightweight yet strong aluminium components essential for various electrical systems.', 
         icon: Zap,
         image: 'https://placehold.co/600x400.png',
         hint: 'copper foil'
     },
     {
-        id: 'switchgear',
-        title: 'MV/LV Switchgear',
-        description: 'Medium and low voltage switchgear for reliable circuit protection and control.',
+        id: 'crgo',
+        title: 'CRGO(Cold Rolled Grain Oriented Steel)',
+        description: 'Specialized steel for high-performance transformer cores, minimizing energy losses.',
+        icon: Component,
+        image: 'https://placehold.co/600x400.png',
+        hint: 'steel roll'
+    },
+    {
+        id: 'transformer-accessories',
+        title: 'Transformer Accessories',
+        description: 'A range of essential accessories to ensure the optimal function and longevity of transformers.',
         icon: Component,
         image: 'https://placehold.co/600x400.png',
         hint: 'switchgear panel'
@@ -46,10 +46,26 @@ const products = [
     {
         id: 'crgo-steel',
         title: 'CRGO Steel',
-        description: 'Cold-Rolled Grain-Oriented steel for manufacturing high-performance transformer cores.',
+        description: 'Cold-Rolled Grain-Oriented steel for manufacturing high-performance transformer cores. (Duplicate entry, will be removed or modified based on your specific product list)',
         icon: Component,
         image: 'https://placehold.co/600x400.png',
         hint: 'steel roll'
+    },
+    {
+        id: 'data-center',
+        title: 'Data Center',
+        description: 'Electrical solutions specifically designed for the demanding power requirements of data centers.',
+        icon: Bolt,
+        image: 'https://placehold.co/600x400.png',
+        hint: 'server room'
+    },
+    {
+        id: 'apfc-harmonic-filter-ups',
+        title: 'MV/LV APFC- Harmonic Filter & UPS',
+        description: 'Advanced power factor correction, harmonic filtering, and UPS systems for stable and clean power.',
+        icon: CircuitBoard,
+        image: 'https://placehold.co/600x400.png',
+        hint: 'power filter'
     }
 ];
 

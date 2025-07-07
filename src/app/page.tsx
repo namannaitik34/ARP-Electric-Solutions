@@ -175,7 +175,7 @@ export default function Home() {
         </div>
       </section>
       {/* Product Showcase Intro Section */}
-      <section className="py-20 md:py-28 bg-blue-950 text-white">
+      <section className="py-20 md:py-28 bg-teal-950 text-white">
         <div className="container grid md:grid-cols-2 gap-12 items-center relative">
           {/* Design Element */}
           <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-px bg-white h-24 opacity-50 hidden md:block"></div>
