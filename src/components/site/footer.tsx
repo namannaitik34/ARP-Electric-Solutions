@@ -17,7 +17,8 @@ export function Footer() {
   const usefulLinks = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
-    { name: 'All Services', href: '/services' },
+    { name: 'Products', href: '/products' },
+    { name: 'Services', href: '/services' },
     { name: 'Contact Us', href: '/contact' },
   ];
 

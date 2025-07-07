@@ -33,6 +33,7 @@ interface ServiceItem {
 const navItems: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
+  { href: '/products', label: 'Products' },
   { href: '/contact', label: 'Contact Us' },
 ];
 
@@ -77,9 +78,9 @@ export function MobileNav() {
             </Link>
           ))}
           <Accordion type="single" collapsible>
-            <AccordionItem value="product-services" className="border-b-0">
+            <AccordionItem value="services" className="border-b-0">
               <AccordionTrigger className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:no-underline [&[data-state=open]>svg]:rotate-180">
-                Product Services
+                Services
               </AccordionTrigger>
               <AccordionContent className="pl-4">
                 <div className="flex flex-col space-y-2 pt-2">

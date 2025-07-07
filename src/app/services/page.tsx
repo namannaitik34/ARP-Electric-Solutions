@@ -19,7 +19,7 @@ export default function ServicesPage() {
         <div className="bg-background text-foreground">
             <div className="container py-16 md:py-24">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">Our Product Services</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">Our Services</h1>
                     <p className="mt-4 text-lg text-muted-foreground">
                         Explore our comprehensive range of high-quality electrical components and solutions, engineered for performance and reliability.
                     </p>

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,10 +11,11 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay'; // Make sure this import is used if Autoplay is utilized
+import Autoplay from 'embla-carousel-autoplay';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import SkewedCubeStack from '@/components/SkewedCubeStack'; // Make sure this import is used if SkewedCubeStack is utilized
-import { useEffect, useState, useRef } from "react";
+import SkewedCubeStack from '@/components/SkewedCubeStack';
+import { useEffect } from 'react';
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -72,44 +73,10 @@ const transformerAccessories = [
 
 
 export default function Home() {
-  const heroSectionRef = useRef(null);
-  const aboutUsSectionRef = useRef(null);
-
-  const [isHeroSectionVisible, setIsHeroSectionVisible] = useState(false);
-  const [isAboutUsSectionVisible, setIsAboutUsSectionVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === heroSectionRef.current && entry.isIntersecting) {
-            setIsHeroSectionVisible(true);
-          } else if (entry.target === aboutUsSectionRef.current && entry.isIntersecting) {
-            setIsAboutUsSectionVisible(true);
-          }
-        });
-      },
-      { threshold: 0.3 } // Adjust the threshold as needed
-    );
-
-    if (heroSectionRef.current) observer.observe(heroSectionRef.current);
-    if (aboutUsSectionRef.current) observer.observe(aboutUsSectionRef.current);
-
-    return () => {
-      if (heroSectionRef.current) observer.unobserve(heroSectionRef.current);
-      if (aboutUsSectionRef.current) observer.unobserve(aboutUsSectionRef.current);
-    };
-  }, []); // Empty dependency array ensures this effect runs only once
-
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div className="flex flex-col">
       {/* Hero Section */}
-      <section
-        ref={heroSectionRef}
-        className={`relative py-24 md:py-32 lg:py-40 bg-blue text-secondary-foreground ${
-          isHeroSectionVisible ? 'fade-in-visible' : 'fade-in-hidden'
-        }`}
-      >
+      <section className="relative py-24 md:py-32 lg:py-40 bg-secondary text-secondary-foreground">
         <div className="absolute inset-0">
           <Image
             src="https://placehold.co/1920x1080.png"
@@ -118,7 +85,7 @@ export default function Home() {
             fill
             className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-teal-100 to-transparent"></div>
         </div>
         <div className="container relative text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline text-primary-foreground">
@@ -139,15 +106,10 @@ export default function Home() {
       </section>
 
       {/* About Us Snippet */}
-      <section
-        ref={aboutUsSectionRef}
-        className={`py-16 md:py-24 bg-white fade-in-section ${
-          isAboutUsSectionVisible ? 'fade-in-visible' : 'fade-in-hidden'
-        }`}
-      >
+      <section className="py-16 md:py-24 bg-background">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-bold font-headline text-primary hover-underline">About ARP Electric Solution</h2>
+            <h2 className="text-3xl font-bold font-headline text-primary">About ARP Electric Solution</h2>
             <p className="mt-4 text-muted-foreground">
               With over 20 years of experience, ARP Electric Solution is a trusted product solution provider in the fields of power transmission, distribution, and transformer technologies. Our expertise spans across raw materials, transformer accessories, CRGO, copper foil, CTC, PICC, super enameled wire, MV/LV APFC systems, harmonic filters, UPS and data centers, ring main units (RMU), and MV/LV switchgear.
               <br/> We strictly adhere to ANSI, IEC, and BS standards, delivering cost-effective, reliable, and innovative solutions tailored to meet the evolving demands of clients worldwide.
@@ -213,7 +175,7 @@ export default function Home() {
         </div>
       </section>
       {/* Product Showcase Intro Section */}
-      <section className="py-20 md:py-28 bg-teal-950 text-white">
+      <section className="py-20 md:py-28 bg-blue-950 text-white">
         <div className="container grid md:grid-cols-2 gap-12 items-center relative">
           {/* Design Element */}
           <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-px bg-white h-24 opacity-50 hidden md:block"></div>
@@ -562,7 +524,7 @@ export default function Home() {
 
 
       {/* Weekly Calendar Subscription Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-white via-teal-200 to-white text-gray-800">
+      <section className="py-16 md:py-24 bg-white text-gray-800">
         <div className="container">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold font-headline text-primary">Stay Organized – Get Our Weekly Calendar</h2>
