@@ -10,11 +10,12 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import SkewedCubeStack from '@/components/SkewedCubeStack';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -113,24 +114,102 @@ const transformerAccessories = [
   { id: 21, name: "Fan Control Panels", description: "Automatic fan control systems" },
 ];
 
-
+const heroSlides = [
+  {
+    src: "https://placehold.co/1920x1080.png",
+    hint: "electrical components",
+    alt: "Electrical components background"
+  },
+  {
+    src: "https://placehold.co/1920x1080.png",
+    hint: "power lines sunset",
+    alt: "High-voltage power lines at sunset"
+  },
+  {
+    src: "https://placehold.co/1920x1080.png",
+    hint: "modern factory",
+    alt: "Interior of a modern manufacturing facility"
+  },
+  {
+    src: "https://placehold.co/1920x1080.png",
+    hint: "transformer station",
+    alt: "A large electrical transformer station"
+  },
+  {
+    src: "https://placehold.co/1920x1080.png",
+    hint: "circuit board closeup",
+    alt: "Closeup of a complex circuit board"
+  },
+]
 
 export default function Home() {
+  const heroSectionRef = useRef(null);
+  const aboutUsSectionRef = useRef(null);
+
+  const [isHeroSectionVisible, setIsHeroSectionVisible] = useState(false);
+  const [isAboutUsVisible, setIsAboutUsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === heroSectionRef.current) {
+            if (entry.isIntersecting) {
+              setIsHeroSectionVisible(true);
+            }
+          } else if (entry.target === aboutUsSectionRef.current) {
+            if (entry.isIntersecting) {
+              setIsAboutUsVisible(true);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (heroSectionRef.current) {
+      observer.observe(heroSectionRef.current);
+    }
+    if (aboutUsSectionRef.current) {
+      observer.observe(aboutUsSectionRef.current);
+    }
+
+    return () => {
+      if (heroSectionRef.current) {
+        observer.unobserve(heroSectionRef.current);
+      }
+      if (aboutUsSectionRef.current) {
+        observer.unobserve(aboutUsSectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 lg:py-40 bg-secondary text-secondary-foreground">
-        <div className="absolute inset-0">
-          <Image
-            src="https://placehold.co/1920x1080.png"
-            alt="Electrical components background"
-            data-ai-hint="electrical components"
-            fill
-            className="object-cover opacity-10"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-teal-100 to-transparent"></div>
-        </div>
-        <div className="container relative text-center">
+      <section ref={heroSectionRef} className="relative py-24 md:py-32 lg:py-40 bg-secondary text-secondary-foreground">
+        <Carousel
+          plugins={[Autoplay({ delay: 5000, stopOnInteraction: false })]}
+          className="absolute inset-0 w-full h-full"
+          opts={{ loop: true }}
+        >
+          <CarouselContent className="w-full h-full">
+            {heroSlides.map((slide, index) => (
+              <CarouselItem key={index} className="w-full h-full">
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  data-ai-hint={slide.hint}
+                  fill
+                  className="object-cover"
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-teal-900/70 to-transparent"></div>
+        <div className={`container relative text-center transition-all duration-1000 ease-out ${isHeroSectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline text-primary-foreground">
             Empowering Industries with Reliable Electrical Solutions
           </h1>
@@ -149,9 +228,9 @@ export default function Home() {
       </section>
 
       {/* About Us Snippet */}
-      <section className="py-16 md:py-24 bg-background">
+      <section ref={aboutUsSectionRef} className="py-16 md:py-24 bg-background">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <div className={`transition-all duration-1000 ease-out ${isAboutUsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <h2 className="text-3xl font-bold font-headline text-primary">About ARP Electric Solution</h2>
             <p className="mt-4 text-muted-foreground">
               With over 20 years of experience, ARP Electric Solution is a trusted product solution provider in the fields of power transmission, distribution, and transformer technologies. Our expertise spans across raw materials, transformer accessories, CRGO, copper foil, CTC, PICC, super enameled wire, MV/LV APFC systems, harmonic filters, UPS and data centers, ring main units (RMU), and MV/LV switchgear.
@@ -163,7 +242,7 @@ export default function Home() {
               <Link href="/about">Learn More About Us</Link>
             </Button>
           </div>
-          <div className="rounded-lg overflow-hidden shadow-lg">
+          <div className={`rounded-lg overflow-hidden shadow-lg transition-all duration-1000 ease-out ${isAboutUsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
             <Image
               src="https://placehold.co/600x400.png"
               alt="Factory interior"
@@ -300,7 +379,9 @@ export default function Home() {
               ]}
               opts={{
                 align: "start",
+                loop: true,
               }}
+              className="relative"
             >
               <CarouselContent className="-ml-6">
                 {[...Array(14)].map((_, index) => (
@@ -309,6 +390,8 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 transform text-white" />
+              <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 transform text-white" />
             </Carousel>
           </div>
         </div>
@@ -380,7 +463,7 @@ export default function Home() {
             <p className="mt-4 text-primary-foreground/80">
               Our oil-immersed transformers are designed for exceptional performance and reliability in a wide range of applications. Built with high-quality materials and advanced manufacturing techniques, they provide efficient power transmission and distribution. Ideal for both utility and industrial use, these transformers ensure stable and safe operation even in demanding environments.
             </p>
-            <ul className="list-disc pl-0 mt-4 space-y-2">
+            <ul className="list-disc pl-5 mt-4 space-y-2 marker:text-primary-foreground/50">
               <li>Rigorous quality checks for durability and efficiency</li>
               <li>Customizable designs to meet specific requirements</li>
               <li>Compliance with international safety and performance standards</li>
@@ -388,7 +471,16 @@ export default function Home() {
               <li>Environmentally friendly options available</li>
             </ul>
           </div>
-          <SkewedCubeStack />
+          <div className="relative w-full h-full min-h-[300px] flex items-center justify-center">
+            <Image
+              src="https://placehold.co/500x500.png"
+              alt="Oil-Immersed Transformer"
+              data-ai-hint="oil transformer"
+              width={500}
+              height={500}
+              className="w-full h-auto object-cover rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105"
+            />
+          </div>
         </div>
       </section>
 
@@ -465,41 +557,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* IEC Standard Compliance Section */}
-      <section className="py-16 md:py-24 bg-gray-100">
-        <div className="container grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
-          <div className="flex justify-center items-center">
-            <Image
-              src="https://placehold.co/400x256.png"
-              alt="IEC Standard Compliance"
-              data-ai-hint="engineering blueprint"
-              width={400}
-              height={256}
-              className="w-full max-w-sm h-auto object-cover rounded-lg"
-            />
-          </div>
-
-          {/* Right Column (Image Placeholder) */}
-          <div>
-            <p className="text-sm uppercase tracking-wider text-gray-600">Precision Engineering</p>
-            <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
-              IEC Standard
-            </h2>
-            {/* Visual Separator Placeholder */}
-            <div className="w-16 h-1 bg-primary mt-4"></div>
-            <p className="mt-6 text-gray-700">
-              Our IEC compliant products are designed to deliver unparalleled efficiency and adaptability. Built to meet international standards, they ensure superior power distribution and long-term reliability for diverse applications.
-            </p>
-            {/* Read More Link Placeholder */}
-            <div className="mt-6">
-              <Link href="#" className="text-primary font-semibold flex items-center group">
-                READ MORE
-                <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-
+      {/* Parallax Section */}
+      <section
+        className="relative py-20 md:py-32 text-white bg-cover bg-fixed bg-center"
+        style={{ backgroundImage: "url('https://placehold.co/1920x1080.png')" }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="container relative text-center z-10">
+          <h2 className="text-4xl font-bold font-headline">Excellence in Engineering</h2>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/80">
+            Our commitment to international standards like IEC ensures every product meets global benchmarks for safety, reliability, and performance.
+          </p>
+          <Button asChild size="lg" className="mt-8">
+            <Link href="/about">Discover Our Quality Promise</Link>
+          </Button>
         </div>
       </section>
 
@@ -547,11 +618,10 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative overflow-hidden rounded-lg shadow-xl">
             {/* Background Pattern/Image */}
             <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-teal-400 to-green-500 dark:from-blue-900/50 dark:to-purple-900/50 opacity-60"></div>
-            <div className="absolute inset-0 bg-[url('/images/electrical-pattern.svg')] dark:bg-[url('/images/electrical-pattern-dark.svg')] opacity-10 pointer-events-none"></div>
 
             {/* Left Column: Text and Description */}
             <div className="relative z-10 p-8 md:p-12">
-              <h2 className="text-3xl font-bold font-headline text-primary dark:text-primary-foreground">Request a Free Quote</h2>
+              <h2 className="text-3xl font-bold font-headline text-primary-foreground dark:text-primary-foreground">Request a Free Quote</h2>
               <p className="mt-4 text-muted-foreground dark:text-muted-foreground/90">
                 Get in touch with us to discuss your project requirements and receive a personalized quote.
               </p>
@@ -663,7 +733,7 @@ const TransformerAccessoriesTable = () => {
           ))}
         </TableBody>
       </Table>
-      {!showAll && (
+      {!showAll && transformerAccessories.length > 9 && (
         <div className="text-center mt-6">
           <Button onClick={() => setShowAll(true)}>Read More</Button>
         </div>
