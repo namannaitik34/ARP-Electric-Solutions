@@ -93,21 +93,21 @@ const transformerAccessories = [
   { id: 1, name: "Bushings", description: "High-voltage and low-voltage bushings" },
   { id: 2, name: "Cooling Fans", description: "Efficient cooling systems" },
   { id: 3, name: "Oil Conservators", description: "For oil expansion and contraction" },
- { id: 4, name: "Buchholz Relays", description: "Gas and oil actuated protective relays" },
+  { id: 4, name: "Buchholz Relays", description: "Gas and oil actuated protective relays" },
   { id: 5, name: "Tap Changers", description: "On-load and off-load tap changers" },
   { id: 6, name: "Pressure Relief Devices", description: "For protection against internal faults" },
   { id: 7, name: "Temperature Indicators", description: "Winding and oil temperature indicators" },
- { id: 8, name: "Moisture Absorbers", description: "Silica gel breathers" },
- { id: 9, name: "Control Cabinets", description: "For monitoring and control" },
- { id: 10, name: "Radiators", description: "For heat dissipation" },
+  { id: 8, name: "Moisture Absorbers", description: "Silica gel breathers" },
+  { id: 9, name: "Control Cabinets", description: "For monitoring and control" },
+  { id: 10, name: "Radiators", description: "For heat dissipation" },
   { id: 11, name: "Terminal Connectors", description: "Various types and sizes" },
- { id: 12, name: "Gaskets and Sealing", description: "Oil-resistant gaskets" },
- { id: 13, name: "Insulating Paper", description: "For winding insulation" },
+  { id: 12, name: "Gaskets and Sealing", description: "Oil-resistant gaskets" },
+  { id: 13, name: "Insulating Paper", description: "For winding insulation" },
   { id: 14, name: "Transformer Oil", description: "High-quality insulating oil" },
- { id: 15, name: "Arresters", description: "Surge arresters for protection" },
- { id: 16, name: "Monitoring Systems", description: "Online monitoring solutions" },
- { id: 17, name: "Valves", description: "Drain and sampling valves" },
- { id: 18, name: "Cable Boxes", description: "For cable termination" },
+  { id: 15, name: "Arresters", description: "Surge arresters for protection" },
+  { id: 16, name: "Monitoring Systems", description: "Online monitoring solutions" },
+  { id: 17, name: "Valves", description: "Drain and sampling valves" },
+  { id: 18, name: "Cable Boxes", description: "For cable termination" },
   { id: 19, name: "Protective Relays", description: "Differential and overcurrent relays" },
   { id: 20, name: "Bushings CTs", description: "Current transformers for metering and protection" },
   { id: 21, name: "Fan Control Panels", description: "Automatic fan control systems" },
@@ -155,8 +155,8 @@ export default function Home() {
             <h2 className="text-3xl font-bold font-headline text-primary">About ARP Electric Solution</h2>
             <p className="mt-4 text-muted-foreground">
               With over 20 years of experience, ARP Electric Solution is a trusted product solution provider in the fields of power transmission, distribution, and transformer technologies. Our expertise spans across raw materials, transformer accessories, CRGO, copper foil, CTC, PICC, super enameled wire, MV/LV APFC systems, harmonic filters, UPS and data centers, ring main units (RMU), and MV/LV switchgear.
-              <br/> We strictly adhere to ANSI, IEC, and BS standards, delivering cost-effective, reliable, and innovative solutions tailored to meet the evolving demands of clients worldwide.
-              <br/>At ARP Electric Solution, we are committed to providing superior service in a dynamic, market-driven environment. Our divisions are dedicated to delivering tailored, comprehensive, and technology-driven solutions in the electrical sector. We take pride in our forward-thinking approach and continuously strive to stay ahead through technological innovations and process expertise, offering one-stop solutions that ensure quality, efficiency, and customer satisfaction.
+              <br /> We strictly adhere to ANSI, IEC, and BS standards, delivering cost-effective, reliable, and innovative solutions tailored to meet the evolving demands of clients worldwide.
+              <br />At ARP Electric Solution, we are committed to providing superior service in a dynamic, market-driven environment. Our divisions are dedicated to delivering tailored, comprehensive, and technology-driven solutions in the electrical sector. We take pride in our forward-thinking approach and continuously strive to stay ahead through technological innovations and process expertise, offering one-stop solutions that ensure quality, efficiency, and customer satisfaction.
 
             </p>
             <Button asChild className="mt-6">
@@ -218,6 +218,33 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* Product Showcase Intro Section */}
+      <section className="py-20 md:py-28 bg-teal-950 text-white">
+        <div className="container grid md:grid-cols-2 gap-12 items-center relative">
+          {/* Design Element */}
+          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-px bg-white h-24 opacity-50 hidden md:block"></div>
+          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-24 bg-primary hidden md:block"></div>
+
+          <div>
+            <p className="text-sm uppercase tracking-wider text-primary">We Are ARP Electric Solution</p>
+            <h2 className="text-4xl md:text-5xl font-bold font-headline mt-2">
+              Our Products
+              <br />
+              For the Power
+              <br />
+              Industry
+            </h2>
+          </div>
+          <div>
+            <p className="text-lg leading-relaxed">
+              Explore our wide range of high-quality power transmission, distribution, transformer solutions, Raw Material, Transformer Accessories, CRGO, Copper Foil, CTC, PICC, Super Enameled, MV/LV APFC, Harmonic Filter, UPS and Data Center, Ring Main Unit (RMU), MV/LV Switchgear etc,
+              designed to meet the needs of clients worldwide.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Solutions by Category Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container">
@@ -234,7 +261,7 @@ export default function Home() {
               <Card key={category.title} className="group flex h-full flex-col text-left transition-all duration-300 hover:border-primary hover:shadow-lg">
                 <CardHeader>
                   <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-primary/10 p-3 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                    <div className="rounded-full bg-primary/10 p-3 text-primary transition-colors group-hover:bg-teal-500 group-hover:text-primary-foreground">
                       <category.icon className="h-6 w-6" />
                     </div>
                     <CardTitle className="mt-1 text-xl">{category.title}</CardTitle>
@@ -253,31 +280,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Showcase Intro Section */}
-      <section className="py-20 md:py-28 bg-teal-950 text-white">
-        <div className="container grid md:grid-cols-2 gap-12 items-center relative">
-          {/* Design Element */}
-          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-px bg-white h-24 opacity-50 hidden md:block"></div>
-          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-24 bg-primary hidden md:block"></div>
-
-          <div>
-            <p className="text-sm uppercase tracking-wider text-primary">We Are AKS International FZC</p>
-            <h2 className="text-4xl md:text-5xl font-bold font-headline mt-2">
-              Our Products
-              <br/>
-              For the Power
-              <br/>
-              Industry
-            </h2>
-          </div>
-          <div>
-            <p className="text-lg leading-relaxed">
-              Explore our wide range of high-quality power transmission, distribution, transformer solutions, Raw Material, Transformer Accessories, CRGO, Copper Foil, CTC, PICC, Super Enameled, MV/LV APFC, Harmonic Filter, UPS and Data Center, Ring Main Unit (RMU), MV/LV Switchgear etc,
-              designed to meet the needs of clients worldwide.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Product Showcase Section */}
       <section className="py-16 md:py-24 bg-gray-100">
@@ -296,10 +298,10 @@ export default function Home() {
                   delay: 2000,
                 }),
               ]}
-                opts={{
-                  align: "start",
-                }}
-              >
+              opts={{
+                align: "start",
+              }}
+            >
               <CarouselContent className="-ml-6">
                 {[...Array(14)].map((_, index) => (
                   <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/4">
@@ -312,7 +314,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Categories Section (Cards) */} 
+      {/* Product Categories Section (Cards) */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
@@ -355,7 +357,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-            {/* Transformer Accessories Section */}
+      {/* Transformer Accessories Section */}
       <section className="py-16 md:py-24 bg-background" id="transformer-accessories">
         <div className="container">
           <div className="text-center">
@@ -417,18 +419,18 @@ export default function Home() {
           {/* Right column */}
           <div className="relative w-full h-full min-h-[300px]">
             <Image
-                src="https://placehold.co/600x450.png"
-                alt="Cast Resin Transformer"
-                data-ai-hint="resin transformer"
-                width={600}
-                height={450}
-                className="w-full h-auto object-cover rounded-lg shadow-lg"
+              src="https://placehold.co/600x450.png"
+              alt="Cast Resin Transformer"
+              data-ai-hint="resin transformer"
+              width={600}
+              height={450}
+              className="w-full h-auto object-cover rounded-lg shadow-lg"
             />
           </div>
         </div>
       </section>
-            {/* ANSI Standard Compliance Section */}
-            <section className="py-16 md:py-24 bg-white">
+      {/* ANSI Standard Compliance Section */}
+      <section className="py-16 md:py-24 bg-white">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column */}
           <div>
@@ -452,12 +454,12 @@ export default function Home() {
           {/* Right Column (Image Placeholder) */}
           <div className="flex justify-center items-center">
             <Image
-                src="https://placehold.co/400x256.png"
-                alt="ANSI Standard Compliance"
-                data-ai-hint="compliance certificate"
-                width={400}
-                height={256}
-                className="w-full max-w-sm h-auto object-cover rounded-lg"
+              src="https://placehold.co/400x256.png"
+              alt="ANSI Standard Compliance"
+              data-ai-hint="compliance certificate"
+              width={400}
+              height={256}
+              className="w-full max-w-sm h-auto object-cover rounded-lg"
             />
           </div>
         </div>
@@ -467,14 +469,14 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-gray-100">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column */}
-                    <div className="flex justify-center items-center">
-             <Image
-                src="https://placehold.co/400x256.png"
-                alt="IEC Standard Compliance"
-                data-ai-hint="engineering blueprint"
-                width={400}
-                height={256}
-                className="w-full max-w-sm h-auto object-cover rounded-lg"
+          <div className="flex justify-center items-center">
+            <Image
+              src="https://placehold.co/400x256.png"
+              alt="IEC Standard Compliance"
+              data-ai-hint="engineering blueprint"
+              width={400}
+              height={256}
+              className="w-full max-w-sm h-auto object-cover rounded-lg"
             />
           </div>
 
@@ -526,12 +528,12 @@ export default function Home() {
           {/* Right Column (Image Placeholder) */}
           <div className="flex justify-center items-center">
             <Image
-                src="https://placehold.co/400x256.png"
-                alt="BS Standard Compliance"
-                data-ai-hint="quality control"
-                width={400}
-                height={256}
-                className="w-full max-w-sm h-auto object-cover rounded-lg"
+              src="https://placehold.co/400x256.png"
+              alt="BS Standard Compliance"
+              data-ai-hint="quality control"
+              width={400}
+              height={256}
+              className="w-full max-w-sm h-auto object-cover rounded-lg"
             />
           </div>
         </div>
@@ -543,21 +545,21 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-teal-100" id="request-quote">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative overflow-hidden rounded-lg shadow-xl">
-          {/* Background Pattern/Image */}
-          <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-teal-400 to-green-500 dark:from-blue-900/50 dark:to-purple-900/50 opacity-60"></div>
-          <div className="absolute inset-0 bg-[url('/images/electrical-pattern.svg')] dark:bg-[url('/images/electrical-pattern-dark.svg')] opacity-10 pointer-events-none"></div>
+            {/* Background Pattern/Image */}
+            <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-teal-400 to-green-500 dark:from-blue-900/50 dark:to-purple-900/50 opacity-60"></div>
+            <div className="absolute inset-0 bg-[url('/images/electrical-pattern.svg')] dark:bg-[url('/images/electrical-pattern-dark.svg')] opacity-10 pointer-events-none"></div>
 
-          {/* Left Column: Text and Description */}
-          <div className="relative z-10 p-8 md:p-12">
-            <h2 className="text-3xl font-bold font-headline text-primary dark:text-primary-foreground">Request a Free Quote</h2>
-            <p className="mt-4 text-muted-foreground dark:text-muted-foreground/90">
+            {/* Left Column: Text and Description */}
+            <div className="relative z-10 p-8 md:p-12">
+              <h2 className="text-3xl font-bold font-headline text-primary dark:text-primary-foreground">Request a Free Quote</h2>
+              <p className="mt-4 text-muted-foreground dark:text-muted-foreground/90">
                 Get in touch with us to discuss your project requirements and receive a personalized quote.
-            </p>
-          </div>
+              </p>
+            </div>
 
-          {/* Right Column: Form */}
-          <div className="relative z-10 bg-card p-8 md:p-12 rounded-lg shadow-lg w-full max-w-md md:max-w-none mx-auto md:mx-0">
-            <form className="grid grid-cols-1 gap-6">
+            {/* Right Column: Form */}
+            <div className="relative z-10 bg-card p-8 md:p-12 rounded-lg shadow-lg w-full max-w-md md:max-w-none mx-auto md:mx-0">
+              <form className="grid grid-cols-1 gap-6">
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium text-muted-foreground">Full Name</label>
                   <Input
@@ -595,10 +597,10 @@ export default function Home() {
                   />
                 </div>
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg transition-colors duration-300 ease-in-out transform hover:scale-105">Submit Request</Button>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
       </section>
 
 
@@ -632,7 +634,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
     </div>
   );
 }
