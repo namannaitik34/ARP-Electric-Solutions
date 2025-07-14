@@ -16,7 +16,7 @@ const allServices = [
 
 export default function ServicesPage() {
     return (
-        <div className="bg-background text-foreground">
+        <div className="bg-background text-foreground animate-fadeIn">
             <div className="container py-16 md:py-24">
                 <div className="text-center max-w-3xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">Our Services</h1>

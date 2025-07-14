@@ -22,6 +22,39 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+
+const useIntersectionObserver = (options: IntersectionObserverInit) => {
+  const [entries, setEntries] = useState<IntersectionObserverEntry[]>([]);
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    observer.current = new IntersectionObserver((observerEntries) => {
+      setEntries(observerEntries);
+    }, options);
+
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, [options]);
+
+  const observe = (element: Element) => {
+    if (observer.current) {
+      observer.current.observe(element);
+    }
+  };
+
+  const unobserve = (element: Element) => {
+    if (observer.current) {
+      observer.current.unobserve(element);
+    }
+  };
+
+  return { observe, unobserve, entries };
+};
+
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -152,13 +185,46 @@ const heroSlides = [
   },
 ]
 
-export default function Home() {
-  const heroSectionRef = useRef(null);
-  const aboutUsSectionRef = useRef(null);
+const FadeInSection = ({ children, className }: { children: React.ReactNode, className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const [isHeroSectionVisible, setIsHeroSectionVisible] = useState(false);
-  const [isAboutUsVisible, setIsAboutUsVisible] = useState(false);
-  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (ref.current) {
+            observer.unobserve(ref.current);
+          }
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={cn(className, 'fade-in-section', { 'is-visible': isVisible })}
+    >
+      {children}
+    </div>
+  );
+};
+
+
+export default function Home() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -176,45 +242,10 @@ export default function Home() {
     form.reset();
   }
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.target === heroSectionRef.current) {
-            if (entry.isIntersecting) {
-              setIsHeroSectionVisible(true);
-            }
-          } else if (entry.target === aboutUsSectionRef.current) {
-            if (entry.isIntersecting) {
-              setIsAboutUsVisible(true);
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (heroSectionRef.current) {
-      observer.observe(heroSectionRef.current);
-    }
-    if (aboutUsSectionRef.current) {
-      observer.observe(aboutUsSectionRef.current);
-    }
-
-    return () => {
-      if (heroSectionRef.current) {
-        observer.unobserve(heroSectionRef.current);
-      }
-      if (aboutUsSectionRef.current) {
-        observer.unobserve(aboutUsSectionRef.current);
-      }
-    };
-  }, []);
-
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section ref={heroSectionRef} className="relative py-24 md:py-32 lg:py-40 bg-secondary text-secondary-foreground">
+      <section className="relative py-24 md:py-32 lg:py-40 bg-secondary text-secondary-foreground">
         <Carousel
           plugins={[Autoplay({ delay: 5000, stopOnInteraction: false })]}
           className="absolute inset-0 w-full h-full"
@@ -236,7 +267,7 @@ export default function Home() {
         </Carousel>
 
         <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-teal-900/70 to-transparent"></div>
-        <div className={`container relative text-center transition-all duration-1000 ease-out ${isHeroSectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="container relative text-center animate-fadeIn">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline text-primary-foreground">
             Empowering Industries with Reliable Electrical Solutions
           </h1>
@@ -255,9 +286,9 @@ export default function Home() {
       </section>
 
       {/* About Us Snippet */}
-      <section ref={aboutUsSectionRef} className="py-16 md:py-24 bg-white">
+      <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
-          <div className={`transition-all duration-1000 ease-out ${isAboutUsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+          <div>
             <h2 className="text-3xl font-bold font-headline text-primary">About ARP Electric Solution</h2>
             <p className="mt-4 text-muted-foreground">
               With over 20 years of experience, ARP Electric Solution is a trusted product solution provider in the fields of power transmission, distribution, and transformer technologies. Our expertise spans across raw materials, transformer accessories, CRGO, copper foil, CTC, PICC, super enameled wire, MV/LV APFC systems, harmonic filters, UPS and data centers, ring main units (RMU), and MV/LV switchgear.
@@ -269,7 +300,7 @@ export default function Home() {
               <Link href="/about">Learn More About Us</Link>
             </Button>
           </div>
-          <div className={`rounded-lg overflow-hidden shadow-lg transition-all duration-1000 ease-out ${isAboutUsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+          <div className="rounded-lg overflow-hidden shadow-lg">
             <Image
               src="https://placehold.co/600x400.png"
               alt="Factory interior"
@@ -280,10 +311,10 @@ export default function Home() {
             />
           </div>
         </div>
-      </section>
+      </FadeInSection>
 
       {/* Featured Services Section */}
-      <section className="bg-white py-16 md:py-24">
+      <FadeInSection className="bg-white py-16 md:py-24">
         <div className="container">
           <div className="text-center">
             <h2 className="font-headline text-3xl font-bold text-primary">
@@ -322,11 +353,11 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </FadeInSection>
 
 
       {/* Product Showcase Intro Section */}
-      <section className="py-20 md:py-28 bg-teal-950 text-white">
+      <FadeInSection className="py-20 md:py-28 bg-teal-950 text-white">
         <div className="container grid md:grid-cols-2 gap-12 items-center relative">
           {/* Design Element */}
           <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-px bg-white h-24 opacity-50 hidden md:block"></div>
@@ -349,10 +380,10 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </section>
+      </FadeInSection>
 
       {/* Solutions by Category Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold font-headline text-primary">
@@ -384,11 +415,11 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </FadeInSection>
 
 
       {/* Product Showcase Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold font-headline text-primary">Product Showcase</h2>
@@ -422,10 +453,10 @@ export default function Home() {
             </Carousel>
           </div>
         </div>
-      </section>
+      </FadeInSection>
 
       {/* Product Categories Section (Cards) */}
-      <section className="py-16 md:py-24 bg-white">
+      <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold font-headline text-primary">Our Product Categories</h2>
@@ -466,9 +497,9 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </FadeInSection>
       {/* Transformer Accessories Section */}
-      <section className="py-16 md:py-24 bg-background" id="transformer-accessories">
+      <FadeInSection className="py-16 md:py-24 bg-background" id="transformer-accessories-section">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold font-headline text-primary">Transformer Accessories</h2>
@@ -480,10 +511,10 @@ export default function Home() {
             <TransformerAccessoriesTable />
           </div>
         </div>
-      </section>
+      </FadeInSection>
 
       {/* Oil-Immersed Transformers Section */}
-      <section className="py-16 md:py-24 bg-primary text-primary-foreground" id="oil-immersed-transformers">
+      <FadeInSection className="py-16 md:py-24 bg-primary text-primary-foreground" id="oil-immersed-transformers-section">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold font-headline text-primary-foreground">Oil-Immersed Transformers</h2>
@@ -509,10 +540,10 @@ export default function Home() {
             />
           </div>
         </div>
-      </section>
+      </FadeInSection>
 
       {/* Cast Resin Transformers Section */}
-      <section className="py-16 md:py-24 bg-gray-200 text-gray-800" id="cast-resin-transformers">
+      <FadeInSection className="py-16 md:py-24 bg-gray-200 text-gray-800" id="cast-resin-transformers">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           {/* Left column */}
           <div>
@@ -547,9 +578,9 @@ export default function Home() {
             />
           </div>
         </div>
-      </section>
+      </FadeInSection>
       {/* ANSI Standard Compliance Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column */}
           <div>
@@ -582,7 +613,7 @@ export default function Home() {
             />
           </div>
         </div>
-      </section>
+      </FadeInSection>
 
       {/* Parallax Section */}
       <section
@@ -600,7 +631,7 @@ export default function Home() {
           </Button>
         </div>
         {/* ANSI Standard Compliance Section */}
-        <section className="py-16 md:py-24">
+        <FadeInSection className="py-16 md:py-24">
           <div className="container grid md:grid-cols-2 gap-12 items-center">
             {/* Left Column */}
             <div>
@@ -633,9 +664,9 @@ export default function Home() {
               />
             </div>
           </div>
-        </section>
+        </FadeInSection>
         {/* IEC Standard Compliance Section */}
-        <section className="py-16 md:py-24">
+        <FadeInSection className="py-16 md:py-24">
           <div className="container grid md:grid-cols-2 gap-12 items-center">
             {/* Left Column */}
             <div className="flex justify-center items-center">
@@ -670,10 +701,10 @@ export default function Home() {
             </div>
 
           </div>
-        </section>
+        </FadeInSection>
 
         {/* BS Standard Compliance Section */}
-        <section className="py-16 md:py-24">
+        <FadeInSection className="py-16 md:py-24">
           <div className="container grid md:grid-cols-2 gap-12 items-center">
             {/* Left Column */}
             <div>
@@ -706,13 +737,14 @@ export default function Home() {
               />
             </div>
           </div>
-        </section>
+        </FadeInSection>
 
 
       </section>
 
       {/* BS Standard Compliance Section */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* Duplicate BS Standard Compliance Section - Renamed */}
+      <FadeInSection className="py-16 md:py-24 bg-white" id="bs-standard-compliance-section-2">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column */}
           <div>
@@ -745,13 +777,11 @@ export default function Home() {
             />
           </div>
         </div>
-      </section>
-
-
+      </FadeInSection>
 
       {/* Request a Quote Section */}
-      <section className="py-16 md:py-24 bg-teal-100" id="request-quote">
-        <div className="container">
+      <FadeInSection className="py-16 md:py-24 bg-teal-100" id="request-quote">
+        <div className="container" id="request-quote-form-section">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative overflow-hidden rounded-lg shadow-xl">
             <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-teal-400 to-green-500 dark:from-blue-900/50 dark:to-purple-900/50 opacity-60"></div>
             <div className="relative z-10 p-8 md:p-12">
@@ -821,10 +851,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </FadeInSection>
 
       {/* Weekly Calendar Subscription Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="md:pr-8">
@@ -862,7 +892,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </FadeInSection>
     </div>
   );
 }
