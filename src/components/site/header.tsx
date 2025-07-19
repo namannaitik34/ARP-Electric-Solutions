@@ -30,6 +30,7 @@ import {
 import { Logo } from '@/components/site/logo';
 import { MobileNav } from '@/components/site/mobile-nav';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { Button } from '@/components/ui/button';
 
 const services: { title: string; href: string; description: string, icon: React.ElementType }[] = [
     { title: 'Transformers', href: '/services#transformers', description: 'High-quality power and distribution transformers for various applications.', icon: CircuitBoard },
@@ -133,6 +134,9 @@ export function Header() {
             </NavigationMenu>
 
             <div className="flex flex-1 items-center justify-end space-x-2">
+                <Button asChild className='hidden md:inline-flex'>
+                    <Link href="/#request-quote">Get a Quote</Link>
+                </Button>
                 <ThemeToggle />
                 <MobileNav />
             </div>

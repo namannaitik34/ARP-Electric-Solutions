@@ -98,6 +98,11 @@ export function MobileNav() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+          <div className="px-3 pt-4">
+            <Button asChild className="w-full">
+                <Link href="/#request-quote" onClick={() => setIsOpen(false)}>Get a Quote</Link>
+            </Button>
+          </div>
         </div>
       </SheetContent>
     </Sheet>

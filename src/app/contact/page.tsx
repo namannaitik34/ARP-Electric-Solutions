@@ -53,9 +53,9 @@ export default function ContactPage() {
     ];
 
     return (
-        <div className="bg-background text-foreground animate-fadeIn">
+        <div className="bg-white text-foreground animate-fadeIn">
             {/* Top Section */}
-            <div className="bg-primary text-primary-foreground py-20 md:py-28">
+            <div className="bg-gradient-to-br from-teal-800 to-teal-950bg-gradient-to-br from-teal-800 to-teal-950bg-gradient-to-br from-teal-800 to-teal-950 text-primary-foreground py-20 md:py-28">
                 <div className="container grid md:grid-cols-2 gap-16 items-center">
                     <div className="space-y-4">
                         <h1 className="text-4xl md:text-5xl font-bold font-headline">Get in Touch</h1>
