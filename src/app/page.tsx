@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const useIntersectionObserver = (options: IntersectionObserverInit) => {
   const [entries, setEntries] = useState<IntersectionObserverEntry[]>([]);
@@ -91,47 +93,14 @@ const featuredServices = [
 ];
 
 const productCategories = [
-  {
-    title: "Power Distribution",
-    icon: Network,
-    features: [
-      "High-Voltage Transformers",
-      "Switchgear Panels",
-      "Circuit Breakers",
-      "Busbar Systems",
-    ],
-  },
-  {
-    title: "Industrial Automation",
-    icon: Cpu,
-    features: [
-      "Programmable Logic Controllers",
-      "Human-Machine Interfaces",
-      "Variable Frequency Drives",
-      "Motor Control Centers",
-    ],
-  },
-  {
-    title: "Renewable Energy",
-    icon: Wind,
-    features: [
-      "Solar Inverters",
-      "Battery Storage Solutions",
-      "Wind Turbine Components",
-      "Grid-Tie Systems",
-    ],
-  },
-  {
-    title: "Safety & Protection",
-    icon: Shield,
-    features: [
-      "Surge Protection Devices",
-      "Protective Relays",
-      "Ground Fault Monitors",
-      "Arc Flash Prevention",
-    ],
-  },
+  { name: "Power Distribution", value: 400, icon: Network },
+  { name: "Industrial Automation", value: 300, icon: Cpu },
+  { name: "Renewable Energy", value: 300, icon: Wind },
+  { name: "Safety & Protection", value: 200, icon: Shield },
 ];
+
+const COLORS = ['hsl(var(--chart-1))', 'hsl(var(--chart-2))', 'hsl(var(--chart-3))', 'hsl(var(--chart-4))'];
+
 
 const transformerAccessories = [
   { id: 1, name: "Bushings", description: "High-voltage and low-voltage bushings" },
@@ -380,39 +349,64 @@ export default function Home() {
       </FadeInSection>
 
       {/* Solutions by Category Section */}
-      <FadeInSection className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold font-headline text-primary">
-              Solutions by Category
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-              We provide tailored solutions across various industrial sectors to meet your specific needs.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {productCategories.map((category) => (
-              <Card key={category.title} className="group flex h-full flex-col text-left transition-all duration-300 hover:border-primary hover:shadow-lg">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-primary/10 p-3 text-primary transition-colors group-hover:bg-teal-500 group-hover:text-primary-foreground">
-                      <category.icon className="h-6 w-6" />
+        <FadeInSection className="py-16 md:py-24 bg-white">
+          <div className="container">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold font-headline text-primary">
+                Solutions by Category
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+                We provide tailored solutions across various industrial sectors to meet your specific needs.
+              </p>
+            </div>
+            <div className="mt-12">
+              <Card>
+                <CardContent className="p-4 md:p-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div className="h-80 w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={productCategories}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={120}
+                            fill="#8884d8"
+                            dataKey="value"
+                          >
+                            {productCategories.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                          </Pie>
+                          <Tooltip
+                            contentStyle={{
+                                backgroundColor: 'hsl(var(--background))',
+                                borderColor: 'hsl(var(--border))'
+                            }}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
                     </div>
-                    <CardTitle className="mt-1 text-xl">{category.title}</CardTitle>
+                    <div className="flex flex-col justify-center space-y-4">
+                      <p className="text-lg font-semibold text-center md:text-left text-accent-foreground">Our Expertise Breakdown</p>
+                      <div className="grid grid-cols-2 gap-4">
+                        {productCategories.map((category, index) => (
+                          <div key={category.name} className="flex items-center gap-3">
+                            <div style={{ backgroundColor: COLORS[index % COLORS.length] }} className="w-4 h-4 rounded-full shrink-0"></div>
+                            <div>
+                                <p className="font-medium">{category.name}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <ul className="ml-4 list-disc space-y-2 text-muted-foreground">
-                    {category.features.map((feature) => (
-                      <li key={feature}>{feature}</li>
-                    ))}
-                  </ul>
                 </CardContent>
               </Card>
-            ))}
+            </div>
           </div>
-        </div>
-      </FadeInSection>
+        </FadeInSection>
 
 
       {/* Product Showcase Section */}
