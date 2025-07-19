@@ -1,4 +1,6 @@
 
+'use client';
+
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -13,6 +15,8 @@ import {
   ChevronRight,
   Globe,
 } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 
 const services = [
   {
@@ -64,38 +68,14 @@ const expertiseAreas = [
     },
 ];
 
-const otherServices = [
-    {
-        title: 'Ring Main Units (RMU)',
-        description: 'Compact and safe switchgear for medium voltage distribution networks.',
-        icon: ShieldCheck,
-    },
-    {
-        title: 'MV/LV Switchgear',
-        description: 'Reliable solutions for electrical protection and distribution.',
-        icon: CircuitBoard,
-    },
-    {
-        title: 'Data Center Solutions',
-        description: 'Specialized power solutions for the high demands of modern data centers.',
-        icon: Cpu,
-    },
-     {
-        title: 'Busbars & Connectors',
-        description: 'Custom-engineered busbars for efficient power distribution.',
-        icon: Zap,
-    },
-     {
-        title: 'Industrial Automation',
-        description: 'Control systems to enhance productivity and efficiency.',
-        icon: Component,
-    },
-     {
-        title: 'Turnkey Projects',
-        description: 'End-to-end management of electrical system installation and commissioning.',
-        icon: Wrench,
-    },
-]
+const serviceChartData = [
+    { name: 'RMUs', value: 400 },
+    { name: 'Switchgear', value: 300 },
+    { name: 'Data Centers', value: 200 },
+    { name: 'Busbars', value: 278 },
+    { name: 'Automation', value: 189 },
+    { name: 'Turnkey Projects', value: 239 },
+];
 
 export default function ServicesPage() {
   return (
@@ -197,25 +177,37 @@ export default function ServicesPage() {
             <div className="container">
                 <div className="text-center max-w-3xl mx-auto">
                     <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">
-                        Additional Capabilities
+                        Our Service Distribution
                     </h2>
                     <p className="mt-4 text-lg text-muted-foreground">
-                        Beyond our core offerings, we provide a wide array of specialized products and services to meet all your electrical needs.
+                        A visual representation of our diverse service portfolio, showcasing our strengths across different sectors of the electrical industry.
                     </p>
                 </div>
 
-                <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {otherServices.map((service) => (
-                        <Card key={service.title} className="group text-center p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:bg-card">
-                             <div className="flex justify-center mb-4">
-                                <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary transition-colors duration-300">
-                                    <service.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground" />
-                                </div>
-                            </div>
-                            <h3 className="text-xl font-bold text-accent-foreground">{service.title}</h3>
-                            <p className="mt-2 text-muted-foreground">{service.description}</p>
-                        </Card>
-                    ))}
+                <div className="mt-16 h-[400px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                        <BarChart
+                            data={serviceChartData}
+                            margin={{
+                                top: 5,
+                                right: 30,
+                                left: 20,
+                                bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip
+                                contentStyle={{
+                                    backgroundColor: 'hsl(var(--background))',
+                                    borderColor: 'hsl(var(--border))'
+                                }}
+                            />
+                            <Legend />
+                            <Bar dataKey="value" fill="hsl(var(--primary))" name="Market Presence" />
+                        </BarChart>
+                    </ResponsiveContainer>
                 </div>
             </div>
        </div>
