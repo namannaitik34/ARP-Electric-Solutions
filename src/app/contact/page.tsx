@@ -8,7 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
-import { Mail, Phone, MapPin, Building, LandPlot } from 'lucide-react';
+import { Building, LandPlot, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { siteConfig } from '@/config/site';
 
@@ -49,15 +49,15 @@ export default function ContactPage() {
             <div className="bg-primary text-primary-foreground py-20 md:py-28">
                 <div className="container grid md:grid-cols-2 gap-16 items-center">
                     <div className="space-y-4">
-                        <h1 className="text-4xl md:text-5xl font-bold font-headline">Contact Us</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold font-headline">Get in Touch</h1>
                         <p className="text-lg text-primary-foreground/80">
-                            We are an industry-leading company that values honesty, integrity, and efficiency. We are here to help with all your electrical solution needs.
+                            Have a question or a project in mind? We'd love to hear from you. Fill out the form or use the contact details below to reach our team.
                         </p>
                     </div>
                     <div>
                         <Card className="shadow-2xl">
                             <CardContent className="p-8">
-                                <h2 className="text-2xl font-bold mb-6 text-foreground">Need help with your project?</h2>
+                                <h2 className="text-2xl font-bold mb-6 text-foreground">Send us a message</h2>
                                 <Form {...form}>
                                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                                         <div className="grid sm:grid-cols-2 gap-6">
@@ -106,7 +106,7 @@ export default function ContactPage() {
                                             name="phone"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>Phone Number</FormLabel>
+                                                    <FormLabel>Phone Number (Optional)</FormLabel>
                                                     <FormControl>
                                                         <Input type="tel" placeholder="Your phone number" {...field} />
                                                     </FormControl>
@@ -121,7 +121,7 @@ export default function ContactPage() {
                                                 <FormItem>
                                                     <FormLabel>Message</FormLabel>
                                                     <FormControl>
-                                                        <Textarea placeholder="Your message here..." rows={5} {...field} />
+                                                        <Textarea placeholder="How can we help you?" rows={5} {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -141,10 +141,11 @@ export default function ContactPage() {
                 <div className="container">
                     <div className="text-center max-w-3xl mx-auto">
                          <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">We're here for you.</h2>
+                         <p className="mt-4 text-muted-foreground">Find our office locations and contact information below. We look forward to connecting with you.</p>
                     </div>
                     <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {/* India Office Card */}
-                        <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <Card className="p-6 text-center transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
                            <div className="flex justify-center mb-4">
                                 <div className="p-4 rounded-full bg-primary/10">
                                     <Building className="w-8 h-8 text-primary" />
@@ -155,7 +156,7 @@ export default function ContactPage() {
                         </Card>
                         
                         {/* UAE Office Card */}
-                        <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <Card className="p-6 text-center transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
                            <div className="flex justify-center mb-4">
                                 <div className="p-4 rounded-full bg-primary/10">
                                     <LandPlot className="w-8 h-8 text-primary" />
@@ -166,7 +167,7 @@ export default function ContactPage() {
                         </Card>
 
                         {/* Contact Info Card */}
-                        <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                        <Card className="p-6 text-center transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
                              <div className="flex justify-center mb-4">
                                 <div className="p-4 rounded-full bg-primary/10">
                                     <Phone className="w-8 h-8 text-primary" />
