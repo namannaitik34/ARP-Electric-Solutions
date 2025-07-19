@@ -1,5 +1,7 @@
+
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
+import { Handshake, Lightbulb, ShieldCheck, Star } from 'lucide-react';
 
 const teamMembers = [
   {
@@ -22,7 +24,28 @@ const teamMembers = [
   },
 ];
 
-const coreValues = ['Trust', 'Innovation', 'Integrity', 'Excellence'];
+const coreValues = [
+  {
+    title: 'Trust',
+    description: 'We build relationships based on reliability and transparency, ensuring our clients and partners can always depend on us.',
+    icon: Handshake,
+  },
+  {
+    title: 'Innovation',
+    description: 'We continuously seek new and better ways to solve challenges, pushing the boundaries of technology to deliver cutting-edge solutions.',
+    icon: Lightbulb,
+  },
+  {
+    title: 'Integrity',
+    description: 'We operate with unwavering honesty and ethical standards, holding ourselves accountable in every action we take.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Excellence',
+    description: 'We are committed to the highest standards of quality and performance, striving for exceptional results in everything we do.',
+    icon: Star,
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -134,40 +157,26 @@ export default function AboutPage() {
 
         {/* Core Values Section */}
         <div className="mt-24">
-           <Card className="overflow-hidden shadow-lg">
-                <div className="grid md:grid-cols-2 items-center">
-                    <div className="p-8 md:p-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground">OUR CORE VALUES</h2>
-                        <p className="mt-4 text-muted-foreground">
-                            Our core values are the foundation of everything we do at ARP. These timeless principles define our conduct, guide our decisions, and inspire our teams as we grow across global markets.
-                        </p>
-                        <div className="mt-8 grid grid-cols-2 gap-4">
-                            {coreValues.map((value) => (
-                                <div key={value} className="
-                                    flex items-center justify-center p-4 rounded-full
-                                    bg-gradient-to-r from-teal-400 to-green-400 
-                                    text-white font-semibold shadow-md
-                                    transition-all duration-300 ease-in-out
-                                    hover:scale-105 hover:shadow-xl cursor-pointer">
-                                    {value}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                     <div className="relative w-full h-64 md:h-full min-h-[300px]">
-                        <Image
-                            src="https://placehold.co/600x600.png"
-                            data-ai-hint="core values business"
-                            alt="Core Values"
-                            fill
-                            className="object-cover"
-                        />
-                         <div className="absolute inset-0 bg-primary/20"></div>
-                    </div>
-                </div>
-            </Card>
+          <div className="text-center">
+             <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground">OUR CORE VALUES</h2>
+             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+                Our core values are the foundation of everything we do at ARP. These timeless principles define our conduct, guide our decisions, and inspire our teams as we grow across global markets.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {coreValues.map((value) => (
+                  <Card key={value.title} className="group text-center p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:bg-primary/5">
+                      <div className="flex justify-center mb-4">
+                          <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary transition-colors duration-300">
+                             <value.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground" />
+                          </div>
+                      </div>
+                      <h4 className="text-xl font-bold text-primary">{value.title}</h4>
+                      <p className="mt-2 text-muted-foreground">{value.description}</p>
+                  </Card>
+              ))}
+          </div>
         </div>
-
 
         <div className="mt-24">
           <h2 className="text-3xl font-bold font-headline text-center text-primary">
