@@ -5,6 +5,7 @@ import {
   Lightbulb,
   ShieldCheck,
   Star,
+  ArrowRight,
   CircuitBoard,
   Globe,
   Wrench,
@@ -229,7 +230,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{area.title}</h3>
                   <div className="relative h-32 flex items-center justify-center">
-                    <p className="absolute transition-all duration-300 ease-in-out group-hover:opacity-0 group-hover:-translate-y-4">
+                    <p className="absolute opacity-100 transition-all duration-300 ease-in-out group-hover:opacity-0 group-hover:-translate-y-4">
                       {area.description}
                     </p>
                     <a
