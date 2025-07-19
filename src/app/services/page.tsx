@@ -129,9 +129,9 @@ export default function ServicesPage() {
       <div className="py-16 md:py-24 space-y-24">
         {services.map((service, index) => (
           <div id={service.id} key={service.id} className="container group">
-            {service.id === 'transformers' ? (
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="relative min-h-[400px] h-full overflow-hidden rounded-lg">
+            {service.id === 'transformers' || service.id === 'power-quality' ? (
+              <div className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 !== 0 ? 'md:grid-flow-col-dense' : ''}`}>
+                 <div className={`relative min-h-[400px] h-full overflow-hidden rounded-lg ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
                   <Image
                       src={service.image}
                       alt={service.title}
