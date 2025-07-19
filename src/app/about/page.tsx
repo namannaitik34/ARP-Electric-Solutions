@@ -132,27 +132,6 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-
-          {/* Values Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-             <div className="relative rounded-lg overflow-hidden shadow-lg aspect-square">
-              <Image
-                src="https://placehold.co/600x600.png"
-                alt="Handshake sealing a deal"
-                data-ai-hint="handshake business"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <h3 className="text-3xl font-bold text-primary">Our Values</h3>
-              <p className="mt-4 text-muted-foreground">
-                Integrity, Innovation, Quality, Customer-Centricity, and
-                Sustainability are the core principles that guide every decision
-                we make and every product we create.
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Core Values Section */}
