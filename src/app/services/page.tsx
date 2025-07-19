@@ -1,46 +1,213 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bolt, CircuitBoard, Component, Wind, Zap } from "lucide-react";
 
-const allServices = [
-    { id: 'transformers', title: 'Transformers', description: 'We design and manufacture a wide range of power and distribution transformers, including custom solutions to meet specific voltage and power requirements. Our transformers are built for reliability and efficiency.', icon: CircuitBoard },
-    { id: 'ups-systems', title: 'UPS Systems', description: 'Protect your critical systems from power outages and fluctuations with our robust Uninterruptible Power Supply (UPS) systems. Available in various capacities for industrial and commercial use.', icon: Bolt },
-    { id: 'crgo', title: 'CRGO Steel', description: 'We supply high-quality Cold Rolled Grain Oriented (CRGO) steel, the core material for efficient and low-loss transformers. Our CRGO is sourced from leading global mills.', icon: Component },
-    { id: 'copper-foil', title: 'Copper Foil', description: 'Our high-conductivity copper foil is ideal for a variety of applications, including printed circuit boards (PCBs), lithium-ion batteries, and electromagnetic shielding.', icon: Zap },
-    { id: 'amorphous-core', title: 'Amorphous Cores', description: 'Benefit from superior energy efficiency with our amorphous metal transformer cores. They significantly reduce no-load losses, leading to substantial energy savings over the transformer\'s lifetime.', icon: Wind },
-    { id: 'nanocrystalline-core', title: 'Nanocrystalline Cores', description: 'For high-frequency applications, our nanocrystalline cores offer excellent magnetic properties, including high permeability and low core loss. Ideal for chokes, filters, and high-frequency transformers.', icon: CircuitBoard },
-    { id: 'rectifiers', title: 'Rectifiers', description: 'We provide industrial-grade rectifiers for efficient AC to DC power conversion. Our products are designed for durability and high performance in demanding environments.', icon: Bolt },
-    { id: 'inverters', title: 'Inverters', description: 'Our range of power inverters offers reliable DC to AC conversion. They are suitable for renewable energy systems, backup power, and various industrial applications.', icon: Component },
-    { id: 'busbars', title: 'Busbars', description: 'We manufacture custom copper and aluminum busbars for efficient power distribution within switchgear, panel boards, and other electrical apparatuses. Precision-engineered to your specifications.', icon: Zap },
-    { id: 'switchgear', title: 'Switchgear', description: 'Our low and medium voltage switchgear assemblies provide centralized control and protection of electrical circuits. Designed for safety, reliability, and ease of maintenance.', icon: Wind },
+import Image from 'next/image';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import {
+  CircuitBoard,
+  Zap,
+  ShieldCheck,
+  Cpu,
+  Component,
+  Wrench,
+  ChevronRight,
+} from 'lucide-react';
+
+const services = [
+  {
+    id: 'transformers',
+    title: 'Transformer Manufacturing',
+    subtitle: 'Engineered for Performance and Reliability',
+    description:
+      'We specialize in manufacturing high-quality Oil-Immersed and Cast Resin Transformers that adhere to international standards (IEC & IS). Our transformers are designed for optimal efficiency, using premium materials like CRGO steel and amorphous cores to minimize energy loss and deliver reliable power for industrial and commercial applications.',
+    image: 'https://placehold.co/800x600.png',
+    hint: 'power transformer station',
+    points: [
+      'Custom designs for specific voltage and power needs.',
+      'High-efficiency cores to reduce operational costs.',
+      'Robust construction for long-term durability.',
+      'Compliance with global safety and performance standards.',
+    ],
+  },
+  {
+    id: 'power-quality',
+    title: 'Power Quality Solutions',
+    subtitle: 'Ensuring Stable and Clean Power',
+    description:
+      'We provide advanced solutions to improve power quality, including MV/LV APFC systems, harmonic filters, and uninterruptible power supplies (UPS). Our systems are designed to protect sensitive equipment, reduce energy consumption, and ensure a stable power supply for critical operations in data centers, industrial plants, and commercial facilities.',
+    image: 'https://placehold.co/800x600.png',
+    hint: 'electrical panel',
+    points: [
+      'Active and passive harmonic filters.',
+      'Automatic Power Factor Correction (APFC) panels.',
+      'Industrial-grade UPS systems for critical loads.',
+      'Comprehensive power quality audits and analysis.',
+    ],
+  },
+  {
+    id: 'conductors-materials',
+    title: 'Conductors & Core Materials',
+    subtitle: 'The Foundation of Electrical Excellence',
+    description:
+      'Our portfolio includes a wide range of high-conductivity conductors and specialized core materials. We supply Copper Foil, Super Enameled Copper Wire, Aluminium Foil, and Paper Insulated Conductors. Additionally, we provide top-grade CRGO materials (M4, M5, MOH, ZDKH) and advanced amorphous/nanocrystalline cores for high-performance applications.',
+    image: 'https://placehold.co/800x600.png',
+    hint: 'copper wire roll',
+    points: [
+      'High-purity copper and aluminium for superior conductivity.',
+      'Low-loss CRGO for energy-efficient transformers.',
+      'Amorphous and nanocrystalline cores for high-frequency use.',
+      'Full range of insulation and winding materials.',
+    ],
+  },
+  {
+    id: 'accessories',
+    title: 'Transformer Accessories & Components',
+    subtitle: 'Comprehensive Support for Your Systems',
+    description:
+      'We offer a complete range of essential transformer accessories to ensure optimal performance, safety, and longevity. From tanks, radiators, and tap changers to protective devices like Buchholz relays and pressure relief valves, we provide high-quality components that meet rigorous quality standards, ensuring your transformers operate flawlessly.',
+    image: 'https://placehold.co/800x600.png',
+    hint: 'industrial parts',
+    points: [
+      'On-load and off-load tap changers.',
+      'A variety of bushings and insulators.',
+      'Cooling systems, including radiators and fans.',
+      'Monitoring gauges and protective relays.',
+    ],
+  },
 ];
 
+const otherServices = [
+    {
+        title: 'Ring Main Units (RMU)',
+        description: 'Compact and safe switchgear for medium voltage distribution networks.',
+        icon: ShieldCheck,
+    },
+    {
+        title: 'MV/LV Switchgear',
+        description: 'Reliable solutions for electrical protection and distribution.',
+        icon: CircuitBoard,
+    },
+    {
+        title: 'Data Center Solutions',
+        description: 'Specialized power solutions for the high demands of modern data centers.',
+        icon: Cpu,
+    },
+     {
+        title: 'Busbars & Connectors',
+        description: 'Custom-engineered busbars for efficient power distribution.',
+        icon: Zap,
+    },
+     {
+        title: 'Industrial Automation',
+        description: 'Control systems to enhance productivity and efficiency.',
+        icon: Component,
+    },
+     {
+        title: 'Turnkey Projects',
+        description: 'End-to-end management of electrical system installation and commissioning.',
+        icon: Wrench,
+    },
+]
+
 export default function ServicesPage() {
-    return (
-        <div className="bg-background text-foreground animate-fadeIn">
-            <div className="container py-16 md:py-24">
+  return (
+    <div className="bg-background text-foreground animate-fadeIn">
+      {/* Hero Section */}
+      <div className="relative bg-primary/10 pt-24 pb-16 md:pt-32 md:pb-24">
+         <div className="container text-center">
+             <h1 className="text-4xl md:text-6xl font-bold font-headline text-primary">
+                Our Services
+             </h1>
+             <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+                Delivering comprehensive electrical solutions engineered for excellence, reliability, and a sustainable future.
+             </p>
+         </div>
+      </div>
+
+      {/* Main Services Section */}
+      <div className="py-16 md:py-24 space-y-24">
+        {services.map((service, index) => (
+          <div id={service.id} key={service.id} className="container">
+            <Card className="overflow-hidden shadow-lg border-none">
+                <div className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 !== 0 ? 'md:grid-flow-col-dense' : ''}`}>
+                    <div className={`relative min-h-[400px] h-full ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
+                        <Image
+                            src={service.image}
+                            alt={service.title}
+                            data-ai-hint={service.hint}
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+
+                    <div className="p-8 md:p-12">
+                        <h2 className="text-3xl font-bold font-headline text-primary">
+                            {service.title}
+                        </h2>
+                        <p className="mt-2 text-base font-semibold text-secondary-foreground">
+                            {service.subtitle}
+                        </p>
+                        <p className="mt-4 text-muted-foreground">
+                            {service.description}
+                        </p>
+                        <ul className="mt-6 space-y-3">
+                            {service.points.map((point) => (
+                                <li key={point} className="flex items-start">
+                                    <ChevronRight className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                                    <span className="ml-2 text-muted-foreground">{point}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </Card>
+          </div>
+        ))}
+      </div>
+      
+      {/* Other Services Section */}
+       <div className="py-16 md:py-24 bg-primary/5">
+            <div className="container">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">Our Services</h1>
+                    <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">
+                        Additional Capabilities
+                    </h2>
                     <p className="mt-4 text-lg text-muted-foreground">
-                        Explore our comprehensive range of high-quality electrical components and solutions, engineered for performance and reliability.
+                        Beyond our core offerings, we provide a wide array of specialized products and services to meet all your electrical needs.
                     </p>
                 </div>
 
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {allServices.map(service => (
-                        <Card id={service.id} key={service.id} className="flex flex-col">
-                            <CardHeader>
-                                <div className="flex items-center gap-4">
-                                    <service.icon className="w-10 h-10 text-primary" />
-                                    <CardTitle className="text-2xl">{service.title}</CardTitle>
+                    {otherServices.map((service) => (
+                        <Card key={service.title} className="group text-center p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:bg-card">
+                             <div className="flex justify-center mb-4">
+                                <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary transition-colors duration-300">
+                                    <service.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground" />
                                 </div>
-                            </CardHeader>
-                            <CardContent className="flex-grow">
-                                <p className="text-muted-foreground">{service.description}</p>
-                            </CardContent>
+                            </div>
+                            <h3 className="text-xl font-bold text-accent-foreground">{service.title}</h3>
+                            <p className="mt-2 text-muted-foreground">{service.description}</p>
                         </Card>
                     ))}
                 </div>
             </div>
+       </div>
+
+
+      {/* CTA Section */}
+      <div className="py-20 bg-background">
+        <div className="container text-center">
+            <h2 className="text-3xl font-bold text-primary">
+              Have a Project in Mind?
+            </h2>
+            <p className="mt-4 max-w-xl mx-auto text-muted-foreground">
+              Let's discuss how our expertise can bring your project to life. Contact our team for a personalized consultation and quote.
+            </p>
+            <Button asChild size="lg" className="mt-8">
+              <Link href="/contact">Get a Quote</Link>
+            </Button>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
