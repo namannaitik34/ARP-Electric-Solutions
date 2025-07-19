@@ -1,7 +1,15 @@
-
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { Handshake, Lightbulb, ShieldCheck, Star } from 'lucide-react';
+import {
+  Handshake,
+  Lightbulb,
+  ShieldCheck,
+  Star,
+  CircuitBoard,
+  Globe,
+  Wrench,
+  ChevronRight,
+} from 'lucide-react';
 
 const teamMembers = [
   {
@@ -27,23 +35,54 @@ const teamMembers = [
 const coreValues = [
   {
     title: 'Trust',
-    description: 'We build relationships based on reliability and transparency, ensuring our clients and partners can always depend on us.',
+    description:
+      'We build relationships based on reliability and transparency, ensuring our clients and partners can always depend on us.',
     icon: Handshake,
   },
   {
     title: 'Innovation',
-    description: 'We continuously seek new and better ways to solve challenges, pushing the boundaries of technology to deliver cutting-edge solutions.',
+    description:
+      'We continuously seek new and better ways to solve challenges, pushing the boundaries of technology to deliver cutting-edge solutions.',
     icon: Lightbulb,
   },
   {
     title: 'Integrity',
-    description: 'We operate with unwavering honesty and ethical standards, holding ourselves accountable in every action we take.',
+    description:
+      'We operate with unwavering honesty and ethical standards, holding ourselves accountable in every action we take.',
     icon: ShieldCheck,
   },
   {
     title: 'Excellence',
-    description: 'We are committed to the highest standards of quality and performance, striving for exceptional results in everything we do.',
+    description:
+      'We are committed to the highest standards of quality and performance, striving for exceptional results in everything we do.',
     icon: Star,
+  },
+];
+
+const expertiseAreas = [
+  {
+    title: 'Reliable Transformer Solutions',
+    description:
+      'Supplying high-quality Oil-Immersed and Cast Resin Transformers that comply with international standards, ensuring efficient power transmission for industrial and commercial applications.',
+    icon: CircuitBoard,
+    bgColor: 'bg-sky-700',
+    href: '/services#transformers',
+  },
+  {
+    title: 'Copper & Aluminium Conductors',
+    description:
+      'Providing a wide range of conductors, including Copper Foil, Super Enameled Copper, Aluminium Foil, and Paper Insulated Conductors, designed for superior performance in power distributions.',
+    icon: Globe,
+    bgColor: 'bg-purple-700',
+    href: '/products#copper',
+  },
+  {
+    title: 'Transformer Accessories & CRGO',
+    description:
+      'Offering essential transformer accessories such as tanks, radiators, tap changers, and bushings, along with premium CRGO materials (M4, M5, MOH, ZDKH) for enhanced efficiency and performance.',
+    icon: Wrench,
+    bgColor: 'bg-teal-600',
+    href: '/products#transformer-accessories',
   },
 ];
 
@@ -91,75 +130,114 @@ export default function AboutPage() {
 
         {/* Mission Section */}
         <div className="mt-24">
-            <Card className="overflow-hidden shadow-lg">
-                <div className="grid md:grid-cols-2">
-                    <div className="relative min-h-[400px] overflow-hidden">
-                        <Image
-                            src="https://placehold.co/800x600.png"
-                            alt="Our Mission"
-                            data-ai-hint="teamwork success"
-                            fill
-                            className="object-cover transition-transform duration-500 ease-in-out hover:scale-110"
-                        />
-                    </div>
-                    <div className="p-8 md:p-12 flex flex-col justify-center">
-                        <h3 className="text-3xl font-bold text-primary">Our Mission</h3>
-                        <p className="mt-4 text-muted-foreground">
-                            To provide high-quality, innovative, and sustainable electrical
-                            solutions that empower industries and improve lives, while
-                            maintaining the highest standards of integrity and customer
-                            service.
-                        </p>
-                    </div>
-                </div>
-            </Card>
+          <Card className="overflow-hidden shadow-lg">
+            <div className="grid md:grid-cols-2">
+              <div className="relative min-h-[400px] overflow-hidden">
+                <Image
+                  src="https://placehold.co/800x600.png"
+                  alt="Our Mission"
+                  data-ai-hint="teamwork success"
+                  fill
+                  className="object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+                />
+              </div>
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="text-3xl font-bold text-primary">Our Mission</h3>
+                <p className="mt-4 text-muted-foreground">
+                  To provide high-quality, innovative, and sustainable electrical
+                  solutions that empower industries and improve lives, while
+                  maintaining the highest standards of integrity and customer
+                  service.
+                </p>
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* Vision Section */}
         <div className="mt-16">
-            <Card className="overflow-hidden shadow-lg">
-                <div className="grid md:grid-cols-2">
-                    <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
-                        <h3 className="text-3xl font-bold text-primary">Our Vision</h3>
-                        <p className="mt-4 text-muted-foreground">
-                          To be a global leader in the electrical components industry,
-                          recognized for our technological advancements, commitment to
-                          quality, and dedication to a greener planet.
-                        </p>
-                    </div>
-                     <div className="relative min-h-[400px] overflow-hidden order-1 md:order-2">
-                        <Image
-                            src="https://placehold.co/800x600.png"
-                            alt="Our Vision"
-                            data-ai-hint="global network"
-                            fill
-                            className="object-cover transition-transform duration-500 ease-in-out hover:scale-110"
-                        />
-                    </div>
-                </div>
-            </Card>
+          <Card className="overflow-hidden shadow-lg">
+            <div className="grid md:grid-cols-2">
+              <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                <h3 className="text-3xl font-bold text-primary">Our Vision</h3>
+                <p className="mt-4 text-muted-foreground">
+                  To be a global leader in the electrical components industry,
+                  recognized for our technological advancements, commitment to
+                  quality, and dedication to a greener planet.
+                </p>
+              </div>
+              <div className="relative min-h-[400px] overflow-hidden order-1 md:order-2">
+                <Image
+                  src="https://placehold.co/800x600.png"
+                  alt="Our Vision"
+                  data-ai-hint="global network"
+                  fill
+                  className="object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+                />
+              </div>
+            </div>
+          </Card>
         </div>
-        
+
         {/* Core Values Section */}
         <div className="mt-24">
           <div className="text-center">
-             <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground">OUR CORE VALUES</h2>
-             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-                Our core values are the foundation of everything we do at ARP. These timeless principles define our conduct, guide our decisions, and inspire our teams as we grow across global markets.
+            <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground">
+              OUR CORE VALUES
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+              Our core values are the foundation of everything we do at ARP. These
+              timeless principles define our conduct, guide our decisions, and
+              inspire our teams as we grow across global markets.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {coreValues.map((value) => (
-                  <Card key={value.title} className="group text-center p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:bg-primary/5">
-                      <div className="flex justify-center mb-4">
-                          <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary transition-colors duration-300">
-                             <value.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground" />
-                          </div>
-                      </div>
-                      <h4 className="text-xl font-bold text-primary">{value.title}</h4>
-                      <p className="mt-2 text-muted-foreground">{value.description}</p>
-                  </Card>
-              ))}
+            {coreValues.map((value) => (
+              <Card
+                key={value.title}
+                className="group text-center p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:bg-primary/5"
+              >
+                <div className="flex justify-center mb-4">
+                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary transition-colors duration-300">
+                    <value.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground" />
+                  </div>
+                </div>
+                <h4 className="text-xl font-bold text-primary">
+                  {value.title}
+                </h4>
+                <p className="mt-2 text-muted-foreground">
+                  {value.description}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Our Expertise Section */}
+        <div className="mt-24">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5">
+            {expertiseAreas.map((area) => (
+              <div
+                key={area.title}
+                className={`group relative p-8 text-white overflow-hidden ${area.bgColor}`}
+              >
+                <div className="relative z-10 text-center">
+                  <div className="mb-6 flex justify-center">
+                    <div className="rounded-full bg-white/20 p-4">
+                      <area.icon className="h-10 w-10 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">{area.title}</h3>
+                  <p className="mb-6 h-32">{area.description}</p>
+                  <a
+                    href={area.href}
+                    className="inline-flex items-center font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:translate-y-0 -translate-y-4"
+                  >
+                    READ MORE <ChevronRight className="ml-1 h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -175,7 +253,7 @@ export default function AboutPage() {
             {teamMembers.map((member) => (
               <div key={member.name} className="group relative text-center">
                 <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg transition-transform duration-300 transform group-hover:scale-110">
-                   <Image
+                  <Image
                     src={member.image}
                     data-ai-hint={member.hint}
                     alt={member.name}
