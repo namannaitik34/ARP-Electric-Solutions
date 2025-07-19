@@ -117,39 +117,58 @@ export default function ServicesPage() {
       <div className="py-16 md:py-24 space-y-24">
         {services.map((service, index) => (
           <div id={service.id} key={service.id} className="container group">
-              <div className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 !== 0 ? 'md:grid-flow-col-dense' : ''}`}>
-                 <div className={`relative min-h-[400px] h-full overflow-hidden rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-105 ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
-                  <Image
-                      src={service.image}
-                      alt={service.title}
-                      data-ai-hint={service.hint}
-                      fill
-                      className="object-cover"
-                  />
-                </div>
-                <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold font-headline text-primary">
-                      {service.title}
-                  </h2>
-                  <p className="mt-2 text-base font-semibold text-secondary-foreground">
-                      {service.subtitle}
-                  </p>
-                  <p className="mt-4 text-muted-foreground">
-                      {service.description}
-                  </p>
-                  <ul className="mt-6 space-y-3">
-                      {service.points.map((point) => (
-                          <li key={point} className="flex items-start">
-                              <ChevronRight className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                              <span className="ml-2 text-muted-foreground">{point}</span>
-                          </li>
-                      ))}
-                  </ul>
-                </div>
+            <div className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 !== 0 ? 'md:grid-flow-col-dense' : ''}`}>
+              <div className={`relative min-h-[400px] h-full overflow-hidden rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-105 ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
+                <Image
+                    src={service.image}
+                    alt={service.title}
+                    data-ai-hint={service.hint}
+                    fill
+                    className="object-cover"
+                />
               </div>
+              <div className="p-8 md:p-12">
+                <h2 className="text-3xl font-bold font-headline text-primary">
+                    {service.title}
+                </h2>
+                <p className="mt-2 text-base font-semibold text-secondary-foreground">
+                    {service.subtitle}
+                </p>
+                <p className="mt-4 text-muted-foreground">
+                    {service.description}
+                </p>
+                <ul className="mt-6 space-y-3">
+                    {service.points.map((point) => (
+                        <li key={point} className="flex items-start">
+                            <ChevronRight className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                            <span className="ml-2 text-muted-foreground">{point}</span>
+                        </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
           </div>
         ))}
       </div>
+
+       {/* Visual Break Section */}
+      <div className="relative py-20 bg-gray-800">
+        <Image
+          src="https://placehold.co/1920x400.png"
+          alt="Electrical engineering"
+          data-ai-hint="electrical engineering"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-primary/30"></div>
+        <div className="relative container text-center text-white">
+          <h2 className="text-3xl font-bold">Material & Component Expertise</h2>
+          <p className="mt-2 max-w-2xl mx-auto">
+            From raw materials to finished accessories, we provide the building blocks for superior electrical systems.
+          </p>
+        </div>
+      </div>
+
 
       {/* Expertise Area Section */}
        <div className="py-16 md:py-24 container">
