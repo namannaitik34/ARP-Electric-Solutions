@@ -11,6 +11,7 @@ import {
   Component,
   Wrench,
   ChevronRight,
+  Globe,
 } from 'lucide-react';
 
 const services = [
@@ -44,36 +45,23 @@ const services = [
       'Comprehensive power quality audits and analysis.',
     ],
   },
-  {
-    id: 'conductors-materials',
-    title: 'Conductors & Core Materials',
-    subtitle: 'The Foundation of Electrical Excellence',
-    description:
-      'Our portfolio includes a wide range of high-conductivity conductors and specialized core materials. We supply Copper Foil, Super Enameled Copper Wire, Aluminium Foil, and Paper Insulated Conductors. Additionally, we provide top-grade CRGO materials (M4, M5, MOH, ZDKH) and advanced amorphous/nanocrystalline cores for high-performance applications.',
-    image: 'https://placehold.co/800x600.png',
-    hint: 'copper wire roll',
-    points: [
-      'High-purity copper and aluminium for superior conductivity.',
-      'Low-loss CRGO for energy-efficient transformers.',
-      'Amorphous and nanocrystalline cores for high-frequency use.',
-      'Full range of insulation and winding materials.',
-    ],
-  },
-  {
-    id: 'accessories',
-    title: 'Transformer Accessories & Components',
-    subtitle: 'Comprehensive Support for Your Systems',
-    description:
-      'We offer a complete range of essential transformer accessories to ensure optimal performance, safety, and longevity. From tanks, radiators, and tap changers to protective devices like Buchholz relays and pressure relief valves, we provide high-quality components that meet rigorous quality standards, ensuring your transformers operate flawlessly.',
-    image: 'https://placehold.co/800x600.png',
-    hint: 'industrial parts',
-    points: [
-      'On-load and off-load tap changers.',
-      'A variety of bushings and insulators.',
-      'Cooling systems, including radiators and fans.',
-      'Monitoring gauges and protective relays.',
-    ],
-  },
+];
+
+const expertiseAreas = [
+    {
+      title: 'Conductors & Core Materials',
+      description:
+        'Our portfolio includes a wide range of high-conductivity conductors and specialized core materials. We supply Copper Foil, Super Enameled Copper Wire, Aluminium Foil, and Paper Insulated Conductors. Additionally, we provide top-grade CRGO materials (M4, M5, MOH, ZDKH) and advanced amorphous/nanocrystalline cores for high-performance applications.',
+      icon: Globe,
+      bgColor: 'bg-purple-700',
+    },
+    {
+      title: 'Transformer Accessories & Components',
+      description:
+        'We offer a complete range of essential transformer accessories to ensure optimal performance, safety, and longevity. From tanks, radiators, and tap changers to protective devices like Buchholz relays and pressure relief valves, we provide high-quality components that meet rigorous quality standards, ensuring your transformers operate flawlessly.',
+      icon: Wrench,
+      bgColor: 'bg-teal-600',
+    },
 ];
 
 const otherServices = [
@@ -162,6 +150,28 @@ export default function ServicesPage() {
           </div>
         ))}
       </div>
+
+      {/* Expertise Area Section */}
+       <div className="py-16 md:py-24 container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0.5">
+            {expertiseAreas.map((area) => (
+              <div
+                key={area.title}
+                className={`relative p-12 text-white text-center flex flex-col items-center justify-center ${area.bgColor}`}
+              >
+                <div className="relative z-10">
+                  <div className="mb-6 flex justify-center">
+                    <div className="rounded-full bg-white/20 p-4">
+                      <area.icon className="h-10 w-10 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">{area.title}</h3>
+                  <p className="max-w-md mx-auto">{area.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       
       {/* Other Services Section */}
        <div className="py-16 md:py-24 bg-primary/5">
