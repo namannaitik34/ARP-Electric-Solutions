@@ -34,6 +34,7 @@ const navItems: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/products', label: 'Products' },
+  { href: '/products', label: 'Services' },
 ];
 
 const serviceItems: ServiceItem[] = [
@@ -76,27 +77,7 @@ export function MobileNav() {
               {item.label}
             </Link>
           ))}
-          <Accordion type="single" collapsible>
-            <AccordionItem value="services" className="border-b-0">
-              <AccordionTrigger className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent hover:no-underline [&[data-state=open]>svg]:rotate-180">
-                Services
-              </AccordionTrigger>
-              <AccordionContent className="pl-4">
-                <div className="flex flex-col space-y-2 pt-2">
-                  {serviceItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          
           <Link
             href='/contact'
             onClick={() => setIsOpen(false)}

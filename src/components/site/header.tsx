@@ -107,21 +107,11 @@ export function Header() {
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                          {services.map((service) => (
-                            <ListItem
-                              key={service.title}
-                              title={service.title}
-                              href={service.href}
-                              icon={service.icon}
-                            >
-                              {service.description}
-                            </ListItem>
-                          ))}
-                        </ul>
-                      </NavigationMenuContent>
+                        <NavigationMenuLink asChild>
+                          <Link href="/products" className={navigationMenuTriggerStyle()}>
+                            Services
+                          </Link>
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
