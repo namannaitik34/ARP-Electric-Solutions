@@ -6,12 +6,12 @@ import { FaWhatsapp } from 'react-icons/fa';
 
 export function Footer() {
   const services = [
-    { name: 'Transformers', href: '/services#transformers' },
-    { name: 'UPS Systems', href: '/services#ups-systems' },
-    { name: 'CRGO', href: '/services#crgo' },
-    { name: 'Copper Foil', href: '/services#copper-foil' },
-    { name: 'Amorphous Core', href: '/services#amorphous-core' },
-    { name: 'Switchgear', href: '/services#switchgear' },
+    { name: 'Transformer Manufacturing', href: '/services#transformers' },
+    { name: 'Power Quality Solutions', href: '/services#power-quality' },
+    { name: 'Conductors & Core Materials', href: '/products#copper' },
+    { name: 'Transformer Accessories', href: '/products#transformer-accessories' },
+    { name: 'CRGO', href: '/products#crgo' },
+    { name: 'MV/LV Switchgear', href: '/services' },
   ];
 
   const usefulLinks = [
@@ -20,6 +20,7 @@ export function Footer() {
     { name: 'Products', href: '/products' },
     { name: 'Services', href: '/services' },
     { name: 'Contact Us', href: '/contact' },
+    { name: 'Get a Quote', href: '/#request-quote' },
   ];
 
   const socialLinks = [
