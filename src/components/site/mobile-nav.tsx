@@ -34,7 +34,6 @@ const navItems: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/products', label: 'Products' },
-  { href: '/contact', label: 'Contact Us' },
 ];
 
 const serviceItems: ServiceItem[] = [
@@ -98,6 +97,13 @@ export function MobileNav() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+          <Link
+            href='/contact'
+            onClick={() => setIsOpen(false)}
+            className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-accent"
+          >
+            Contact Us
+          </Link>
           <div className="px-3 pt-4">
             <Button asChild className="w-full">
                 <Link href="/#request-quote" onClick={() => setIsOpen(false)}>Get a Quote</Link>

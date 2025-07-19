@@ -123,17 +123,13 @@ export function Header() {
                         </ul>
                       </NavigationMenuContent>
                     </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuLink asChild>
-                          <Link href="/contact" className={navigationMenuTriggerStyle()}>
-                            Contact Us
-                          </Link>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
 
             <div className="flex flex-1 items-center justify-end space-x-2">
+                <Button asChild variant="outline" className='hidden md:inline-flex'>
+                    <Link href="/contact">Contact Us</Link>
+                </Button>
                 <Button asChild className='hidden md:inline-flex'>
                     <Link href="/#request-quote">Get a Quote</Link>
                 </Button>
