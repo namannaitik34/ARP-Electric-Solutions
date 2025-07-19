@@ -8,9 +8,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
-import { Building, LandPlot, Phone } from 'lucide-react';
+import { Building, LandPlot, Phone, Share2, Facebook, Linkedin, Instagram } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { siteConfig } from '@/config/site';
+import { FaWhatsapp } from 'react-icons/fa';
+import Link from 'next/link';
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
@@ -42,6 +44,13 @@ export default function ContactPage() {
         });
         form.reset();
     }
+
+    const socialLinks = [
+        { name: 'Facebook', href: siteConfig.links.facebook, icon: Facebook },
+        { name: 'LinkedIn', href: siteConfig.links.linkedin, icon: Linkedin },
+        { name: 'Instagram', href: siteConfig.links.instagram, icon: Instagram },
+        { name: 'WhatsApp', href: `https://wa.me/${siteConfig.phone.replace(/[^0-9]/g, '')}`, icon: FaWhatsapp },
+    ];
 
     return (
         <div className="bg-background text-foreground animate-fadeIn">
@@ -143,7 +152,7 @@ export default function ContactPage() {
                          <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">We're here for you.</h2>
                          <p className="mt-4 text-muted-foreground">Find our office locations and contact information below. We look forward to connecting with you.</p>
                     </div>
-                    <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {/* India Office Card */}
                         <Card className="p-6 text-center transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
                            <div className="flex justify-center mb-4">
@@ -184,6 +193,30 @@ export default function ContactPage() {
                                <a href="tel:+971564716514" className="block hover:text-primary transition-colors">
                                  +971 56 471 6514 (UAE)
                                </a>
+                            </div>
+                        </Card>
+
+                        {/* Social Media Card */}
+                        <Card className="p-6 text-center transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                             <div className="flex justify-center mb-4">
+                                <div className="p-4 rounded-full bg-primary/10">
+                                    <Share2 className="w-8 h-8 text-primary" />
+                                </div>
+                            </div>
+                            <h3 className="text-xl font-semibold text-accent-foreground">Follow Us</h3>
+                            <div className="mt-4 flex justify-center space-x-4">
+                                {socialLinks.map((social) => (
+                                    <Link
+                                        key={social.name}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="h-10 w-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                                    >
+                                        <social.icon className="h-5 w-5" />
+                                        <span className="sr-only">{social.name}</span>
+                                    </Link>
+                                ))}
                             </div>
                         </Card>
                     </div>
