@@ -128,15 +128,15 @@ export default function ServicesPage() {
       <div className="py-16 md:py-24 space-y-24">
         {services.map((service, index) => (
           <div id={service.id} key={service.id} className="container">
-            <Card className="overflow-hidden shadow-lg border-none">
+            <Card className="overflow-hidden shadow-lg border-none transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
                 <div className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 !== 0 ? 'md:grid-flow-col-dense' : ''}`}>
-                    <div className={`relative min-h-[400px] h-full ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
+                    <div className={`relative min-h-[400px] h-full overflow-hidden ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
                         <Image
                             src={service.image}
                             alt={service.title}
                             data-ai-hint={service.hint}
                             fill
-                            className="object-cover"
+                            className="object-cover transition-transform duration-500 ease-in-out hover:scale-105"
                         />
                     </div>
 
