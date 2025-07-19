@@ -89,39 +89,55 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* Mission Section */}
         <div className="mt-24">
-          <Card className="overflow-hidden shadow-lg">
-            <div className="grid md:grid-cols-2">
-              <div className="relative min-h-[400px]">
-                <Image
-                  src="https://placehold.co/800x800.png"
-                  alt="Team collaborating on a project"
-                  data-ai-hint="team business"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <div className="mb-8">
-                  <h3 className="text-3xl font-bold text-primary">Our Mission</h3>
-                  <p className="mt-4 text-muted-foreground">
-                    To provide high-quality, innovative, and sustainable electrical
-                    solutions that empower industries and improve lives, while
-                    maintaining the highest standards of integrity and customer
-                    service.
-                  </p>
+            <Card className="overflow-hidden shadow-lg">
+                <div className="grid md:grid-cols-2">
+                    <div className="relative min-h-[400px] overflow-hidden">
+                        <Image
+                            src="https://placehold.co/800x600.png"
+                            alt="Our Mission"
+                            data-ai-hint="teamwork success"
+                            fill
+                            className="object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+                        />
+                    </div>
+                    <div className="p-8 md:p-12 flex flex-col justify-center">
+                        <h3 className="text-3xl font-bold text-primary">Our Mission</h3>
+                        <p className="mt-4 text-muted-foreground">
+                            To provide high-quality, innovative, and sustainable electrical
+                            solutions that empower industries and improve lives, while
+                            maintaining the highest standards of integrity and customer
+                            service.
+                        </p>
+                    </div>
                 </div>
-                <div>
-                   <h3 className="text-3xl font-bold text-primary">Our Vision</h3>
-                    <p className="mt-4 text-muted-foreground">
-                      To be a global leader in the electrical components industry,
-                      recognized for our technological advancements, commitment to
-                      quality, and dedication to a greener planet.
-                    </p>
+            </Card>
+        </div>
+
+        {/* Vision Section */}
+        <div className="mt-16">
+            <Card className="overflow-hidden shadow-lg">
+                <div className="grid md:grid-cols-2">
+                    <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                        <h3 className="text-3xl font-bold text-primary">Our Vision</h3>
+                        <p className="mt-4 text-muted-foreground">
+                          To be a global leader in the electrical components industry,
+                          recognized for our technological advancements, commitment to
+                          quality, and dedication to a greener planet.
+                        </p>
+                    </div>
+                     <div className="relative min-h-[400px] overflow-hidden order-1 md:order-2">
+                        <Image
+                            src="https://placehold.co/800x600.png"
+                            alt="Our Vision"
+                            data-ai-hint="global network"
+                            fill
+                            className="object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+                        />
+                    </div>
                 </div>
-              </div>
-            </div>
-          </Card>
+            </Card>
         </div>
         
         {/* Core Values Section */}
