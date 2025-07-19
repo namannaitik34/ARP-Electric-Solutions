@@ -1,3 +1,6 @@
+
+'use client';
+import { useRef } from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -16,7 +19,16 @@ import {
   Globe,
   Wrench,
   ChevronRight,
+  ArrowLeft,
 } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+import Link from 'next/link';
 
 const teamMembers = [
   {
@@ -126,6 +138,15 @@ const faqItems = [
   },
 ];
 
+const workspaceImages = [
+  { src: 'https://placehold.co/600x400.png', hint: 'office interior', className: 'h-64 md:h-80' },
+  { src: 'https://placehold.co/400x500.png', hint: 'team meeting', className: 'h-80 md:h-96' },
+  { src: 'https://placehold.co/800x500.png', hint: 'collaborative workspace', className: 'h-64 md:h-80' },
+  { src: 'https://placehold.co/400x400.png', hint: 'modern office desk', className: 'h-72 md:h-80' },
+  { src: 'https://placehold.co/500x700.png', hint: 'office lounge', className: 'h-80 md:h-96' },
+  { src: 'https://placehold.co/600x450.png', hint: 'creative workspace', className: 'h-64 md:h-80' },
+];
+
 export default function AboutPage() {
   return (
     <div className="bg-white text-foreground animate-fadeIn">
@@ -167,6 +188,53 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
+
+        {/* Our Workspace Gallery */}
+        <div className="mt-24">
+           <div className="text-center">
+             <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground">
+               Our Workspace
+             </h2>
+             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+               A glimpse into our innovative and collaborative environment where ideas come to life.
+             </p>
+           </div>
+           <div className="mt-12">
+             <Carousel
+               opts={{
+                 align: "start",
+                 loop: true,
+               }}
+               className="w-full"
+             >
+               <CarouselContent className="-ml-4">
+                 {workspaceImages.map((image, index) => (
+                   <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                     <div className={`relative overflow-hidden rounded-2xl ${image.className}`}>
+                       <Image
+                         src={image.src}
+                         alt={`Workspace image ${index + 1}`}
+                         data-ai-hint={image.hint}
+                         fill
+                         className="object-cover"
+                       />
+                     </div>
+                   </CarouselItem>
+                 ))}
+               </CarouselContent>
+               <div className="mt-8 flex justify-between items-center">
+                  <div className='flex gap-2'>
+                    <CarouselPrevious className="static translate-y-0" />
+                    <CarouselNext className="static translate-y-0" />
+                  </div>
+                  <Link href="#" className="font-semibold text-primary hover:underline flex items-center gap-2">
+                    VIEW MORE PHOTOS <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+             </Carousel>
+           </div>
+         </div>
+
 
         {/* Mission Section */}
         <div className="mt-24">
