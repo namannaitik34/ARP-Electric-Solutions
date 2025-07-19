@@ -372,8 +372,10 @@ export default function Home() {
                             cy="50%"
                             labelLine={false}
                             outerRadius={120}
+                            innerRadius={80}
                             fill="#8884d8"
                             dataKey="value"
+                            paddingAngle={5}
                           >
                             {productCategories.map((entry, index) => (
                               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
