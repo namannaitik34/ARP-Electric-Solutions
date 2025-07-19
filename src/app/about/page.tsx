@@ -1,6 +1,12 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import {
   Handshake,
   Lightbulb,
   ShieldCheck,
@@ -84,6 +90,39 @@ const expertiseAreas = [
     icon: Wrench,
     bgColor: 'bg-teal-600',
     href: '/products#transformer-accessories',
+  },
+];
+
+const faqItems = [
+  {
+    question: 'What types of transformers do you manufacture?',
+    answer:
+      'We manufacture Oil-Immersed Transformers and Cast Resin Transformers. Both are designed to meet international standards (IEC & IS) and are customized to suit specific industrial and commercial applications.',
+  },
+  {
+    question: 'What makes your transformers energy-efficient?',
+    answer:
+      'We use high-quality materials like Cold Rolled Grain Oriented (CRGO) steel, as well as Amorphous and Nanocrystalline cores. These materials significantly reduce energy losses, leading to lower operating costs and a smaller environmental footprint.',
+  },
+  {
+    question: 'Do you provide custom solutions?',
+    answer:
+      'Yes, we specialize in providing custom-engineered solutions. Our team works closely with clients to understand their specific requirements and design products that meet their unique needs for voltage, power, and physical dimensions.',
+  },
+  {
+    question: 'What quality standards do your products adhere to?',
+    answer:
+      'All our products are manufactured in compliance with major international standards, including ANSI, IEC, and BS. We have a rigorous quality control process to ensure every product meets the highest benchmarks for safety, reliability, and performance.',
+  },
+  {
+    question: 'What other services do you offer besides manufacturing?',
+    answer:
+      'Beyond manufacturing, we provide a comprehensive range of services including the supply of transformer accessories, high-grade copper and aluminum conductors, and advanced power quality solutions like MV/LV APFC systems, harmonic filters, and UPS systems.',
+  },
+  {
+    question: 'How can I get a quote for my project?',
+    answer:
+      'You can easily request a quote by visiting our Contact Us page and filling out the inquiry form. Our team will review your requirements and get back to you with a personalized quote as soon as possible.',
   },
 ];
 
@@ -243,6 +282,33 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* FAQs Section */}
+        <div className="mt-24">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+              Have questions? We have answers. If you can't find what you're
+              looking for, feel free to contact us directly.
+            </p>
+          </div>
+          <div className="mt-12 max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="w-full">
+              {faqItems.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-base text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
 
