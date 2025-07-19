@@ -228,13 +228,17 @@ export default function AboutPage() {
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{area.title}</h3>
-                  <p className="mb-6 h-32">{area.description}</p>
-                  <a
-                    href={area.href}
-                    className="inline-flex items-center font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:translate-y-0 -translate-y-4"
-                  >
-                    READ MORE <ChevronRight className="ml-1 h-5 w-5" />
-                  </a>
+                  <div className="relative h-32 flex items-center justify-center">
+                    <p className="absolute transition-all duration-300 ease-in-out group-hover:opacity-0 group-hover:-translate-y-4">
+                      {area.description}
+                    </p>
+                    <a
+                      href={area.href}
+                      className="inline-flex items-center font-semibold opacity-0 transition-all duration-300 ease-in-out transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0"
+                    >
+                      READ MORE <ChevronRight className="ml-1 h-5 w-5" />
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
