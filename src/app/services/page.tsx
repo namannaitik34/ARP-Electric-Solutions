@@ -111,7 +111,7 @@ const otherServices = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-background text-foreground animate-fadeIn">
+    <div className="bg-white text-foreground animate-fadeIn">
       {/* Hero Section */}
       <div className="relative bg-primary/10 pt-24 pb-16 md:pt-32 md:pb-24">
          <div className="container text-center">
@@ -119,8 +119,9 @@ export default function ServicesPage() {
                 Our Services
              </h1>
              <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-                Delivering comprehensive electrical solutions engineered for excellence, reliability, and a sustainable future.
-             </p>
+             ARP Electric Solution delivers reliable, high-quality electrical services tailored for residential, commercial, and industrial needs. Our offerings include system design, installation, maintenance, energy audits, and smart automation solutions. We prioritize safety, efficiency, and long-term performance in every project. Committed to sustainability, we integrate energy-saving technologies and eco-friendly practices to support a greener future. Backed by a skilled team of certified professionals, we ensure every solution is engineered for excellence. At ARP, we don’t just deliver power — we deliver intelligent, future-ready electrical solutions that last.
+
+</p>
          </div>
       </div>
 
