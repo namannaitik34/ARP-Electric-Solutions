@@ -1,11 +1,40 @@
 
 'use client';
+// Product Carousel Data
+const productCarousel = [
+  { title: "Oil Immersed Transformers", image: "/images/Oil_emmeresed_transformer.png", description: "Durable and efficient transformers for power transmission and distribution." },
+  { title: "Cast Resin Transformers", image: "/images/cast-resin-transformer.png", description: "Reliable cast resin transformers for safe and efficient operation." },
+  { title: "Copper Foil", image: "/images/Copper_foil.png", description: "High-grade copper foil for superior conductivity." },
+  { title: "Super Enameled Copper", image: "/images/Super%20Enameled%20Copper.png", description: "Insulated copper wire for electrical applications." },
+  { title: "Copper CTC", image: "/images/Copper_CTC.jpg", description: "CTC copper wire for transformer windings." },
+  { title: "Copper PICC", image: "/images/Copper_PICC.png", description: "PICC copper wire for advanced transformer designs." },
+  { title: "Aluminium Foil", image: "/images/Aluminium_foil.png", description: "High-quality aluminium foil for conductivity." },
+  { title: "Super Enameled Aluminium", image: "/images/Super_Enameled_Aluminium.png", description: "Insulated aluminium wire for electrical applications." },
+  { title: "Aluminium CTC", image: "/images/Aluminium_CTC.png", description: "CTC aluminium wire for transformer windings." },
+  { title: "Aluminium PIAC", image: "/images/Aluminium_PIAC.jpg", description: "PIAC aluminium wire for advanced transformer designs." },
+  { title: "CRGO (Cold Rolled Grain Oriented Steel)", image: "/images/CRGO.png", description: "Premium CRGO steel for transformer cores." },
+  { title: "Transformer Accessories", image: "/images/Transformer%20Accessories.png", description: "Comprehensive range of transformer accessories." },
+  { title: "Data Center", image: "/images/Data_center.png", description: "Solutions for modern data centers." },
+  { title: "MV/LV APFC, Harmonic Filter & UPS", image: "/images/MVLV_APFC, Harmonic_Filter_&_UPS.png", description: "Power factor correction, harmonic filtering, and UPS systems." },
+  { title: "Ring Main Unit (RMU)", image: "/images/Ring_man_unit.png", description: "Compact RMU for distribution networks." },
+  { title: "Cables", image: "/images/Cable.png", description: "High-quality cables for various applications." },
+  { title: "Beverage Solutions", image: "/images/Beverage_solution.png", description: "Innovative solutions for the beverage industry." },
+  { title: "IT Solutions", image: "/images/IT_Solution.png", description: "Comprehensive IT solutions for businesses." },
+  { title: "Surveillance Systems", image: "/images/Surveillance.png", description: "Advanced surveillance systems for security." },
+];
+
+import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield, Tool, Cog, Wrench, Thermometer, RadioTower, Power, Users, Layers, Rss } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, Sector } from 'recharts';
+import Autoplay from 'embla-carousel-autoplay';
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield, Tool, Cog, Wrench, Thermometer, RadioTower, Power, Users, Layers, Rss } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 import InteractiveCard from "@/components/InteractiveCard";
 import {
   Carousel,
@@ -14,19 +43,135 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useEffect, useRef, useState } from 'react';
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import SkewedCubeStack from '@/components/SkewedCubeStack';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, Sector } from 'recharts';
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+
+const ProductCarousel = () => {
+  const [startIndex, setStartIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const visibleCount = 4;
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Smooth transition logic with pause on hover
+  useEffect(() => {
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setIsAnimating(true);
+        setTimeout(() => {
+          setStartIndex((prev) => (prev + 1) % productCarousel.length);
+          setIsAnimating(false);
+        }, 500); // transition duration
+      }, 1500);
+    }
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isPaused]);
+
+  const handlePrev = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setStartIndex((prev) => (prev - 1 + productCarousel.length) % productCarousel.length);
+      setIsAnimating(false);
+    }, 500);
+  };
+  const handleNext = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setStartIndex((prev) => (prev + 1) % productCarousel.length);
+      setIsAnimating(false);
+    }, 500);
+  };
+
+  // Get visible cards (looping)
+  const getVisibleCards = () => {
+    const cards = [];
+    for (let i = 0; i < visibleCount; i++) {
+      const idx = (startIndex + i) % productCarousel.length;
+      cards.push(productCarousel[idx]);
+    }
+    return cards;
+  };
+
+  // For smooth sliding effect
+  const slideWidth = 354; // 360px card + 24px margin
+  const containerStyle = {
+    width: `${slideWidth * visibleCount}px`,
+    display: 'flex',
+    transition: 'transform 0.5s cubic-bezier(0.4,0,0.2,1)',
+    transform: `translateX(-${startIndex * slideWidth}px)`,
+    willChange: 'transform',
+  };
+
+  // Pause/resume autoplay on hover
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+
+  return (
+    <div
+      className="relative w-full flex items-center justify-center"
+      style={{ overflow: 'hidden' }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full p-2 shadow hover:scale-110 transition"
+        onClick={handlePrev}
+        aria-label="Previous"
+        disabled={isAnimating}
+      >
+        <ChevronLeft size={24} />
+      </button>
+      <div style={{ overflow: 'hidden', width: `${slideWidth * visibleCount}px`, margin: '0 auto' }}>
+        <div style={containerStyle}>
+          {productCarousel.map((product, idx) => (
+            <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 22px' }}>
+              <div
+                className="relative group transition-transform duration-300 hover:scale-105"
+                style={{ width: 360, height: 260, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                <div className="overflow-hidden rounded-xl shadow-lg bg-white flex flex-col items-center" style={{ width: 360, height: 260, position: 'relative' }}>
+                  <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      width={360}
+                      height={260}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-t-xl"
+                      style={{ aspectRatio: '1 / 1', width: '100%', height: '120%' }}
+                    />
+                    <div className="absolute inset-0 bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
+                      <span className="p-4 text-center text-sm md:text-base">{product.description}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full text-center mt-2">
+                <h3 className="font-bold text-base md:text-lg text-primary mb-1">{product.title}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <button
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full p-2 shadow hover:scale-110 transition"
+        onClick={handleNext}
+        aria-label="Next"
+        disabled={isAnimating}
+      >
+        <ChevronRight size={24} />
+      </button>
+    </div>
+  );
+};
 
 
 const useIntersectionObserver = (options: IntersectionObserverInit) => {
@@ -430,10 +575,22 @@ export default function Home() {
               designed to meet the needs of clients worldwide.
             </p>
           </div>
+          
+        </div>
+              {/* Product Carousel Section */}
+              <section className="py-16 md:py-24">
+        <div className="container">
+          <div className="mt-12 relative">
+            <ProductCarousel />
+          </div>
         </div>
       </section>
 
-      {/* Solutions by Category Section */}
+      </section>
+
+
+
+            {/* Solutions by Category Section */}
       <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
@@ -502,43 +659,6 @@ export default function Home() {
         </div>
       </FadeInSection>
 
-
-      {/* Product Showcase Section */}
-      <FadeInSection className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold font-headline text-primary">Product Showcase</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-              Explore some of our featured products.
-            </p>
-          </div>
-
-          <div className="mt-12">
-            <Carousel
-              plugins={[
-                Autoplay({
-                  delay: 2000,
-                }),
-              ]}
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="relative"
-            >
-              <CarouselContent className="-ml-6">
-                {[...Array(14)].map((_, index) => (
-                  <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/4">
-                    <InteractiveCard />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 transform text-teal-950" />
-              <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 transform text-teal-950" />
-            </Carousel>
-          </div>
-        </div>
-      </FadeInSection>
 
       {/* Product Categories Section (Cards) */}
       <FadeInSection className="py-16 md:py-24 bg-white">
@@ -739,13 +859,13 @@ export default function Home() {
         className="relative py-20 md:py-32 text-white bg-cover bg-fixed bg-center"
         style={{ backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/arp-electric-solution.firebasestorage.app/o/Untitled%20design%20(1).png?alt=media&token=75d7abd2-a22c-4b27-be3e-2abd7cc48132') " }}
       >
-        <div className="absolute inset-0 bg-primary/20"></div>
+        <div className="absolute inset-0 bg-primary/80"></div>
         <div className="container relative text-center z-10">
           <h2 className="text-4xl font-bold font-headline">Excellence in Engineering</h2>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/80">
             Our commitment to international standards like IEC ensures every product meets global benchmarks for safety, reliability, and performance.
           </p>
-          <Button asChild size="lg" className="mt-8">
+          <Button asChild size="lg" className="mt-8 bg-white text-primary font-bold hover:bg-teal-950 hover:text-white">
             <Link href="/about">Discover Our Quality Promise</Link>
           </Button>
         </div>
@@ -754,13 +874,13 @@ export default function Home() {
           <div className="container grid md:grid-cols-2 gap-12 items-center">
             {/* Left Column */}
             <div>
-              <p className="text-sm uppercase tracking-wider text-gray-600">Global Standards Compliance</p>
-              <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
+              <p className="text-sm uppercase tracking-wider text-gray-300 ">Global Standards Compliance</p>
+              <h2 className="text-3xl font-bold font-headline text-gray-100 mt-2">
                 ANSI Standard
               </h2>
               {/* Visual Separator Placeholder */}
               <div className="w-16 h-1 bg-primary mt-4"></div>
-              <p className="mt-6 text-gray-700">
+              <p className="mt-6 text-gray-200">
                 Our products are designed under ANSI standards are known for their robust performance, reliability, and compliance with global requirements. These products are engineered to cater to industrial needs where precision and dependability are paramount.
               </p>
               {/* Read More Link Placeholder */}
@@ -801,13 +921,13 @@ export default function Home() {
 
             {/* Right Column (Image Placeholder) */}
             <div>
-              <p className="text-sm uppercase tracking-wider text-gray-600">Precision Engineering</p>
-              <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
+              <p className="text-sm uppercase tracking-wider text-gray-300">Precision Engineering</p>
+              <h2 className="text-3xl font-bold font-headline text-gray-100 mt-2">
                 IEC Standard
               </h2>
               {/* Visual Separator Placeholder */}
               <div className="w-16 h-1 bg-primary mt-4"></div>
-              <p className="mt-6 text-gray-700">
+              <p className="mt-6 text-gray-200">
                 Our IEC compliant products are designed to deliver unparalleled efficiency and adaptability. Built to meet international standards, they ensure superior power distribution and long-term reliability for diverse applications.
               </p>
               {/* Read More Link Placeholder */}
@@ -827,13 +947,13 @@ export default function Home() {
           <div className="container grid md:grid-cols-2 gap-12 items-center">
             {/* Left Column */}
             <div>
-              <p className="text-sm uppercase tracking-wider text-gray-600">Quality and Reliability</p>
-              <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
+              <p className="text-sm uppercase tracking-wider text-gray-300">Quality and Reliability</p>
+              <h2 className="text-3xl font-bold font-headline text-gray-200 mt-2">
                 BS Standard
               </h2>
               {/* Visual Separator Placeholder */}
               <div className="w-16 h-1 bg-primary mt-4"></div>
-              <p className="mt-6 text-gray-700">
+              <p className="mt-6 text-gray-100">
                 Adhering to British Standards, our products guarantee exceptional quality and reliability. These standards ensure that our electrical solutions meet rigorous safety and performance benchmarks, providing peace of mind for critical applications.
               </p>
               {/* Read More Link Placeholder */}
