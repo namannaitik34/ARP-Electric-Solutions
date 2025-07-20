@@ -96,10 +96,10 @@ const featuredServices = [
 ];
 
 const productCategories = [
-    { name: "Power Distribution", value: 400, description: "Reliable power transmission and distribution solutions." },
-    { name: "Industrial Automation", value: 300, description: "Advanced automation for industrial efficiency." },
-    { name: "Renewable Energy", value: 300, description: "Sustainable energy solutions for a greener future." },
-    { name: "Safety & Protection", value: 200, description: "Ensuring operational safety with protective systems." },
+  { name: "Power Distribution", value: 400, description: "Reliable power transmission and distribution solutions." },
+  { name: "Industrial Automation", value: 300, description: "Advanced automation for industrial efficiency." },
+  { name: "Renewable Energy", value: 300, description: "Sustainable energy solutions for a greener future." },
+  { name: "Safety & Protection", value: 200, description: "Ensuring operational safety with protective systems." },
 ];
 
 const COLORS = ['hsl(var(--chart-1))', 'hsl(var(--chart-2))', 'hsl(var(--chart-3))', 'hsl(var(--chart-4))'];
@@ -130,20 +130,20 @@ const transformerAccessories = [
 ];
 
 const detailedTransformerAccessories = [
-    { name: 'Pressure Relief Valve (PRV)', type: 'Safety', description: 'Critical safety valve designed to release excess pressure and protect the transformer.' },
-    { name: 'Buchholz Relay', type: 'Safety', description: 'Protective relay that detects gas accumulation or oil flow issues in transformers.' },
-    { name: 'Oil Level Indicator (MOG)', type: 'Monitoring', description: 'Reliable indicator to monitor the oil levels and ensure transformer operation.' },
-    { name: 'Silica Gel Breather', type: 'Desiccant', description: 'Absorbs moisture from the air, protecting transformer oil and maintaining insulation integrity.' },
-    { name: 'Aircell (Flexi Separator)', type: 'Separation', description: 'Flexible separator used to maintain air pressure and prevent transformer oil contamination.' },
-    { name: 'Rapid Pressure Rise Relay', type: 'Safety', description: 'Prevents transformer damage by detecting rapid pressure changes and triggering protection mechanisms.' },
-    { name: 'Transformer Valve', type: 'Safety', description: 'Valve designed to regulate and manage transformer oil pressure to ensure safe operation.' },
-    { name: 'Transformer Oil', type: 'Insulation', description: 'High-quality transformer oil used for insulation and cooling of electrical components.' },
-    { name: 'RTCC Panel & Equipment', type: 'Control', description: 'Remote Tap Changer Control panel for effective voltage regulation and control of transformer operations.' },
-    { name: 'Wheels (Roller)', type: 'Transportation', description: 'Durable rollers designed to facilitate easy transportation and installation of transformers.' },
-    { name: 'Bushing & Accessories', type: 'Insulation', description: 'Essential bushing components and accessories for safe and efficient electrical connections in transformers.' },
-    { name: 'Flow Indicators', type: 'Monitoring', description: 'Devices used to monitor the flow of transformer oil for better operational control.' },
-    { name: 'O-Ring & Gasket', type: 'Sealing', description: 'High-quality sealing components that prevent oil leaks and maintain transformer integrity.' },
-    { name: 'Current Transformer', type: 'Measurement', description: 'Measurement device used to monitor and control current flow within transformer circuits.' }
+  { name: 'Pressure Relief Valve (PRV)', type: 'Safety', description: 'Critical safety valve designed to release excess pressure and protect the transformer.' },
+  { name: 'Buchholz Relay', type: 'Safety', description: 'Protective relay that detects gas accumulation or oil flow issues in transformers.' },
+  { name: 'Oil Level Indicator (MOG)', type: 'Monitoring', description: 'Reliable indicator to monitor the oil levels and ensure transformer operation.' },
+  { name: 'Silica Gel Breather', type: 'Desiccant', description: 'Absorbs moisture from the air, protecting transformer oil and maintaining insulation integrity.' },
+  { name: 'Aircell (Flexi Separator)', type: 'Separation', description: 'Flexible separator used to maintain air pressure and prevent transformer oil contamination.' },
+  { name: 'Rapid Pressure Rise Relay', type: 'Safety', description: 'Prevents transformer damage by detecting rapid pressure changes and triggering protection mechanisms.' },
+  { name: 'Transformer Valve', type: 'Safety', description: 'Valve designed to regulate and manage transformer oil pressure to ensure safe operation.' },
+  { name: 'Transformer Oil', type: 'Insulation', description: 'High-quality transformer oil used for insulation and cooling of electrical components.' },
+  { name: 'RTCC Panel & Equipment', type: 'Control', description: 'Remote Tap Changer Control panel for effective voltage regulation and control of transformer operations.' },
+  { name: 'Wheels (Roller)', type: 'Transportation', description: 'Durable rollers designed to facilitate easy transportation and installation of transformers.' },
+  { name: 'Bushing & Accessories', type: 'Insulation', description: 'Essential bushing components and accessories for safe and efficient electrical connections in transformers.' },
+  { name: 'Flow Indicators', type: 'Monitoring', description: 'Devices used to monitor the flow of transformer oil for better operational control.' },
+  { name: 'O-Ring & Gasket', type: 'Sealing', description: 'High-quality sealing components that prevent oil leaks and maintain transformer integrity.' },
+  { name: 'Current Transformer', type: 'Measurement', description: 'Measurement device used to monitor and control current flow within transformer circuits.' }
 ];
 
 const heroSlides = [
@@ -175,15 +175,15 @@ const heroSlides = [
 ]
 
 const technicalData = [
-    { parameter: "Transformer Type", description: "Three Phase, Oil Immersed Distribution Transformers (Indoor or Outdoor Installation)", icon: Layers },
-    { parameter: "Type of Breathing", description: "Hermetically Sealed / Radiator", icon: Wind },
-    { parameter: "Standard", description: "IEC60076", icon: Shield },
-    { parameter: "Rated Frequency", description: "50Hz or 60Hz", icon: Rss },
-    { parameter: "Connection and Vector Group", description: "Dyn11", icon: Network },
-    { parameter: "Ambient Temperature", description: "Ambient=50, Oil=50, Winding=55", icon: Thermometer },
-    { parameter: "Winding", description: "CU or AL", icon: CircuitBoard },
-    { parameter: "Type of Cooling", description: "ONAN", icon: Power },
-    { parameter: "HV Tapping", description: "Off-circuit tap changer, 5 positions ± 2×2.5%", icon: RadioTower },
+  { parameter: "Transformer Type", description: "Three Phase, Oil Immersed Distribution Transformers (Indoor or Outdoor Installation)", icon: Layers },
+  { parameter: "Type of Breathing", description: "Hermetically Sealed / Radiator", icon: Wind },
+  { parameter: "Standard", description: "IEC60076", icon: Shield },
+  { parameter: "Rated Frequency", description: "50Hz or 60Hz", icon: Rss },
+  { parameter: "Connection and Vector Group", description: "Dyn11", icon: Network },
+  { parameter: "Ambient Temperature", description: "Ambient=50, Oil=50, Winding=55", icon: Thermometer },
+  { parameter: "Winding", description: "CU or AL", icon: CircuitBoard },
+  { parameter: "Type of Cooling", description: "ONAN", icon: Power },
+  { parameter: "HV Tapping", description: "Off-circuit tap changer, 5 positions ± 2×2.5%", icon: RadioTower },
 ];
 
 const FadeInSection = ({ children, className }: { children: React.ReactNode, className?: string }) => {
@@ -241,7 +241,7 @@ export default function Home() {
   const onPieEnter = (_: any, index: number) => {
     setActiveIndex(index);
   };
-  
+
   const renderActiveShape = (props: any) => {
     const RADIAN = Math.PI / 180;
     const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
@@ -254,7 +254,7 @@ export default function Home() {
     const ex = mx + (cos >= 0 ? 1 : -1) * 22;
     const ey = my;
     const textAnchor = cos >= 0 ? 'start' : 'end';
-  
+
     return (
       <g>
         <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
@@ -407,22 +407,31 @@ export default function Home() {
       </FadeInSection>
 
 
-      {/* Product Showcase Intro Section */}
-      <FadeInSection className="py-20 md:py-28 bg-teal-950 text-white">
-        <div className="container text-center">
-            <div className='flex justify-center items-center gap-4'>
-                <div className='w-16 h-px bg-primary'></div>
-                <p className="text-sm uppercase tracking-wider text-primary">We Are ARP Electric Solution</p>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold font-headline mt-4">
-              Our Products For the Power Industry
+            {/* Product Showcase Intro Section */}
+      <section className="py-20 md:py-28 bg-teal-950 text-white">
+        <div className="container grid md:grid-cols-2 gap-12 items-center relative">
+          {/* Design Element */}
+          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-px bg-white h-24 opacity-50 hidden md:block"></div>
+          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-24 bg-primary hidden md:block"></div>
+
+          <div>
+            <p className="text-sm uppercase tracking-wider text-primary">We are ARP Electric Solution</p>
+            <h2 className="text-4xl md:text-5xl font-bold font-headline mt-2">
+              Our Products
+              <br/>
+              For the Power
+              <br/>
+              Industry
             </h2>
-            <p className="text-lg leading-relaxed max-w-3xl mx-auto mt-6">
+          </div>
+          <div>
+            <p className="text-lg leading-relaxed">
               Explore our wide range of high-quality power transmission, distribution, transformer solutions, Raw Material, Transformer Accessories, CRGO, Copper Foil, CTC, PICC, Super Enameled, MV/LV APFC, Harmonic Filter, UPS and Data Center, Ring Main Unit (RMU), MV/LV Switchgear etc,
               designed to meet the needs of clients worldwide.
             </p>
+          </div>
         </div>
-      </FadeInSection>
+      </section>
 
       {/* Solutions by Category Section */}
       <FadeInSection className="py-16 md:py-24 bg-white">
@@ -574,14 +583,12 @@ export default function Home() {
           </div>
         </div>
       </FadeInSection>
-      {/* New Transformer Accessories Grid Section */}
+      {/*Transformer Accessories Grid Section */}
       <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold font-headline text-primary">Transformer Accessories</h2>
-            <p className="mt-4 max-w-3xl mx-auto text-muted-foreground">
-              Explore our comprehensive range of high-quality transformer accessories designed to ensure safety, reliability, and optimal performance.
-            </p>
+          
+          <div className="text-start">
+            <h2 className="text-3xl font-bold font-headline text-primary text-decoration-line: underline">Transformer Accessories</h2>
           </div>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {detailedTransformerAccessories.map((accessory, index) => (
@@ -600,21 +607,52 @@ export default function Home() {
           </div>
         </div>
       </FadeInSection>
-
-      {/* Transformer Accessories Section */}
-      <FadeInSection className="py-16 md:py-24 bg-background" id="transformer-accessories-section">
+      {/* Technical Data Section */}
+      <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
-            <h2 className="text-3xl font-bold font-headline text-primary">Transformer Accessories</h2>
+            <h2 className="text-3xl font-bold font-headline text-primary">Transformer Technical Data</h2>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-              A comprehensive range of accessories to complement your transformers.
+              Key specifications for our High Efficiency Three Phase, Oil Immersed Distribution Transformers.
             </p>
           </div>
-          <div className="mt-12">
-            <TransformerAccessoriesTable />
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="https://placehold.co/800x600.png"
+                alt="Transformer technical illustration"
+                data-ai-hint="transformer schematic"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <div>
+              <ul className="space-y-6">
+                {technicalData.map((item, index) => (
+                  <li key={index} className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <item.icon className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-accent-foreground">{item.parameter}</h4>
+                      <p className="text-muted-foreground">{item.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-8 max-w-4xl mx-auto text-center text-sm text-muted-foreground">
+            <p><strong>Note:</strong> These all data are subject to change according to customer requirements.</p>
+            <p className="mt-4">
+              High Efficiency Transformers offer the best ratio between initial cost and operating cost for sensitive applications. Lowering the energy consumption results in reduced operating costs and less harmful emissions for the customer's operations.
+            </p>
           </div>
         </div>
       </FadeInSection>
+
+
+      
 
       {/* Oil-Immersed Transformers Section */}
       <FadeInSection className="py-16 md:py-24 bg-primary text-primary-foreground" id="oil-immersed-transformers-section">
@@ -646,28 +684,25 @@ export default function Home() {
       </FadeInSection>
 
       {/* Cast Resin Transformers Section */}
-      <FadeInSection className="py-16 md:py-24 bg-gray-200 text-gray-800" id="cast-resin-transformers">
+      <FadeInSection className="py-16 md:py-24 bg-gray-100 dark:bg-gray-900" id="cast-resin-transformers">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
-          {/* Left column */}
           <div>
-            <p className="text-sm uppercase tracking-wider text-primary">We are AKS International FZC</p>
-            <h2 className="text-4xl md:text-5xl font-bold font-headline mt-2">
-              Cast Resin Transformers: Reliable, Efficient, and Safe
-              <br />
-              Power Solutions
+            <p className="text-sm uppercase tracking-wider text-primary">WE ARE ARP ELECTRIC SOLUTION</p>
+            <h2 className="text-3xl md:text-4xl font-bold font-headline mt-2 text-foreground">
+              Cast Resin Transformers: Reliable, Efficient, and Safe Power Solutions
             </h2>
             <Tabs defaultValue="overview" className="mt-8">
               <TabsList className="bg-transparent p-0">
-                <TabsTrigger value="overview" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none">Overview</TabsTrigger>
-                <TabsTrigger value="benefits" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none">Key Benefits</TabsTrigger>
-                <TabsTrigger value="applications" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none">Applications</TabsTrigger>
+                <TabsTrigger value="overview" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-muted-foreground">Overview</TabsTrigger>
+                <TabsTrigger value="benefits" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-muted-foreground">Key Benefits</TabsTrigger>
+                <TabsTrigger value="applications" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-muted-foreground">Applications</TabsTrigger>
               </TabsList>
-              <TabsContent value="overview" className="mt-6 text-gray-700">
+              <TabsContent value="overview" className="mt-6 text-muted-foreground">
                 <p>
                   AKS International FZC provides high-quality Cast Resin Transformers, ensuring superior performance, safety, and reliability. We collaborate with top manufacturers to offer transformers enclosed in robust resin casings, providing excellent insulation and protection against environmental elements. Their compact design makes them ideal for both indoor and outdoor installations, even in challenging conditions.
                 </p>
               </TabsContent>
-              <TabsContent value="benefits" className="mt-6 text-gray-700">
+              <TabsContent value="benefits" className="mt-6 text-muted-foreground">
                 <ul className="list-disc pl-5 space-y-2">
                   <li><strong>Enhanced Safety:</strong> Self-extinguishing and fire-resistant properties minimize fire hazards.</li>
                   <li><strong>Eco-Friendly:</strong> No risk of oil leakage, making them ideal for environmentally sensitive areas.</li>
@@ -676,8 +711,8 @@ export default function Home() {
                   <li><strong>Compact Design:</strong> Smaller footprint allows for flexible installation in confined spaces.</li>
                 </ul>
               </TabsContent>
-              <TabsContent value="applications" className="mt-6 text-gray-700">
-              <ul className="list-disc pl-5 space-y-2">
+              <TabsContent value="applications" className="mt-6 text-muted-foreground">
+                <ul className="list-disc pl-5 space-y-2">
                   <li><strong>Public Infrastructure:</strong> Airports, hospitals, subways, and high-rise buildings.</li>
                   <li><strong>Industrial Sector:</strong> Chemical plants, steel mills, and manufacturing facilities.</li>
                   <li><strong>Critical Power:</strong> Data centers, telecommunication hubs, and research labs.</li>
@@ -687,7 +722,6 @@ export default function Home() {
               </TabsContent>
             </Tabs>
           </div>
-          {/* Right column */}
           <div className="relative w-full h-full min-h-[300px]">
             <Image
               src="https://placehold.co/600x450.png"
@@ -700,42 +734,6 @@ export default function Home() {
           </div>
         </div>
       </FadeInSection>
-      {/* ANSI Standard Compliance Section */}
-      <FadeInSection className="py-16 md:py-24 bg-white">
-        <div className="container grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
-          <div>
-            <p className="text-sm uppercase tracking-wider text-gray-600">Global Standards Compliance</p>
-            <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
-              ANSI Standard
-            </h2>
-            {/* Visual Separator Placeholder */}
-            <div className="w-16 h-1 bg-primary mt-4"></div>
-            <p className="mt-6 text-gray-700">
-              Our products are designed under ANSI standards are known for their robust performance, reliability, and compliance with global requirements. These products are engineered to cater to industrial needs where precision and dependability are paramount.
-            </p>
-            {/* Read More Link Placeholder */}
-            <div className="mt-6">
-              <Link href="#" className="text-primary font-semibold flex items-center group">
-                READ MORE
-                <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-          {/* Right Column (Image Placeholder) */}
-          <div className="flex justify-center items-center">
-            <Image
-              src="https://placehold.co/400x256.png"
-              alt="ANSI Standard Compliance"
-              data-ai-hint="compliance certificate"
-              width={400}
-              height={256}
-              className="w-full max-w-sm h-auto object-cover rounded-lg"
-            />
-          </div>
-        </div>
-      </FadeInSection>
-
       {/* Parallax Section */}
       <section
         className="relative py-20 md:py-32 text-white bg-cover bg-fixed bg-center"
@@ -863,87 +861,6 @@ export default function Home() {
 
       </section>
 
-      {/* BS Standard Compliance Section */}
-      {/* Duplicate BS Standard Compliance Section - Renamed */}
-      <FadeInSection className="py-16 md:py-24 bg-white" id="bs-standard-compliance-section-2">
-        <div className="container grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
-          <div>
-            <p className="text-sm uppercase tracking-wider text-gray-600">Quality and Reliability</p>
-            <h2 className="text-3xl font-bold font-headline text-gray-900 mt-2">
-              BS Standard
-            </h2>
-            {/* Visual Separator Placeholder */}
-            <div className="w-16 h-1 bg-primary mt-4"></div>
-            <p className="mt-6 text-gray-700">
-              Adhering to British Standards, our products guarantee exceptional quality and reliability. These standards ensure that our electrical solutions meet rigorous safety and performance benchmarks, providing peace of mind for critical applications.
-            </p>
-            {/* Read More Link Placeholder */}
-            <div className="mt-6">
-              <Link href="#" className="text-primary font-semibold flex items-center group">
-                READ MORE
-                <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-          {/* Right Column (Image Placeholder) */}
-          <div className="flex justify-center items-center">
-            <Image
-              src="https://placehold.co/400x256.png"
-              alt="BS Standard Compliance"
-              data-ai-hint="quality control"
-              width={400}
-              height={256}
-              className="w-full max-w-sm h-auto object-cover rounded-lg"
-            />
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* Technical Data Section */}
-       <FadeInSection className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold font-headline text-primary">Transformer Technical Data</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-              Key specifications for our High Efficiency Three Phase, Oil Immersed Distribution Transformers.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
-                <Image
-                    src="https://placehold.co/800x600.png"
-                    alt="Transformer technical illustration"
-                    data-ai-hint="transformer schematic"
-                    layout="fill"
-                    objectFit="cover"
-                />
-            </div>
-            <div>
-                <ul className="space-y-6">
-                    {technicalData.map((item, index) => (
-                        <li key={index} className="flex items-start gap-4">
-                            <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-                                <item.icon className="w-6 h-6" />
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-lg text-accent-foreground">{item.parameter}</h4>
-                                <p className="text-muted-foreground">{item.description}</p>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-          </div>
-          <div className="mt-8 max-w-4xl mx-auto text-center text-sm text-muted-foreground">
-            <p><strong>Note:</strong> These all data are subject to change according to customer requirements.</p>
-            <p className="mt-4">
-                High Efficiency Transformers offer the best ratio between initial cost and operating cost for sensitive applications. Lowering the energy consumption results in reduced operating costs and less harmful emissions for the customer's operations.
-            </p>
-          </div>
-        </div>
-      </FadeInSection>
-
       {/* Request a Quote Section */}
       <FadeInSection className="py-16 md:py-24 bg-teal-100" id="request-quote">
         <div className="container" id="request-quote-form-section">
@@ -1047,12 +964,12 @@ export default function Home() {
             </div>
             <div className="hidden md:block">
               <Image
-                  src="https://firebasestorage.googleapis.com/v0/b/arp-electric-solution.firebasestorage.app/o/Untitled%20design%20(2).png?alt=media&token=6f94a5a5-4ad3-4081-a17a-f6873cfccf6f"
-                  alt="Weekly calendar promotion"
-                  data-ai-hint="calendar schedule"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover rounded-lg"
+                src="https://firebasestorage.googleapis.com/v0/b/arp-electric-solution.firebasestorage.app/o/Untitled%20design%20(2).png?alt=media&token=6f94a5a5-4ad3-4081-a17a-f6873cfccf6f"
+                alt="Weekly calendar promotion"
+                data-ai-hint="calendar schedule"
+                width={600}
+                height={400}
+                className="w-full h-auto object-cover rounded-lg"
               />
             </div>
           </div>
@@ -1095,4 +1012,5 @@ const TransformerAccessoriesTable = () => {
   );
 };
 
-    
+
+
