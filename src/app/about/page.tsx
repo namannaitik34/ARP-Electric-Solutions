@@ -259,45 +259,49 @@ export default function AboutPage() {
 
 
         {/* Mission Section */}
-        <div className="mt-24 grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden group">
+        <div className="mt-24 max-w-5xl mx-auto">
+          <h3 className="text-3xl font-bold text-primary text-center mb-8">Our Mission</h3>
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden group shadow-lg">
             <Image
-              src="https://placehold.co/800x600.png"
+              src="https://placehold.co/1280x720.png"
               alt="Our Mission"
               data-ai-hint="teamwork success"
               fill
-              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
             />
           </div>
-          <div>
-            <h3 className="text-3xl font-bold text-primary">Our Mission</h3>
-            <p className="mt-4 text-muted-foreground">
-              To provide high-quality, innovative, and sustainable electrical
-              solutions that empower industries and improve lives, while
-              maintaining the highest standards of integrity and customer
-              service.
+          <div className="mt-8 space-y-4 text-muted-foreground">
+             <p>
+              At ARP Electric Solution, our mission is to provide high-quality, innovative, and sustainable electrical solutions that empower industries and improve lives. We are committed to maintaining the highest standards of integrity and customer service, ensuring that every product we deliver is benchmarked to global standards of operational excellence.
+            </p>
+            <p>
+              For over a decade, we have been a driving force in the growth of the electrical sector by contributing to technological advancement and creating new opportunities. We have implemented a comprehensive framework to establish ourselves as a leader in environmentally responsible practices within our industry.
+            </p>
+             <p>
+             Our commitment extends to reducing our environmental impact, with a pledge to support the transition to cleaner energy and more sustainable operations for all our partners. We believe in building a future where progress and sustainability go hand in hand.
             </p>
           </div>
         </div>
 
         {/* Vision Section */}
-        <div className="mt-16 grid md:grid-cols-2 gap-16 items-center">
-           <div>
-            <h3 className="text-3xl font-bold text-primary">Our Vision</h3>
-            <p className="mt-4 text-muted-foreground">
-              To be a global leader in the electrical components industry,
-              recognized for our technological advancements, commitment to
-              quality, and dedication to a greener planet.
-            </p>
-          </div>
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden group">
+        <div className="mt-24 max-w-5xl mx-auto">
+          <h3 className="text-3xl font-bold text-primary text-center mb-8">Our Vision</h3>
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden group shadow-lg">
             <Image
-              src="https://placehold.co/800x600.png"
+              src="https://placehold.co/1280x720.png"
               alt="Our Vision"
               data-ai-hint="global network"
               fill
-              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
             />
+          </div>
+          <div className="mt-8 space-y-4 text-muted-foreground">
+             <p>
+              Our vision is to be a global leader in the electrical components industry, recognized for our technological advancements, unwavering commitment to quality, and profound dedication to a greener planet. We aspire to set new benchmarks for innovation and sustainability.
+            </p>
+            <p>
+              We aim to expand our portfolio of natural resources and technology on a large scale, fostering growth not just in India but across the globe. By creating thousands of jobs and contributing to the national exchequer, we envision a future where our growth facilitates economic prosperity and technological progress worldwide.
+            </p>
           </div>
         </div>
 
