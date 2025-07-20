@@ -1,6 +1,6 @@
 
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -60,7 +60,6 @@ const coreValues = [
       'We build relationships based on reliability and transparency, ensuring our clients and partners can always depend on us.',
     icon: Handshake,
     position: 'top-0 left-1/2 -translate-x-1/2',
-    lineRotation: 'rotate-90',
   },
   {
     title: 'Innovation',
@@ -68,7 +67,6 @@ const coreValues = [
       'We continuously seek new and better ways to solve challenges, pushing the boundaries of technology to deliver cutting-edge solutions.',
     icon: Lightbulb,
     position: 'right-0 top-1/2 -translate-y-1/2',
-    lineRotation: 'rotate-0',
   },
   {
     title: 'Integrity',
@@ -76,7 +74,6 @@ const coreValues = [
       'We operate with unwavering honesty and ethical standards, holding ourselves accountable in every action we take.',
     icon: ShieldCheck,
     position: 'bottom-0 left-1/2 -translate-x-1/2',
-    lineRotation: 'rotate-90',
   },
   {
     title: 'Excellence',
@@ -84,7 +81,6 @@ const coreValues = [
       'We are committed to the highest standards of quality and performance, striving for exceptional results in everything we do.',
     icon: Star,
     position: 'left-0 top-1/2 -translate-y-1/2',
-    lineRotation: 'rotate-0',
   },
 ];
 
@@ -314,29 +310,37 @@ export default function AboutPage() {
                 {/* Central animated element */}
                 <div className="absolute w-72 h-72 border-[1.5rem] border-primary/10 rounded-full animate-pulse"></div>
                 <div className="absolute w-56 h-56 bg-primary/20 rounded-full animate-pulse delay-100"></div>
-                <div className="absolute flex items-center justify-center w-40 h-40 bg-primary rounded-full shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/50">
+                <div className="absolute flex items-center justify-center w-40 h-40 bg-primary rounded-full shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/50 group-hover:scale-110">
                     <CoreValueIcon className="w-16 h-16 text-white" />
                 </div>
                 
                 {/* Connecting Lines and Values */}
                 {coreValues.map((value) => {
                     const isHovered = hoveredValue?.title === value.title;
+                    
+                    const getLineRotation = (position: string) => {
+                        if (position.includes('top-0')) return 'rotate-90';
+                        if (position.includes('bottom-0')) return '-rotate-90';
+                        if (position.includes('left-0')) return 'rotate-180';
+                        return 'rotate-0';
+                    };
+                    const getLineWidth = (position: string) => {
+                         if (position.includes('top-0') || position.includes('bottom-0')) return 'w-40';
+                         return 'w-52';
+                    }
+
                     return (
                         <React.Fragment key={value.title}>
                              {/* Line */}
                             <div className={cn(
-                                "absolute top-1/2 left-1/2 h-px bg-primary/30",
-                                value.lineRotation === 'rotate-90' ? 'w-40' : 'w-52',
+                                "absolute top-1/2 left-1/2 h-px bg-primary/30 transform",
+                                getLineWidth(value.position),
                                 {
-                                  'origin-left -translate-y-px': value.position.includes('right-0'),
-                                  'origin-right -translate-y-px': value.position.includes('left-0'),
-                                  'origin-top': value.position.includes('bottom-0'),
-                                  'origin-bottom': value.position.includes('top-0'),
-                                },
-                                value.position.includes('bottom-0') ? 'transform -rotate-90' : '',
-                                value.position.includes('top-0') ? 'transform rotate-90' : '',
-                                value.position.includes('left-0') ? 'transform rotate-180' : ''
-                            )}></div>
+                                  'origin-left': value.position.includes('right-0'),
+                                  'origin-right': value.position.includes('left-0'),
+                                  'origin-center': value.position.includes('top-0') || value.position.includes('bottom-0'),
+                                }
+                            )} style={{ transform: `rotate(${getLineRotation(value.position)})` }}></div>
                             
                             <div
                                 onMouseEnter={() => setHoveredValue(value)}
