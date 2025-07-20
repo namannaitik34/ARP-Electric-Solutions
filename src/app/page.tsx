@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield, Tool, Cog, Wrench } from "lucide-react";
+import { CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield, Tool, Cog, Wrench, Thermometer, RadioTower, Power, Users, Layers, Rss } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import InteractiveCard from "@/components/InteractiveCard";
@@ -24,7 +24,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, Sector } from 'recharts';
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -175,15 +175,15 @@ const heroSlides = [
 ]
 
 const technicalData = [
-    { parameter: "Transformer Type", description: "Three Phase, Oil Immersed Distribution Transformers (Indoor or Outdoor Installation)" },
-    { parameter: "Type of Breathing", description: "Hermetically Sealed / Radiator" },
-    { parameter: "Standard", description: "IEC60076" },
-    { parameter: "Rated Frequency", description: "50Hz or 60Hz" },
-    { parameter: "Connection and Vector Group", description: "Dyn11" },
-    { parameter: "Ambient Temperature", description: "Ambient=50, Oil=50, Winding=55" },
-    { parameter: "Winding", description: "CU or AL" },
-    { parameter: "Type of Cooling", description: "ONAN" },
-    { parameter: "HV Tapping", description: "Off-circuit tap changer, 5 positions ± 2×2.5%" },
+    { parameter: "Transformer Type", description: "Three Phase, Oil Immersed Distribution Transformers (Indoor or Outdoor Installation)", icon: Layers },
+    { parameter: "Type of Breathing", description: "Hermetically Sealed / Radiator", icon: Wind },
+    { parameter: "Standard", description: "IEC60076", icon: Shield },
+    { parameter: "Rated Frequency", description: "50Hz or 60Hz", icon: Rss },
+    { parameter: "Connection and Vector Group", description: "Dyn11", icon: Network },
+    { parameter: "Ambient Temperature", description: "Ambient=50, Oil=50, Winding=55", icon: Thermometer },
+    { parameter: "Winding", description: "CU or AL", icon: CircuitBoard },
+    { parameter: "Type of Cooling", description: "ONAN", icon: Power },
+    { parameter: "HV Tapping", description: "Off-circuit tap changer, 5 positions ± 2×2.5%", icon: RadioTower },
 ];
 
 const FadeInSection = ({ children, className }: { children: React.ReactNode, className?: string }) => {
@@ -235,6 +235,59 @@ export default function Home() {
       message: "",
     },
   });
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const onPieEnter = (_: any, index: number) => {
+    setActiveIndex(index);
+  };
+  
+  const renderActiveShape = (props: any) => {
+    const RADIAN = Math.PI / 180;
+    const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
+    const sin = Math.sin(-RADIAN * midAngle);
+    const cos = Math.cos(-RADIAN * midAngle);
+    const sx = cx + (outerRadius + 10) * cos;
+    const sy = cy + (outerRadius + 10) * sin;
+    const mx = cx + (outerRadius + 30) * cos;
+    const my = cy + (outerRadius + 30) * sin;
+    const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+    const ey = my;
+    const textAnchor = cos >= 0 ? 'start' : 'end';
+  
+    return (
+      <g>
+        <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+          {payload.name}
+        </text>
+        <Sector
+          cx={cx}
+          cy={cy}
+          innerRadius={innerRadius}
+          outerRadius={outerRadius}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          fill={fill}
+        />
+        <Sector
+          cx={cx}
+          cy={cy}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          innerRadius={outerRadius + 6}
+          outerRadius={outerRadius + 10}
+          fill={fill}
+        />
+        <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
+        <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
+        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`Value ${value}`}</text>
+        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
+          {`(Rate ${(percent * 100).toFixed(2)}%)`}
+        </text>
+      </g>
+    );
+  };
+
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
@@ -357,11 +410,14 @@ export default function Home() {
       {/* Product Showcase Intro Section */}
       <FadeInSection className="py-20 md:py-28 bg-teal-950 text-white">
         <div className="container text-center">
-            <p className="text-sm uppercase tracking-wider text-primary">We Are ARP Electric Solution</p>
-            <h2 className="text-4xl md:text-5xl font-bold font-headline mt-2">
+            <div className='flex justify-center items-center gap-4'>
+                <div className='w-16 h-px bg-primary'></div>
+                <p className="text-sm uppercase tracking-wider text-primary">We Are ARP Electric Solution</p>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold font-headline mt-4">
               Our Products For the Power Industry
             </h2>
-            <p className="text-lg leading-relaxed max-w-3xl mx-auto mt-4">
+            <p className="text-lg leading-relaxed max-w-3xl mx-auto mt-6">
               Explore our wide range of high-quality power transmission, distribution, transformer solutions, Raw Material, Transformer Accessories, CRGO, Copper Foil, CTC, PICC, Super Enameled, MV/LV APFC, Harmonic Filter, UPS and Data Center, Ring Main Unit (RMU), MV/LV Switchgear etc,
               designed to meet the needs of clients worldwide.
             </p>
@@ -387,15 +443,17 @@ export default function Home() {
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
+                          activeIndex={activeIndex}
+                          activeShape={renderActiveShape}
                           data={productCategories}
                           cx="50%"
                           cy="50%"
-                          labelLine={false}
-                          outerRadius={120}
                           innerRadius={80}
-                          fill="#8884d8"
+                          outerRadius={100}
+                          fill="hsl(var(--primary))"
                           dataKey="value"
-                          paddingAngle={5}
+                          onMouseEnter={onPieEnter}
+                          padAngle={5}
                         >
                           {productCategories.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -406,6 +464,7 @@ export default function Home() {
                             backgroundColor: 'hsl(var(--background))',
                             borderColor: 'hsl(var(--border))'
                           }}
+                          formatter={(value, name) => [value, productCategories.find(p => p.name === name)?.name]}
                         />
                       </PieChart>
                     </ResponsiveContainer>
@@ -841,27 +900,30 @@ export default function Home() {
         </div>
       </FadeInSection>
 
-       {/* Technical Data Section */}
+      {/* Technical Data Section */}
        <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
             <h2 className="text-3xl font-bold font-headline text-primary">Transformer Technical Data</h2>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-              High Efficiency Three Phase, Oil Immersed Distribution Transformers
+              Key specifications for our High Efficiency Three Phase, Oil Immersed Distribution Transformers.
             </p>
           </div>
-          <Card className="mt-12 max-w-4xl mx-auto">
-            <CardContent className="p-6">
-                <ul className="space-y-4">
-                    {technicalData.map((item, index) => (
-                        <li key={index} className="border-b pb-4 last:border-b-0 last:pb-0">
-                            <p className="font-semibold text-foreground">{item.parameter}</p>
-                            <p className="text-muted-foreground">{item.description}</p>
-                        </li>
-                    ))}
-                </ul>
-            </CardContent>
-          </Card>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {technicalData.map((item, index) => (
+              <Card key={index} className="flex flex-col text-center p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <CardHeader className="flex-grow-0 p-0 items-center">
+                    <div className="p-4 rounded-full bg-primary/10 mb-4">
+                        <item.icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <CardTitle className="text-lg">{item.parameter}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow p-0 mt-2">
+                  <p className="text-muted-foreground">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
           <div className="mt-8 max-w-4xl mx-auto text-center text-sm text-muted-foreground">
             <p><strong>Note:</strong> These all data are subject to change according to customer requirements.</p>
             <p className="mt-4">
