@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield, Tool } from "lucide-react";
+import { CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield, Tool, Cog, Wrench } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import InteractiveCard from "@/components/InteractiveCard";
@@ -173,6 +173,18 @@ const heroSlides = [
     alt: "Closeup of a complex circuit board"
   },
 ]
+
+const technicalData = [
+    { parameter: "Transformer Type", description: "Three Phase, Oil Immersed Distribution Transformers (Indoor or Outdoor Installation)" },
+    { parameter: "Type of Breathing", description: "Hermetically Sealed / Radiator" },
+    { parameter: "Standard", description: "IEC60076" },
+    { parameter: "Rated Frequency", description: "50Hz or 60Hz" },
+    { parameter: "Connection and Vector Group", description: "Dyn11" },
+    { parameter: "Ambient Temperature", description: "Ambient=50, Oil=50, Winding=55" },
+    { parameter: "Winding", description: "CU or AL" },
+    { parameter: "Type of Cooling", description: "ONAN" },
+    { parameter: "HV Tapping", description: "Off-circuit tap changer, 5 positions ± 2×2.5%" },
+];
 
 const FadeInSection = ({ children, className }: { children: React.ReactNode, className?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -837,6 +849,46 @@ export default function Home() {
               height={256}
               className="w-full max-w-sm h-auto object-cover rounded-lg"
             />
+          </div>
+        </div>
+      </FadeInSection>
+
+       {/* Technical Data Section */}
+       <FadeInSection className="py-16 md:py-24 bg-white">
+        <div className="container">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold font-headline text-primary">Transformer Technical Data</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+              High Efficiency Three Phase, Oil Immersed Distribution Transformers
+            </p>
+          </div>
+          <div className="mt-12 max-w-4xl mx-auto border rounded-lg shadow-sm">
+            <div className="bg-muted/50 px-6 py-4 border-b">
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="font-semibold text-foreground flex items-center gap-2">
+                        <Cog className="w-5 h-5 text-primary" />
+                        Parameter
+                    </div>
+                    <div className="font-semibold text-foreground flex items-center gap-2">
+                        <Wrench className="w-5 h-5 text-primary" />
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div className="divide-y">
+                {technicalData.map((item, index) => (
+                    <div key={index} className="grid grid-cols-2 gap-4 px-6 py-4 hover:bg-muted/30 transition-colors">
+                        <div className="text-muted-foreground">{item.parameter}</div>
+                        <div>{item.description}</div>
+                    </div>
+                ))}
+            </div>
+          </div>
+          <div className="mt-8 max-w-4xl mx-auto text-center text-sm text-muted-foreground">
+            <p><strong>Note:</strong> These all data are subject to change according to customer requirements.</p>
+            <p className="mt-4">
+                High Efficiency Transformers offer the best ratio between initial cost and operating cost for sensitive applications. Lowering the energy consumption results in reduced operating costs and less harmful emissions for the customer's operations.
+            </p>
           </div>
         </div>
       </FadeInSection>
