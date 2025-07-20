@@ -94,10 +94,10 @@ const featuredServices = [
 ];
 
 const productCategories = [
-  { name: "Power Distribution", value: 400, icon: Network },
-  { name: "Industrial Automation", value: 300, icon: Cpu },
-  { name: "Renewable Energy", value: 300, icon: Wind },
-  { name: "Safety & Protection", value: 200, icon: Shield },
+    { name: "Power Distribution", value: 400, description: "Reliable power transmission and distribution solutions." },
+    { name: "Industrial Automation", value: 300, description: "Advanced automation for industrial efficiency." },
+    { name: "Renewable Energy", value: 300, description: "Sustainable energy solutions for a greener future." },
+    { name: "Safety & Protection", value: 200, description: "Ensuring operational safety with protective systems." },
 ];
 
 const COLORS = ['hsl(var(--chart-1))', 'hsl(var(--chart-2))', 'hsl(var(--chart-3))', 'hsl(var(--chart-4))'];
@@ -367,66 +367,70 @@ export default function Home() {
       </FadeInSection>
 
       {/* Solutions by Category Section */}
-        <FadeInSection className="py-16 md:py-24 bg-white">
-          <div className="container">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold font-headline text-primary">
-                Solutions by Category
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-                We provide tailored solutions across various industrial sectors to meet your specific needs.
-              </p>
-            </div>
-            <div className="mt-12">
-              <Card>
-                <CardContent className="p-4 md:p-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div className="h-80 w-full">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <PieChart>
-                          <Pie
-                            data={productCategories}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            outerRadius={120}
-                            innerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                            paddingAngle={5}
-                          >
-                            {productCategories.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                            ))}
-                          </Pie>
-                          <Tooltip
-                            contentStyle={{
-                                backgroundColor: 'hsl(var(--background))',
-                                borderColor: 'hsl(var(--border))'
-                            }}
-                          />
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </div>
-                    <div className="flex flex-col justify-center space-y-4">
-                      <p className="text-lg font-semibold text-center md:text-left text-accent-foreground">Our Expertise Breakdown</p>
-                      <div className="grid grid-cols-2 gap-4">
-                        {productCategories.map((category, index) => (
-                          <div key={category.name} className="flex items-center gap-3">
-                            <div style={{ backgroundColor: COLORS[index % COLORS.length] }} className="w-4 h-4 rounded-full shrink-0"></div>
-                            <div>
-                                <p className="font-medium">{category.name}</p>
-                            </div>
+      <FadeInSection className="py-16 md:py-24 bg-white">
+        <div className="container">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold font-headline text-primary">
+              Solutions by Category
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+              We provide tailored solutions across various industrial sectors to meet your specific needs.
+            </p>
+          </div>
+          <div className="mt-12">
+            <Card>
+              <CardContent className="p-4 md:p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                  <div className="h-80 w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={productCategories}
+                          cx="50%"
+                          cy="50%"
+                          labelLine={false}
+                          outerRadius={120}
+                          innerRadius={80}
+                          fill="#8884d8"
+                          dataKey="value"
+                          paddingAngle={5}
+                        >
+                          {productCategories.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                          ))}
+                        </Pie>
+                        <Tooltip
+                          contentStyle={{
+                            backgroundColor: 'hsl(var(--background))',
+                            borderColor: 'hsl(var(--border))'
+                          }}
+                        />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="flex flex-col justify-center space-y-4">
+                    <p className="text-lg font-semibold text-center md:text-left text-accent-foreground">Our Expertise Breakdown</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                      {productCategories.map((category, index) => (
+                        <div key={category.name} className="flex items-start gap-3">
+                          <div
+                            style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                            className="w-3 h-3 rounded-full shrink-0 mt-1.5"
+                          ></div>
+                          <div>
+                            <p className="font-medium">{category.name}</p>
+                            <p className="text-sm text-muted-foreground">{category.description}</p>
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </FadeInSection>
+        </div>
+      </FadeInSection>
 
 
       {/* Product Showcase Section */}
