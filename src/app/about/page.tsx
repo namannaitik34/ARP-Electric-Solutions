@@ -59,24 +59,32 @@ const coreValues = [
     description:
       'We build relationships based on reliability and transparency, ensuring our clients and partners can always depend on us.',
     icon: Handshake,
+    position: 'top-0 left-1/2 -translate-x-1/2',
+    lineRotation: 'rotate-90',
   },
   {
     title: 'Innovation',
     description:
       'We continuously seek new and better ways to solve challenges, pushing the boundaries of technology to deliver cutting-edge solutions.',
     icon: Lightbulb,
+    position: 'right-0 top-1/2 -translate-y-1/2',
+    lineRotation: 'rotate-0',
   },
   {
     title: 'Integrity',
     description:
       'We operate with unwavering honesty and ethical standards, holding ourselves accountable in every action we take.',
     icon: ShieldCheck,
+    position: 'bottom-0 left-1/2 -translate-x-1/2',
+    lineRotation: 'rotate-90',
   },
   {
     title: 'Excellence',
     description:
       'We are committed to the highest standards of quality and performance, striving for exceptional results in everything we do.',
     icon: Star,
+    position: 'left-0 top-1/2 -translate-y-1/2',
+    lineRotation: 'rotate-0',
   },
 ];
 
@@ -301,58 +309,73 @@ export default function AboutPage() {
               inspire our teams as we grow across global markets.
             </p>
           </div>
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[400px]">
-            <div className="relative group flex items-center justify-center w-full h-96">
+          <div className="mt-16 grid grid-cols-1 items-center min-h-[500px]">
+            <div className="relative group flex items-center justify-center w-full h-[450px]">
                 {/* Central animated element */}
                 <div className="absolute w-72 h-72 border-[1.5rem] border-primary/10 rounded-full animate-pulse"></div>
                 <div className="absolute w-56 h-56 bg-primary/20 rounded-full animate-pulse delay-100"></div>
                 <div className="absolute flex items-center justify-center w-40 h-40 bg-primary rounded-full shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/50">
                     <CoreValueIcon className="w-16 h-16 text-white" />
                 </div>
-                {/* Connecting Lines */}
-                <div className="absolute top-1/2 left-1/2 w-px h-[140px] bg-primary/30 transform -translate-y-[170px] -rotate-45"></div>
-                <div className="absolute top-1/2 left-1/2 w-px h-[140px] bg-primary/30 transform -translate-y-[170px] rotate-45"></div>
-                <div className="absolute top-1/2 left-1/2 w-px h-[140px] bg-primary/30 transform translate-y-[30px] -rotate-45"></div>
-                <div className="absolute top-1/2 left-1/2 w-px h-[140px] bg-primary/30 transform translate-y-[30px] rotate-45"></div>
-            </div>
-            <div className="relative grid grid-cols-2 gap-8">
-              {coreValues.map((value) => {
-                const isHovered = hoveredValue?.title === value.title;
-                return (
-                  <div
-                    key={value.title}
-                    onMouseEnter={() => setHoveredValue(value)}
-                    onMouseLeave={() => setHoveredValue(null)}
-                    className="group relative cursor-pointer"
-                  >
-                    <div
-                      className={cn(
-                        'flex items-center gap-4 transition-all duration-300 ease-in-out',
-                        isHovered ? 'scale-110' : 'scale-100'
-                      )}
-                    >
-                      <div className={cn(
-                        "flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full transition-all duration-300",
-                        isHovered ? 'bg-primary text-white' : 'bg-primary/10 text-primary'
-                      )}>
-                        <value.icon className="w-8 h-8" />
-                      </div>
-                      <h4 className="text-xl font-semibold text-accent-foreground">{value.title}</h4>
-                    </div>
+                
+                {/* Connecting Lines and Values */}
+                {coreValues.map((value) => {
+                    const isHovered = hoveredValue?.title === value.title;
+                    return (
+                        <React.Fragment key={value.title}>
+                             {/* Line */}
+                            <div className={cn(
+                                "absolute top-1/2 left-1/2 h-px bg-primary/30",
+                                value.lineRotation === 'rotate-90' ? 'w-40' : 'w-52',
+                                {
+                                  'origin-left -translate-y-px': value.position.includes('right-0'),
+                                  'origin-right -translate-y-px': value.position.includes('left-0'),
+                                  'origin-top': value.position.includes('bottom-0'),
+                                  'origin-bottom': value.position.includes('top-0'),
+                                },
+                                value.position.includes('bottom-0') ? 'transform -rotate-90' : '',
+                                value.position.includes('top-0') ? 'transform rotate-90' : '',
+                                value.position.includes('left-0') ? 'transform rotate-180' : ''
+                            )}></div>
+                            
+                            <div
+                                onMouseEnter={() => setHoveredValue(value)}
+                                onMouseLeave={() => setHoveredValue(null)}
+                                className={cn("absolute group/item cursor-pointer", value.position)}
+                            >
+                                <div
+                                className={cn(
+                                    'flex items-center gap-4 transition-all duration-300 ease-in-out',
+                                    isHovered ? 'scale-110' : 'scale-100'
+                                )}
+                                >
+                                <div className={cn(
+                                    "flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full transition-all duration-300",
+                                    isHovered ? 'bg-primary text-white' : 'bg-primary/10 text-primary'
+                                )}>
+                                    <value.icon className="w-10 h-10" />
+                                </div>
+                                </div>
 
-                    <div className={cn(
-                      'absolute left-0 top-full mt-4 w-full transition-all duration-300 ease-in-out z-10',
-                      isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
-                    )}>
-                       <Card className="shadow-lg hover:shadow-xl transition-shadow">
-                          <CardContent className="p-4">
-                            <p className="text-muted-foreground">{value.description}</p>
-                          </CardContent>
-                       </Card>
-                    </div>
-                  </div>
-                );
-              })}
+                                <div className={cn(
+                                'absolute transition-all duration-300 ease-in-out z-10 w-64',
+                                isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none',
+                                value.position.includes('top-0') ? 'top-full mt-4 left-1/2 -translate-x-1/2' : '',
+                                value.position.includes('bottom-0') ? 'bottom-full mb-4 left-1/2 -translate-x-1/2' : '',
+                                value.position.includes('left-0') ? 'left-full ml-4 top-1/2 -translate-y-1/2' : '',
+                                value.position.includes('right-0') ? 'right-full mr-4 top-1/2 -translate-y-1/2' : ''
+                                )}>
+                                <Card className="shadow-lg hover:shadow-xl transition-shadow">
+                                    <CardContent className="p-4">
+                                        <h4 className="text-xl font-semibold text-accent-foreground mb-2">{value.title}</h4>
+                                        <p className="text-muted-foreground">{value.description}</p>
+                                    </CardContent>
+                                </Card>
+                                </div>
+                            </div>
+                        </React.Fragment>
+                    );
+                })}
             </div>
           </div>
         </div>
