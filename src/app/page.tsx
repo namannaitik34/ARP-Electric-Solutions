@@ -909,20 +909,31 @@ export default function Home() {
               Key specifications for our High Efficiency Three Phase, Oil Immersed Distribution Transformers.
             </p>
           </div>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {technicalData.map((item, index) => (
-              <Card key={index} className="flex flex-col text-center p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <CardHeader className="flex-grow-0 p-0 items-center">
-                    <div className="p-4 rounded-full bg-primary/10 mb-4">
-                        <item.icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">{item.parameter}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow p-0 mt-2">
-                  <p className="text-muted-foreground">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                <Image
+                    src="https://placehold.co/800x600.png"
+                    alt="Transformer technical illustration"
+                    data-ai-hint="transformer schematic"
+                    layout="fill"
+                    objectFit="cover"
+                />
+            </div>
+            <div>
+                <ul className="space-y-6">
+                    {technicalData.map((item, index) => (
+                        <li key={index} className="flex items-start gap-4">
+                            <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                                <item.icon className="w-6 h-6" />
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-lg text-accent-foreground">{item.parameter}</h4>
+                                <p className="text-muted-foreground">{item.description}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
           </div>
           <div className="mt-8 max-w-4xl mx-auto text-center text-sm text-muted-foreground">
             <p><strong>Note:</strong> These all data are subject to change according to customer requirements.</p>
