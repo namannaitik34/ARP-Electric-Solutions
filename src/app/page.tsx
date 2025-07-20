@@ -807,7 +807,7 @@ export default function Home() {
       <FadeInSection className="py-16 md:py-24 bg-gray-100 dark:bg-gray-900" id="cast-resin-transformers">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-sm uppercase tracking-wider text-primary">WE ARE ARP ELECTRIC SOLUTION</p>
+            <p className="text-sm uppercase tracking-wider text-primary">WE ARE ARP Electric Solution</p>
             <h2 className="text-3xl md:text-4xl font-bold font-headline mt-2 text-foreground">
               Cast Resin Transformers: Reliable, Efficient, and Safe Power Solutions
             </h2>
@@ -1055,31 +1055,32 @@ export default function Home() {
         </div>
       </FadeInSection>
 
-      {/* Subscription Section */}
-      <section className="relative py-20 bg-gray-800 text-white">
+{/* Subscription Section */}
+<section className="relative py-20">
           <Image
-              src="https://placehold.co/1920x480.png"
+              src="/images/calendar.png"
               data-ai-hint="electrical circuit board"
               alt="Subscription background"
               fill
               className="object-cover"
+
           />
-          <div className="absolute inset-0 bg-primary/80"></div>
-          <div className="container relative z-10 flex flex-col items-center justify-center text-center">
-              <h2 className="text-4xl font-bold font-headline">Subscribe for weekly updates</h2>
-              <p className="mt-4 max-w-2xl text-lg text-primary-foreground/80">
+          <div className="absolute inset-0 "></div>
+          <div className="container relative z-0 flex flex-col items-center justify-center text-center">
+              <h2 className="text-4xl font-bold font-headline text-primary">Subscribe for weekly updates</h2>
+              <p className="mt-4 max-w-2xl text-lg text-primary">
                   Stay informed with the latest industry news, product updates, and exclusive offers from ARP Electric Solution.
               </p>
-              <form className="mt-8 flex w-full max-w-lg flex-col sm:flex-row gap-4">
+              <form className="mt-8 flex w-full max-w-lg flex-col sm:flex-row gap-0">
                   <Input
                       type="email"
                       id="subscribe-email"
-                      className="flex-grow bg-white/20 border-white/30 text-white placeholder:text-white/70"
+                      className="flex-grow bg-white/80 border-primary text-primary placeholder:text-primary rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
                       placeholder="Enter your email address"
                   />
                   <Button
                       type="submit"
-                      className="bg-white text-primary font-bold hover:bg-gray-200"
+                      className="bg-primary text-white font-bold hover:bg-primary/90 rounded-l-none"
                   >
                       Subscribe
                   </Button>
@@ -1088,8 +1089,7 @@ export default function Home() {
                   We respect your privacy. No spam.
               </p>
           </div>
-      </section>
-    </div>
+      </section>    </div>
   );
 }
 
