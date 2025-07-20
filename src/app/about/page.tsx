@@ -20,7 +20,6 @@ import {
   Wrench,
   ChevronRight,
   ArrowLeft,
-  Lightbulb as CoreValueIcon,
   Heart,
   Rocket,
   Users
@@ -61,36 +60,43 @@ const coreValues = [
       title: 'Trust',
       description: 'We build relationships based on reliability and transparency.',
       icon: Handshake,
+      color: 'bg-blue-600',
     },
     {
       title: 'Innovation',
       description: 'We continuously seek new and better ways to solve challenges.',
       icon: Lightbulb,
+      color: 'bg-purple-600',
     },
     {
       title: 'Integrity',
       description: 'We operate with unwavering honesty and ethical standards.',
       icon: ShieldCheck,
+      color: 'bg-red-600',
     },
     {
       title: 'Excellence',
       description: 'We are committed to the highest standards of quality.',
       icon: Star,
+      color: 'bg-green-600',
     },
     {
       title: 'Entrepreneurship',
       description: 'We encourage initiative and embrace creative solutions.',
       icon: Rocket,
+      color: 'bg-orange-500',
     },
     {
       title: 'Care',
       description: 'We show compassion and concern for our colleagues and clients.',
       icon: Heart,
+      color: 'bg-yellow-500',
     },
     {
       title: 'Respect',
       description: 'We value diversity and treat everyone with dignity.',
       icon: Users,
+      color: 'bg-teal-500',
     },
 ];
 
@@ -164,7 +170,7 @@ const workspaceImages = [
 ];
 
 export default function AboutPage() {
-  const [hoveredValue, setHoveredValue] = useState<(typeof coreValues)[0] | null>(null);
+  const [hoveredValue, setHoveredValue] = useState<string | null>(null);
 
   return (
     <div className="bg-white text-foreground animate-fadeIn">
@@ -315,74 +321,56 @@ export default function AboutPage() {
               inspire our teams as we grow across global markets.
             </p>
           </div>
-          <div className="mt-16 grid grid-cols-1 items-center min-h-[500px]">
-            <div className="relative group flex items-center justify-center w-full h-[450px]">
-                {/* Central animated element */}
-                <div className="absolute w-72 h-72 border-[1.5rem] border-primary/10 rounded-full animate-pulse"></div>
-                <div className="absolute w-56 h-56 bg-primary/20 rounded-full animate-pulse delay-100"></div>
-                <div className="absolute flex items-center justify-center w-40 h-40 bg-primary rounded-full shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/50 group-hover:scale-110">
-                    <CoreValueIcon className="w-16 h-16 text-white" />
-                </div>
-                
-                {/* Connecting Lines and Values */}
-                {coreValues.map((value, index) => {
-                    const angle = (index / coreValues.length) * 360;
-                    const radius = 220; // Adjust this for distance from center
-                    const x = radius * Math.cos((angle - 90) * (Math.PI / 180));
-                    const y = radius * Math.sin((angle - 90) * (Math.PI / 180));
-                    
-                    const isHovered = hoveredValue?.title === value.title;
+           <div className="mt-16 flex justify-center items-center min-h-[600px]">
+                <div className="relative w-[500px] h-[500px]">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-64 h-64 rounded-full bg-gray-100 flex items-center justify-center text-center p-4">
+                            <div>
+                                <p className="text-primary font-bold text-2xl">CORE</p>
+                                <p className="text-muted-foreground font-semibold text-xl">VALUES</p>
+                            </div>
+                        </div>
+                    </div>
+                    {coreValues.map((value, index) => {
+                        const angle = (index / coreValues.length) * 360 - 90;
+                        const radius = 220;
+                        const x = radius * Math.cos(angle * (Math.PI / 180));
+                        const y = radius * Math.sin(angle * (Math.PI / 180));
+                        const isHovered = hoveredValue === value.title;
 
-                    return (
-                        <React.Fragment key={value.title}>
-                             {/* Line */}
-                            <div className="absolute top-1/2 left-1/2 h-px bg-primary/30 origin-left" 
+                        return (
+                             <div
+                                key={value.title}
+                                className="absolute top-1/2 left-1/2 w-48 h-24"
                                 style={{
-                                    width: `${radius}px`,
-                                    transform: `rotate(${angle}deg)`
+                                    transform: `translate(-50%, -50%) rotate(${angle + 90}deg) translate(${radius}px) rotate(-${angle + 90}deg)`,
                                 }}
-                            ></div>
-                            
-                            <div
-                                onMouseEnter={() => setHoveredValue(value)}
+                                onMouseEnter={() => setHoveredValue(value.title)}
                                 onMouseLeave={() => setHoveredValue(null)}
-                                className={cn("absolute group/item cursor-pointer")}
-                                style={{
-                                    transform: `translate(${x}px, ${y}px)`
-                                }}
                             >
                                 <div
-                                className={cn(
-                                    'flex items-center gap-4 transition-all duration-300 ease-in-out',
-                                    isHovered ? 'scale-110' : 'scale-100'
-                                )}
+                                    className={cn(
+                                        "w-full h-full p-4 flex flex-col items-center justify-center rounded-2xl text-white shadow-lg transition-all duration-300 transform",
+                                        value.color,
+                                        isHovered ? 'scale-110 z-10' : 'scale-100'
+                                    )}
                                 >
-                                <div className={cn(
-                                    "flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full transition-all duration-300",
-                                    isHovered ? 'bg-primary text-white' : 'bg-primary/10 text-primary'
-                                )}>
-                                    <value.icon className="w-10 h-10" />
-                                </div>
-                                </div>
-
-                                <div className={cn(
-                                'absolute transition-all duration-300 ease-in-out z-10 w-64',
-                                isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none',
-                                'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' // Center the card
-                                )}>
-                                <Card className="shadow-lg hover:shadow-xl transition-shadow">
-                                    <CardContent className="p-4 text-center">
-                                        <h4 className="text-xl font-semibold text-accent-foreground mb-2">{value.title}</h4>
-                                        <p className="text-muted-foreground">{value.description}</p>
-                                    </CardContent>
-                                </Card>
+                                    <value.icon className="w-8 h-8 mb-1" />
+                                    <h4 className="font-semibold text-center text-sm uppercase tracking-wider">{value.title}</h4>
+                                
+                                     <div className={cn(
+                                        'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 p-4 bg-white rounded-lg shadow-2xl z-20 transition-all duration-300',
+                                        isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                                    )}>
+                                        <h4 className="font-bold text-lg text-accent-foreground mb-2">{value.title}</h4>
+                                        <p className="text-sm text-muted-foreground">{value.description}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </React.Fragment>
-                    );
-                })}
+                        )
+                    })}
+                </div>
             </div>
-          </div>
         </div>
 
 
