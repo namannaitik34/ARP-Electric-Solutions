@@ -260,7 +260,7 @@ export default function AboutPage() {
 
         {/* Mission Section */}
         <div className="mt-24">
-          <Card className="overflow-hidden shadow-lg">
+          <Card className="overflow-hidden shadow-lg group">
             <div className="grid md:grid-cols-2">
               <div className="relative min-h-[400px] overflow-hidden">
                 <Image
@@ -268,7 +268,7 @@ export default function AboutPage() {
                   alt="Our Mission"
                   data-ai-hint="teamwork success"
                   fill
-                  className="object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+                  className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                 />
               </div>
               <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -286,7 +286,7 @@ export default function AboutPage() {
 
         {/* Vision Section */}
         <div className="mt-16">
-          <Card className="overflow-hidden shadow-lg">
+          <Card className="overflow-hidden shadow-lg group">
             <div className="grid md:grid-cols-2">
               <div className="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
                 <h3 className="text-3xl font-bold text-primary">Our Vision</h3>
@@ -302,7 +302,7 @@ export default function AboutPage() {
                   alt="Our Vision"
                   data-ai-hint="global network"
                   fill
-                  className="object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+                  className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                 />
               </div>
             </div>
