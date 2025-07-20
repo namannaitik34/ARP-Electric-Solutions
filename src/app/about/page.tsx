@@ -1,6 +1,6 @@
 
 'use client';
-import { useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -30,12 +30,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Link from 'next/link';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { cn } from '@/lib/utils';
 
 const teamMembers = [
   {
@@ -64,39 +59,26 @@ const coreValues = [
     description:
       'We build relationships based on reliability and transparency, ensuring our clients and partners can always depend on us.',
     icon: Handshake,
-    position: 'top-0 left-1/2 -translate-x-1/2 -translate-y-full',
-    linePosition: 'top-1/2 left-1/2 -translate-x-1/2',
-    lineTransform: 'rotate-90',
   },
   {
     title: 'Innovation',
     description:
       'We continuously seek new and better ways to solve challenges, pushing the boundaries of technology to deliver cutting-edge solutions.',
     icon: Lightbulb,
-    position: 'right-0 top-1/4 -translate-y-1/2 translate-x-full',
-    linePosition: 'top-1/2 right-[calc(50%-1.5rem)]',
-    lineTransform: 'rotate-45',
   },
   {
     title: 'Integrity',
     description:
       'We operate with unwavering honesty and ethical standards, holding ourselves accountable in every action we take.',
     icon: ShieldCheck,
-    position: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-full',
-    linePosition: 'bottom-1/2 left-1/2 -translate-x-1/2',
-    lineTransform: 'rotate-90',
   },
   {
     title: 'Excellence',
     description:
       'We are committed to the highest standards of quality and performance, striving for exceptional results in everything we do.',
     icon: Star,
-    position: 'left-0 top-1/4 -translate-y-1/2 -translate-x-full',
-    linePosition: 'top-1/2 left-[calc(50%-1.5rem)]',
-    lineTransform: '-rotate-45',
   },
 ];
-
 
 const expertiseAreas = [
   {
@@ -168,6 +150,8 @@ const workspaceImages = [
 ];
 
 export default function AboutPage() {
+  const [hoveredValue, setHoveredValue] = useState<(typeof coreValues)[0] | null>(coreValues[0]);
+
   return (
     <div className="bg-white text-foreground animate-fadeIn">
       <div className="container py-16 md:py-24">
@@ -317,45 +301,56 @@ export default function AboutPage() {
               inspire our teams as we grow across global markets.
             </p>
           </div>
-          <div className="mt-24 flex justify-center items-center min-h-[400px]">
-            <TooltipProvider>
-              <div className="relative w-48 h-48">
-                {/* Center Lightbulb */}
-                <div className="absolute inset-0 flex items-center justify-center bg-yellow-400 rounded-full border-4 border-yellow-300 shadow-lg">
-                  <div className="text-center text-white">
-                    <CoreValueIcon className="w-12 h-12 mx-auto" />
-                    <p className="font-bold text-lg">CORE VALUES</p>
-                  </div>
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[400px]">
+            <div className="relative flex items-center justify-center w-full h-96">
+                {/* Central animated element */}
+                <div className="absolute w-72 h-72 border-[1.5rem] border-primary/10 rounded-full animate-pulse"></div>
+                <div className="absolute w-56 h-56 bg-primary/20 rounded-full animate-pulse delay-100"></div>
+                <div className="absolute flex items-center justify-center w-40 h-40 bg-primary rounded-full shadow-lg">
+                    <CoreValueIcon className="w-16 h-16 text-white" />
                 </div>
-
-                {/* Satellite Values */}
-                {coreValues.map((value, index) => (
-                  <Tooltip key={value.title}>
-                    <TooltipTrigger asChild>
-                      <div className={`absolute ${value.position} w-24 h-24`}>
-                        <div className="relative w-full h-full flex items-center justify-center">
-                          <div className={`absolute w-full h-full rounded-full bg-primary/10 border-2 border-primary/20 ${index % 2 === 0 ? 'bg-blue-500/10 border-blue-500/20' : 'bg-red-500/10 border-red-500/20'}`}></div>
-                          <div
-                            className={`w-[90%] h-[90%] rounded-full flex items-center justify-center text-center p-2 cursor-pointer transition-transform duration-300 hover:scale-110 ${
-                              index % 2 === 0 ? 'bg-blue-500' : 'bg-red-500'
-                            }`}
-                          >
-                            <span className="font-semibold text-white text-sm">
-                              {value.title}
-                            </span>
-                          </div>
-                        </div>
+            </div>
+            <div className="relative grid grid-cols-2 gap-8">
+              {coreValues.map((value) => {
+                const isHovered = hoveredValue?.title === value.title;
+                return (
+                  <div
+                    key={value.title}
+                    onMouseEnter={() => setHoveredValue(value)}
+                    className="group relative cursor-pointer"
+                  >
+                    <div
+                      className={cn(
+                        'flex items-center gap-4 transition-all duration-300 ease-in-out',
+                        isHovered ? 'scale-110' : 'scale-100'
+                      )}
+                    >
+                      <div className={cn(
+                        "flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full transition-all duration-300",
+                        isHovered ? 'bg-primary text-white' : 'bg-primary/10 text-primary'
+                      )}>
+                        <value.icon className="w-8 h-8" />
                       </div>
-                    </TooltipTrigger>
-                    <TooltipContent className="max-w-xs text-center" side="top" align="center">
-                      <p>{value.description}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                ))}
-              </div>
-            </TooltipProvider>
+                      <h4 className="text-xl font-semibold text-accent-foreground">{value.title}</h4>
+                    </div>
+
+                    <div className={cn(
+                      'absolute left-0 top-full mt-4 w-full transition-all duration-300 ease-in-out',
+                      isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+                    )}>
+                       <Card className="shadow-lg hover:shadow-xl transition-shadow">
+                          <CardContent className="p-4">
+                            <p className="text-muted-foreground">{value.description}</p>
+                          </CardContent>
+                       </Card>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
+
 
         {/* Our Expertise Section */}
         <div className="mt-24">
