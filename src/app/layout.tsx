@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
-  title: 'ARP Electric Solutions',
+  title: 'ARP Electric Solution',
   description: 'Your trusted partner for high-quality electrical components and solutions.',
 };
 

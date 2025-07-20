@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "ARP Electric Solutions",
+  name: "ARP Electric Solution",
   description:
     "Your trusted partner for high-quality electrical components and solutions.",
   links: {
