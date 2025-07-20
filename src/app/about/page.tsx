@@ -21,6 +21,9 @@ import {
   ChevronRight,
   ArrowLeft,
   Lightbulb as CoreValueIcon,
+  Heart,
+  Rocket,
+  Users
 } from 'lucide-react';
 import {
   Carousel,
@@ -54,34 +57,41 @@ const teamMembers = [
 ];
 
 const coreValues = [
-  {
-    title: 'Trust',
-    description:
-      'We build relationships based on reliability and transparency, ensuring our clients and partners can always depend on us.',
-    icon: Handshake,
-    position: 'top-0 left-1/2 -translate-x-1/2',
-  },
-  {
-    title: 'Innovation',
-    description:
-      'We continuously seek new and better ways to solve challenges, pushing the boundaries of technology to deliver cutting-edge solutions.',
-    icon: Lightbulb,
-    position: 'right-0 top-1/2 -translate-y-1/2',
-  },
-  {
-    title: 'Integrity',
-    description:
-      'We operate with unwavering honesty and ethical standards, holding ourselves accountable in every action we take.',
-    icon: ShieldCheck,
-    position: 'bottom-0 left-1/2 -translate-x-1/2',
-  },
-  {
-    title: 'Excellence',
-    description:
-      'We are committed to the highest standards of quality and performance, striving for exceptional results in everything we do.',
-    icon: Star,
-    position: 'left-0 top-1/2 -translate-y-1/2',
-  },
+    {
+      title: 'Trust',
+      description: 'We build relationships based on reliability and transparency.',
+      icon: Handshake,
+    },
+    {
+      title: 'Innovation',
+      description: 'We continuously seek new and better ways to solve challenges.',
+      icon: Lightbulb,
+    },
+    {
+      title: 'Integrity',
+      description: 'We operate with unwavering honesty and ethical standards.',
+      icon: ShieldCheck,
+    },
+    {
+      title: 'Excellence',
+      description: 'We are committed to the highest standards of quality.',
+      icon: Star,
+    },
+    {
+      title: 'Entrepreneurship',
+      description: 'We encourage initiative and embrace creative solutions.',
+      icon: Rocket,
+    },
+    {
+      title: 'Care',
+      description: 'We show compassion and concern for our colleagues and clients.',
+      icon: Heart,
+    },
+    {
+      title: 'Respect',
+      description: 'We value diversity and treat everyone with dignity.',
+      icon: Users,
+    },
 ];
 
 const expertiseAreas = [
@@ -315,37 +325,31 @@ export default function AboutPage() {
                 </div>
                 
                 {/* Connecting Lines and Values */}
-                {coreValues.map((value) => {
-                    const isHovered = hoveredValue?.title === value.title;
+                {coreValues.map((value, index) => {
+                    const angle = (index / coreValues.length) * 360;
+                    const radius = 220; // Adjust this for distance from center
+                    const x = radius * Math.cos((angle - 90) * (Math.PI / 180));
+                    const y = radius * Math.sin((angle - 90) * (Math.PI / 180));
                     
-                    const getLineRotation = (position: string) => {
-                        if (position.includes('top-0')) return 'rotate-90';
-                        if (position.includes('bottom-0')) return '-rotate-90';
-                        if (position.includes('left-0')) return 'rotate-180';
-                        return 'rotate-0';
-                    };
-                    const getLineWidth = (position: string) => {
-                         if (position.includes('top-0') || position.includes('bottom-0')) return 'w-40';
-                         return 'w-52';
-                    }
+                    const isHovered = hoveredValue?.title === value.title;
 
                     return (
                         <React.Fragment key={value.title}>
                              {/* Line */}
-                            <div className={cn(
-                                "absolute top-1/2 left-1/2 h-px bg-primary/30 transform",
-                                getLineWidth(value.position),
-                                {
-                                  'origin-left': value.position.includes('right-0'),
-                                  'origin-right': value.position.includes('left-0'),
-                                  'origin-center': value.position.includes('top-0') || value.position.includes('bottom-0'),
-                                }
-                            )} style={{ transform: `rotate(${getLineRotation(value.position)})` }}></div>
+                            <div className="absolute top-1/2 left-1/2 h-px bg-primary/30 origin-left" 
+                                style={{
+                                    width: `${radius}px`,
+                                    transform: `rotate(${angle}deg)`
+                                }}
+                            ></div>
                             
                             <div
                                 onMouseEnter={() => setHoveredValue(value)}
                                 onMouseLeave={() => setHoveredValue(null)}
-                                className={cn("absolute group/item cursor-pointer", value.position)}
+                                className={cn("absolute group/item cursor-pointer")}
+                                style={{
+                                    transform: `translate(${x}px, ${y}px)`
+                                }}
                             >
                                 <div
                                 className={cn(
@@ -364,13 +368,10 @@ export default function AboutPage() {
                                 <div className={cn(
                                 'absolute transition-all duration-300 ease-in-out z-10 w-64',
                                 isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none',
-                                value.position.includes('top-0') ? 'top-full mt-4 left-1/2 -translate-x-1/2' : '',
-                                value.position.includes('bottom-0') ? 'bottom-full mb-4 left-1/2 -translate-x-1/2' : '',
-                                value.position.includes('left-0') ? 'left-full ml-4 top-1/2 -translate-y-1/2' : '',
-                                value.position.includes('right-0') ? 'right-full mr-4 top-1/2 -translate-y-1/2' : ''
+                                'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' // Center the card
                                 )}>
                                 <Card className="shadow-lg hover:shadow-xl transition-shadow">
-                                    <CardContent className="p-4">
+                                    <CardContent className="p-4 text-center">
                                         <h4 className="text-xl font-semibold text-accent-foreground mb-2">{value.title}</h4>
                                         <p className="text-muted-foreground">{value.description}</p>
                                     </CardContent>
