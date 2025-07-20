@@ -150,7 +150,7 @@ const workspaceImages = [
 ];
 
 export default function AboutPage() {
-  const [hoveredValue, setHoveredValue] = useState<(typeof coreValues)[0] | null>(coreValues[0]);
+  const [hoveredValue, setHoveredValue] = useState<(typeof coreValues)[0] | null>(null);
 
   return (
     <div className="bg-white text-foreground animate-fadeIn">
@@ -302,13 +302,18 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[400px]">
-            <div className="relative flex items-center justify-center w-full h-96">
+            <div className="relative group flex items-center justify-center w-full h-96">
                 {/* Central animated element */}
                 <div className="absolute w-72 h-72 border-[1.5rem] border-primary/10 rounded-full animate-pulse"></div>
                 <div className="absolute w-56 h-56 bg-primary/20 rounded-full animate-pulse delay-100"></div>
-                <div className="absolute flex items-center justify-center w-40 h-40 bg-primary rounded-full shadow-lg">
+                <div className="absolute flex items-center justify-center w-40 h-40 bg-primary rounded-full shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/50">
                     <CoreValueIcon className="w-16 h-16 text-white" />
                 </div>
+                {/* Connecting Lines */}
+                <div className="absolute top-1/2 left-1/2 w-px h-[140px] bg-primary/30 transform -translate-y-[170px] -rotate-45"></div>
+                <div className="absolute top-1/2 left-1/2 w-px h-[140px] bg-primary/30 transform -translate-y-[170px] rotate-45"></div>
+                <div className="absolute top-1/2 left-1/2 w-px h-[140px] bg-primary/30 transform translate-y-[30px] -rotate-45"></div>
+                <div className="absolute top-1/2 left-1/2 w-px h-[140px] bg-primary/30 transform translate-y-[30px] rotate-45"></div>
             </div>
             <div className="relative grid grid-cols-2 gap-8">
               {coreValues.map((value) => {
@@ -317,6 +322,7 @@ export default function AboutPage() {
                   <div
                     key={value.title}
                     onMouseEnter={() => setHoveredValue(value)}
+                    onMouseLeave={() => setHoveredValue(null)}
                     className="group relative cursor-pointer"
                   >
                     <div
@@ -335,7 +341,7 @@ export default function AboutPage() {
                     </div>
 
                     <div className={cn(
-                      'absolute left-0 top-full mt-4 w-full transition-all duration-300 ease-in-out',
+                      'absolute left-0 top-full mt-4 w-full transition-all duration-300 ease-in-out z-10',
                       isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
                     )}>
                        <Card className="shadow-lg hover:shadow-xl transition-shadow">
