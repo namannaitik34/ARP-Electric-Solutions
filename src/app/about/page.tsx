@@ -60,43 +60,43 @@ const coreValues = [
       title: 'Trust',
       description: 'We build relationships based on reliability and transparency.',
       icon: Handshake,
-      color: 'bg-blue-600',
+      color: 'bg-primary',
     },
     {
       title: 'Innovation',
       description: 'We continuously seek new and better ways to solve challenges.',
       icon: Lightbulb,
-      color: 'bg-purple-600',
+      color: 'bg-secondary',
     },
     {
       title: 'Integrity',
       description: 'We operate with unwavering honesty and ethical standards.',
       icon: ShieldCheck,
-      color: 'bg-red-600',
+      color: 'bg-teal-600',
     },
     {
       title: 'Excellence',
       description: 'We are committed to the highest standards of quality.',
       icon: Star,
-      color: 'bg-green-600',
+      color: 'bg-sky-600',
     },
     {
       title: 'Entrepreneurship',
       description: 'We encourage initiative and embrace creative solutions.',
       icon: Rocket,
-      color: 'bg-orange-500',
+      color: 'bg-purple-600',
     },
     {
       title: 'Care',
       description: 'We show compassion and concern for our colleagues and clients.',
       icon: Heart,
-      color: 'bg-yellow-500',
+      color: 'bg-rose-600',
     },
     {
       title: 'Respect',
       description: 'We value diversity and treat everyone with dignity.',
       icon: Users,
-      color: 'bg-teal-500',
+      color: 'bg-amber-600',
     },
 ];
 
@@ -321,56 +321,20 @@ export default function AboutPage() {
               inspire our teams as we grow across global markets.
             </p>
           </div>
-           <div className="mt-16 flex justify-center items-center min-h-[600px]">
-                <div className="relative w-[500px] h-[500px]">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-64 h-64 rounded-full bg-gray-100 flex items-center justify-center text-center p-4">
-                            <div>
-                                <p className="text-primary font-bold text-2xl">CORE</p>
-                                <p className="text-muted-foreground font-semibold text-xl">VALUES</p>
-                            </div>
-                        </div>
-                    </div>
-                    {coreValues.map((value, index) => {
-                        const angle = (index / coreValues.length) * 360 - 90;
-                        const radius = 220;
-                        const x = radius * Math.cos(angle * (Math.PI / 180));
-                        const y = radius * Math.sin(angle * (Math.PI / 180));
-                        const isHovered = hoveredValue === value.title;
-
-                        return (
-                             <div
-                                key={value.title}
-                                className="absolute top-1/2 left-1/2 w-48 h-24"
-                                style={{
-                                    transform: `translate(-50%, -50%) rotate(${angle + 90}deg) translate(${radius}px) rotate(-${angle + 90}deg)`,
-                                }}
-                                onMouseEnter={() => setHoveredValue(value.title)}
-                                onMouseLeave={() => setHoveredValue(null)}
-                            >
-                                <div
-                                    className={cn(
-                                        "w-full h-full p-4 flex flex-col items-center justify-center rounded-2xl text-white shadow-lg transition-all duration-300 transform",
-                                        value.color,
-                                        isHovered ? 'scale-110 z-10' : 'scale-100'
-                                    )}
-                                >
-                                    <value.icon className="w-8 h-8 mb-1" />
-                                    <h4 className="font-semibold text-center text-sm uppercase tracking-wider">{value.title}</h4>
-                                
-                                     <div className={cn(
-                                        'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 p-4 bg-white rounded-lg shadow-2xl z-20 transition-all duration-300',
-                                        isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-                                    )}>
-                                        <h4 className="font-bold text-lg text-accent-foreground mb-2">{value.title}</h4>
-                                        <p className="text-sm text-muted-foreground">{value.description}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {coreValues.map((value) => (
+              <div
+                key={value.title}
+                className="group relative flex flex-col items-center text-center p-6 rounded-lg border transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:border-primary"
+              >
+                <div className={cn("flex items-center justify-center h-16 w-16 rounded-full text-white mb-4 transition-all duration-300", value.color)}>
+                  <value.icon className="h-8 w-8" />
                 </div>
-            </div>
+                <h3 className="text-xl font-bold text-accent-foreground mb-2">{value.title}</h3>
+                <p className="text-muted-foreground">{value.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
 
