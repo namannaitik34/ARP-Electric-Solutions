@@ -222,19 +222,19 @@ const featuredServices = [
   },
   {
     title: "UPS Systems",
-    description: "Ensure uninterrupted power for your critical operations with our UPS solutions.",
+    description: "Uninterrupted power for your critical operations.",
     icon: Bolt,
     href: "/services#ups-systems",
   },
   {
     title: "Specialty Cores",
-    description: "Advanced amorphous and nanocrystalline cores for high-tech applications.",
+    description: "Advanced amorphous and nanocrystalline cores.",
     icon: Wind,
     href: "/services#amorphous-core",
   },
   {
     title: "Conductive Materials",
-    description: "High-grade copper foils and busbars for superior electrical conductivity.",
+    description: "High-grade copper foils and busbars for conductivity.",
     icon: Zap,
     href: "/services#copper-foil"
   },
@@ -510,30 +510,36 @@ export default function Home() {
       </FadeInSection>
 
       {/* Featured Services Section */}
-      <FadeInSection className="bg-primary/5 py-16 md:py-24">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="font-headline text-3xl font-bold text-primary">
-              Our Core Services
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              We offer a wide range of products designed to meet the diverse needs of modern industries, from robust power transformers to high-grade conductive materials.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featuredServices.map((service) => (
-              <Link key={service.title} href={service.href} className="group block">
-                <Card className="h-full text-center p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-4 rounded-full bg-primary/10 transition-colors duration-300 group-hover:bg-primary">
-                      <service.icon className="w-8 h-8 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
+      <FadeInSection className="bg-primary/5 py-16 md:py-24 overflow-hidden">
+        <div className="container relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+            {/* Left Column: Text Content */}
+            <div className="md:pr-8 lg:pr-16 z-10">
+              <h2 className="font-headline text-3xl font-bold text-primary">
+                Our Core Services
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                We offer a wide range of products designed to meet the diverse needs of modern industries, from robust power transformers to high-grade conductive materials.
+              </p>
+            </div>
+            {/* Right Column: Service Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {featuredServices.map((service) => (
+                <Link key={service.title} href={service.href} className="group block">
+                  <Card className="h-full bg-background p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-md bg-primary/10 text-primary">
+                        <service.icon className="w-6 h-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-accent-foreground">{service.title}</h3>
+                        <p className="mt-1 text-sm text-muted-foreground">{service.description}</p>
+                      </div>
                     </div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-accent-foreground">{service.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
-                </Card>
-              </Link>
-            ))}
+                  </Card>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </FadeInSection>
@@ -969,100 +975,106 @@ export default function Home() {
       </section>
 
       {/* Request a Quote Section */}
-      <FadeInSection className="py-16 md:py-24 bg-teal-100" id="request-quote">
-        <div className="container" id="request-quote-form-section">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative overflow-hidden rounded-lg shadow-xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-teal-400 to-green-500 dark:from-blue-900/50 dark:to-purple-900/50 opacity-60"></div>
-            <div className="relative z-10 p-8 md:p-12">
-              <h2 className="text-3xl font-bold font-headline text-primary-foreground dark:text-primary-foreground">Request a Free Quote</h2>
-              <p className="mt-4 text-muted-foreground dark:text-muted-foreground/90">
-                Get in touch with us to discuss your project requirements and receive a personalized quote.
-              </p>
+      <section className="relative py-16 md:py-24" id="request-quote">
+        <Image
+            src="https://placehold.co/1920x800.png"
+            data-ai-hint="factory worker"
+            alt="Request a quote background"
+            fill
+            className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 via-teal-900/70 to-transparent"></div>
+        <div className="container relative z-10" id="request-quote-form-section">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="md:max-w-md">
+                     <h2 className="text-3xl font-bold font-headline text-primary-foreground">Request a Free Quote</h2>
+                    <p className="mt-4 text-primary-foreground/80">
+                        Get in touch with us to discuss your project requirements and receive a personalized quote.
+                    </p>
+                </div>
+                <div className="bg-card p-8 rounded-lg shadow-lg">
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 gap-6">
+                            <FormField
+                                control={form.control}
+                                name="name"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel htmlFor="fullName">Full Name</FormLabel>
+                                        <FormControl>
+                                            <Input id="fullName" placeholder="Your Full Name" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel htmlFor="email">Email Address</FormLabel>
+                                        <FormControl>
+                                            <Input id="email" type="email" placeholder="Your Email" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="phone"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel htmlFor="phone">Phone Number (Optional)</FormLabel>
+                                        <FormControl>
+                                            <Input id="phone" type="tel" placeholder="Your Phone Number" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="message"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel htmlFor="message">Message</FormLabel>
+                                        <FormControl>
+                                            <Textarea id="message" rows={4} placeholder="Tell us about your project and requirements..." {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg transition-colors duration-300 ease-in-out transform hover:scale-105">Submit Request</Button>
+                        </form>
+                    </Form>
+                </div>
             </div>
-            <div className="relative z-10 bg-card p-8 md:p-12 rounded-lg shadow-lg w-full max-w-md md:max-w-none mx-auto md:mx-0">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor="fullName">Full Name</FormLabel>
-                        <FormControl>
-                          <Input id="fullName" placeholder="Your Full Name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor="email">Email Address</FormLabel>
-                        <FormControl>
-                          <Input id="email" type="email" placeholder="Your Email" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor="phone">Phone Number (Optional)</FormLabel>
-                        <FormControl>
-                          <Input id="phone" type="tel" placeholder="Your Phone Number" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor="message">Message</FormLabel>
-                        <FormControl>
-                          <Textarea id="message" rows={4} placeholder="Tell us about your project and requirements..." {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg transition-colors duration-300 ease-in-out transform hover:scale-105">Submit Request</Button>
-                </form>
-              </Form>
-            </div>
-          </div>
         </div>
-      </FadeInSection>
+      </section>
 
       {/* Subscription Section */}
       <section className="relative py-20">
         <Image
-          src="/images/calendar.png"
+          src="https://placehold.co/1920x480.png"
           data-ai-hint="electrical circuit board"
           alt="Subscription background"
           fill
           className="object-cover"
-
         />
-        <div className="absolute inset-0 "></div>
-        <div className="container relative z-0 flex flex-col items-center justify-center text-center">
-          <h2 className="text-4xl font-bold font-headline text-primary">Subscribe for weekly updates</h2>
-          <p className="mt-4 max-w-2xl text-lg text-primary">
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 via-teal-900/70 to-transparent"></div>
+        <div className="container relative z-0 flex flex-col items-start justify-center text-left md:w-1/2">
+          <h2 className="text-4xl font-bold font-headline text-primary-foreground">Subscribe for weekly updates</h2>
+          <p className="mt-4 max-w-lg text-lg text-primary-foreground/80">
             Stay informed with the latest industry news, product updates, and exclusive offers from ARP Electric Solution.
           </p>
-          <form className="mt-8 flex w-full max-w-lg flex-col sm:flex-row gap-0">
+          <form className="mt-8 flex w-full max-w-md">
             <Input
               type="email"
               id="subscribe-email"
-              className="flex-grow bg-white/80 border-primary text-primary placeholder:text-primary rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="flex-grow bg-white/90 border-primary text-primary placeholder:text-primary rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
               placeholder="Enter your email address"
             />
             <Button
@@ -1113,6 +1125,7 @@ const TransformerAccessoriesTable = () => {
     </div>
   );
 };
+
 
 
 
