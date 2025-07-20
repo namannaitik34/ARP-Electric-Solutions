@@ -1055,46 +1055,40 @@ export default function Home() {
         </div>
       </FadeInSection>
 
-      {/* Weekly Calendar Subscription Section */}
-      <FadeInSection className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="md:pr-8">
-              <h2 className="text-3xl font-bold font-headline text-primary">Stay Organized – Get Our Weekly Calendar</h2>
-              <p className="mt-4 text-muted-foreground">
-                Subscribe to receive our weekly calendar featuring important industry dates, product highlights, and helpful tips directly in your inbox.
+      {/* Subscription Section */}
+      <section className="relative py-20 bg-gray-800 text-white">
+          <Image
+              src="https://placehold.co/1920x480.png"
+              data-ai-hint="electrical circuit board"
+              alt="Subscription background"
+              fill
+              className="object-cover"
+          />
+          <div className="absolute inset-0 bg-primary/80"></div>
+          <div className="container relative z-10 flex flex-col items-center justify-center text-center">
+              <h2 className="text-4xl font-bold font-headline">Subscribe for weekly updates</h2>
+              <p className="mt-4 max-w-2xl text-lg text-primary-foreground/80">
+                  Stay informed with the latest industry news, product updates, and exclusive offers from ARP Electric Solution.
               </p>
-              <form className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Input
-                  type="email"
-                  id="calendar-subscribe-email"
-                  className="flex-grow"
-                  placeholder="Enter your email address"
-                />
-                <Button
-                  type="submit"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                >
-                  Subscribe
-                </Button>
+              <form className="mt-8 flex w-full max-w-lg flex-col sm:flex-row gap-4">
+                  <Input
+                      type="email"
+                      id="subscribe-email"
+                      className="flex-grow bg-white/20 border-white/30 text-white placeholder:text-white/70"
+                      placeholder="Enter your email address"
+                  />
+                  <Button
+                      type="submit"
+                      className="bg-white text-primary font-bold hover:bg-gray-200"
+                  >
+                      Subscribe
+                  </Button>
               </form>
-              <p className="mt-4 text-sm text-muted-foreground">
-                We respect your inbox. Unsubscribe anytime.
+              <p className="mt-4 text-sm text-primary-foreground/70">
+                  We respect your privacy. No spam.
               </p>
-            </div>
-            <div className="hidden md:block">
-              <Image
-                src="https://firebasestorage.googleapis.com/v0/b/arp-electric-solution.firebasestorage.app/o/Untitled%20design%20(2).png?alt=media&token=6f94a5a5-4ad3-4081-a17a-f6873cfccf6f"
-                alt="Weekly calendar promotion"
-                data-ai-hint="calendar schedule"
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover rounded-lg"
-              />
-            </div>
           </div>
-        </div>
-      </FadeInSection>
+      </section>
     </div>
   );
 }
@@ -1131,9 +1125,5 @@ const TransformerAccessoriesTable = () => {
     </div>
   );
 };
-
-
-
-
 
     
