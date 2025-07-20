@@ -20,6 +20,7 @@ import {
   Wrench,
   ChevronRight,
   ArrowLeft,
+  Lightbulb as CoreValueIcon,
 } from 'lucide-react';
 import {
   Carousel,
@@ -29,6 +30,12 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Link from 'next/link';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const teamMembers = [
   {
@@ -57,26 +64,39 @@ const coreValues = [
     description:
       'We build relationships based on reliability and transparency, ensuring our clients and partners can always depend on us.',
     icon: Handshake,
+    position: 'top-0 left-1/2 -translate-x-1/2 -translate-y-full',
+    linePosition: 'top-1/2 left-1/2 -translate-x-1/2',
+    lineTransform: 'rotate-90',
   },
   {
     title: 'Innovation',
     description:
       'We continuously seek new and better ways to solve challenges, pushing the boundaries of technology to deliver cutting-edge solutions.',
     icon: Lightbulb,
+    position: 'right-0 top-1/4 -translate-y-1/2 translate-x-full',
+    linePosition: 'top-1/2 right-[calc(50%-1.5rem)]',
+    lineTransform: 'rotate-45',
   },
   {
     title: 'Integrity',
     description:
       'We operate with unwavering honesty and ethical standards, holding ourselves accountable in every action we take.',
     icon: ShieldCheck,
+    position: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-full',
+    linePosition: 'bottom-1/2 left-1/2 -translate-x-1/2',
+    lineTransform: 'rotate-90',
   },
   {
     title: 'Excellence',
     description:
       'We are committed to the highest standards of quality and performance, striving for exceptional results in everything we do.',
     icon: Star,
+    position: 'left-0 top-1/4 -translate-y-1/2 -translate-x-full',
+    linePosition: 'top-1/2 left-[calc(50%-1.5rem)]',
+    lineTransform: '-rotate-45',
   },
 ];
+
 
 const expertiseAreas = [
   {
@@ -297,25 +317,43 @@ export default function AboutPage() {
               inspire our teams as we grow across global markets.
             </p>
           </div>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {coreValues.map((value) => (
-              <Card
-                key={value.title}
-                className="group text-center p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:bg-primary/5"
-              >
-                <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary transition-colors duration-300">
-                    <value.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground" />
+          <div className="mt-24 flex justify-center items-center min-h-[400px]">
+            <TooltipProvider>
+              <div className="relative w-48 h-48">
+                {/* Center Lightbulb */}
+                <div className="absolute inset-0 flex items-center justify-center bg-yellow-400 rounded-full border-4 border-yellow-300 shadow-lg">
+                  <div className="text-center text-white">
+                    <CoreValueIcon className="w-12 h-12 mx-auto" />
+                    <p className="font-bold text-lg">CORE VALUES</p>
                   </div>
                 </div>
-                <h4 className="text-xl font-bold text-primary">
-                  {value.title}
-                </h4>
-                <p className="mt-2 text-muted-foreground">
-                  {value.description}
-                </p>
-              </Card>
-            ))}
+
+                {/* Satellite Values */}
+                {coreValues.map((value, index) => (
+                  <Tooltip key={value.title}>
+                    <TooltipTrigger asChild>
+                      <div className={`absolute ${value.position} w-24 h-24`}>
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <div className={`absolute w-full h-full rounded-full bg-primary/10 border-2 border-primary/20 ${index % 2 === 0 ? 'bg-blue-500/10 border-blue-500/20' : 'bg-red-500/10 border-red-500/20'}`}></div>
+                          <div
+                            className={`w-[90%] h-[90%] rounded-full flex items-center justify-center text-center p-2 cursor-pointer transition-transform duration-300 hover:scale-110 ${
+                              index % 2 === 0 ? 'bg-blue-500' : 'bg-red-500'
+                            }`}
+                          >
+                            <span className="font-semibold text-white text-sm">
+                              {value.title}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent className="max-w-xs text-center" side="top" align="center">
+                      <p>{value.description}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
+            </TooltipProvider>
           </div>
         </div>
 
