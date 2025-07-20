@@ -512,36 +512,28 @@ export default function Home() {
       {/* Featured Services Section */}
       <FadeInSection className="bg-primary/5 py-16 md:py-24">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="pr-8">
-              <h2 className="font-headline text-3xl font-bold text-primary">
-                Our Core Services
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                We offer a wide range of products designed to meet the diverse needs of modern industries, from robust power transformers to high-grade conductive materials.
-              </p>
-            </div>
-            <div className="space-y-4">
-              {featuredServices.map((service) => (
-                <Link
-                  key={service.title}
-                  href={service.href}
-                  className="group block rounded-lg border bg-card p-4 transition-all duration-300 ease-in-out hover:bg-primary/10 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-full transition-colors duration-300 group-hover:bg-primary">
-                      <service.icon className="w-6 h-6 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg text-accent-foreground">{service.title}</h3>
-                      <p className="text-sm text-muted-foreground opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-full transition-all duration-300 ease-in-out mt-1">
-                        {service.description}
-                      </p>
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="font-headline text-3xl font-bold text-primary">
+              Our Core Services
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              We offer a wide range of products designed to meet the diverse needs of modern industries, from robust power transformers to high-grade conductive materials.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {featuredServices.map((service) => (
+              <Link key={service.title} href={service.href} className="group block">
+                <Card className="h-full text-center p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2">
+                  <div className="flex justify-center mb-4">
+                    <div className="p-4 rounded-full bg-primary/10 transition-colors duration-300 group-hover:bg-primary">
+                      <service.icon className="w-8 h-8 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
                     </div>
                   </div>
-                </Link>
-              ))}
-            </div>
+                  <h3 className="text-xl font-semibold text-accent-foreground">{service.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
+                </Card>
+              </Link>
+            ))}
           </div>
         </div>
       </FadeInSection>
@@ -1121,6 +1113,7 @@ const TransformerAccessoriesTable = () => {
     </div>
   );
 };
+
 
 
 
