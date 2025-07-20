@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield } from "lucide-react";
+import { CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield, Tool } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import InteractiveCard from "@/components/InteractiveCard";
@@ -25,6 +25,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Badge } from "@/components/ui/badge";
 
 const useIntersectionObserver = (options: IntersectionObserverInit) => {
   const [entries, setEntries] = useState<IntersectionObserverEntry[]>([]);
@@ -124,6 +125,23 @@ const transformerAccessories = [
   { id: 19, name: "Protective Relays", description: "Differential and overcurrent relays" },
   { id: 20, name: "Bushings CTs", description: "Current transformers for metering and protection" },
   { id: 21, name: "Fan Control Panels", description: "Automatic fan control systems" },
+];
+
+const detailedTransformerAccessories = [
+    { name: 'Pressure Relief Valve (PRV)', type: 'Safety', description: 'Critical safety valve designed to release excess pressure and protect the transformer.' },
+    { name: 'Buchholz Relay', type: 'Safety', description: 'Protective relay that detects gas accumulation or oil flow issues in transformers.' },
+    { name: 'Oil Level Indicator (MOG)', type: 'Monitoring', description: 'Reliable indicator to monitor the oil levels and ensure transformer operation.' },
+    { name: 'Silica Gel Breather', type: 'Desiccant', description: 'Absorbs moisture from the air, protecting transformer oil and maintaining insulation integrity.' },
+    { name: 'Aircell (Flexi Separator)', type: 'Separation', description: 'Flexible separator used to maintain air pressure and prevent transformer oil contamination.' },
+    { name: 'Rapid Pressure Rise Relay', type: 'Safety', description: 'Prevents transformer damage by detecting rapid pressure changes and triggering protection mechanisms.' },
+    { name: 'Transformer Valve', type: 'Safety', description: 'Valve designed to regulate and manage transformer oil pressure to ensure safe operation.' },
+    { name: 'Transformer Oil', type: 'Insulation', description: 'High-quality transformer oil used for insulation and cooling of electrical components.' },
+    { name: 'RTCC Panel & Equipment', type: 'Control', description: 'Remote Tap Changer Control panel for effective voltage regulation and control of transformer operations.' },
+    { name: 'Wheels (Roller)', type: 'Transportation', description: 'Durable rollers designed to facilitate easy transportation and installation of transformers.' },
+    { name: 'Bushing & Accessories', type: 'Insulation', description: 'Essential bushing components and accessories for safe and efficient electrical connections in transformers.' },
+    { name: 'Flow Indicators', type: 'Monitoring', description: 'Devices used to monitor the flow of transformer oil for better operational control.' },
+    { name: 'O-Ring & Gasket', type: 'Sealing', description: 'High-quality sealing components that prevent oil leaks and maintain transformer integrity.' },
+    { name: 'Current Transformer', type: 'Measurement', description: 'Measurement device used to monitor and control current flow within transformer circuits.' }
 ];
 
 const heroSlides = [
@@ -491,6 +509,33 @@ export default function Home() {
           </div>
         </div>
       </FadeInSection>
+      {/* New Transformer Accessories Grid Section */}
+      <FadeInSection className="py-16 md:py-24 bg-white">
+        <div className="container">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold font-headline text-primary">Transformer Accessories</h2>
+            <p className="mt-4 max-w-3xl mx-auto text-muted-foreground">
+              Explore our comprehensive range of high-quality transformer accessories designed to ensure safety, reliability, and optimal performance.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {detailedTransformerAccessories.map((accessory, index) => (
+              <Card key={index} className="flex flex-col transition-shadow duration-300 hover:shadow-xl">
+                <CardHeader>
+                  <CardTitle className="flex items-center justify-between">
+                    <span className="text-lg">{accessory.name}</span>
+                    <Badge variant="secondary">{accessory.type}</Badge>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <p className="text-muted-foreground">{accessory.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </FadeInSection>
+
       {/* Transformer Accessories Section */}
       <FadeInSection className="py-16 md:py-24 bg-background" id="transformer-accessories-section">
         <div className="container">
@@ -922,3 +967,5 @@ const TransformerAccessoriesTable = () => {
     </div>
   );
 };
+
+    
