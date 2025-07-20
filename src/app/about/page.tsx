@@ -151,18 +151,16 @@ export default function AboutPage() {
   return (
     <div className="bg-white text-foreground animate-fadeIn">
       <div className="container py-16 md:py-24">
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">
-            About ARP Electric Solution
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            We are pioneers in the electrical solutions industry, dedicated to
-            powering progress with cutting-edge technology and unwavering
-            commitment to quality.
-          </p>
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+            <h1 className="text-4xl md:text-6xl font-bold font-headline text-primary leading-tight">
+                Building Blocks for a Sustainable Future
+            </h1>
+            <p className="text-lg text-muted-foreground">
+                ARP Electric Solution is a leading global natural resources and technology conglomerate operating across India, South Africa, Liberia and Namibia. We are pioneers in the electrical solutions industry, dedicated to powering progress with cutting-edge technology and unwavering commitment to quality.
+            </p>
         </div>
 
-        <div className="mt-16 grid md:grid-cols-2 gap-16 items-center">
+        <div className="mt-24 grid md:grid-cols-2 gap-16 items-center">
           <div className="rounded-lg overflow-hidden shadow-lg">
             <Image
               src="https://placehold.co/800x600.png"
