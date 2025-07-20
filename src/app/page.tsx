@@ -510,49 +510,44 @@ export default function Home() {
       </FadeInSection>
 
       {/* Featured Services Section */}
-      <FadeInSection className="bg-white py-16 md:py-24">
+      <FadeInSection className="bg-primary/5 py-16 md:py-24">
         <div className="container">
-          <div className="text-center">
-            <h2 className="font-headline text-3xl font-bold text-primary">
-              Our Core Services
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-              We offer a wide range of products designed to meet the diverse needs of
-              modern industries.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredServices.map((service) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="group block rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-              >
-                <Card className="h-full transition-all duration-300 ease-in-out group-hover:-translate-y-2 group-hover:shadow-xl bg-card group-hover:bg-accent">
-                  <CardHeader className="items-center text-center">
-                    <div className="p-4 bg-primary/10 rounded-full transition-colors duration-300 group-hover:bg-teal-700">
-                      <service.icon className="w-8 h-8 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="pr-8">
+              <h2 className="font-headline text-3xl font-bold text-primary">
+                Our Core Services
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                We offer a wide range of products designed to meet the diverse needs of modern industries, from robust power transformers to high-grade conductive materials.
+              </p>
+            </div>
+            <div className="space-y-4">
+              {featuredServices.map((service) => (
+                <Link
+                  key={service.title}
+                  href={service.href}
+                  className="group block rounded-lg border bg-card p-4 transition-all duration-300 ease-in-out hover:bg-primary/10 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-full transition-colors duration-300 group-hover:bg-primary">
+                      <service.icon className="w-6 h-6 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
                     </div>
-                    <CardTitle className="mt-4">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <p className="text-muted-foreground">{service.description}</p>
-                    <div className="mt-4 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1">
-                      Learn more{" "}
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">
-                        &rarr;
-                      </span>
+                    <div>
+                      <h3 className="font-semibold text-lg text-accent-foreground">{service.title}</h3>
+                      <p className="text-sm text-muted-foreground opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-full transition-all duration-300 ease-in-out mt-1">
+                        {service.description}
+                      </p>
                     </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </FadeInSection>
 
 
-            {/* Product Showcase Intro Section */}
+      {/* Product Showcase Intro Section */}
       <section className="py-20 md:py-28 bg-teal-950 text-white">
         <div className="container grid md:grid-cols-2 gap-12 items-center relative">
           {/* Design Element */}
@@ -563,9 +558,9 @@ export default function Home() {
             <p className="text-sm uppercase tracking-wider text-primary">We are ARP Electric Solution</p>
             <h2 className="text-4xl md:text-5xl font-bold font-headline mt-2">
               Our Products
-              <br/>
+              <br />
               For the Power
-              <br/>
+              <br />
               Industry
             </h2>
           </div>
@@ -575,22 +570,22 @@ export default function Home() {
               designed to meet the needs of clients worldwide.
             </p>
           </div>
-          
+
         </div>
-              {/* Product Carousel Section */}
-              <section className="py-16 md:py-24">
-        <div className="container">
-          <div className="mt-12 relative">
-            <ProductCarousel />
+        {/* Product Carousel Section */}
+        <section className="py-16 md:py-24">
+          <div className="container">
+            <div className="mt-12 relative">
+              <ProductCarousel />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       </section>
 
 
 
-            {/* Solutions by Category Section */}
+      {/* Solutions by Category Section */}
       <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center">
@@ -706,7 +701,7 @@ export default function Home() {
       {/*Transformer Accessories Grid Section */}
       <FadeInSection className="py-16 md:py-24 bg-white">
         <div className="container">
-          
+
           <div className="text-start">
             <h2 className="text-3xl font-bold font-headline text-primary text-decoration-line: underline">Transformer Accessories</h2>
           </div>
@@ -772,7 +767,7 @@ export default function Home() {
       </FadeInSection>
 
 
-      
+
 
       {/* Oil-Immersed Transformers Section */}
       <FadeInSection className="py-16 md:py-24 bg-primary text-primary-foreground" id="oil-immersed-transformers-section">
@@ -1055,41 +1050,42 @@ export default function Home() {
         </div>
       </FadeInSection>
 
-{/* Subscription Section */}
-<section className="relative py-20">
-          <Image
-              src="/images/calendar.png"
-              data-ai-hint="electrical circuit board"
-              alt="Subscription background"
-              fill
-              className="object-cover"
+      {/* Subscription Section */}
+      <section className="relative py-20">
+        <Image
+          src="/images/calendar.png"
+          data-ai-hint="electrical circuit board"
+          alt="Subscription background"
+          fill
+          className="object-cover"
 
-          />
-          <div className="absolute inset-0 "></div>
-          <div className="container relative z-0 flex flex-col items-center justify-center text-center">
-              <h2 className="text-4xl font-bold font-headline text-primary">Subscribe for weekly updates</h2>
-              <p className="mt-4 max-w-2xl text-lg text-primary">
-                  Stay informed with the latest industry news, product updates, and exclusive offers from ARP Electric Solution.
-              </p>
-              <form className="mt-8 flex w-full max-w-lg flex-col sm:flex-row gap-0">
-                  <Input
-                      type="email"
-                      id="subscribe-email"
-                      className="flex-grow bg-white/80 border-primary text-primary placeholder:text-primary rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                      placeholder="Enter your email address"
-                  />
-                  <Button
-                      type="submit"
-                      className="bg-primary text-white font-bold hover:bg-primary/90 rounded-l-none"
-                  >
-                      Subscribe
-                  </Button>
-              </form>
-              <p className="mt-4 text-sm text-primary-foreground/70">
-                  We respect your privacy. No spam.
-              </p>
-          </div>
-      </section>    </div>
+        />
+        <div className="absolute inset-0 "></div>
+        <div className="container relative z-0 flex flex-col items-center justify-center text-center">
+          <h2 className="text-4xl font-bold font-headline text-primary">Subscribe for weekly updates</h2>
+          <p className="mt-4 max-w-2xl text-lg text-primary">
+            Stay informed with the latest industry news, product updates, and exclusive offers from ARP Electric Solution.
+          </p>
+          <form className="mt-8 flex w-full max-w-lg flex-col sm:flex-row gap-0">
+            <Input
+              type="email"
+              id="subscribe-email"
+              className="flex-grow bg-white/80 border-primary text-primary placeholder:text-primary rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
+              placeholder="Enter your email address"
+            />
+            <Button
+              type="submit"
+              className="bg-primary text-white font-bold hover:bg-primary/90 rounded-l-none"
+            >
+              Subscribe
+            </Button>
+          </form>
+          <p className="mt-4 text-sm text-primary-foreground/70">
+            We respect your privacy. No spam.
+          </p>
+        </div>
+      </section>
+    </div>
   );
 }
 
@@ -1126,4 +1122,5 @@ const TransformerAccessoriesTable = () => {
   );
 };
 
-    
+
+
