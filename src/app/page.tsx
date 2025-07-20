@@ -26,6 +26,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 
 const useIntersectionObserver = (options: IntersectionObserverInit) => {
   const [entries, setEntries] = useState<IntersectionObserverEntry[]>([]);
@@ -595,18 +597,36 @@ export default function Home() {
               <br />
               Power Solutions
             </h2>
-            {/* Placeholder for Tabs */}
-            <div className="mt-8 flex space-x-6">
-              <div className="cursor-pointer border-b-2 border-primary pb-2 text-primary font-semibold">Overview</div>
-              <div className="cursor-pointer text-gray-600 hover:text-primary pb-2">Key Benefits</div>
-              <div className="cursor-pointer text-gray-600 hover:text-primary pb-2">Applications</div>
-            </div>
-            {/* Placeholder for Tab Content */}
-            <div className="mt-6 text-gray-700">
-              <p>
-                AKS International FZC provides high-quality Cast Resin Transformers, ensuring superior performance, safety, and reliability. We collaborate with top manufacturers to offer transformers enclosed in robust resin casings, providing excellent insulation and protection against environmental elements. Their compact design makes them ideal for both indoor and outdoor installations, even in challenging conditions.
-              </p>
-            </div>
+            <Tabs defaultValue="overview" className="mt-8">
+              <TabsList className="bg-transparent p-0">
+                <TabsTrigger value="overview" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none">Overview</TabsTrigger>
+                <TabsTrigger value="benefits" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none">Key Benefits</TabsTrigger>
+                <TabsTrigger value="applications" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none">Applications</TabsTrigger>
+              </TabsList>
+              <TabsContent value="overview" className="mt-6 text-gray-700">
+                <p>
+                  AKS International FZC provides high-quality Cast Resin Transformers, ensuring superior performance, safety, and reliability. We collaborate with top manufacturers to offer transformers enclosed in robust resin casings, providing excellent insulation and protection against environmental elements. Their compact design makes them ideal for both indoor and outdoor installations, even in challenging conditions.
+                </p>
+              </TabsContent>
+              <TabsContent value="benefits" className="mt-6 text-gray-700">
+                <ul className="list-disc pl-5 space-y-2">
+                  <li><strong>Enhanced Safety:</strong> Self-extinguishing and fire-resistant properties minimize fire hazards.</li>
+                  <li><strong>Eco-Friendly:</strong> No risk of oil leakage, making them ideal for environmentally sensitive areas.</li>
+                  <li><strong>Low Maintenance:</strong> Requires minimal upkeep compared to oil-filled transformers.</li>
+                  <li><strong>High Reliability:</strong> Excellent resistance to short circuits and impulse voltages.</li>
+                  <li><strong>Compact Design:</strong> Smaller footprint allows for flexible installation in confined spaces.</li>
+                </ul>
+              </TabsContent>
+              <TabsContent value="applications" className="mt-6 text-gray-700">
+              <ul className="list-disc pl-5 space-y-2">
+                  <li><strong>Public Infrastructure:</strong> Airports, hospitals, subways, and high-rise buildings.</li>
+                  <li><strong>Industrial Sector:</strong> Chemical plants, steel mills, and manufacturing facilities.</li>
+                  <li><strong>Critical Power:</strong> Data centers, telecommunication hubs, and research labs.</li>
+                  <li><strong>Renewable Energy:</strong> Wind farms, solar power plants, and biomass facilities.</li>
+                  <li><strong>Specialized Environments:</strong> Marine vessels, offshore platforms, and underground mines.</li>
+                </ul>
+              </TabsContent>
+            </Tabs>
           </div>
           {/* Right column */}
           <div className="relative w-full h-full min-h-[300px]">
