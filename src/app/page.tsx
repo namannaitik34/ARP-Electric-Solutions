@@ -356,27 +356,15 @@ export default function Home() {
 
       {/* Product Showcase Intro Section */}
       <FadeInSection className="py-20 md:py-28 bg-teal-950 text-white">
-        <div className="container grid md:grid-cols-2 gap-12 items-center relative">
-          {/* Design Element */}
-          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-px bg-white h-24 opacity-50 hidden md:block"></div>
-          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-1 bg-primary hidden md:block"></div>
-
-          <div>
+        <div className="container text-center">
             <p className="text-sm uppercase tracking-wider text-primary">We Are ARP Electric Solution</p>
             <h2 className="text-4xl md:text-5xl font-bold font-headline mt-2">
-              Our Products
-              <br />
-              For the Power
-              <br />
-              Industry
+              Our Products For the Power Industry
             </h2>
-          </div>
-          <div>
-            <p className="text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed max-w-3xl mx-auto mt-4">
               Explore our wide range of high-quality power transmission, distribution, transformer solutions, Raw Material, Transformer Accessories, CRGO, Copper Foil, CTC, PICC, Super Enameled, MV/LV APFC, Harmonic Filter, UPS and Data Center, Ring Main Unit (RMU), MV/LV Switchgear etc,
               designed to meet the needs of clients worldwide.
             </p>
-          </div>
         </div>
       </FadeInSection>
 
@@ -862,28 +850,18 @@ export default function Home() {
               High Efficiency Three Phase, Oil Immersed Distribution Transformers
             </p>
           </div>
-          <div className="mt-12 max-w-4xl mx-auto border rounded-lg shadow-sm">
-            <div className="bg-muted/50 px-6 py-4 border-b">
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="font-semibold text-foreground flex items-center gap-2">
-                        <Cog className="w-5 h-5 text-primary" />
-                        Parameter
-                    </div>
-                    <div className="font-semibold text-foreground flex items-center gap-2">
-                        <Wrench className="w-5 h-5 text-primary" />
-                        Description
-                    </div>
-                </div>
-            </div>
-            <div className="divide-y">
-                {technicalData.map((item, index) => (
-                    <div key={index} className="grid grid-cols-2 gap-4 px-6 py-4 hover:bg-muted/30 transition-colors">
-                        <div className="text-muted-foreground">{item.parameter}</div>
-                        <div>{item.description}</div>
-                    </div>
-                ))}
-            </div>
-          </div>
+          <Card className="mt-12 max-w-4xl mx-auto">
+            <CardContent className="p-6">
+                <ul className="space-y-4">
+                    {technicalData.map((item, index) => (
+                        <li key={index} className="border-b pb-4 last:border-b-0 last:pb-0">
+                            <p className="font-semibold text-foreground">{item.parameter}</p>
+                            <p className="text-muted-foreground">{item.description}</p>
+                        </li>
+                    ))}
+                </ul>
+            </CardContent>
+          </Card>
           <div className="mt-8 max-w-4xl mx-auto text-center text-sm text-muted-foreground">
             <p><strong>Note:</strong> These all data are subject to change according to customer requirements.</p>
             <p className="mt-4">
