@@ -1,5 +1,8 @@
 
 'use client';
+
+import React from 'react';
+
 // Product Carousel Data
 const productCarousel = [
   { title: "Oil Immersed Transformers", image: "/images/Oil_emmeresed_transformer.png", description: "Durable and efficient transformers for power transmission and distribution." },
@@ -386,6 +389,10 @@ export default function Home() {
   const onPieEnter = (_: any, index: number) => {
     setActiveIndex(index);
   };
+  
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: false })
+  );
 
   const renderActiveShape = (props: any) => {
     const RADIAN = Math.PI / 180;
@@ -446,9 +453,11 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 lg:py-40 bg-secondary text-secondary-foreground">
         <Carousel
-          plugins={[Autoplay({ delay: 5000, stopOnInteraction: false })]}
+          plugins={[plugin.current]}
           className="absolute inset-0 w-full h-full"
           opts={{ loop: true }}
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
         >
           <CarouselContent className="w-full h-full">
             {heroSlides.map((slide, index) => (
@@ -1130,3 +1139,7 @@ const TransformerAccessoriesTable = () => {
 
 
 
+
+
+
+    
