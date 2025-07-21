@@ -2,30 +2,6 @@
 'use client';
 
 import React from 'react';
-
-// Product Carousel Data
-const productCarousel = [
-  { title: "Oil Immersed Transformers", image: "/images/Oil_emmeresed_transformer.png", description: "Durable and efficient transformers for power transmission and distribution." },
-  { title: "Cast Resin Transformers", image: "/images/cast-resin-transformer.png", description: "Reliable cast resin transformers for safe and efficient operation." },
-  { title: "Copper Foil", image: "/images/Copper_foil.png", description: "High-grade copper foil for superior conductivity." },
-  { title: "Super Enameled Copper", image: "/images/Super%20Enameled%20Copper.png", description: "Insulated copper wire for electrical applications." },
-  { title: "Copper CTC", image: "/images/Copper_CTC.jpg", description: "CTC copper wire for transformer windings." },
-  { title: "Copper PICC", image: "/images/Copper_PICC.png", description: "PICC copper wire for advanced transformer designs." },
-  { title: "Aluminium Foil", image: "/images/Aluminium_foil.png", description: "High-quality aluminium foil for conductivity." },
-  { title: "Super Enameled Aluminium", image: "/images/Super_Enameled_Aluminium.png", description: "Insulated aluminium wire for electrical applications." },
-  { title: "Aluminium CTC", image: "/images/Aluminium_CTC.png", description: "CTC aluminium wire for transformer windings." },
-  { title: "Aluminium PIAC", image: "/images/Aluminium_PIAC.jpg", description: "PIAC aluminium wire for advanced transformer designs." },
-  { title: "CRGO (Cold Rolled Grain Oriented Steel)", image: "/images/CRGO.png", description: "Premium CRGO steel for transformer cores." },
-  { title: "Transformer Accessories", image: "/images/Transformer%20Accessories.png", description: "Comprehensive range of transformer accessories." },
-  { title: "Data Center", image: "/images/Data_center.png", description: "Solutions for modern data centers." },
-  { title: "MV/LV APFC, Harmonic Filter & UPS", image: "/images/MVLV_APFC, Harmonic_Filter_&_UPS.png", description: "Power factor correction, harmonic filtering, and UPS systems." },
-  { title: "Ring Main Unit (RMU)", image: "/images/Ring_man_unit.png", description: "Compact RMU for distribution networks." },
-  { title: "Cables", image: "/images/Cable.png", description: "High-quality cables for various applications." },
-  { title: "Beverage Solutions", image: "/images/Beverage_solution.png", description: "Innovative solutions for the beverage industry." },
-  { title: "IT Solutions", image: "/images/IT_Solution.png", description: "Comprehensive IT solutions for businesses." },
-  { title: "Surveillance Systems", image: "/images/Surveillance.png", description: "Advanced surveillance systems for security." },
-];
-
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, CircuitBoard, Bolt, Zap, Wind, Network, Cpu, Shield, Tool, Cog, Wrench, Thermometer, RadioTower, Power, Users, Layers, Rss } from "lucide-react";
 import Image from "next/image";
@@ -53,6 +29,30 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+
+// Product Carousel Data
+const productCarousel = [
+  { title: "Oil Immersed Transformers", image: "/images/Oil_emmeresed_transformer.png", description: "Durable and efficient transformers for power transmission and distribution." },
+  { title: "Cast Resin Transformers", image: "/images/cast-resin-transformer.png", description: "Reliable cast resin transformers for safe and efficient operation." },
+  { title: "Copper Foil", image: "/images/Copper_foil.png", description: "High-grade copper foil for superior conductivity." },
+  { title: "Super Enameled Copper", image: "/images/Super%20Enameled%20Copper.png", description: "Insulated copper wire for electrical applications." },
+  { title: "Copper CTC", image: "/images/Copper_CTC.jpg", description: "CTC copper wire for transformer windings." },
+  { title: "Copper PICC", image: "/images/Copper_PICC.png", description: "PICC copper wire for advanced transformer designs." },
+  { title: "Aluminium Foil", image: "/images/Aluminium_foil.png", description: "High-quality aluminium foil for conductivity." },
+  { title: "Super Enameled Aluminium", image: "/images/Super_Enameled_Aluminium.png", description: "Insulated aluminium wire for electrical applications." },
+  { title: "Aluminium CTC", image: "/images/Aluminium_CTC.png", description: "CTC aluminium wire for transformer windings." },
+  { title: "Aluminium PIAC", image: "/images/Aluminium_PIAC.jpg", description: "PIAC aluminium wire for advanced transformer designs." },
+  { title: "CRGO (Cold Rolled Grain Oriented Steel)", image: "/images/CRGO.png", description: "Premium CRGO steel for transformer cores." },
+  { title: "Transformer Accessories", image: "/images/Transformer%20Accessories.png", description: "Comprehensive range of transformer accessories." },
+  { title: "Data Center", image: "/images/Data_center.png", description: "Solutions for modern data centers." },
+  { title: "MV/LV APFC, Harmonic Filter & UPS", image: "/images/MVLV_APFC, Harmonic_Filter_&_UPS.png", description: "Power factor correction, harmonic filtering, and UPS systems." },
+  { title: "Ring Main Unit (RMU)", image: "/images/Ring_man_unit.png", description: "Compact RMU for distribution networks." },
+  { title: "Cables", image: "/images/Cable.png", description: "High-quality cables for various applications." },
+  { title: "Beverage Solutions", image: "/images/Beverage_solution.png", description: "Innovative solutions for the beverage industry." },
+  { title: "IT Solutions", image: "/images/IT_Solution.png", description: "Comprehensive IT solutions for businesses." },
+  { title: "Surveillance Systems", image: "/images/Surveillance.png", description: "Advanced surveillance systems for security." },
+];
 
 
 const ProductCarousel = () => {
@@ -450,7 +450,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[80vh] w-full text-secondary-foreground">
+      <section className="relative w-full text-secondary-foreground" style={{ height: 'calc(100vh - 128px)' }}>
         <FadeCarousel slides={heroSlides} />
 
         <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-teal-900/70 to-transparent"></div>
