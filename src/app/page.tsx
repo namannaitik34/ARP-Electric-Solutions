@@ -35,10 +35,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, Sector } from 'recharts';
 import Autoplay from 'embla-carousel-autoplay';
+import FadeCarousel from '@/components/FadeCarousel';
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import InteractiveCard from "@/components/InteractiveCard";
 import {
   Carousel,
   CarouselContent,
@@ -47,7 +47,6 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import SkewedCubeStack from '@/components/SkewedCubeStack';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -217,30 +216,30 @@ const formSchema = z.object({
 });
 
 const featuredServices = [
-  {
-    title: "Power Transformers",
-    description: "Robust and efficient transformers for power distribution networks.",
-    icon: CircuitBoard,
-    href: "/services#transformers",
-  },
-  {
-    title: "UPS Systems",
-    description: "Uninterrupted power for your critical operations.",
-    icon: Bolt,
-    href: "/services#ups-systems",
-  },
-  {
-    title: "Specialty Cores",
-    description: "Advanced amorphous and nanocrystalline cores.",
-    icon: Wind,
-    href: "/services#amorphous-core",
-  },
-  {
-    title: "Conductive Materials",
-    description: "High-grade copper foils and busbars for conductivity.",
-    icon: Zap,
-    href: "/services#copper-foil"
-  },
+    {
+      title: "Power Transformers",
+      description: "Robust and efficient transformers for power distribution networks.",
+      icon: CircuitBoard,
+      href: "/services#transformers",
+    },
+    {
+      title: "UPS Systems",
+      description: "Uninterrupted power for your critical operations.",
+      icon: Bolt,
+      href: "/services#ups-systems",
+    },
+    {
+      title: "Specialty Cores",
+      description: "Advanced amorphous and nanocrystalline cores.",
+      icon: Wind,
+      href: "/services#amorphous-core",
+    },
+    {
+      title: "Conductive Materials",
+      description: "High-grade copper foils and busbars for conductivity.",
+      icon: Zap,
+      href: "/services#copper-foil"
+    },
 ];
 
 const productCategories = [
@@ -451,31 +450,11 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 lg:py-40 text-secondary-foreground">
-        <Carousel
-          plugins={[plugin.current]}
-          className="absolute inset-0 w-full h-full"
-          opts={{ loop: true }}
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={plugin.current.reset}
-        >
-          <CarouselContent className="w-full h-full">
-            {heroSlides.map((slide, index) => (
-              <CarouselItem key={index} className="w-full h-full fade-carousel-item">
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  data-ai-hint={slide.hint}
-                  fill
-                  className="object-cover"
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+      <section className="relative h-[60vh] md:h-[80vh] w-full text-secondary-foreground">
+        <FadeCarousel slides={heroSlides} />
 
         <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-teal-900/70 to-transparent"></div>
-        <div className="container relative text-center animate-fadeIn">
+        <div className="container relative h-full flex flex-col items-center justify-center text-center animate-fadeIn">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline text-primary-foreground">
             Empowering Industries with Reliable Electrical Solutions
           </h1>
@@ -521,35 +500,23 @@ export default function Home() {
       {/* Featured Services Section */}
       <FadeInSection className="bg-primary/5 py-16 md:py-24 overflow-hidden">
         <div className="container relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-            {/* Left Column: Text Content */}
-            <div className="md:pr-8 lg:pr-16 z-10">
-              <h2 className="font-headline text-3xl font-bold text-primary">
-                Our Core Services
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                We offer a wide range of products designed to meet the diverse needs of modern industries, from robust power transformers to high-grade conductive materials.
-              </p>
+            <div className="text-center mb-12">
+                <h2 className="font-headline text-3xl font-bold text-primary">Our Core Services</h2>
+                <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">We offer a wide range of products designed to meet the diverse needs of modern industries, from robust power transformers to high-grade conductive materials.</p>
             </div>
-            {/* Right Column: Service Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {featuredServices.map((service) => (
-                <Link key={service.title} href={service.href} className="group block">
-                  <Card className="h-full bg-background p-6 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-md bg-primary/10 text-primary">
-                        <service.icon className="w-6 h-6" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-accent-foreground">{service.title}</h3>
-                        <p className="mt-1 text-sm text-muted-foreground">{service.description}</p>
-                      </div>
-                    </div>
-                  </Card>
-                </Link>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {featuredServices.map((service) => (
+                    <Link key={service.title} href={service.href} className="group block">
+                        <Card className="h-full bg-background p-6 text-center items-center flex flex-col transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:border-primary">
+                            <div className="p-4 rounded-full bg-primary/10 text-primary mb-4 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
+                                <service.icon className="w-8 h-8" />
+                            </div>
+                            <h3 className="text-lg font-semibold text-accent-foreground mb-2">{service.title}</h3>
+                            <p className="text-sm text-muted-foreground flex-grow">{service.description}</p>
+                        </Card>
+                    </Link>
+                ))}
             </div>
-          </div>
         </div>
       </FadeInSection>
 
@@ -984,97 +951,83 @@ export default function Home() {
       </section>
 
       {/* Request a Quote Section */}
-      <section className="relative py-16 md:py-24" id="request-quote">
-        <Image
-            src="https://placehold.co/1920x800.png"
-            data-ai-hint="factory worker"
-            alt="Request a quote background"
-            fill
-            className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 via-teal-900/70 to-transparent"></div>
-        <div className="container relative z-10" id="request-quote-form-section">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div className="md:max-w-md">
-                     <h2 className="text-3xl font-bold font-headline text-primary-foreground">Request a Free Quote</h2>
-                    <p className="mt-4 text-primary-foreground/80">
-                        Get in touch with us to discuss your project requirements and receive a personalized quote.
-                    </p>
-                </div>
-                <div className="bg-card p-8 rounded-lg shadow-lg">
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 gap-6">
-                            <FormField
-                                control={form.control}
-                                name="name"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel htmlFor="fullName">Full Name</FormLabel>
-                                        <FormControl>
-                                            <Input id="fullName" placeholder="Your Full Name" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="email"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel htmlFor="email">Email Address</FormLabel>
-                                        <FormControl>
-                                            <Input id="email" type="email" placeholder="Your Email" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="phone"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel htmlFor="phone">Phone Number (Optional)</FormLabel>
-                                        <FormControl>
-                                            <Input id="phone" type="tel" placeholder="Your Phone Number" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="message"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel htmlFor="message">Message</FormLabel>
-                                        <FormControl>
-                                            <Textarea id="message" rows={4} placeholder="Tell us about your project and requirements..." {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg transition-colors duration-300 ease-in-out transform hover:scale-105">Submit Request</Button>
-                        </form>
-                    </Form>
-                </div>
-            </div>
-        </div>
+      <section className="relative py-16 md:py-24 bg-cover bg-center" style={{backgroundImage: "url('https://placehold.co/1920x800.png')"}} id="request-quote">
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 via-teal-900/70 to-transparent"></div>
+          <div className="container relative z-10" id="request-quote-form-section">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="md:max-w-md">
+                      <h2 className="text-3xl font-bold font-headline text-primary-foreground">Request a Free Quote</h2>
+                      <p className="mt-4 text-primary-foreground/80">
+                          Get in touch with us to discuss your project requirements and receive a personalized quote.
+                      </p>
+                  </div>
+                  <div className="bg-card p-8 rounded-lg shadow-lg">
+                      <Form {...form}>
+                          <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 gap-6">
+                              <FormField
+                                  control={form.control}
+                                  name="name"
+                                  render={({ field }) => (
+                                      <FormItem>
+                                          <FormLabel htmlFor="fullName">Full Name</FormLabel>
+                                          <FormControl>
+                                              <Input id="fullName" placeholder="Your Full Name" {...field} />
+                                          </FormControl>
+                                          <FormMessage />
+                                      </FormItem>
+                                  )}
+                              />
+                              <FormField
+                                  control={form.control}
+                                  name="email"
+                                  render={({ field }) => (
+                                      <FormItem>
+                                          <FormLabel htmlFor="email">Email Address</FormLabel>
+                                          <FormControl>
+                                              <Input id="email" type="email" placeholder="Your Email" {...field} />
+                                          </FormControl>
+                                          <FormMessage />
+                                      </FormItem>
+                                  )}
+                              />
+                              <FormField
+                                  control={form.control}
+                                  name="phone"
+                                  render={({ field }) => (
+                                      <FormItem>
+                                          <FormLabel htmlFor="phone">Phone Number (Optional)</FormLabel>
+                                          <FormControl>
+                                              <Input id="phone" type="tel" placeholder="Your Phone Number" {...field} />
+                                          </FormControl>
+                                          <FormMessage />
+                                      </FormItem>
+                                  )}
+                              />
+                              <FormField
+                                  control={form.control}
+                                  name="message"
+                                  render={({ field }) => (
+                                      <FormItem>
+                                          <FormLabel htmlFor="message">Message</FormLabel>
+                                          <FormControl>
+                                              <Textarea id="message" rows={4} placeholder="Tell us about your project and requirements..." {...field} />
+                                          </FormControl>
+                                          <FormMessage />
+                                      </FormItem>
+                                  )}
+                              />
+                              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg transition-colors duration-300 ease-in-out transform hover:scale-105">Submit Request</Button>
+                          </form>
+                      </Form>
+                  </div>
+              </div>
+          </div>
       </section>
 
       {/* Subscription Section */}
-      <section className="relative py-20">
-        <Image
-          src="https://placehold.co/1920x480.png"
-          data-ai-hint="electrical circuit board"
-          alt="Subscription background"
-          fill
-          className="object-cover"
-        />
+      <section className="relative py-20 bg-cover bg-center" style={{backgroundImage: "url('https://placehold.co/1920x480.png')"}}>
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 via-teal-900/70 to-transparent"></div>
-        <div className="container relative z-0 flex flex-col items-start justify-center text-left md:w-1/2">
+        <div className="container relative z-10 flex flex-col items-start justify-center text-left md:w-1/2">
           <h2 className="text-4xl font-bold font-headline text-primary-foreground">Subscribe for weekly updates</h2>
           <p className="mt-4 max-w-lg text-lg text-primary-foreground/80">
             Stay informed with the latest industry news, product updates, and exclusive offers from ARP Electric Solution.
@@ -1134,12 +1087,3 @@ const TransformerAccessoriesTable = () => {
     </div>
   );
 };
-
-
-
-
-
-
-
-
-    
