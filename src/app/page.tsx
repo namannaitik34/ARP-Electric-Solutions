@@ -451,7 +451,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 lg:py-40 bg-secondary text-secondary-foreground">
+      <section className="relative py-24 md:py-32 lg:py-40 text-secondary-foreground">
         <Carousel
           plugins={[plugin.current]}
           className="absolute inset-0 w-full h-full"
@@ -461,7 +461,7 @@ export default function Home() {
         >
           <CarouselContent className="w-full h-full">
             {heroSlides.map((slide, index) => (
-              <CarouselItem key={index} className="w-full h-full">
+              <CarouselItem key={index} className="w-full h-full fade-carousel-item">
                 <Image
                   src={slide.src}
                   alt={slide.alt}

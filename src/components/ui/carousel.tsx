@@ -176,13 +176,34 @@ const CarouselItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { orientation } = useCarousel()
+  const { orientation, api } = useCarousel()
+  const [isActive, setIsActive] = React.useState(false);
+
+  React.useEffect(() => {
+    if (api) {
+      const onSelect = () => {
+        const itemNode = (ref as React.RefObject<HTMLDivElement>)?.current;
+        if (itemNode) {
+          const itemIndex = Array.from(itemNode.parentElement?.children || []).indexOf(itemNode);
+          setIsActive(api.selectedScrollSnap() === itemIndex);
+        }
+      };
+
+      api.on('select', onSelect);
+      onSelect(); // Set initial active state
+
+      return () => {
+        api.off('select', onSelect);
+      };
+    }
+  }, [api, ref]);
 
   return (
     <div
       ref={ref}
       role="group"
       aria-roledescription="slide"
+      data-active={isActive ? "true" : undefined}
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "pl-4" : "pt-4",
