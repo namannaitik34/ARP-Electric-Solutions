@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Bolt,
@@ -46,6 +47,19 @@ const services: { title: string; href: string; description: string, icon: React.
 ];
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <div className="bg-teal-900 text-primary-foreground text-s py-5">
@@ -74,7 +88,10 @@ export function Header() {
             </div>
         </div>
       </div>
-      <header className="sticky top-0 z-50 w-full">
+      <header className={cn(
+          "sticky top-0 z-50 w-full transition-all duration-300",
+          scrolled ? "bg-background/80 backdrop-blur-sm border-b" : "bg-transparent border-b-transparent"
+        )}>
         <div className="container flex h-20 items-center">
             <div className="mr-4 flex items-center">
                 <Link href="/" className="flex items-center space-x-2">
@@ -108,7 +125,7 @@ export function Header() {
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild>
-                          <Link href="/products" className={navigationMenuTriggerStyle()}>
+                          <Link href="/services" className={navigationMenuTriggerStyle()}>
                             Services
                           </Link>
                         </NavigationMenuLink>
