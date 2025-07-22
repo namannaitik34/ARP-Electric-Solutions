@@ -1,71 +1,38 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
-import { Zap, Wind, CircuitBoard, Bolt, Component } from "lucide-react";
 
-const products = [
-    { 
-        id: 'transformers', 
-        title: 'Transformers', 
-        description: 'A comprehensive range of transformers for various applications, ensuring efficient power transfer and distribution.', 
-        icon: CircuitBoard,
+'use client';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import Image from "next/image";
+import { ChevronRight } from "lucide-react";
+
+const productCategories = [
+    {
+        slug: 'transformers',
+        title: 'Transformers',
+        description: 'High-performance transformers for power distribution.',
         image: 'https://placehold.co/600x400.png',
-        hint: 'power transformer'
+        hint: 'power transformer station'
     },
-    { 
-        id: 'copper', 
-        title: 'Copper', 
-        description: 'High-quality copper products for electrical applications, known for their excellent conductivity.', 
-        icon: Wind,
+    {
+        slug: 'conductors',
+        title: 'Conductors',
+        description: 'A wide range of copper and aluminium conductors.',
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solution.firebasestorage.app/o/Products%2Fcopper-picc.jpg?alt=media&token=61977413-c47b-4dec-9236-efaf4c24d1ac',
-        hint: 'metal core'
-    },
-    { 
-        id: 'aluminium', 
-        title: 'Aluminium', 
-        description: 'Lightweight yet strong aluminium components essential for various electrical systems.', 
-        icon: Zap,
-        image: 'https://placehold.co/600x400.png',
-        hint: 'copper foil'
+        hint: 'copper wire'
     },
     {
-        id: 'crgo',
-        title: 'CRGO(Cold Rolled Grain Oriented Steel)',
-        description: 'Specialized steel for high-performance transformer cores, minimizing energy losses.',
-        icon: Component,
+        slug: 'materials-and-accessories',
+        title: 'Materials & Accessories',
+        description: 'Essential components for transformer manufacturing and maintenance.',
         image: 'https://placehold.co/600x400.png',
-        hint: 'steel roll'
+        hint: 'electrical components'
     },
     {
-        id: 'transformer-accessories',
-        title: 'Transformer Accessories',
-        description: 'A range of essential accessories to ensure the optimal function and longevity of transformers.',
-        icon: Component,
-        image: 'https://placehold.co/600x400.png',
-        hint: 'switchgear panel'
-    },
-    {
-        id: 'crgo-steel',
-        title: 'CRGO Steel',
-        description: 'Cold-Rolled Grain-Oriented steel for manufacturing high-performance transformer cores. (Duplicate entry, will be removed or modified based on your specific product list)',
-        icon: Component,
-        image: 'https://placehold.co/600x400.png',
-        hint: 'steel roll'
-    },
-    {
-        id: 'data-center',
-        title: 'Data Center',
-        description: 'Electrical solutions specifically designed for the demanding power requirements of data centers.',
-        icon: Bolt,
+        slug: 'solutions-and-services',
+        title: 'Solutions & Services',
+        description: 'Advanced solutions for power quality, data centers, and more.',
         image: 'https://placehold.co/600x400.png',
         hint: 'server room'
-    },
-    {
-        id: 'apfc-harmonic-filter-ups',
-        title: 'MV/LV APFC- Harmonic Filter & UPS',
-        description: 'Advanced power factor correction, harmonic filtering, and UPS systems for stable and clean power.',
-        icon: CircuitBoard,
-        image: 'https://placehold.co/600x400.png',
-        hint: 'power filter'
     }
 ];
 
@@ -76,32 +43,36 @@ export default function ProductsPage() {
                 <div className="text-center max-w-3xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">Our Products</h1>
                     <p className="mt-4 text-lg text-muted-foreground">
-                        We provide a wide range of high-quality electrical products engineered for performance, reliability, and safety.
+                        We provide a wide range of high-quality electrical products engineered for performance, reliability, and safety. Explore our product categories to find the right solution for your needs.
                     </p>
                 </div>
 
-                <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {products.map(product => (
-                        <Card key={product.id} className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                             <CardHeader>
-                                <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
-                                    <Image 
-                                        src={product.image}
-                                        alt={product.title}
-                                        data-ai-hint={product.hint}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div className="flex items-center gap-4 pt-4">
-                                     <product.icon className="w-8 h-8 text-primary shrink-0" />
-                                     <CardTitle className="text-xl">{product.title}</CardTitle>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="flex-grow">
-                                <p className="text-muted-foreground">{product.description}</p>
-                            </CardContent>
-                        </Card>
+                <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {productCategories.map(category => (
+                        <Link key={category.slug} href={`/products/${category.slug}`} className="group block">
+                            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                <CardHeader className="p-0">
+                                    <div className="relative w-full h-64">
+                                        <Image
+                                            src={category.image}
+                                            alt={category.title}
+                                            data-ai-hint={category.hint}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
+                                    </div>
+                                </CardHeader>
+                                <CardContent className="p-6 flex-grow flex flex-col">
+                                    <h2 className="text-2xl font-bold text-accent-foreground">{category.title}</h2>
+                                    <p className="mt-2 text-muted-foreground flex-grow">{category.description}</p>
+                                    <div className="mt-4 flex items-center font-semibold text-primary">
+                                        View Products
+                                        <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     ))}
                 </div>
             </div>
