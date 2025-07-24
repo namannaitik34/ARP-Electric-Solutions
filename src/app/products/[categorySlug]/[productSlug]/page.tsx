@@ -94,32 +94,34 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
 
                     {/* Right Content */}
                     <main className="md:col-span-3">
-                        <div className="flex flex-col gap-12 items-start">
+                        <div className="grid md:grid-cols-2 gap-12 items-start">
                             {/* Image Gallery */}
-                            <div className="w-full flex flex-col gap-4">
-                                 <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg border group">
-                                    <Image
-                                        src={mainImage}
-                                        alt={product.title}
-                                        data-ai-hint={product.hint}
-                                        fill
-                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                    />
-                                </div>
-                                <div className="grid grid-cols-4 gap-4">
-                                    {galleryImages.map((img, idx) => (
-                                        <div key={idx} 
-                                             className={`relative aspect-square rounded-md overflow-hidden cursor-pointer border-2 transition-all ${mainImage === img ? 'border-primary' : 'border-transparent'}`}
-                                             onMouseEnter={() => setMainImage(img)}>
-                                            <Image
-                                                src={img}
-                                                alt={`${product.title} thumbnail ${idx + 1}`}
-                                                data-ai-hint={product.hint}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </div>
-                                    ))}
+                            <div className="w-full max-w-[600px] mx-auto md:mx-0">
+                                <div className="w-full flex flex-col gap-4">
+                                     <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg border group">
+                                        <Image
+                                            src={mainImage}
+                                            alt={product.title}
+                                            data-ai-hint={product.hint}
+                                            fill
+                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                        />
+                                    </div>
+                                    <div className="grid grid-cols-4 gap-4">
+                                        {galleryImages.map((img, idx) => (
+                                            <div key={idx} 
+                                                 className={`relative aspect-square rounded-md overflow-hidden cursor-pointer border-2 transition-all ${mainImage === img ? 'border-primary' : 'border-transparent'}`}
+                                                 onMouseEnter={() => setMainImage(img)}>
+                                                <Image
+                                                    src={img}
+                                                    alt={`${product.title} thumbnail ${idx + 1}`}
+                                                    data-ai-hint={product.hint}
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
