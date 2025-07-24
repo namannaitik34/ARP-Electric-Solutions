@@ -1,6 +1,6 @@
 
 'use client';
-import { getProduct, getCategory } from "../../categories";
+import { getProduct, getCategory, productData } from "../../categories";
 import { notFound, useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { ChevronRight, Home, Star, CheckCircle, Zap, Shield, Thermometer } from 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React, { useState } from "react";
 
@@ -49,139 +49,177 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                         <span className="font-medium text-foreground">{product.title}</span>
                     </div>
                 </div>
-
-                <div className="grid md:grid-cols-2 gap-12 items-start">
-                    {/* Left Column: Image Gallery */}
-                    <div className="flex flex-col gap-4">
-                         <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg border group">
-                            <Image
-                                src={mainImage}
-                                alt={product.title}
-                                data-ai-hint={product.hint}
-                                fill
-                                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                        </div>
-                        <div className="grid grid-cols-4 gap-4">
-                            {galleryImages.map((img, idx) => (
-                                <div key={idx} 
-                                     className={`relative aspect-square rounded-md overflow-hidden cursor-pointer border-2 transition-all ${mainImage === img ? 'border-primary' : 'border-transparent'}`}
-                                     onMouseEnter={() => setMainImage(img)}>
-                                    <Image
-                                        src={img}
-                                        alt={`${product.title} thumbnail ${idx + 1}`}
-                                        data-ai-hint={product.hint}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Right Column: Product Details */}
-                    <div>
-                        <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">{product.title}</h1>
-                        <p className="mt-6 text-lg text-muted-foreground">{product.description}</p>
-                        
-                        <Card className="mt-6 bg-primary/5 border-primary/20">
+                
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+                    {/* Left Sidebar */}
+                    <aside className="md:col-span-1">
+                        <Card>
                             <CardHeader>
-                                <CardTitle className="text-lg text-primary">Key Features</CardTitle>
+                                <CardTitle className="text-xl">Product Categories</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <ul className="space-y-3 text-muted-foreground">
-                                    <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-green-500" /> High Efficiency & Low Energy Loss</li>
-                                    <li className="flex items-center gap-3"><Zap className="w-5 h-5 text-blue-500" /> Superior Overload Capability</li>
-                                    <li className="flex items-center gap-3"><Shield className="w-5 h-5 text-red-500" /> Enhanced Safety and Protection</li>
-                                    <li className="flex items-center gap-3"><Thermometer className="w-5 h-5 text-orange-500" /> Optimal Thermal Performance</li>
-                                </ul>
+                                <Accordion type="multiple" className="w-full" defaultValue={[params.categorySlug]}>
+                                    {productData.map((category) => (
+                                        <AccordionItem key={category.slug} value={category.slug}>
+                                            <AccordionTrigger className="font-semibold text-base hover:no-underline">
+                                                {category.title}
+                                            </AccordionTrigger>
+                                            <AccordionContent>
+                                                <ul className="space-y-2 mt-2">
+                                                    {category.products.map((p) => (
+                                                        <li key={p.slug}>
+                                                            <Link href={`/products/${category.slug}/${p.slug}`} className={`block p-2 rounded-md text-sm transition-colors ${p.slug === product.slug ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'}`}>
+                                                                {p.title}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                    ))}
+                                </Accordion>
                             </CardContent>
                         </Card>
+                    </aside>
 
-                        <div className="mt-8">
-                            <Button asChild size="lg" className="w-full md:w-auto transition-transform hover:scale-105">
-                                <Link href="/contact">Request a Quote</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Why Choose Us Section */}
-                {product.features && (
-                    <div className="mt-16 md:mt-24">
-                        <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
-                        <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                        <p className="mt-4 text-muted-foreground max-w-3xl">
-                            Our {product.title} are engineered for durability, efficiency, and minimal downtime. With over 20 years of experience in transformer solutions, we offer products that meet global quality standards and provide the highest level of reliability.
-                        </p>
-                        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-                            {product.features.map((feature, index) => (
-                                <div key={index} className="flex gap-6">
-                                    <div className="flex-shrink-0">
-                                        <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                            <feature.icon className="w-8 h-8" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
-                                        <p className="mt-2 text-muted-foreground">{feature.description}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-                
-                {/* Full Description Section */}
-                <div className="mt-16 md:mt-24">
-                    <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
-                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                    <p className="py-6 text-muted-foreground text-base">{product.longDescription}</p>
-                </div>
-                
-                {/* Technical Specifications Section */}
-                <div className="mt-16 md:mt-24">
-                    <h2 className="text-3xl font-bold font-headline text-primary">Technical Specifications</h2>
-                     <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                     <div className="py-6 grid md:grid-cols-2 gap-8 items-center">
-                        {product.specs && (
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Specification</TableHead>
-                                        <TableHead>Value</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {Object.entries(product.specs).map(([key, value]) => (
-                                        <TableRow key={key}>
-                                            <TableCell className="font-semibold">{key}</TableCell>
-                                            <TableCell>{value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        )}
-                        <div className="h-80 w-full">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <BarChart data={performanceData} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis type="number" />
-                                    <YAxis dataKey="name" type="category" width={100} />
-                                    <Tooltip
-                                      contentStyle={{
-                                          backgroundColor: 'hsl(var(--background))',
-                                          borderColor: 'hsl(var(--border))'
-                                      }}
+                    {/* Right Content */}
+                    <main className="md:col-span-3">
+                        <div className="grid md:grid-cols-2 gap-12 items-start">
+                            {/* Image Gallery */}
+                            <div className="flex flex-col gap-4">
+                                 <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg border group">
+                                    <Image
+                                        src={mainImage}
+                                        alt={product.title}
+                                        data-ai-hint={product.hint}
+                                        fill
+                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
                                     />
-                                    <Legend />
-                                    <Bar dataKey="value" name="Performance" fill="hsl(var(--primary))" background={{ fill: 'hsl(var(--muted))' }} />
-                                </BarChart>
-                            </ResponsiveContainer>
+                                </div>
+                                <div className="grid grid-cols-4 gap-4">
+                                    {galleryImages.map((img, idx) => (
+                                        <div key={idx} 
+                                             className={`relative aspect-square rounded-md overflow-hidden cursor-pointer border-2 transition-all ${mainImage === img ? 'border-primary' : 'border-transparent'}`}
+                                             onMouseEnter={() => setMainImage(img)}>
+                                            <Image
+                                                src={img}
+                                                alt={`${product.title} thumbnail ${idx + 1}`}
+                                                data-ai-hint={product.hint}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Product Details */}
+                            <div>
+                                <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">{product.title}</h1>
+                                <p className="mt-6 text-lg text-muted-foreground">{product.description}</p>
+                                
+                                <Card className="mt-6 bg-primary/5 border-primary/20">
+                                    <CardHeader>
+                                        <CardTitle className="text-lg text-primary">Key Features</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <ul className="space-y-3 text-muted-foreground">
+                                            <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-green-500" /> High Efficiency & Low Energy Loss</li>
+                                            <li className="flex items-center gap-3"><Zap className="w-5 h-5 text-blue-500" /> Superior Overload Capability</li>
+                                            <li className="flex items-center gap-3"><Shield className="w-5 h-5 text-red-500" /> Enhanced Safety and Protection</li>
+                                            <li className="flex items-center gap-3"><Thermometer className="w-5 h-5 text-orange-500" /> Optimal Thermal Performance</li>
+                                        </ul>
+                                    </CardContent>
+                                </Card>
+
+                                <div className="mt-8">
+                                    <Button asChild size="lg" className="w-full md:w-auto transition-transform hover:scale-105">
+                                        <Link href="/contact">Request a Quote</Link>
+                                    </Button>
+                                </div>
+                            </div>
                         </div>
-                     </div>
+
+                         {/* Why Choose Us Section */}
+                        {product.features && (
+                            <div className="mt-16 md:mt-24">
+                                <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
+                                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                                <p className="mt-4 text-muted-foreground max-w-3xl">
+                                    Our {product.title} are engineered for durability, efficiency, and minimal downtime. With over 20 years of experience in transformer solutions, we offer products that meet global quality standards and provide the highest level of reliability.
+                                </p>
+                                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+                                    {product.features.map((feature, index) => (
+                                        <div key={index} className="flex gap-6">
+                                            <div className="flex-shrink-0">
+                                                <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                                    <feature.icon className="w-8 h-8" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
+                                                <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        
+                        {/* Full Description Section */}
+                        <div className="mt-16 md:mt-24">
+                            <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
+                            <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                            <p className="py-6 text-muted-foreground text-base">{product.longDescription}</p>
+                        </div>
+                        
+                        {/* Technical Specifications Section */}
+                        <div className="mt-16 md:mt-24">
+                            <h2 className="text-3xl font-bold font-headline text-primary">Technical Specifications</h2>
+                             <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                             <div className="py-6 grid md:grid-cols-2 gap-8 items-center">
+                                {product.specs && (
+                                    <Table>
+                                        <TableHeader>
+                                            <TableRow>
+                                                <TableHead>Specification</TableHead>
+                                                <TableHead>Value</TableHead>
+                                            </TableRow>
+                                        </TableHeader>
+                                        <TableBody>
+                                            {Object.entries(product.specs).map(([key, value]) => (
+                                                <TableRow key={key}>
+                                                    <TableCell className="font-semibold">{key}</TableCell>
+                                                    <TableCell>{value}</TableCell>
+                                                </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                )}
+                                <div className="h-80 w-full">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <BarChart data={performanceData} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                                            <CartesianGrid strokeDasharray="3 3" />
+                                            <XAxis type="number" />
+                                            <YAxis dataKey="name" type="category" width={100} />
+                                            <Tooltip
+                                              contentStyle={{
+                                                  backgroundColor: 'hsl(var(--background))',
+                                                  borderColor: 'hsl(var(--border))'
+                                              }}
+                                            />
+                                            <Legend />
+                                            <Bar dataKey="value" name="Performance" fill="hsl(var(--primary))" background={{ fill: 'hsl(var(--muted))' }} />
+                                        </BarChart>
+                                    </ResponsiveContainer>
+                                </div>
+                             </div>
+                        </div>
+                    </main>
                 </div>
             </div>
         </div>
     )
 }
+
+    
