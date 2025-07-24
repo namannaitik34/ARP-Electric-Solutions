@@ -1,4 +1,6 @@
 
+import { HardHat, ShieldCheck, ThermometerIcon, Zap } from "lucide-react";
+
 export interface Product {
   slug: string;
   title: string;
@@ -7,6 +9,11 @@ export interface Product {
   image: string;
   hint: string;
   specs?: { [key: string]: string };
+  features?: {
+    title: string;
+    description: string;
+    icon: React.ElementType;
+  }[];
 }
 
 export interface ProductCategory {
@@ -26,7 +33,7 @@ export const productData: ProductCategory[] = [
         slug: 'oil-immersed-transformers',
         title: 'Oil Immersed Transformers',
         description: 'Durable and efficient transformers for power transmission and distribution.',
-        longDescription: 'Our Oil Immersed Transformers are designed for reliability and high performance in a variety of demanding applications. Manufactured with high-quality materials and conforming to international standards, they ensure efficient power management and long service life.',
+        longDescription: 'Our Oil Immersed Transformers are designed for reliability and high performance in a variety of demanding applications. Manufactured with high-quality materials and conforming to international standards, they ensure efficient power management and long service life. With over 20 years of experience in transformer solutions, we offer products that meet global quality standards and provide the highest level of reliability.',
         image: '/images/Oil_emmeresed_transformer.png',
         hint: 'oil transformer',
         specs: {
@@ -34,7 +41,29 @@ export const productData: ProductCategory[] = [
           'Capacity': 'Up to 50 MVA',
           'Voltage': 'Up to 132 kV',
           'Cooling': 'ONAN/ONAF/OFAF'
-        }
+        },
+        features: [
+          {
+            title: 'Durability & Reliability',
+            description: 'Our oil-immersed transformers are built to withstand harsh environmental conditions and ensure long-term performance.',
+            icon: ShieldCheck
+          },
+          {
+            title: 'Energy Efficient',
+            description: 'Optimized design to reduce energy loss and improve overall efficiency, saving operational costs in the long run.',
+            icon: ThermometerIcon
+          },
+          {
+            title: 'Expert Engineering',
+            description: 'Engineered by highly skilled professionals to meet and exceed global industry standards.',
+            icon: HardHat
+          },
+          {
+            title: 'Power Efficient',
+            description: 'Low energy consumption with high performance and reduced operational costs.',
+            icon: Zap
+          },
+        ]
       },
       {
         slug: 'cast-resin-transformers',

@@ -116,6 +116,32 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                     </div>
                 </div>
 
+                {/* Why Choose Us Section */}
+                {product.features && (
+                    <div className="mt-16 md:mt-24">
+                        <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
+                        <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                        <p className="mt-4 text-muted-foreground max-w-3xl">
+                            Our {product.title} are engineered for durability, efficiency, and minimal downtime. With over 20 years of experience in transformer solutions, we offer products that meet global quality standards and provide the highest level of reliability.
+                        </p>
+                        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+                            {product.features.map((feature, index) => (
+                                <div key={index} className="flex gap-6">
+                                    <div className="flex-shrink-0">
+                                        <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                            <feature.icon className="w-8 h-8" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
+                                        <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
                 {/* Tabs Section for more details */}
                 <div className="mt-16 md:mt-24">
                      <Tabs defaultValue="description" className="w-full">
