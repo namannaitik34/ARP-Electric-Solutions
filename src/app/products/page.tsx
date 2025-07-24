@@ -3,38 +3,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
-
-const productCategories = [
-    {
-        slug: 'transformers',
-        title: 'Transformers',
-        description: 'High-performance transformers for power distribution.',
-        image: 'https://placehold.co/600x400.png',
-        hint: 'power transformer station'
-    },
-    {
-        slug: 'conductors',
-        title: 'Conductors',
-        description: 'A wide range of copper and aluminium conductors.',
-        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solution.firebasestorage.app/o/Products%2Fcopper-picc.jpg?alt=media&token=61977413-c47b-4dec-9236-efaf4c24d1ac',
-        hint: 'copper wire'
-    },
-    {
-        slug: 'materials-and-accessories',
-        title: 'Materials & Accessories',
-        description: 'Essential components for transformer manufacturing and maintenance.',
-        image: 'https://placehold.co/600x400.png',
-        hint: 'electrical components'
-    },
-    {
-        slug: 'solutions-and-services',
-        title: 'Solutions & Services',
-        description: 'Advanced solutions for power quality, data centers, and more.',
-        image: 'https://placehold.co/600x400.png',
-        hint: 'server room'
-    }
-];
+import { ChevronRight, ChevronsUpDown } from "lucide-react";
+import { productData } from "./categories";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 
 export default function ProductsPage() {
     return (
@@ -47,33 +19,80 @@ export default function ProductsPage() {
                     </p>
                 </div>
 
-                <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {productCategories.map(category => (
-                        <Link key={category.slug} href={`/products/${category.slug}`} className="group block">
-                            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                                <CardHeader className="p-0">
-                                    <div className="relative w-full h-64">
-                                        <Image
-                                            src={category.image}
-                                            alt={category.title}
-                                            data-ai-hint={category.hint}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
-                                    </div>
-                                </CardHeader>
-                                <CardContent className="p-6 flex-grow flex flex-col">
-                                    <h2 className="text-2xl font-bold text-accent-foreground">{category.title}</h2>
-                                    <p className="mt-2 text-muted-foreground flex-grow">{category.description}</p>
-                                    <div className="mt-4 flex items-center font-semibold text-primary">
-                                        View Products
-                                        <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </Link>
-                    ))}
+                <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+                    {/* Left Sidebar */}
+                    <aside className="md:col-span-1">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle className="text-xl">Product Categories</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <Accordion type="multiple" className="w-full">
+                                    {productData.map((category) => (
+                                        <AccordionItem key={category.slug} value={category.slug}>
+                                            <AccordionTrigger className="font-semibold text-base hover:no-underline">
+                                                {category.title}
+                                            </AccordionTrigger>
+                                            <AccordionContent>
+                                                <ul className="space-y-2 mt-2">
+                                                    {category.products.map((product) => (
+                                                        <li key={product.slug}>
+                                                            <Link href={`/products/${category.slug}/${product.slug}`} className="block p-2 rounded-md text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+                                                                {product.title}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                    ))}
+                                </Accordion>
+                            </CardContent>
+                        </Card>
+                    </aside>
+
+                    {/* Right Content */}
+                    <main className="md:col-span-3 space-y-16">
+                        {productData.map((category) => (
+                            <section key={category.slug} id={category.slug}>
+                                <div className="flex justify-between items-center mb-6">
+                                    <h2 className="text-3xl font-bold font-headline text-primary">{category.title}</h2>
+                                    <Button asChild variant="ghost">
+                                        <Link href={`/products/${category.slug}`} className="text-sm font-semibold">
+                                            View All <ChevronRight className="w-4 h-4 ml-1" />
+                                        </Link>
+                                    </Button>
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    {category.products.map(product => (
+                                       <Link key={product.slug} href={`/products/${category.slug}/${product.slug}`} className="group block h-full">
+                                            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-transparent hover:border-primary">
+                                                <CardHeader className="p-0">
+                                                    <div className="relative w-full h-40">
+                                                        <Image
+                                                            src={product.image}
+                                                            alt={product.title}
+                                                            data-ai-hint={product.hint}
+                                                            fill
+                                                            className="object-cover"
+                                                        />
+                                                    </div>
+                                                </CardHeader>
+                                                <CardContent className="p-4 flex-grow flex flex-col">
+                                                    <h3 className="text-base font-semibold text-accent-foreground">{product.title}</h3>
+                                                    <p className="mt-1 text-xs text-muted-foreground flex-grow">{product.description}</p>
+                                                     <div className="mt-3 flex items-center text-xs font-semibold text-primary">
+                                                        Learn More
+                                                        <ChevronRight className="w-3 h-3 ml-1 transition-transform group-hover:translate-x-1" />
+                                                    </div>
+                                                </CardContent>
+                                            </Card>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </section>
+                        ))}
+                    </main>
                 </div>
             </div>
         </div>
