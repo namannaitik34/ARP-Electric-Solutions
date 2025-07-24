@@ -82,17 +82,7 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                     {/* Right Column: Product Details */}
                     <div>
                         <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">{product.title}</h1>
-                        <div className="mt-4 flex items-center gap-4">
-                            <div className="flex items-center gap-1 text-amber-500">
-                                <Star className="w-5 h-5 fill-current" />
-                                <Star className="w-5 h-5 fill-current" />
-                                <Star className="w-5 h-5 fill-current" />
-                                <Star className="w-5 h-5 fill-current" />
-                                <Star className="w-5 h-5 fill-current/50 stroke-current" />
-                            </div>
-                            <span className="text-muted-foreground text-sm">(125 reviews)</span>
-                        </div>
-                        <p className="mt-4 text-lg text-muted-foreground">{product.description}</p>
+                        <p className="mt-6 text-lg text-muted-foreground">{product.description}</p>
                         
                         <Card className="mt-6 bg-primary/5 border-primary/20">
                             <CardHeader>
@@ -145,10 +135,9 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                 {/* Tabs Section for more details */}
                 <div className="mt-16 md:mt-24">
                      <Tabs defaultValue="description" className="w-full">
-                        <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 bg-primary/10">
+                        <TabsList className="grid w-full grid-cols-1 md:grid-cols-2 bg-primary/10">
                             <TabsTrigger value="description">Full Description</TabsTrigger>
                             <TabsTrigger value="specifications">Technical Specifications</TabsTrigger>
-                            <TabsTrigger value="reviews">Customer Reviews</TabsTrigger>
                         </TabsList>
                         <TabsContent value="description" className="py-6 px-2 text-muted-foreground text-base">
                             <p>{product.longDescription}</p>
@@ -191,9 +180,6 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                                     </ResponsiveContainer>
                                 </div>
                              </div>
-                        </TabsContent>
-                        <TabsContent value="reviews" className="py-6">
-                            <p className="text-center text-muted-foreground">Customer reviews are coming soon!</p>
                         </TabsContent>
                     </Tabs>
                 </div>
