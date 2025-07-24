@@ -37,6 +37,14 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
 
     return (
         <div className="bg-white dark:bg-gray-900 text-foreground animate-fadeIn">
+            {/* Hero Section */}
+            <div className="relative h-64 md:h-80 bg-cover bg-center" style={{ backgroundImage: `url('https://placehold.co/1980x480.png')` }} data-ai-hint="industrial background technology">
+                <div className="absolute inset-0 bg-black/50"></div>
+                <div className="container relative h-full flex flex-col items-center justify-center text-center text-white">
+                    <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wider">{product.title}</h1>
+                </div>
+            </div>
+
             <div className="container py-16 md:py-24">
                 <div className="mb-8">
                      <div className="flex items-center text-sm text-muted-foreground">
@@ -221,5 +229,3 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
         </div>
     )
 }
-
-    
