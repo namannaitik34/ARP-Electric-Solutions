@@ -22,18 +22,20 @@ const performanceData = [
 export default function ProductDetailPage({ params }: { params: { categorySlug: string, productSlug: string } }) {
     const product = getProduct(params.categorySlug, params.productSlug);
     const category = getCategory(params.categorySlug);
+
     const [mainImage, setMainImage] = useState(product?.image || '');
+
+    useEffect(() => {
+        if (product) {
+            setMainImage(product.image);
+        }
+    }, [product]);
     
     if (!product || !category) {
         notFound();
     }
 
-    const galleryImages = [
-        product.image,
-        'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_12.jpg?alt=media&token=fdb49093-de88-47ee-9515-fee764bc2926',
-        'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_13.jpg?alt=media&token=5360d8f6-128f-4cc0-adae-97a03e7984dd',
-        'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_14.jpg?alt=media&token=044b292e-8eb7-47a2-bcc6-1fdc93cb794b',
-    ];
+    const galleryImages = product.gallery || [product.image];
 
     return (
         <div className="bg-white dark:bg-gray-900 text-foreground animate-fadeIn">
