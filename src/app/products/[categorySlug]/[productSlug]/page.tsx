@@ -30,8 +30,8 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
 
     const galleryImages = [
         product.image,
-        'https://placehold.co/400x400.png',
-        'https://placehold.co/400x400.png',
+        'https://placehold.co/400x300.png',
+        'https://placehold.co/500x400.png',
         'https://placehold.co/400x400.png',
     ];
 
@@ -92,7 +92,7 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
 
                     {/* Right Content */}
                     <main className="md:col-span-3">
-                        <div className="grid md:grid-cols-2 gap-12 items-start">
+                        <div className="grid grid-cols-1 gap-12 items-start">
                             {/* Image Gallery */}
                             <div className="flex flex-col gap-4">
                                  <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg border group">
@@ -122,7 +122,7 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                             </div>
 
                             {/* Product Details */}
-                            <div>
+                            <div className="mt-8">
                                 <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">{product.title}</h1>
                                 <p className="mt-6 text-lg text-muted-foreground">{product.description}</p>
                                 
