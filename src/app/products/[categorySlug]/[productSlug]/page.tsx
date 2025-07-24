@@ -62,33 +62,35 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                     {/* Left Sidebar */}
                     <aside className="md:col-span-1">
                         <div className="sticky top-24">
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle className="text-xl">Product Categories</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <Accordion type="multiple" className="w-full" defaultValue={[params.categorySlug]}>
-                                        {productData.map((category) => (
-                                            <AccordionItem key={category.slug} value={category.slug}>
-                                                <AccordionTrigger className="font-semibold text-base hover:no-underline">
-                                                    {category.title}
-                                                </AccordionTrigger>
-                                                <AccordionContent>
-                                                    <ul className="space-y-2 mt-2">
-                                                        {category.products.map((p) => (
-                                                            <li key={p.slug}>
-                                                                <Link href={`/products/${category.slug}/${p.slug}`} className={`block p-2 rounded-md text-sm transition-colors ${p.slug === product.slug ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'}`}>
-                                                                    {p.title}
-                                                                </Link>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </AccordionContent>
-                                            </AccordionItem>
-                                        ))}
-                                    </Accordion>
-                                </CardContent>
-                            </Card>
+                            <div className="max-h-[calc(100vh-6rem)] overflow-y-auto">
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle className="text-xl">Product Categories</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <Accordion type="multiple" className="w-full" defaultValue={[params.categorySlug]}>
+                                            {productData.map((category) => (
+                                                <AccordionItem key={category.slug} value={category.slug}>
+                                                    <AccordionTrigger className="font-semibold text-base hover:no-underline">
+                                                        {category.title}
+                                                    </AccordionTrigger>
+                                                    <AccordionContent>
+                                                        <ul className="space-y-2 mt-2">
+                                                            {category.products.map((p) => (
+                                                                <li key={p.slug}>
+                                                                    <Link href={`/products/${category.slug}/${p.slug}`} className={`block p-2 rounded-md text-sm transition-colors ${p.slug === product.slug ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'}`}>
+                                                                        {p.title}
+                                                                    </Link>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </AccordionContent>
+                                                </AccordionItem>
+                                            ))}
+                                        </Accordion>
+                                    </CardContent>
+                                </Card>
+                            </div>
                         </div>
                     </aside>
 
