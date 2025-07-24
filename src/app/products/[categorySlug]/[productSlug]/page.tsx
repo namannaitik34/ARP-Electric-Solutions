@@ -61,40 +61,42 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                     {/* Left Sidebar */}
                     <aside className="md:col-span-1">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="text-xl">Product Categories</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Accordion type="multiple" className="w-full" defaultValue={[params.categorySlug]}>
-                                    {productData.map((category) => (
-                                        <AccordionItem key={category.slug} value={category.slug}>
-                                            <AccordionTrigger className="font-semibold text-base hover:no-underline">
-                                                {category.title}
-                                            </AccordionTrigger>
-                                            <AccordionContent>
-                                                <ul className="space-y-2 mt-2">
-                                                    {category.products.map((p) => (
-                                                        <li key={p.slug}>
-                                                            <Link href={`/products/${category.slug}/${p.slug}`} className={`block p-2 rounded-md text-sm transition-colors ${p.slug === product.slug ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'}`}>
-                                                                {p.title}
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion>
-                            </CardContent>
-                        </Card>
+                        <div className="sticky top-24">
+                            <Card>
+                                <CardHeader>
+                                    <CardTitle className="text-xl">Product Categories</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <Accordion type="multiple" className="w-full" defaultValue={[params.categorySlug]}>
+                                        {productData.map((category) => (
+                                            <AccordionItem key={category.slug} value={category.slug}>
+                                                <AccordionTrigger className="font-semibold text-base hover:no-underline">
+                                                    {category.title}
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <ul className="space-y-2 mt-2">
+                                                        {category.products.map((p) => (
+                                                            <li key={p.slug}>
+                                                                <Link href={`/products/${category.slug}/${p.slug}`} className={`block p-2 rounded-md text-sm transition-colors ${p.slug === product.slug ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'}`}>
+                                                                    {p.title}
+                                                                </Link>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        ))}
+                                    </Accordion>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </aside>
 
                     {/* Right Content */}
                     <main className="md:col-span-3">
-                        <div className="grid grid-cols-1 gap-12 items-start">
+                        <div className="flex flex-col gap-12 items-start">
                             {/* Image Gallery */}
-                            <div className="flex flex-col gap-4">
+                            <div className="w-full flex flex-col gap-4">
                                  <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg border group">
                                     <Image
                                         src={mainImage}
@@ -122,7 +124,7 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                             </div>
 
                             {/* Product Details */}
-                            <div className="mt-8">
+                            <div className="w-full">
                                 <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">{product.title}</h1>
                                 <p className="mt-6 text-lg text-muted-foreground">{product.description}</p>
                                 
@@ -229,3 +231,5 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
         </div>
     )
 }
+
+    
