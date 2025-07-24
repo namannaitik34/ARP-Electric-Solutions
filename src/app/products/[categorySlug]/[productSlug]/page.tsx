@@ -22,13 +22,7 @@ const performanceData = [
 export default function ProductDetailPage({ params }: { params: { categorySlug: string, productSlug: string } }) {
     const product = getProduct(params.categorySlug, params.productSlug);
     const category = getCategory(params.categorySlug);
-    const [mainImage, setMainImage] = useState('');
-
-    useEffect(() => {
-        if (product) {
-            setMainImage(product.image);
-        }
-    }, [product]);
+    const [mainImage, setMainImage] = useState(product?.image || '');
     
     if (!product || !category) {
         notFound();
