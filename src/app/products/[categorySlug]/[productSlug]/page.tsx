@@ -131,57 +131,55 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                         </div>
                     </div>
                 )}
-
-                {/* Tabs Section for more details */}
+                
+                {/* Full Description Section */}
                 <div className="mt-16 md:mt-24">
-                     <Tabs defaultValue="description" className="w-full">
-                        <TabsList className="grid w-full grid-cols-1 md:grid-cols-2 bg-primary/10">
-                            <TabsTrigger value="description">Full Description</TabsTrigger>
-                            <TabsTrigger value="specifications">Technical Specifications</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="description" className="py-6 px-2 text-muted-foreground text-base">
-                            <p>{product.longDescription}</p>
-                        </TabsContent>
-                        <TabsContent value="specifications" className="py-6">
-                             <div className="grid md:grid-cols-2 gap-8 items-center">
-                                {product.specs && (
-                                    <Table>
-                                        <TableHeader>
-                                            <TableRow>
-                                                <TableHead>Specification</TableHead>
-                                                <TableHead>Value</TableHead>
-                                            </TableRow>
-                                        </TableHeader>
-                                        <TableBody>
-                                            {Object.entries(product.specs).map(([key, value]) => (
-                                                <TableRow key={key}>
-                                                    <TableCell className="font-semibold">{key}</TableCell>
-                                                    <TableCell>{value}</TableCell>
-                                                </TableRow>
-                                            ))}
-                                        </TableBody>
-                                    </Table>
-                                )}
-                                <div className="h-80 w-full">
-                                    <ResponsiveContainer width="100%" height="100%">
-                                        <BarChart data={performanceData} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                                            <CartesianGrid strokeDasharray="3 3" />
-                                            <XAxis type="number" />
-                                            <YAxis dataKey="name" type="category" width={100} />
-                                            <Tooltip
-                                              contentStyle={{
-                                                  backgroundColor: 'hsl(var(--background))',
-                                                  borderColor: 'hsl(var(--border))'
-                                              }}
-                                            />
-                                            <Legend />
-                                            <Bar dataKey="value" name="Performance" fill="hsl(var(--primary))" background={{ fill: 'hsl(var(--muted))' }} />
-                                        </BarChart>
-                                    </ResponsiveContainer>
-                                </div>
-                             </div>
-                        </TabsContent>
-                    </Tabs>
+                    <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <p className="py-6 text-muted-foreground text-base">{product.longDescription}</p>
+                </div>
+                
+                {/* Technical Specifications Section */}
+                <div className="mt-16 md:mt-24">
+                    <h2 className="text-3xl font-bold font-headline text-primary">Technical Specifications</h2>
+                     <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                     <div className="py-6 grid md:grid-cols-2 gap-8 items-center">
+                        {product.specs && (
+                            <Table>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead>Specification</TableHead>
+                                        <TableHead>Value</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {Object.entries(product.specs).map(([key, value]) => (
+                                        <TableRow key={key}>
+                                            <TableCell className="font-semibold">{key}</TableCell>
+                                            <TableCell>{value}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        )}
+                        <div className="h-80 w-full">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <BarChart data={performanceData} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis type="number" />
+                                    <YAxis dataKey="name" type="category" width={100} />
+                                    <Tooltip
+                                      contentStyle={{
+                                          backgroundColor: 'hsl(var(--background))',
+                                          borderColor: 'hsl(var(--border))'
+                                      }}
+                                    />
+                                    <Legend />
+                                    <Bar dataKey="value" name="Performance" fill="hsl(var(--primary))" background={{ fill: 'hsl(var(--muted))' }} />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
+                     </div>
                 </div>
             </div>
         </div>
