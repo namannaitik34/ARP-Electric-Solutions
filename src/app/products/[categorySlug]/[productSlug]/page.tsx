@@ -10,7 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const performanceData = [
   { name: 'Efficiency', value: 98.5, full: 100 },
@@ -22,7 +22,13 @@ const performanceData = [
 export default function ProductDetailPage({ params }: { params: { categorySlug: string, productSlug: string } }) {
     const product = getProduct(params.categorySlug, params.productSlug);
     const category = getCategory(params.categorySlug);
-    const [mainImage, setMainImage] = useState(product?.image || 'https://placehold.co/800x600.png');
+    const [mainImage, setMainImage] = useState('');
+
+    useEffect(() => {
+        if (product) {
+            setMainImage(product.image);
+        }
+    }, [product]);
     
     if (!product || !category) {
         notFound();
@@ -30,9 +36,9 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
 
     const galleryImages = [
         product.image,
-        'https://placehold.co/400x300.png',
-        'https://placehold.co/500x400.png',
-        'https://placehold.co/400x400.png',
+        'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_12.jpg?alt=media&token=fdb49093-de88-47ee-9515-fee764bc2926',
+        'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_13.jpg?alt=media&token=5360d8f6-128f-4cc0-adae-97a03e7984dd',
+        'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_14.jpg?alt=media&token=044b292e-8eb7-47a2-bcc6-1fdc93cb794b',
     ];
 
     return (
@@ -99,13 +105,13 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                         <div className="w-full max-w-[600px] mx-auto md:mx-0">
                             <div className="w-full flex flex-col gap-4">
                                     <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg border group">
-                                    <Image
+                                    {mainImage && <Image
                                         src={mainImage}
                                         alt={product.title}
                                         data-ai-hint={product.hint}
                                         fill
                                         className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                    />
+                                    />}
                                 </div>
                                 <div className="grid grid-cols-4 gap-4">
                                     {galleryImages.map((img, idx) => (
