@@ -94,61 +94,58 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
 
                     {/* Right Content */}
                     <main className="md:col-span-3">
-                        <div className="grid md:grid-cols-2 gap-12 items-start">
-                            {/* Image Gallery */}
-                            <div className="w-full max-w-[600px] mx-auto md:mx-0">
-                                <div className="w-full flex flex-col gap-4">
-                                     <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg border group">
-                                        <Image
-                                            src={mainImage}
-                                            alt={product.title}
-                                            data-ai-hint={product.hint}
-                                            fill
-                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                        />
-                                    </div>
-                                    <div className="grid grid-cols-4 gap-4">
-                                        {galleryImages.map((img, idx) => (
-                                            <div key={idx} 
-                                                 className={`relative aspect-square rounded-md overflow-hidden cursor-pointer border-2 transition-all ${mainImage === img ? 'border-primary' : 'border-transparent'}`}
-                                                 onMouseEnter={() => setMainImage(img)}>
-                                                <Image
-                                                    src={img}
-                                                    alt={`${product.title} thumbnail ${idx + 1}`}
-                                                    data-ai-hint={product.hint}
-                                                    fill
-                                                    className="object-cover"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
+                        <div className="w-full max-w-[600px] mx-auto md:mx-0">
+                            <div className="w-full flex flex-col gap-4">
+                                    <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg border group">
+                                    <Image
+                                        src={mainImage}
+                                        alt={product.title}
+                                        data-ai-hint={product.hint}
+                                        fill
+                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                </div>
+                                <div className="grid grid-cols-4 gap-4">
+                                    {galleryImages.map((img, idx) => (
+                                        <div key={idx} 
+                                                className={`relative aspect-square rounded-md overflow-hidden cursor-pointer border-2 transition-all ${mainImage === img ? 'border-primary' : 'border-transparent'}`}
+                                                onMouseEnter={() => setMainImage(img)}>
+                                            <Image
+                                                src={img}
+                                                alt={`${product.title} thumbnail ${idx + 1}`}
+                                                data-ai-hint={product.hint}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
+                        </div>
 
-                            {/* Product Details */}
-                            <div className="w-full">
-                                <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">{product.title}</h1>
-                                <p className="mt-6 text-lg text-muted-foreground">{product.description}</p>
-                                
-                                <Card className="mt-6 bg-primary/5 border-primary/20">
-                                    <CardHeader>
-                                        <CardTitle className="text-lg text-primary">Key Features</CardTitle>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <ul className="space-y-3 text-muted-foreground">
-                                            <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-green-500" /> High Efficiency & Low Energy Loss</li>
-                                            <li className="flex items-center gap-3"><Zap className="w-5 h-5 text-blue-500" /> Superior Overload Capability</li>
-                                            <li className="flex items-center gap-3"><Shield className="w-5 h-5 text-red-500" /> Enhanced Safety and Protection</li>
-                                            <li className="flex items-center gap-3"><Thermometer className="w-5 h-5 text-orange-500" /> Optimal Thermal Performance</li>
-                                        </ul>
-                                    </CardContent>
-                                </Card>
+                        {/* Product Details */}
+                        <div className="w-full mt-12">
+                            <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">{product.title}</h1>
+                            <p className="mt-6 text-lg text-muted-foreground">{product.description}</p>
+                            
+                            <Card className="mt-6 bg-primary/5 border-primary/20">
+                                <CardHeader>
+                                    <CardTitle className="text-lg text-primary">Key Features</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <ul className="space-y-3 text-muted-foreground">
+                                        <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-green-500" /> High Efficiency & Low Energy Loss</li>
+                                        <li className="flex items-center gap-3"><Zap className="w-5 h-5 text-blue-500" /> Superior Overload Capability</li>
+                                        <li className="flex items-center gap-3"><Shield className="w-5 h-5 text-red-500" /> Enhanced Safety and Protection</li>
+                                        <li className="flex items-center gap-3"><Thermometer className="w-5 h-5 text-orange-500" /> Optimal Thermal Performance</li>
+                                    </ul>
+                                </CardContent>
+                            </Card>
 
-                                <div className="mt-8">
-                                    <Button asChild size="lg" className="w-full md:w-auto transition-transform hover:scale-105">
-                                        <Link href="/contact">Request a Quote</Link>
-                                    </Button>
-                                </div>
+                            <div className="mt-8">
+                                <Button asChild size="lg" className="w-full md:w-auto transition-transform hover:scale-105">
+                                    <Link href="/contact">Request a Quote</Link>
+                                </Button>
                             </div>
                         </div>
 
@@ -233,7 +230,3 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
         </div>
     )
 }
-
-    
-
-    
