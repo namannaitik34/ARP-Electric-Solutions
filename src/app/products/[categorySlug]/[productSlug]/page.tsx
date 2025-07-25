@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React, { useState, useEffect } from "react";
 import { Progress } from "@/components/ui/progress";
+import type { Product } from "../../categories";
 
 const performanceData = [
   { name: 'Efficiency', value: 98.5, full: 100 },
@@ -90,6 +91,33 @@ export default function ProductDetailPage() {
         </div>
     );
 
+    const ProductFeaturesGrid = ({ features }: { features: Product['features'] }) => {
+        if (!features || features.length === 0) {
+            return null;
+        }
+    
+        return (
+            <div className="not-prose mt-16">
+                 <h3 className="text-2xl font-bold text-primary mb-8">Key Features & Benefits</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                    {features.map((feature) => (
+                        <div key={feature.title} className="flex gap-6 items-start">
+                            <div className="flex-shrink-0">
+                                <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                    <feature.icon className="w-8 h-8" />
+                                </div>
+                            </div>
+                            <div>
+                                <h4 className="text-xl font-bold text-accent-foreground">{feature.title}</h4>
+                                <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
     const CastResinTransformerContent = () => (
         <div className="mt-16 md:mt-24">
             <Tabs defaultValue="overview">
@@ -126,28 +154,6 @@ export default function ProductDetailPage() {
     );
 
     const CopperFoilContent = () => {
-        const features = [
-            {
-                title: 'Superior Electrical Conductivity',
-                description: 'Our copper foils provide excellent electrical conductivity, minimizing power loss and ensuring efficient energy transmission in transformers.',
-                icon: Gauge,
-            },
-            {
-                title: 'Low Temperature Rise',
-                description: 'The high conductivity and low contact resistance of our copper foils result in reduced temperature rise, ensuring stable transformer operation under high load conditions.',
-                icon: Fan,
-            },
-            {
-                title: 'Excellent Insulation',
-                description: 'ARP transformer copper foils are coated with high-quality materials like polyester, polyetherimide, and polypropylene films, ensuring superior electrical insulation performance.',
-                icon: Layers,
-            },
-            {
-                title: 'High Mechanical Strength',
-                description: 'The copper foils possess high mechanical strength, ensuring durability and reliability even under demanding transformer winding requirements.',
-                icon: GitCommitHorizontal,
-            },
-        ];
 
         const specifications = [
             { spec: 'Thickness', details: '0.025–0.2 mm' },
@@ -164,23 +170,7 @@ export default function ProductDetailPage() {
                 <p>Our Transformer Copper Foils are crucial components for high-performance transformers, offering exceptional conductivity and stability for long-term operation.</p>
                 <p>Transformer copper foils are a vital part of transformer manufacturing. They are primarily used to connect the transformer core and output terminals. Made from high-quality oxygen-free copper, these foils offer excellent conductivity, low contact resistance, and minimal temperature rise, ensuring minimal power loss and stable transformer operation over time.</p>
                 
-                <div className="not-prose mt-16">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-                        {features.map((feature) => (
-                            <div key={feature.title} className="flex gap-6 items-start">
-                                <div className="flex-shrink-0">
-                                    <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                        <feature.icon className="w-8 h-8" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
-                                    <p className="mt-2 text-muted-foreground">{feature.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <ProductFeaturesGrid features={product.features} />
 
                 <h3 className="text-2xl font-bold text-primary mt-16 not-prose">Why Choose ARP Transformer Copper Foils</h3>
                 <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
@@ -293,6 +283,8 @@ export default function ProductDetailPage() {
                                 ARP's {product.title} are engineered for excellence, combining innovative design with high-quality materials to deliver superior performance and reliability. Our commitment to international standards ensures that each product meets the rigorous demands of modern industry, providing a cost-effective and durable solution for your needs.
                             </p>
                         </div>
+                        
+                        <ProductFeaturesGrid features={product.features} />
 
                         {product.slug === 'oil-immersed-transformers' && <OilImmersedSpecs />}
                     </>
@@ -427,5 +419,7 @@ export default function ProductDetailPage() {
     )
 
 }
+
+    
 
     
