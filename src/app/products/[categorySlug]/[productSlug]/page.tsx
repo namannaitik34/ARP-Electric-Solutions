@@ -149,6 +149,14 @@ export default function ProductDetailPage() {
             },
         ];
 
+        const specifications = [
+            { spec: 'Thickness', details: '0.025–0.2 mm' },
+            { spec: 'Width', details: 'Up to 1000 mm' },
+            { spec: 'Electrical Conductivity', details: '≥ 100% IACS (International Annealed Copper Standard)' },
+            { spec: 'Application', details: 'Power Transformers, Current Transformers, Instrument Transformers' },
+            { spec: 'Standards', details: 'ASTM B152, IEC 60228' },
+        ];
+
         return (
             <div className="mt-16 md:mt-24 prose prose-lg max-w-none text-muted-foreground">
                 <h2 className="text-3xl font-bold font-headline text-primary not-prose">Copper Foils for Transformers</h2>
@@ -177,6 +185,30 @@ export default function ProductDetailPage() {
                 <h3 className="text-2xl font-bold text-primary mt-16 not-prose">Why Choose ARP Transformer Copper Foils</h3>
                 <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
                 <p>ARP Electric Solution provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.</p>
+            
+                <div className="not-prose mt-16">
+                    <h3 className="text-2xl font-bold text-primary">Specifications</h3>
+                     <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <p className="text-muted-foreground max-w-3xl mb-8">
+                        Our Transformer Copper Foils are available in various specifications, offering the flexibility needed for different transformer applications. Here are the key specifications:
+                    </p>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[200px]">Specification</TableHead>
+                                <TableHead>Details</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {specifications.map((item) => (
+                                <TableRow key={item.spec}>
+                                    <TableCell className="font-semibold">{item.spec}</TableCell>
+                                    <TableCell>{item.details}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </div>
         );
     };
@@ -274,7 +306,7 @@ export default function ProductDetailPage() {
                                 </div>
                             </div>
                         )}
-                        <OilImmersedSpecs />
+                        {product.slug === 'oil-immersed-transformers' && <OilImmersedSpecs />}
                     </>
                 );
             default:
