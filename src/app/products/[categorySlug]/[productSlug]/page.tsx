@@ -358,48 +358,6 @@ export default function ProductDetailPage() {
                                     </div>
                                 </div>
                             )}
-                            {/* Technical Specifications Section */}
-                            <div className="mt-16 md:mt-24">
-                                <h2 className="text-3xl font-bold font-headline text-primary">Technical Specifications</h2>
-                                 <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                                 <div className="py-6 grid md:grid-cols-2 gap-8 items-center">
-                                    {product.specs && (
-                                        <Table>
-                                            <TableHeader>
-                                                <TableRow>
-                                                    <TableHead>Specification</TableHead>
-                                                    <TableHead>Value</TableHead>
-                                                </TableRow>
-                                            </TableHeader>
-                                            <TableBody>
-                                                {Object.entries(product.specs).map(([key, value]) => (
-                                                    <TableRow key={key}>
-                                                        <TableCell className="font-semibold">{key}</TableCell>
-                                                        <TableCell>{value}</TableCell>
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    )}
-                                    <div className="h-80 w-full">
-                                        <ResponsiveContainer width="100%" height="100%">
-                                            <BarChart data={performanceData} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                                                <CartesianGrid strokeDasharray="3 3" />
-                                                <XAxis type="number" />
-                                                <YAxis dataKey="name" type="category" width={100} />
-                                                <Tooltip
-                                                  contentStyle={{
-                                                      backgroundColor: 'hsl(var(--background))',
-                                                      borderColor: 'hsl(var(--border))'
-                                                  }}
-                                                />
-                                                <Legend />
-                                                <Bar dataKey="value" name="Performance" fill="hsl(var(--primary))" background={{ fill: 'hsl(var(--muted))' }} />
-                                            </BarChart>
-                                        </ResponsiveContainer>
-                                    </div>
-                                 </div>
-                            </div>
                           </>
                         )}
                         
