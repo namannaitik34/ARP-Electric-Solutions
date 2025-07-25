@@ -39,6 +39,46 @@ export default function ProductDetailPage() {
 
     const galleryImages = product.gallery || [product.image];
 
+    const ClimaticClasses = () => (
+        <div className="mt-16 md:mt-24">
+            <h3 className="text-2xl font-bold text-primary">Climatic and Environmental Classes</h3>
+            <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+            <p className="text-muted-foreground max-w-3xl mb-8">
+                AKS Dry Type Transformers comply with international standards for climatic and environmental conditions. These transformers are designed to operate under the toughest conditions as outlined in IEC 60076-11. Below are the key classifications:
+            </p>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="w-[150px]">Climatic Class</TableHead>
+                        <TableHead>Description</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    <TableRow>
+                        <TableCell className="font-semibold">Class C1</TableCell>
+                        <TableCell>Suitable for operation at ambient temperatures above -5°C but can be exposed to temperatures down to -25°C during transport/storage.</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell className="font-semibold">Class C2</TableCell>
+                        <TableCell>Suitable for operation, transport, and storage at ambient temperatures down to -25°C.</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell className="font-semibold">Class C3</TableCell>
+                        <TableCell>Suitable for transport/storage down to -40°C and operation down to 25°C.</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell className="font-semibold">Class C4</TableCell>
+                        <TableCell>Suitable for transport/storage down to -50°C and operation down to 40°C.</TableCell>
+                    </TableRow>
+                     <TableRow>
+                        <TableCell className="font-semibold">Class C5</TableCell>
+                        <TableCell>Suitable for transport/storage down to -60°C and operation down to 50°C.</TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+        </div>
+    );
+
     const WhyChooseARP = () => (
         <div className="mt-12">
             <h3 className="text-2xl font-bold text-primary">Why Choose ARP {product.title}?</h3>
@@ -80,6 +120,7 @@ export default function ProductDetailPage() {
                 </TabsContent>
             </Tabs>
             <WhyChooseARP />
+            <ClimaticClasses />
         </div>
     );
 
