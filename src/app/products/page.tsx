@@ -22,33 +22,35 @@ export default function ProductsPage() {
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-12">
                     {/* Left Sidebar */}
                     <aside className="md:col-span-1">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="text-xl">Product Categories</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Accordion type="multiple" className="w-full">
-                                    {productData.map((category) => (
-                                        <AccordionItem key={category.slug} value={category.slug}>
-                                            <AccordionTrigger className="font-semibold text-base hover:no-underline">
-                                                {category.title}
-                                            </AccordionTrigger>
-                                            <AccordionContent>
-                                                <ul className="space-y-2 mt-2">
-                                                    {category.products.map((product) => (
-                                                        <li key={product.slug}>
-                                                            <Link href={`/products/${category.slug}/${product.slug}`} className="block p-2 rounded-md text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
-                                                                {product.title}
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion>
-                            </CardContent>
-                        </Card>
+                        <div className="sticky top-24">
+                            <Card>
+                                <CardHeader>
+                                    <CardTitle className="text-xl">Product Categories</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <Accordion type="multiple" className="w-full" defaultValue={productData.map(c => c.slug)}>
+                                        {productData.map((category) => (
+                                            <AccordionItem key={category.slug} value={category.slug}>
+                                                <AccordionTrigger className="font-semibold text-base hover:no-underline">
+                                                    {category.title}
+                                                </AccordionTrigger>
+                                                <AccordionContent>
+                                                    <ul className="space-y-2 mt-2">
+                                                        {category.products.map((product) => (
+                                                            <li key={product.slug}>
+                                                                <Link href={`/products/${category.slug}/${product.slug}`} className="block p-2 rounded-md text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+                                                                    {product.title}
+                                                                </Link>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        ))}
+                                    </Accordion>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </aside>
 
                     {/* Right Content */}
