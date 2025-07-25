@@ -4,7 +4,7 @@ import { getProduct, getCategory, productData } from "../../categories";
 import { notFound, useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Home, Star, CheckCircle, Zap, Shield, Thermometer } from "lucide-react";
+import { ChevronRight, Home, Star, CheckCircle, Zap, Shield, Thermometer, HardHat, Leaf, Waves } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
@@ -20,17 +20,18 @@ const performanceData = [
   { name: 'Voltage Reg.', value: 99, full: 100 },
 ];
 
-export default function ProductDetailPage({ params }: { params: { categorySlug: string, productSlug: string } }) {
+export default function ProductDetailPage() {
+    const params = useParams() as { categorySlug: string; productSlug: string; };
     const product = getProduct(params.categorySlug, params.productSlug);
     const category = getCategory(params.categorySlug);
 
     const [mainImage, setMainImage] = useState(product?.image || '');
 
     useEffect(() => {
-        if (product) {
+        if (product && mainImage !== product.image) {
             setMainImage(product.image);
         }
-    }, [product]);
+    }, [product, mainImage]);
     
     if (!product || !category) {
         notFound();
