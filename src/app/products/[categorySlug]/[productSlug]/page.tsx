@@ -377,6 +377,13 @@ export default function ProductDetailPage() {
                         </TableBody>
                     </Table>
                 </div>
+                <div className="mt-16 md:mt-24">
+                    <h3 className="text-2xl font-bold text-primary">Ensuring Long-Term Reliability</h3>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <p className="text-muted-foreground max-w-3xl">
+                        At ARP Electric Solution, we prioritize performance, safety, and durability. Our Copper PICC is crafted to meet global standards, ensuring long-term reliability and minimal maintenance for high-power electrical applications.
+                    </p>
+                </div>
             </>
         );
     };
@@ -599,11 +606,3 @@ export default function ProductDetailPage() {
     )
 
 }
-
-    
-
-    
-
-
-
-
