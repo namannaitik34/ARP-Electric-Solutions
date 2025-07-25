@@ -26,7 +26,7 @@ export default function ProductDetailPage() {
     const product = getProduct(params.categorySlug, params.productSlug);
     const category = getCategory(params.categorySlug);
 
-    const [mainImage, setMainImage] = useState(product?.image || '');
+    const [mainImage, setMainImage] = useState('');
 
     useEffect(() => {
         if (product) {
@@ -38,7 +38,7 @@ export default function ProductDetailPage() {
         notFound();
     }
 
-    const galleryImages = product.gallery || [product.image];
+    const galleryImages = product.gallery || (product.image ? [product.image] : []);
 
     const ClimaticClasses = () => (
         <div className="mt-16 md:mt-24">
@@ -124,6 +124,18 @@ export default function ProductDetailPage() {
             <ClimaticClasses />
         </div>
     );
+
+    const CopperFoilContent = () => (
+        <div className="mt-16 md:mt-24 prose prose-lg max-w-none text-muted-foreground">
+            <h2 className="text-3xl font-bold font-headline text-primary">Copper Foils for Transformers</h2>
+             <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+            <p>Our Transformer Copper Foils are crucial components for high-performance transformers, offering exceptional conductivity and stability for long-term operation.</p>
+            <p>Transformer copper foils are a vital part of transformer manufacturing. They are primarily used to connect the transformer core and output terminals. Made from high-quality oxygen-free copper, these foils offer excellent conductivity, low contact resistance, and minimal temperature rise, ensuring minimal power loss and stable transformer operation over time.</p>
+            <h3 className="text-2xl font-bold text-primary">Why Choose AKS Transformer Copper Foils</h3>
+             <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+            <p>AKS International provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.</p>
+        </div>
+    );
     
     const OilImmersedSpecs = () => {
         const [progressValues, setProgressValues] = useState([0, 0, 0, 0]);
@@ -179,6 +191,82 @@ export default function ProductDetailPage() {
                 </div>
             </div>
         );
+    };
+
+    const renderProductContent = () => {
+        switch (product.slug) {
+            case 'cast-resin-transformers':
+                return <CastResinTransformerContent />;
+            case 'copper-foil':
+                return <CopperFoilContent />;
+            case 'oil-immersed-transformers':
+                return (
+                    <>
+                        <div className="mt-16 md:mt-24">
+                            <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
+                            <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                            <div className="prose prose-lg max-w-none text-muted-foreground">
+                                <p>{product.longDescription}</p>
+                            </div>
+                        </div>
+                        {product.features && (
+                            <div className="mt-16 md:mt-24">
+                                <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
+                                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+                                    {product.features.map((feature, index) => (
+                                        <div key={index} className="flex gap-6">
+                                            <div className="flex-shrink-0">
+                                                <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                                    <feature.icon className="w-8 h-8" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
+                                                <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        <OilImmersedSpecs />
+                    </>
+                );
+            default:
+                return (
+                    <>
+                        <div className="mt-16 md:mt-24">
+                            <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
+                            <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                            <div className="prose prose-lg max-w-none text-muted-foreground">
+                                <p>{product.longDescription}</p>
+                            </div>
+                        </div>
+                        {product.features && (
+                            <div className="mt-16 md:mt-24">
+                                <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
+                                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+                                    {product.features.map((feature, index) => (
+                                        <div key={index} className="flex gap-6">
+                                            <div className="flex-shrink-0">
+                                                <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                                    <feature.icon className="w-8 h-8" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
+                                                <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </>
+                );
+        }
     };
 
     return (
@@ -290,76 +378,7 @@ export default function ProductDetailPage() {
                             </div>
                         </div>
 
-                        {product.slug === 'cast-resin-transformers' ? (
-                            <CastResinTransformerContent />
-                        ) : product.slug === 'oil-immersed-transformers' ? (
-                           <>
-                                {/* Full Description Section */}
-                                <div className="mt-16 md:mt-24">
-                                    <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
-                                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                                    <div className="prose prose-lg max-w-none text-muted-foreground">
-                                        <p>{product.longDescription}</p>
-                                    </div>
-                                </div>
-                                {/* Why Choose Us Section */}
-                                {product.features && (
-                                    <div className="mt-16 md:mt-24">
-                                        <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
-                                        <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                                        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-                                            {product.features.map((feature, index) => (
-                                                <div key={index} className="flex gap-6">
-                                                    <div className="flex-shrink-0">
-                                                        <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                                            <feature.icon className="w-8 h-8" />
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
-                                                        <p className="mt-2 text-muted-foreground">{feature.description}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-                                <OilImmersedSpecs />
-                            </>
-                        ) : (
-                          <>
-                            {/* Full Description Section */}
-                            <div className="mt-16 md:mt-24">
-                                <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
-                                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                                <div className="prose prose-lg max-w-none text-muted-foreground">
-                                    <p>{product.longDescription}</p>
-                                </div>
-                            </div>
-                            {/* Why Choose Us Section */}
-                            {product.features && (
-                                <div className="mt-16 md:mt-24">
-                                    <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
-                                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-                                        {product.features.map((feature, index) => (
-                                            <div key={index} className="flex gap-6">
-                                                <div className="flex-shrink-0">
-                                                    <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                                        <feature.icon className="w-8 h-8" />
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
-                                                    <p className="mt-2 text-muted-foreground">{feature.description}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                          </>
-                        )}
+                        {renderProductContent()}
                         
                          <div className="mt-16 text-center">
                             <Button asChild size="lg" className="transition-transform hover:scale-105">
@@ -371,4 +390,5 @@ export default function ProductDetailPage() {
             </div>
         </div>
     )
-}
+
+    
