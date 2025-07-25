@@ -39,27 +39,27 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
     const galleryImages = product.gallery || [product.image];
 
     const WhyChooseARP = () => (
-        <div className="mt-6">
-            <h3 className="text-xl font-bold text-primary">Why Choose ARP {product.title}?</h3>
+        <div className="mt-12">
+            <h3 className="text-2xl font-bold text-primary">Why Choose ARP {product.title}?</h3>
             <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground max-w-3xl">
                 ARP's {product.title} offer unparalleled reliability and efficiency. With an emphasis on safety and performance, our products are ideal for use in various industrial and commercial applications. Designed to meet the highest environmental, climatic, and fire behaviour standards, our transformers ensure optimal operation even in the most demanding environments.
             </p>
         </div>
     );
 
     const CastResinTransformerContent = () => (
-        <div className="mt-8">
+        <div className="mt-16 md:mt-24">
             <Tabs defaultValue="overview">
-                <TabsList className="bg-transparent p-0">
-                    <TabsTrigger value="overview" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-muted-foreground">Overview</TabsTrigger>
-                    <TabsTrigger value="benefits" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-muted-foreground">Key Benefits</TabsTrigger>
-                    <TabsTrigger value="applications" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-muted-foreground">Applications</TabsTrigger>
+                <TabsList className="bg-transparent p-0 border-b w-full justify-start rounded-none">
+                    <TabsTrigger value="overview" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-base">Overview</TabsTrigger>
+                    <TabsTrigger value="benefits" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-base">Key Benefits</TabsTrigger>
+                    <TabsTrigger value="applications" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-base">Applications</TabsTrigger>
                 </TabsList>
-                <TabsContent value="overview" className="mt-6 text-muted-foreground">
+                <TabsContent value="overview" className="mt-6 text-muted-foreground prose prose-lg max-w-none">
                     <p>{product.longDescription}</p>
                 </TabsContent>
-                <TabsContent value="benefits" className="mt-6 text-muted-foreground">
+                <TabsContent value="benefits" className="mt-6 text-muted-foreground prose prose-lg max-w-none">
                     <ul className="list-disc pl-5 space-y-2">
                         <li><strong>Enhanced Safety:</strong> Self-extinguishing and fire-resistant properties minimize fire hazards.</li>
                         <li><strong>Eco-Friendly:</strong> No risk of oil leakage, making them ideal for environmentally sensitive areas.</li>
@@ -68,7 +68,7 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                         <li><strong>Compact Design:</strong> Smaller footprint allows for flexible installation in confined spaces.</li>
                     </ul>
                 </TabsContent>
-                <TabsContent value="applications" className="mt-6 text-muted-foreground">
+                <TabsContent value="applications" className="mt-6 text-muted-foreground prose prose-lg max-w-none">
                     <ul className="list-disc pl-5 space-y-2">
                         <li><strong>Public Infrastructure:</strong> Airports, hospitals, subways, and high-rise buildings.</li>
                         <li><strong>Industrial Sector:</strong> Chemical plants, steel mills, and manufacturing facilities.</li>
@@ -191,40 +191,41 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                             </div>
                         </div>
 
-                        {/* Full Description Section */}
-                        <div className="mt-16 md:mt-24">
-                            <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
-                             <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                            <div className="prose prose-lg max-w-none text-muted-foreground">
-                                {product.slug === 'cast-resin-transformers' ? (
-                                    <CastResinTransformerContent />
-                                ) : (
-                                    <p>{product.longDescription}</p>
-                                )}
-                            </div>
-                        </div>
-
-                         {/* Why Choose Us Section */}
-                        {product.features && product.slug !== 'cast-resin-transformers' && (
+                        {product.slug === 'cast-resin-transformers' ? (
+                            <CastResinTransformerContent />
+                        ) : (
+                          <>
+                            {/* Full Description Section */}
                             <div className="mt-16 md:mt-24">
-                                <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
+                                <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
                                 <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-                                    {product.features.map((feature, index) => (
-                                        <div key={index} className="flex gap-6">
-                                            <div className="flex-shrink-0">
-                                                <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                                    <feature.icon className="w-8 h-8" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
-                                                <p className="mt-2 text-muted-foreground">{feature.description}</p>
-                                            </div>
-                                        </div>
-                                    ))}
+                                <div className="prose prose-lg max-w-none text-muted-foreground">
+                                    <p>{product.longDescription}</p>
                                 </div>
                             </div>
+                            {/* Why Choose Us Section */}
+                            {product.features && (
+                                <div className="mt-16 md:mt-24">
+                                    <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
+                                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+                                        {product.features.map((feature, index) => (
+                                            <div key={index} className="flex gap-6">
+                                                <div className="flex-shrink-0">
+                                                    <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                                        <feature.icon className="w-8 h-8" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
+                                                    <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                          </>
                         )}
                         
                         {/* Technical Specifications Section */}
