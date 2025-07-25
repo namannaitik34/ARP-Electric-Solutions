@@ -1,5 +1,5 @@
 
-import { HardHat, Leaf, ShieldCheck, Waves, Zap } from "lucide-react";
+import { HardHat, Leaf, ShieldCheck, Waves, Zap, Thermometer, Layers, GitCommitHorizontal, Power, Wind, Cpu, Settings, Package, Cable, Server, Filter, Rss, Tv, Camera } from "lucide-react";
 
 export interface Product {
   slug: string;
@@ -120,7 +120,7 @@ export const productData: ProductCategory[] = [
         slug: 'copper-foil',
         title: 'Copper Foil',
         description: 'High-grade copper foil for superior conductivity.',
-        longDescription: 'Our Transformer Copper Foils are crucial components for high-performance transformers, offering exceptional conductivity and stability for long-term operation. Transformer copper foils are a vital part of transformer manufacturing. They are primarily used to connect the transformer core and output terminals. Made from high-quality oxygen-free copper, these foils offer excellent conductivity, low contact resistance, and minimal temperature rise, ensuring minimal power loss and stable transformer operation over time. ARP Electric Solution provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.',
+        longDescription: 'ARP Electric Solution provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.Our Transformer Copper Foils are crucial components for high-performance transformers, offering exceptional conductivity and stability for long-term operation. Transformer copper foils are a vital part of transformer manufacturing. They are primarily used to connect the transformer core and output terminals. Made from high-quality oxygen-free copper, these foils offer excellent conductivity, low contact resistance, and minimal temperature rise, ensuring minimal power loss and stable transformer operation over time.',
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
@@ -128,7 +128,29 @@ export const productData: ProductCategory[] = [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_3.3.jpg?alt=media&token=07ba52e0-ec9a-4b0a-ab5c-10d19ede6faa',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_3.4.jpg?alt=media&token=3543f334-2654-419d-8df6-93827300e8bd'
         ],
-        hint: 'copper foil roll'
+        hint: 'copper foil roll',
+        features: [
+          {
+            title: 'Exceptional Conductivity',
+            description: 'Made from high-purity, oxygen-free copper to ensure minimal power loss and maximum efficiency.',
+            icon: Zap,
+          },
+          {
+            title: 'High Thermal Stability',
+            description: 'Maintains performance and integrity even under high-temperature operating conditions.',
+            icon: Thermometer,
+          },
+          {
+            title: 'Superior Insulation',
+            description: 'Coated with high-quality materials for excellent electrical insulation and reliability.',
+            icon: Layers,
+          },
+          {
+            title: 'High Mechanical Strength',
+            description: 'Durable and reliable, designed to meet the demanding requirements of transformer winding.',
+            icon: GitCommitHorizontal,
+          },
+        ]
       },
       {
         slug: 'super-enameled-copper',
@@ -142,7 +164,29 @@ export const productData: ProductCategory[] = [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_4.3.jpg?alt=media&token=adc8ba20-9120-4a61-8c93-6b1edc3aefcb',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'enameled copper wire'
+        hint: 'enameled copper wire',
+        features: [
+          {
+            title: 'Excellent Insulation',
+            description: 'High-quality enamel coating provides superior dielectric strength and protection.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'High Conductivity',
+            description: 'Pure copper core ensures efficient current flow for optimal performance.',
+            icon: Zap,
+          },
+          {
+            title: 'Thermal Resistance',
+            description: 'Withstands high temperatures, making it suitable for demanding motor and transformer applications.',
+            icon: Thermometer,
+          },
+          {
+            title: 'Mechanical Durability',
+            description: 'Resistant to abrasion and stress during winding processes, ensuring reliability.',
+            icon: HardHat,
+          },
+        ]
       },
       {
         slug: 'copper-ctc',
@@ -156,7 +200,29 @@ export const productData: ProductCategory[] = [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_5.3.jpg?alt=media&token=3d44ac62-2367-499e-a0e0-082d6496b653',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_5.4.jpg?alt=media&token=630cea22-8eb2-460c-af76-350c3cf2b168'
         ],
-        hint: 'copper conductor'
+        hint: 'copper conductor',
+        features: [
+          {
+            title: 'Reduced Winding Losses',
+            description: 'Minimizes eddy current losses in high-power transformers, increasing efficiency.',
+            icon: Power,
+          },
+          {
+            title: 'Improved Thermal Performance',
+            description: 'Efficiently dissipates heat, allowing for more compact and reliable transformer designs.',
+            icon: Thermometer,
+          },
+          {
+            title: 'High Winding Space Factor',
+            description: 'Maximizes the use of winding space, leading to more powerful and compact transformers.',
+            icon: Layers,
+          },
+          {
+            title: 'Robust Insulation',
+            description: 'Features high-quality paper insulation for excellent dielectric strength and durability.',
+            icon: ShieldCheck,
+          },
+        ]
       },
       {
         slug: 'copper-picc',
@@ -170,7 +236,29 @@ export const productData: ProductCategory[] = [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_6.3.jpg?alt=media&token=eceea499-534e-4c0b-99ef-c2a75d02313e',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_6.4.jpg?alt=media&token=b7fdc686-7895-4bc1-9579-0c8840d6eb91'
         ],
-        hint: 'paper insulated copper'
+        hint: 'paper insulated copper',
+        features: [
+          {
+            title: 'High Dielectric Strength',
+            description: 'Multi-layer paper insulation provides excellent protection for high-voltage applications.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'Superior Conductivity',
+            description: 'Made from high-purity copper to ensure optimal electrical performance.',
+            icon: Zap,
+          },
+          {
+            title: 'Excellent Flexibility',
+            description: 'Designed to be easily shaped for complex transformer winding configurations.',
+            icon: GitCommitHorizontal,
+          },
+          {
+            title: 'Thermal Endurance',
+            description: 'Maintains insulation integrity at high operating temperatures, ensuring long-term reliability.',
+            icon: Thermometer,
+          },
+        ]
       },
       {
         slug: 'aluminium-foil',
@@ -184,7 +272,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'aluminium foil roll'
+        hint: 'aluminium foil roll',
+        features: [
+          {
+            title: 'Lightweight & Cost-Effective',
+            description: 'Provides a significant weight and cost advantage over copper in many applications.',
+            icon: Leaf,
+          },
+          {
+            title: 'Good Conductivity',
+            description: 'Offers reliable electrical performance suitable for a variety of transformer designs.',
+            icon: Zap,
+          },
+          {
+            title: 'Corrosion Resistant',
+            description: 'Naturally forms a protective oxide layer, ensuring long-term durability.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'Excellent Formability',
+            description: 'Easily shaped and wound, making it ideal for various transformer core designs.',
+            icon: GitCommitHorizontal,
+          },
+        ]
       },
       {
         slug: 'super-enameled-aluminium',
@@ -198,7 +308,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'enameled aluminium wire'
+        hint: 'enameled aluminium wire',
+        features: [
+          {
+            title: 'Significant Weight Reduction',
+            description: 'Ideal for applications where reducing weight is a primary design consideration.',
+            icon: Leaf,
+          },
+          {
+            title: 'High-Quality Insulation',
+            description: 'Durable enamel coating provides excellent dielectric properties and protection.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'Cost-Effective Solution',
+            description: 'Offers a more economical alternative to copper for many winding applications.',
+            icon: Power,
+          },
+          {
+            title: 'Good Thermal Performance',
+            description: 'Effectively manages heat, ensuring reliable operation in motors and transformers.',
+            icon: Thermometer,
+          },
+        ]
       },
       {
         slug: 'aluminium-ctc',
@@ -212,7 +344,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'aluminium conductor'
+        hint: 'aluminium conductor',
+        features: [
+          {
+            title: 'Reduced Eddy Current Losses',
+            description: 'Significantly improves transformer efficiency by minimizing electrical losses.',
+            icon: Power,
+          },
+          {
+            title: 'Lightweight Construction',
+            description: 'Offers a lighter alternative to copper CTC, reducing structural support requirements.',
+            icon: Leaf,
+          },
+          {
+            title: 'Optimized Winding Space',
+            description: 'Maximizes the use of available space for more compact and efficient transformer designs.',
+            icon: Layers,
+          },
+          {
+            title: 'Reliable Paper Insulation',
+            description: 'Ensures high dielectric strength and long-term durability in demanding applications.',
+            icon: ShieldCheck,
+          },
+        ]
       },
       {
         slug: 'aluminium-piac',
@@ -226,7 +380,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'paper insulated aluminium'
+        hint: 'paper insulated aluminium',
+        features: [
+          {
+            title: 'High-Voltage Insulation',
+            description: 'Multi-layered paper insulation provides robust protection for high-voltage applications.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'Cost-Effective & Lightweight',
+            description: 'A more economical and lighter alternative to copper for large transformer windings.',
+            icon: Leaf,
+          },
+          {
+            title: 'Excellent Flexibility',
+            description: 'Easily formable to accommodate complex and intricate winding patterns.',
+            icon: GitCommitHorizontal,
+          },
+          {
+            title: 'High Thermal Endurance',
+            description: 'Maintains its integrity at high operating temperatures for long-term reliability.',
+            icon: Thermometer,
+          },
+        ]
       },
     ],
   },
@@ -247,7 +423,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'steel roll'
+        hint: 'steel roll',
+        features: [
+          {
+            title: 'Low Core Loss',
+            description: 'Significantly reduces energy dissipation in transformer cores, leading to higher efficiency.',
+            icon: Power,
+          },
+          {
+            title: 'High Permeability',
+            description: 'Allows for strong magnetic fields with less energy, enabling more compact core designs.',
+            icon: Wind,
+          },
+          {
+            title: 'Superior Magnetic Properties',
+            description: 'Optimized grain structure ensures excellent performance in electromagnetic applications.',
+            icon: Cpu,
+          },
+          {
+            title: 'Consistent Quality',
+            description: 'Manufactured to precise specifications for uniform performance and reliability.',
+            icon: Settings,
+          },
+        ]
       },
       {
         slug: 'transformer-accessories',
@@ -261,7 +459,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'transformer parts'
+        hint: 'transformer parts',
+        features: [
+          {
+            title: 'Comprehensive Range',
+            description: 'A complete selection of parts including bushings, tap changers, and gauges.',
+            icon: Package,
+          },
+          {
+            title: 'Enhanced Safety',
+            description: 'Includes protective devices like Buchholz relays and pressure relief valves.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'High-Quality Materials',
+            description: 'Manufactured from durable materials to ensure long service life and reliability.',
+            icon: HardHat,
+          },
+          {
+            title: 'Improved Performance',
+            description: 'Designed to optimize transformer operation, monitoring, and maintenance.',
+            icon: Settings,
+          },
+        ]
       },
       {
         slug: 'cables',
@@ -275,7 +495,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'electrical cables'
+        hint: 'electrical cables',
+        features: [
+          {
+            title: 'High-Purity Conductors',
+            description: 'Made from high-grade copper or aluminum for optimal electrical conductivity.',
+            icon: Zap,
+          },
+          {
+            title: 'Durable Insulation',
+            description: 'Features robust insulation materials for enhanced safety and long-term reliability.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'Wide Range of Applications',
+            description: 'Suitable for residential, commercial, and industrial power distribution.',
+            icon: Cable,
+          },
+          {
+            title: 'Compliance with Standards',
+            description: 'Manufactured to meet rigorous international safety and performance standards.',
+            icon: HardHat,
+          },
+        ]
       }
     ],
   },
@@ -296,7 +538,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'server room racks'
+        hint: 'server room racks',
+        features: [
+          {
+            title: 'Uninterruptible Power Supply (UPS)',
+            description: 'Ensures continuous operation and protection of critical IT infrastructure during outages.',
+            icon: Power,
+          },
+          {
+            title: 'Efficient Power Distribution',
+            description: 'Customized PDUs and busbar systems for reliable and scalable power delivery.',
+            icon: Server,
+          },
+          {
+            title: 'Precision Cooling',
+            description: 'Advanced cooling solutions to maintain optimal operating temperatures for all equipment.',
+            icon: Wind,
+          },
+          {
+            title: 'Comprehensive Monitoring',
+            description: 'Real-time monitoring and management systems to ensure peak performance and reliability.',
+            icon: Rss,
+          },
+        ]
       },
       {
         slug: 'mv-lv-apfc-harmonic-filter-ups',
@@ -310,7 +574,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'electrical panel'
+        hint: 'electrical panel',
+        features: [
+          {
+            title: 'Power Factor Correction',
+            description: 'APFC panels automatically improve power factor, reducing penalties and energy consumption.',
+            icon: Power,
+          },
+          {
+            title: 'Harmonic Filtering',
+            description: 'Active and passive filters mitigate harmonics, protecting sensitive equipment and improving quality.',
+            icon: Filter,
+          },
+          {
+            title: 'Critical Load Protection',
+            description: 'High-performance UPS systems provide seamless backup power for essential operations.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'Enhanced Power Quality',
+            description: 'A complete solution to ensure a stable, clean, and efficient power supply for your facility.',
+            icon: Zap,
+          },
+        ]
       },
       {
         slug: 'ring-main-unit',
@@ -324,7 +610,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'switchgear'
+        hint: 'switchgear',
+        features: [
+          {
+            title: 'Compact & Sealed Design',
+            description: 'Space-saving and protected from environmental factors, ideal for various installations.',
+            icon: Package,
+          },
+          {
+            title: 'Enhanced Safety',
+            description: 'Fully insulated and enclosed design minimizes the risk of electrical accidents.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'High Reliability',
+            description: 'Designed for long service life with minimal maintenance requirements.',
+            icon: HardHat,
+          },
+          {
+            title: 'Flexible & Modular',
+            description: 'Easily extendable and configurable to meet the evolving needs of distribution networks.',
+            icon: Settings,
+          },
+        ]
       },
       {
         slug: 'beverage-solutions',
@@ -338,7 +646,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'bottling plant'
+        hint: 'bottling plant',
+        features: [
+          {
+            title: 'Process Automation',
+            description: 'Customized automation solutions to streamline production and packaging lines.',
+            icon: Settings,
+          },
+          {
+            title: 'Energy Efficiency',
+            description: 'Solutions designed to reduce energy consumption and operational costs.',
+            icon: Power,
+          },
+          {
+            title: 'Reliable Power Systems',
+            description: 'Ensures consistent and high-quality power to protect sensitive processing equipment.',
+            icon: Zap,
+          },
+          {
+            title: 'Quality Control Integration',
+            description: 'Integrate electrical systems with quality control for enhanced product consistency.',
+            icon: ShieldCheck,
+          },
+        ]
       },
       {
         slug: 'it-solutions',
@@ -352,7 +682,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'network server'
+        hint: 'network server',
+        features: [
+          {
+            title: 'Network Infrastructure',
+            description: 'Design and deployment of robust and scalable network solutions.',
+            icon: Rss,
+          },
+          {
+            title: 'Hardware & Software',
+            description: 'Procurement and integration of servers, storage, and software for your business needs.',
+            icon: Server,
+          },
+          {
+            title: 'System Integration',
+            description: 'Seamless integration of various IT systems to improve workflow and efficiency.',
+            icon: Settings,
+          },
+          {
+            title: 'Support & Maintenance',
+            description: 'Ongoing support to ensure your IT infrastructure remains reliable and secure.',
+            icon: HardHat,
+          },
+        ]
       },
       {
         slug: 'surveillance-systems',
@@ -366,7 +718,29 @@ export const productData: ProductCategory[] = [
             'https://placehold.co/400x600.png',
             'https://placehold.co/600x600.png'
         ],
-        hint: 'security camera'
+        hint: 'security camera',
+        features: [
+          {
+            title: 'High-Definition CCTV',
+            description: 'Crystal-clear video monitoring for enhanced security and surveillance.',
+            icon: Camera,
+          },
+          {
+            title: 'Access Control Systems',
+            description: 'Manage and restrict access to sensitive areas with advanced control solutions.',
+            icon: ShieldCheck,
+          },
+          {
+            title: 'Remote Monitoring',
+            description: 'Access live and recorded footage from anywhere with our mobile and web applications.',
+            icon: Tv,
+          },
+          {
+            title: 'Integrated Security',
+            description: 'Combine surveillance with other security systems for a comprehensive protection strategy.',
+            icon: Settings,
+          },
+        ]
       }
     ]
   }
