@@ -35,9 +35,9 @@ export const productData: ProductCategory[] = [
         title: 'Oil Immersed Transformers',
         description: 'Durable and efficient transformers for power transmission and distribution.',
         longDescription: 'Our Oil Immersed Transformers are designed for reliability and high performance in a variety of demanding applications. Manufactured with high-quality materials and conforming to international standards, they ensure efficient power management and long service life. With over 20 years of experience in transformer solutions, we offer products that meet global quality standards and provide the highest level of reliability.',
-        image: '/images/Oil_emmeresed_transformer.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Foil_emmersed.jpg?alt=media&token=152bc5ec-fda4-45fb-ae09-9d6b4a91923e',
         gallery: [
-            '/images/Oil_emmeresed_transformer.png',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Foil_emmersed.jpg?alt=media&token=152bc5ec-fda4-45fb-ae09-9d6b4a91923e',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_12.jpg?alt=media&token=fdb49093-de88-47ee-9515-fee764bc2926',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_13.jpg?alt=media&token=5360d8f6-128f-4cc0-adae-97a03e7984dd',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_14.jpg?alt=media&token=044b292e-8eb7-47a2-bcc6-1fdc93cb794b',
@@ -77,12 +77,12 @@ export const productData: ProductCategory[] = [
         title: 'Cast Resin Transformers',
         description: 'Reliable cast resin transformers for safe and efficient operation.',
         longDescription: 'Cast Resin Transformers are an excellent choice for indoor applications and environmentally sensitive areas. They are fire-resistant, have low maintenance requirements, and offer high reliability, making them ideal for commercial buildings, hospitals, and industrial plants.',
-        image: '/images/cast-resin-transformer.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fcast_resin.jpg?alt=media&token=1ade5a3c-d8d0-48fb-ac30-4121eeb506ed',
         gallery: [
-            '/images/cast-resin-transformer.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fcast_resin.jpg?alt=media&token=1ade5a3c-d8d0-48fb-ac30-4121eeb506ed',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_2.2.jpg?alt=media&token=3705fda4-ee39-41a5-ad45-89d42af603d4',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_2.3.jpg?alt=media&token=dc0ca259-87ea-4cea-a890-aeb8f4ee694e',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fproduct_2.4.jpg?alt=media&token=b0944f36-a28b-4bbf-9ae0-e0f6898509c9'
         ],
         hint: 'resin transformer',
         specs: {
@@ -104,12 +104,12 @@ export const productData: ProductCategory[] = [
         title: 'Copper Foil',
         description: 'High-grade copper foil for superior conductivity.',
         longDescription: 'Our high-purity copper foil is essential for applications requiring excellent electrical conductivity and thermal management, such as in transformers and circuit boards.',
-        image: '/images/Copper_foil.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
         gallery: [
-            '/images/Copper_foil.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_3.2.jpg?alt=media&token=e7c707a0-f52a-4dda-9f5d-8cfe6b30789a',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_3.3.jpg?alt=media&token=07ba52e0-ec9a-4b0a-ab5c-10d19ede6faa',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_3.4.jpg?alt=media&token=3543f334-2654-419d-8df6-93827300e8bd'
         ],
         hint: 'copper foil roll'
       },
@@ -118,11 +118,11 @@ export const productData: ProductCategory[] = [
         title: 'Super Enameled Copper',
         description: 'Insulated copper wire for electrical applications.',
         longDescription: 'Super Enameled Copper wire offers excellent insulation and conductivity, making it ideal for windings in motors, transformers, and other electromagnetic devices.',
-        image: '/images/Super%20Enameled%20Copper.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
         gallery: [
-            '/images/Super%20Enameled%20Copper.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_4.2.jpg?alt=media&token=575e6721-374e-47df-a8e0-4630a390e6f2',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_4.3.jpg?alt=media&token=adc8ba20-9120-4a61-8c93-6b1edc3aefcb',
             'https://placehold.co/600x600.png'
         ],
         hint: 'enameled copper wire'
@@ -132,12 +132,12 @@ export const productData: ProductCategory[] = [
         title: 'Copper CTC',
         description: 'CTC copper wire for transformer windings.',
         longDescription: 'Continuously Transposed Conductors (CTC) made of copper are designed to reduce losses in high-power transformer windings, improving efficiency and performance.',
-        image: '/images/Copper_CTC.jpg',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled.jpg?alt=media&token=e168a4cf-9d20-4a90-9d83-7c3ef7bf5b40',
         gallery: [
-            '/images/Copper_CTC.jpg',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled.jpg?alt=media&token=e168a4cf-9d20-4a90-9d83-7c3ef7bf5b40',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_5.2.jpg?alt=media&token=f3a50094-f4f2-4899-9a0b-cb858af4fc3f',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_5.3.jpg?alt=media&token=3d44ac62-2367-499e-a0e0-082d6496b653',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_5.4.jpg?alt=media&token=630cea22-8eb2-460c-af76-350c3cf2b168'
         ],
         hint: 'copper conductor'
       },
@@ -146,12 +146,12 @@ export const productData: ProductCategory[] = [
         title: 'Copper PICC',
         description: 'PICC copper wire for advanced transformer designs.',
         longDescription: 'Paper Insulated Copper Conductors (PICC) provide reliable insulation for high-voltage applications in transformers, ensuring safety and durability.',
-        image: '/images/Copper_PICC.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_picc.jpg?alt=media&token=fbf079d3-686b-4dc3-a6f2-e872c736c60c',
         gallery: [
-            '/images/Copper_PICC.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_picc.jpg?alt=media&token=fbf079d3-686b-4dc3-a6f2-e872c736c60c',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_6.2.jpg?alt=media&token=a17dbe1c-b2b5-40fb-b50d-d89f0bcdbbcf',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_6.3.jpg?alt=media&token=eceea499-534e-4c0b-99ef-c2a75d02313e',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_6.4.jpg?alt=media&token=b7fdc686-7895-4bc1-9579-0c8840d6eb91'
         ],
         hint: 'paper insulated copper'
       },
