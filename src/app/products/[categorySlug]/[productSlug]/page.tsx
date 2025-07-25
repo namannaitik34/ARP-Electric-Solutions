@@ -4,7 +4,7 @@ import { getProduct, getCategory, productData } from "../../categories";
 import { notFound, useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Home, Star, CheckCircle, Zap, Shield, Thermometer, HardHat, Leaf, Waves } from "lucide-react";
+import { ChevronRight, Home, Star, CheckCircle, Zap, Shield, Thermometer, HardHat, Leaf, Waves, Gauge, Fan, Layers, GitCommitHorizontal } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
@@ -125,17 +125,61 @@ export default function ProductDetailPage() {
         </div>
     );
 
-    const CopperFoilContent = () => (
-        <div className="mt-16 md:mt-24 prose prose-lg max-w-none text-muted-foreground">
-            <h2 className="text-3xl font-bold font-headline text-primary">Copper Foils for Transformers</h2>
-             <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-            <p>Our Transformer Copper Foils are crucial components for high-performance transformers, offering exceptional conductivity and stability for long-term operation.</p>
-            <p>Transformer copper foils are a vital part of transformer manufacturing. They are primarily used to connect the transformer core and output terminals. Made from high-quality oxygen-free copper, these foils offer excellent conductivity, low contact resistance, and minimal temperature rise, ensuring minimal power loss and stable transformer operation over time.</p>
-            <h3 className="text-2xl font-bold text-primary">Why Choose ARP Transformer Copper Foils</h3>
-             <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-            <p>ARP Electric Solution provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.</p>
-        </div>
-    );
+    const CopperFoilContent = () => {
+        const features = [
+            {
+                title: 'Superior Electrical Conductivity',
+                description: 'Our copper foils provide excellent electrical conductivity, minimizing power loss and ensuring efficient energy transmission in transformers.',
+                icon: Gauge,
+            },
+            {
+                title: 'Low Temperature Rise',
+                description: 'The high conductivity and low contact resistance of our copper foils result in reduced temperature rise, ensuring stable transformer operation under high load conditions.',
+                icon: Fan,
+            },
+            {
+                title: 'Excellent Insulation',
+                description: 'ARP transformer copper foils are coated with high-quality materials like polyester, polyetherimide, and polypropylene films, ensuring superior electrical insulation performance.',
+                icon: Layers,
+            },
+            {
+                title: 'High Mechanical Strength',
+                description: 'The copper foils possess high mechanical strength, ensuring durability and reliability even under demanding transformer winding requirements.',
+                icon: GitCommitHorizontal,
+            },
+        ];
+
+        return (
+            <div className="mt-16 md:mt-24 prose prose-lg max-w-none text-muted-foreground">
+                <h2 className="text-3xl font-bold font-headline text-primary not-prose">Copper Foils for Transformers</h2>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <p>Our Transformer Copper Foils are crucial components for high-performance transformers, offering exceptional conductivity and stability for long-term operation.</p>
+                <p>Transformer copper foils are a vital part of transformer manufacturing. They are primarily used to connect the transformer core and output terminals. Made from high-quality oxygen-free copper, these foils offer excellent conductivity, low contact resistance, and minimal temperature rise, ensuring minimal power loss and stable transformer operation over time.</p>
+                
+                <div className="not-prose mt-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                        {features.map((feature) => (
+                            <div key={feature.title} className="flex gap-6 items-start">
+                                <div className="flex-shrink-0">
+                                    <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                        <feature.icon className="w-8 h-8" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
+                                    <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <h3 className="text-2xl font-bold text-primary mt-16 not-prose">Why Choose ARP Transformer Copper Foils</h3>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <p>ARP Electric Solution provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.</p>
+            </div>
+        );
+    };
     
     const OilImmersedSpecs = () => {
         const [progressValues, setProgressValues] = useState([0, 0, 0, 0]);
