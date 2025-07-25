@@ -15,6 +15,10 @@ export interface Product {
     description: string;
     icon: React.ElementType;
   }[];
+  customSection?: {
+    title: string;
+    description: string;
+  };
 }
 
 export interface ProductCategory {
@@ -65,7 +69,11 @@ export const productData: ProductCategory[] = [
             description: 'Low energy consumption with high performance and reduced operational costs.',
             icon: Zap
           },
-        ]
+        ],
+        customSection: {
+            title: "Built for Durability and Safety",
+            description: "At ARP Electric Solution, every Oil Immersed Transformer undergoes rigorous testing to ensure it meets the highest standards of safety and durability. Our commitment to quality means you receive a product that not only performs efficiently but also operates safely for years to come, protecting your valuable assets."
+        }
       },
       {
         slug: 'cast-resin-transformers',
@@ -107,7 +115,11 @@ export const productData: ProductCategory[] = [
                 description: 'Capable of handling temporary overloads without compromising performance or safety.',
                 icon: Waves
             }
-        ]
+        ],
+        customSection: {
+            title: "Eco-Friendly Power Solutions",
+            description: "Our Cast Resin Transformers are the ideal choice for environmentally conscious projects. With no risk of oil leakage and a fire-resistant design, they offer a safe and clean power solution for sensitive locations like hospitals, airports, and commercial buildings."
+        }
       },
     ],
   },
@@ -150,7 +162,11 @@ export const productData: ProductCategory[] = [
             description: 'Durable and reliable, designed to meet the demanding requirements of transformer winding.',
             icon: GitCommitHorizontal,
           },
-        ]
+        ],
+        customSection: {
+            title: "The Foundation of Efficiency",
+            description: "Precision-engineered for optimal performance, our Copper Foil is the cornerstone of high-efficiency transformers. Its superior conductivity and thermal stability reduce energy losses, leading to lower operational costs and a more reliable power grid. Trust ARP for the quality that powers progress."
+        }
       },
       {
         slug: 'super-enameled-copper',
@@ -186,7 +202,11 @@ export const productData: ProductCategory[] = [
             description: 'Resistant to abrasion and stress during winding processes, ensuring reliability.',
             icon: HardHat,
           },
-        ]
+        ],
+        customSection: {
+            title: "Ensuring Maximum Performance",
+            description: "At ARP Electric Solution, we focus on innovation and quality to ensure that our Super Enameled Copper provides the highest performance in the most demanding applications. Our commitment to excellence ensures that our products meet the highest industry standards and deliver reliable, long-term operation."
+        }
       },
       {
         slug: 'copper-ctc',
@@ -222,7 +242,11 @@ export const productData: ProductCategory[] = [
             description: 'Features high-quality paper insulation for excellent dielectric strength and durability.',
             icon: ShieldCheck,
           },
-        ]
+        ],
+        customSection: {
+            title: "Optimized for High-Power Transformers",
+            description: "Our Copper CTC is the premium choice for large-scale power transformers. By minimizing electrical losses and improving thermal management, it allows for the design of more compact, efficient, and reliable transformers that are essential for modern power grids."
+        }
       },
       {
         slug: 'copper-picc',
@@ -258,7 +282,11 @@ export const productData: ProductCategory[] = [
             description: 'Maintains insulation integrity at high operating temperatures, ensuring long-term reliability.',
             icon: Thermometer,
           },
-        ]
+        ],
+        customSection: {
+            title: "Reliable Insulation for High-Voltage Applications",
+            description: "When it comes to high-voltage transformers, insulation is paramount. Our Paper Insulated Copper Conductors (PICC) are engineered to provide superior dielectric strength, ensuring safe and reliable operation under the most demanding conditions."
+        }
       },
       {
         slug: 'aluminium-foil',
@@ -294,7 +322,11 @@ export const productData: ProductCategory[] = [
             description: 'Easily shaped and wound, making it ideal for various transformer core designs.',
             icon: GitCommitHorizontal,
           },
-        ]
+        ],
+        customSection: {
+            title: "The Smart Alternative for Modern Applications",
+            description: "Our Aluminium Foil offers a compelling combination of performance, weight reduction, and cost savings. It's the ideal choice for applications where efficiency and economic viability are key drivers, without compromising on quality or reliability."
+        }
       },
       {
         slug: 'super-enameled-aluminium',
@@ -330,7 +362,11 @@ export const productData: ProductCategory[] = [
             description: 'Effectively manages heat, ensuring reliable operation in motors and transformers.',
             icon: Thermometer,
           },
-        ]
+        ],
+        customSection: {
+            title: "Lightweight Performance, Heavyweight Value",
+            description: "Achieve significant weight savings without sacrificing performance. Our Super Enameled Aluminium wire is the perfect solution for motors, transformers, and other devices where weight reduction is critical, offering a cost-effective and reliable alternative to copper."
+        }
       },
       {
         slug: 'aluminium-ctc',
@@ -366,7 +402,11 @@ export const productData: ProductCategory[] = [
             description: 'Ensures high dielectric strength and long-term durability in demanding applications.',
             icon: ShieldCheck,
           },
-        ]
+        ],
+        customSection: {
+            title: "Efficiency in a Lighter Package",
+            description: "Our Aluminium CTC delivers the efficiency benefits of continuously transposed conductors in a lightweight package. It's the ideal choice for large power transformers where both performance and weight are critical design factors."
+        }
       },
       {
         slug: 'aluminium-piac',
@@ -402,7 +442,11 @@ export const productData: ProductCategory[] = [
             description: 'Maintains its integrity at high operating temperatures for long-term reliability.',
             icon: Thermometer,
           },
-        ]
+        ],
+        customSection: {
+            title: "Safe and Economical High-Voltage Winding",
+            description: "ARP's Aluminium PIAC provides a reliable and cost-effective solution for high-voltage transformer windings. The robust paper insulation ensures safety and performance, while the lightweight aluminium conductor offers significant economic advantages."
+        }
       },
     ],
   },
@@ -445,7 +489,11 @@ export const productData: ProductCategory[] = [
             description: 'Manufactured to precise specifications for uniform performance and reliability.',
             icon: Settings,
           },
-        ]
+        ],
+        customSection: {
+            title: "The Heart of an Efficient Transformer",
+            description: "Our premium CRGO steel is the key to building highly efficient and reliable transformers. By minimizing energy losses at the core, it directly contributes to lower operating costs and a greener footprint for any power application."
+        }
       },
       {
         slug: 'transformer-accessories',
@@ -481,7 +529,11 @@ export const productData: ProductCategory[] = [
             description: 'Designed to optimize transformer operation, monitoring, and maintenance.',
             icon: Settings,
           },
-        ]
+        ],
+        customSection: {
+            title: "Everything You Need for a Perfect Transformer",
+            description: "From safety devices to monitoring equipment, our comprehensive range of transformer accessories ensures that you have all the high-quality components needed for reliable and efficient operation. Trust ARP for all your transformer needs."
+        }
       },
       {
         slug: 'cables',
@@ -517,7 +569,11 @@ export const productData: ProductCategory[] = [
             description: 'Manufactured to meet rigorous international safety and performance standards.',
             icon: HardHat,
           },
-        ]
+        ],
+        customSection: {
+            title: "Connecting Power with Confidence",
+            description: "Our high-quality cables are the vital link in any electrical system. Engineered for safety, durability, and optimal conductivity, they provide a reliable connection you can trust for any application, from residential wiring to heavy industrial power transmission."
+        }
       }
     ],
   },
@@ -560,7 +616,11 @@ export const productData: ProductCategory[] = [
             description: 'Real-time monitoring and management systems to ensure peak performance and reliability.',
             icon: Rss,
           },
-        ]
+        ],
+        customSection: {
+            title: "Powering the Digital World, Reliably",
+            description: "In the digital age, uptime is everything. Our data center solutions are designed to provide uninterrupted, efficient, and scalable power to keep your critical IT infrastructure running 24/7. From UPS systems to precision cooling, we cover all your power needs."
+        }
       },
       {
         slug: 'mv-lv-apfc-harmonic-filter-ups',
@@ -596,7 +656,11 @@ export const productData: ProductCategory[] = [
             description: 'A complete solution to ensure a stable, clean, and efficient power supply for your facility.',
             icon: Zap,
           },
-        ]
+        ],
+        customSection: {
+            title: "Optimize Your Power, Protect Your Assets",
+            description: "Power quality issues can lead to increased costs and equipment failure. Our integrated solutions, including APFC panels, harmonic filters, and UPS systems, work together to provide clean, stable, and efficient power, protecting your investments and improving your bottom line."
+        }
       },
       {
         slug: 'ring-main-unit',
@@ -632,7 +696,11 @@ export const productData: ProductCategory[] = [
             description: 'Easily extendable and configurable to meet the evolving needs of distribution networks.',
             icon: Settings,
           },
-        ]
+        ],
+        customSection: {
+            title: "Compact and Safe Medium-Voltage Switching",
+            description: "Our Ring Main Units (RMUs) offer a safe, reliable, and compact solution for medium-voltage distribution networks. The sealed, maintenance-free design ensures long-term performance even in the harshest environments, making it the ideal choice for modern power systems."
+        }
       },
       {
         slug: 'beverage-solutions',
@@ -668,7 +736,11 @@ export const productData: ProductCategory[] = [
             description: 'Integrate electrical systems with quality control for enhanced product consistency.',
             icon: ShieldCheck,
           },
-        ]
+        ],
+        customSection: {
+            title: "Boosting Efficiency in Beverage Production",
+            description: "From process automation to energy-efficient power systems, our solutions for the beverage industry are designed to increase productivity, reduce costs, and ensure the highest quality standards for your products. Let us help you streamline your operations."
+        }
       },
       {
         slug: 'it-solutions',
@@ -704,7 +776,11 @@ export const productData: ProductCategory[] = [
             description: 'Ongoing support to ensure your IT infrastructure remains reliable and secure.',
             icon: HardHat,
           },
-        ]
+        ],
+        customSection: {
+            title: "Your Partner in Digital Transformation",
+            description: "In a connected world, a robust IT infrastructure is crucial. We offer comprehensive IT solutions, from network design to system integration, to help your business thrive. Our expert team provides the support you need to stay competitive and secure."
+        }
       },
       {
         slug: 'surveillance-systems',
@@ -740,7 +816,11 @@ export const productData: ProductCategory[] = [
             description: 'Combine surveillance with other security systems for a comprehensive protection strategy.',
             icon: Settings,
           },
-        ]
+        ],
+        customSection: {
+            title: "Protecting What Matters Most",
+            description: "Our advanced surveillance and security systems provide peace of mind by protecting your valuable assets. With high-definition CCTV, integrated access control, and remote monitoring capabilities, you can be sure that your property is safe and secure."
+        }
       }
     ]
   }

@@ -14,6 +14,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import React, { useState, useEffect } from "react";
 import { Progress } from "@/components/ui/progress";
 import type { Product } from "../../categories";
+import { cn } from "@/lib/utils";
 
 const performanceData = [
   { name: 'Efficiency', value: 98.5, full: 100 },
@@ -118,6 +119,18 @@ export default function ProductDetailPage() {
         );
     };
 
+    const CustomProductSection = ({ section }: { section: Product['customSection'] }) => {
+        if (!section) return null;
+
+        return (
+            <div className="mt-16 md:mt-24 bg-primary/5 p-8 md:p-12 rounded-lg">
+                <h3 className="text-2xl font-bold text-primary">{section.title}</h3>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <p className="text-muted-foreground max-w-3xl">{section.description}</p>
+            </div>
+        );
+    };
+
     const CastResinTransformerContent = () => (
         <div className="mt-16 md:mt-24">
             <Tabs defaultValue="overview">
@@ -149,6 +162,8 @@ export default function ProductDetailPage() {
                 </TabsContent>
             </Tabs>
             <WhyChooseARP />
+            <ProductFeaturesGrid features={product.features} />
+            <CustomProductSection section={product.customSection} />
             <ClimaticClasses />
         </div>
     );
@@ -170,12 +185,12 @@ export default function ProductDetailPage() {
                 <p>Our Transformer Copper Foils are crucial components for high-performance transformers, offering exceptional conductivity and stability for long-term operation.</p>
                 <p>Transformer copper foils are a vital part of transformer manufacturing. They are primarily used to connect the transformer core and output terminals. Made from high-quality oxygen-free copper, these foils offer excellent conductivity, low contact resistance, and minimal temperature rise, ensuring minimal power loss and stable transformer operation over time.</p>
                 
-                <ProductFeaturesGrid features={product.features} />
-
                 <h3 className="text-2xl font-bold text-primary mt-16 not-prose">Why Choose ARP Transformer Copper Foils</h3>
                 <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
                 <p>ARP Electric Solution provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.</p>
             
+                 <ProductFeaturesGrid features={product.features} />
+
                 <div className="not-prose mt-16">
                     <h3 className="text-2xl font-bold text-primary">Specifications</h3>
                      <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
@@ -199,6 +214,7 @@ export default function ProductDetailPage() {
                         </TableBody>
                     </Table>
                 </div>
+                <CustomProductSection section={product.customSection} />
             </div>
         );
     };
@@ -285,6 +301,8 @@ export default function ProductDetailPage() {
                         </div>
                         
                         <ProductFeaturesGrid features={product.features} />
+                        
+                        <CustomProductSection section={product.customSection} />
 
                         {product.slug === 'oil-immersed-transformers' && <OilImmersedSpecs />}
                     </>
@@ -335,7 +353,7 @@ export default function ProductDetailPage() {
                                                         <ul className="space-y-2 mt-2">
                                                             {category.products.map((p) => (
                                                                 <li key={p.slug}>
-                                                                    <Link href={`/products/${category.slug}/${p.slug}`} className={`block p-2 rounded-md text-sm transition-colors ${p.slug === product.slug ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'}`}>
+                                                                    <Link href={`/products/${category.slug}/${p.slug}`} className={cn(`block p-2 rounded-md text-sm transition-colors`, p.slug === product.slug ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground')}>
                                                                         {p.title}
                                                                     </Link>
                                                                 </li>
@@ -423,3 +441,4 @@ export default function ProductDetailPage() {
     
 
     
+
