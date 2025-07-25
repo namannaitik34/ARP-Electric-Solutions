@@ -91,6 +91,37 @@ export default function ProductDetailPage() {
             </p>
         </div>
     );
+    
+    const ProductSpecs = ({ specs, title }: { specs: Product['specs'], title: string }) => {
+        if (!specs) return null;
+
+        return (
+            <div className="mt-16 md:mt-24">
+                <h2 className="text-3xl font-bold font-headline text-primary">{title}</h2>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <Card>
+                    <CardContent className="p-0">
+                         <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead className="w-[200px]">Specification</TableHead>
+                                    <TableHead>Details</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {Object.entries(specs).map(([key, value]) => (
+                                    <TableRow key={key}>
+                                        <TableCell className="font-semibold">{key}</TableCell>
+                                        <TableCell>{value}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </CardContent>
+                </Card>
+            </div>
+        )
+    }
 
     const ProductFeaturesGrid = ({ features }: { features: Product['features'] }) => {
         if (!features || features.length === 0) {
@@ -259,7 +290,7 @@ export default function ProductDetailPage() {
                 
                 <h3 className="text-2xl font-bold text-primary mt-16 not-prose">Why Choose ARP Transformer Copper Foils</h3>
                 <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                <p>ARP Electric Solution provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.</p>
+                <p>At ARP Electric Solution, we provide high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.</p>
             
                  <ProductFeaturesGrid features={product.features} />
 
@@ -494,6 +525,43 @@ export default function ProductDetailPage() {
             </div>
         );
     };
+
+    const AluminiumCtcContent = () => (
+        <>
+            <div className="mt-16 md:mt-24 prose prose-lg max-w-none text-muted-foreground">
+                <h2 className="text-3xl font-bold font-headline text-primary not-prose">Reliable Transmission Solutions</h2>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <p>Our Aluminium CTC is designed to meet the high demands of power transmission. Below are the key technical specifications and features:</p>
+            </div>
+            
+            <div className="not-prose mt-8">
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="w-[200px]">Specification</TableHead>
+                            <TableHead>Details</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {product.specs && Object.entries(product.specs).map(([key, value]) => (
+                            <TableRow key={key}>
+                                <TableCell className="font-semibold">{key}</TableCell>
+                                <TableCell>{value}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </div>
+
+            <div className="mt-16">
+                <h3 className="text-2xl font-bold text-primary">Reliable Transmission Solutions</h3>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <div className="prose prose-lg max-w-none text-muted-foreground">
+                    <p>At ARP Electric Solution, we focus on providing high-quality Aluminium CTC for efficient and reliable power transmission. Whether it's for overhead transmission lines or large-scale distribution networks, our Aluminium CTC ensures the smooth operation of critical infrastructure, offering a long-lasting and cost-effective solution for power companies and industries worldwide.</p>
+                </div>
+            </div>
+        </>
+    );
     
     const OilImmersedSpecs = () => {
         const [progressValues, setProgressValues] = useState([0, 0, 0, 0]);
@@ -567,6 +635,24 @@ export default function ProductDetailPage() {
                 return <AluminiumFoilContent />;
             case 'super-enameled-aluminium':
                 return <SuperEnameledAluminiumContent />;
+            case 'aluminium-ctc':
+                return <AluminiumCtcContent />;
+            case 'oil-immersed-transformers':
+                 return (
+                    <>
+                        <div className="mt-16 md:mt-24">
+                            <h2 className="text-3xl font-bold font-headline text-primary">About {product.title}</h2>
+                            <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                            <div className="prose prose-lg max-w-none text-muted-foreground">
+                                <p>{product.longDescription}</p>
+                            </div>
+                        </div>
+                        <WhyChooseARP />
+                        <ProductFeaturesGrid features={product.features} />
+                        <CustomProductSection section={product.customSection} />
+                        <OilImmersedSpecs />
+                    </>
+                );
             default:
                 return (
                     <>
@@ -583,8 +669,9 @@ export default function ProductDetailPage() {
                         <ProductFeaturesGrid features={product.features} />
                         
                         <CustomProductSection section={product.customSection} />
+                        
+                        <ProductSpecs specs={product.specs} title="Technical Details" />
 
-                        {product.slug === 'oil-immersed-transformers' && <OilImmersedSpecs />}
                     </>
                 );
         }

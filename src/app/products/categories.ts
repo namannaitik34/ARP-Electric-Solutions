@@ -370,14 +370,18 @@ export const productData: ProductCategory[] = [
         title: 'Aluminium CTC',
         description: 'CTC aluminium wire for transformer windings.',
         longDescription: 'Continuously Transposed Conductors (CTC) made of aluminium provide a lightweight solution for reducing winding losses in large transformers.',
-        image: '/images/Aluminium_CTC.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_ctc.png?alt=media&token=f037a3f8-888e-4a67-96a8-f80e05e55e5c',
         gallery: [
-            '/images/Aluminium_CTC.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_ctc.png?alt=media&token=f037a3f8-888e-4a67-96a8-f80e05e55e5c',
         ],
         hint: 'aluminium conductor',
+        specs: {
+          'Conductor Type': 'Continuous Transposed Conductor (CTC)',
+          'Material': 'Aluminium',
+          'Resistance': 'Low resistance for efficient power transmission',
+          'Strength': 'High mechanical strength, suitable for long spans',
+          'Applications': 'High-voltage transmission and distribution lines',
+        },
         features: [
           {
             title: 'Reduced Eddy Current Losses',
@@ -410,14 +414,18 @@ export const productData: ProductCategory[] = [
         title: 'Aluminium PIAC',
         description: 'PIAC aluminium wire for advanced transformer designs.',
         longDescription: 'Paper Insulated Aluminium Conductors (PIAC) offer excellent insulation for high-voltage aluminium windings in transformers.',
-        image: '/images/Aluminium_PIAC.jpg',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_piac.jpg?alt=media&token=6f0a6d2f-1262-45e0-b6f7-111059f104d5',
         gallery: [
-            '/images/Aluminium_PIAC.jpg',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_piac.jpg?alt=media&token=6f0a6d2f-1262-45e0-b6f7-111059f104d5',
         ],
         hint: 'paper insulated aluminium',
+        specs: {
+          'Insulation': 'Multi-layer Kraft Paper',
+          'Conductor': 'High-purity Aluminium',
+          'Voltage Class': 'Up to 765 kV',
+          'Application': 'Power & Distribution Transformers',
+          'Standards': 'IEC, IS, DIN, BS'
+        },
         features: [
           {
             title: 'High-Voltage Insulation',
@@ -457,14 +465,18 @@ export const productData: ProductCategory[] = [
         title: 'CRGO (Cold Rolled Grain Oriented Steel)',
         description: 'Premium CRGO steel for transformer cores.',
         longDescription: 'Cold Rolled Grain Oriented (CRGO) steel is a specialized material used in transformer cores to minimize magnetic losses and improve energy efficiency.',
-        image: '/images/CRGO.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcrgo.png?alt=media&token=c1995874-9720-410a-b60e-e3cf968e8111',
         gallery: [
-            '/images/CRGO.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcrgo.png?alt=media&token=c1995874-9720-410a-b60e-e3cf968e8111',
         ],
         hint: 'steel roll',
+        specs: {
+          'Material': 'Cold Rolled Grain Oriented Silicon Steel',
+          'Grades': 'M3, M4, M5, M6, ZDKH, MOH',
+          'Thickness': '0.23mm, 0.27mm, 0.30mm, 0.35mm',
+          'Application': 'High-efficiency transformer cores',
+          'Benefits': 'Low core loss, high permeability'
+        },
         features: [
           {
             title: 'Low Core Loss',
@@ -497,14 +509,17 @@ export const productData: ProductCategory[] = [
         title: 'Transformer Accessories',
         description: 'Comprehensive range of transformer accessories.',
         longDescription: 'We offer a wide array of transformer accessories, including bushings, tap changers, and protective devices, to ensure optimal performance and longevity.',
-        image: '/images/Transformer%20Accessories.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Ftransformer_accessories.png?alt=media&token=0457f511-b1e0-40e2-a720-33318251f28b',
         gallery: [
-            '/images/Transformer%20Accessories.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Ftransformer_accessories.png?alt=media&token=0457f511-b1e0-40e2-a720-33318251f28b',
         ],
         hint: 'transformer parts',
+        specs: {
+          'Components': 'Bushings, Radiators, Tap Changers, Buchholz Relays, PRVs',
+          'Materials': 'Porcelain, Cast Iron, High-grade Steel, Nitrile Rubber',
+          'Standards': 'Compliance with IEC and IS standards',
+          'Application': 'Oil-immersed and Cast Resin Transformers'
+        },
         features: [
           {
             title: 'Comprehensive Range',
@@ -537,14 +552,18 @@ export const productData: ProductCategory[] = [
         title: 'Cables',
         description: 'High-quality cables for various applications.',
         longDescription: 'Our range of electrical cables is designed for safety and reliability in power transmission and distribution for residential, commercial, and industrial projects.',
-        image: '/images/Cable.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcable.png?alt=media&token=1c6b8457-3f93-4a0b-90f7-d0d04c27a92b',
         gallery: [
-            '/images/Cable.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcable.png?alt=media&token=1c6b8457-3f93-4a0b-90f7-d0d04c27a92b',
         ],
         hint: 'electrical cables',
+        specs: {
+          'Type': 'LV/MV Power Cables, Control Cables, Instrumentation Cables',
+          'Conductor': 'Copper, Aluminium',
+          'Insulation': 'XLPE, PVC',
+          'Armouring': 'Steel Wire/Tape, Aluminium Wire',
+          'Voltage': 'Up to 33 kV'
+        },
         features: [
           {
             title: 'High-Purity Conductors',
@@ -584,14 +603,18 @@ export const productData: ProductCategory[] = [
         title: 'Data Center',
         description: 'Solutions for modern data centers.',
         longDescription: 'We provide comprehensive electrical solutions for data centers, including reliable power distribution units, UPS systems, and cooling management to ensure uptime and efficiency.',
-        image: '/images/Data_center.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fdata_center.png?alt=media&token=222830f3-b6d3-49d7-83d8-e35f79119642',
         gallery: [
-            '/images/Data_center.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fdata_center.png?alt=media&token=222830f3-b6d3-49d7-83d8-e35f79119642',
         ],
         hint: 'server room racks',
+        specs: {
+          'UPS Systems': 'Modular and Monolithic, up to 1 MW',
+          'Power Distribution': 'Intelligent PDUs, Busbar Trunking',
+          'Cooling': 'In-row, perimeter, and rack-based cooling',
+          'Monitoring': 'DCIM and Environmental Monitoring',
+          'Services': 'Design, Installation, and Maintenance'
+        },
         features: [
           {
             title: 'Uninterruptible Power Supply (UPS)',
@@ -624,14 +647,18 @@ export const productData: ProductCategory[] = [
         title: 'MV/LV APFC, Harmonic Filter & UPS',
         description: 'Power factor correction, harmonic filtering, and UPS systems.',
         longDescription: 'Improve your power quality with our Automatic Power Factor Correction (APFC) panels, harmonic filters, and Uninterruptible Power Supplies (UPS) to protect equipment and reduce energy costs.',
-        image: '/images/MVLV_APFC, Harmonic_Filter_&_UPS.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fmv_lv.png?alt=media&token=85c96065-2767-4d6d-9781-a6b3252a1228',
         gallery: [
-            '/images/MVLV_APFC, Harmonic_Filter_&_UPS.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fmv_lv.png?alt=media&token=85c96065-2767-4d6d-9781-a6b3252a1228',
         ],
         hint: 'electrical panel',
+        specs: {
+          'APFC Panels': 'MV and LV, Contactor/Thyristor based',
+          'Harmonic Filters': 'Active and Passive solutions',
+          'UPS Systems': 'Industrial grade, up to 500 kVA',
+          'Voltage Level': 'Low Voltage (LV) and Medium Voltage (MV)',
+          'Applications': 'Industrial, Commercial, Data Centers'
+        },
         features: [
           {
             title: 'Power Factor Correction',
@@ -664,14 +691,18 @@ export const productData: ProductCategory[] = [
         title: 'Ring Main Unit (RMU)',
         description: 'Compact RMU for distribution networks.',
         longDescription: 'Our Ring Main Units (RMUs) are compact, sealed switchgear units essential for medium voltage distribution networks, offering enhanced safety and reliability.',
-        image: '/images/Ring_man_unit.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fring_main.png?alt=media&token=7c180902-6019-484c-b5f7-876b4a3a31c1',
         gallery: [
-            '/images/Ring_man_unit.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fring_main.png?alt=media&token=7c180902-6019-484c-b5f7-876b4a3a31c1',
         ],
         hint: 'switchgear',
+        specs: {
+          'Voltage': 'Up to 36 kV',
+          'Type': 'SF6 Insulated, Extensible/Non-extensible',
+          'Configuration': '2, 3, 4, 5-way options',
+          'Standard': 'IEC 62271-200',
+          'Features': 'Compact, Sealed-for-life tank'
+        },
         features: [
           {
             title: 'Compact & Sealed Design',
@@ -704,14 +735,17 @@ export const productData: ProductCategory[] = [
         title: 'Beverage Solutions',
         description: 'Innovative solutions for the beverage industry.',
         longDescription: 'We offer specialized electrical and automation solutions tailored to the needs of the beverage production and packaging industry, enhancing efficiency and control.',
-        image: '/images/Beverage_solution.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fbeverage.png?alt=media&token=ccb07f89-c454-463d-829d-488f78f8e718',
         gallery: [
-            '/images/Beverage_solution.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fbeverage.png?alt=media&token=ccb07f89-c454-463d-829d-488f78f8e718',
         ],
         hint: 'bottling plant',
+        specs: {
+          'Automation': 'PLC & SCADA systems for process control',
+          'Motor Control': 'Variable Frequency Drives (VFDs)',
+          'Power': 'Hygienic-design power distribution',
+          'Sensors': 'Level, flow, and pressure sensors'
+        },
         features: [
           {
             title: 'Process Automation',
@@ -744,14 +778,17 @@ export const productData: ProductCategory[] = [
         title: 'IT Solutions',
         description: 'Comprehensive IT solutions for businesses.',
         longDescription: 'Our IT solutions encompass a range of services including network infrastructure, hardware deployment, and system integration to support your business operations.',
-        image: '/images/IT_Solution.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fit_solution.png?alt=media&token=9829f796-7bf7-4c07-b615-af90c2394595',
         gallery: [
-            '/images/IT_Solution.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fit_solution.png?alt=media&token=9829f796-7bf7-4c07-b615-af90c2394595',
         ],
         hint: 'network server',
+        specs: {
+          'Networking': 'Structured Cabling, Switching, Routing, Wi-Fi',
+          'Servers': 'Tower, Rack, and Blade Servers',
+          'Storage': 'SAN, NAS, and DAS solutions',
+          'Security': 'Firewalls, Antivirus, and Endpoint Protection'
+        },
         features: [
           {
             title: 'Network Infrastructure',
@@ -784,14 +821,17 @@ export const productData: ProductCategory[] = [
         title: 'Surveillance Systems',
         description: 'Advanced surveillance systems for security.',
         longDescription: 'We provide advanced security and surveillance systems, including CCTV and access control, to protect your assets and ensure a safe environment.',
-        image: '/images/Surveillance.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fsurveillance.png?alt=media&token=05c21a97-9092-4933-ac4e-e17f41b2e2d0',
         gallery: [
-            '/images/Surveillance.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fsurveillance.png?alt=media&token=05c21a97-9092-4933-ac4e-e17f41b2e2d0',
         ],
         hint: 'security camera',
+        specs: {
+          'CCTV': 'IP, Analog, and Hybrid camera systems',
+          'Resolution': 'Up to 4K Ultra HD',
+          'Access Control': 'Biometric, Card-based, and Keypad systems',
+          'Storage': 'NVRs, DVRs, and Cloud Storage'
+        },
         features: [
           {
             title: 'High-Definition CCTV',
