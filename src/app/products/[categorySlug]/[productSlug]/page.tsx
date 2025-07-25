@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React, { useState, useEffect } from "react";
 
@@ -44,6 +45,40 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
             <p className="text-muted-foreground">
                 ARP's {product.title} offer unparalleled reliability and efficiency. With an emphasis on safety and performance, our products are ideal for use in various industrial and commercial applications. Designed to meet the highest environmental, climatic, and fire behaviour standards, our transformers ensure optimal operation even in the most demanding environments.
             </p>
+        </div>
+    );
+
+    const CastResinTransformerContent = () => (
+        <div className="mt-8">
+            <Tabs defaultValue="overview">
+                <TabsList className="bg-transparent p-0">
+                    <TabsTrigger value="overview" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-muted-foreground">Overview</TabsTrigger>
+                    <TabsTrigger value="benefits" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-muted-foreground">Key Benefits</TabsTrigger>
+                    <TabsTrigger value="applications" className="data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none border-b-2 border-transparent pb-2 rounded-none text-muted-foreground">Applications</TabsTrigger>
+                </TabsList>
+                <TabsContent value="overview" className="mt-6 text-muted-foreground">
+                    <p>{product.longDescription}</p>
+                </TabsContent>
+                <TabsContent value="benefits" className="mt-6 text-muted-foreground">
+                    <ul className="list-disc pl-5 space-y-2">
+                        <li><strong>Enhanced Safety:</strong> Self-extinguishing and fire-resistant properties minimize fire hazards.</li>
+                        <li><strong>Eco-Friendly:</strong> No risk of oil leakage, making them ideal for environmentally sensitive areas.</li>
+                        <li><strong>Low Maintenance:</strong> Requires minimal upkeep compared to oil-filled transformers.</li>
+                        <li><strong>High Reliability:</strong> Excellent resistance to short circuits and impulse voltages.</li>
+                        <li><strong>Compact Design:</strong> Smaller footprint allows for flexible installation in confined spaces.</li>
+                    </ul>
+                </TabsContent>
+                <TabsContent value="applications" className="mt-6 text-muted-foreground">
+                    <ul className="list-disc pl-5 space-y-2">
+                        <li><strong>Public Infrastructure:</strong> Airports, hospitals, subways, and high-rise buildings.</li>
+                        <li><strong>Industrial Sector:</strong> Chemical plants, steel mills, and manufacturing facilities.</li>
+                        <li><strong>Critical Power:</strong> Data centers, telecommunication hubs, and research labs.</li>
+                        <li><strong>Renewable Energy:</strong> Wind farms, solar power plants, and biomass facilities.</li>
+                        <li><strong>Specialized Environments:</strong> Marine vessels, offshore platforms, and underground mines.</li>
+                    </ul>
+                </TabsContent>
+            </Tabs>
+            <WhyChooseARP />
         </div>
     );
 
@@ -161,13 +196,16 @@ export default function ProductDetailPage({ params }: { params: { categorySlug: 
                             <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
                              <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
                             <div className="prose prose-lg max-w-none text-muted-foreground">
-                                <p>{product.longDescription}</p>
-                                {product.slug === 'cast-resin-transformers' && <WhyChooseARP />}
+                                {product.slug === 'cast-resin-transformers' ? (
+                                    <CastResinTransformerContent />
+                                ) : (
+                                    <p>{product.longDescription}</p>
+                                )}
                             </div>
                         </div>
 
                          {/* Why Choose Us Section */}
-                        {product.features && (
+                        {product.features && product.slug !== 'cast-resin-transformers' && (
                             <div className="mt-16 md:mt-24">
                                 <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
                                 <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
