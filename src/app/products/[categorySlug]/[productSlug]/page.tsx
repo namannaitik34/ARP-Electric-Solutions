@@ -167,6 +167,78 @@ export default function ProductDetailPage() {
             <ClimaticClasses />
         </div>
     );
+    
+    const SuperEnameledCopperContent = () => {
+        const wireSpecHeaders = [
+            'Types',
+            'Modified Polyester 130°C',
+            'Modified Polyester 155°C',
+            'Polysterimide 180°C',
+            'Dual Coated Wire PE/PEI + PAI 200°C',
+        ];
+
+        const wireSpecBody = [
+            {
+                type: 'Range - Copper',
+                specs: ['0.06 to 5.0 mm', '0.06 to 3.0 mm', '0.06 to 5.0 mm', '0.06 to 4.0 mm'],
+            },
+            {
+                type: 'Range - Aluminium',
+                specs: ['0.25 to 5.0 mm', '0.25 to 5.0 mm', '0.25 to 5.0 mm', '0.25 to 5.0 mm'],
+            },
+            {
+                type: 'Specifications - Copper',
+                specs: [
+                    'IS 13730-34\nIEC 60317-34\nIS 13730-9\nIEC 60317-9',
+                    'IS 13730-3\nIEC 60317-3',
+                    'IS 13730-8\nIEC 60317-8\nIS 13730-15\nIEC 60317-15',
+                    'IS 13730-13\nIEC 60317-13\nNEMA MW\n35A/35C\nIEC 60317-25',
+                ],
+            },
+            {
+                type: 'Specifications - Aluminium',
+                specs: ['for 1.00 mm wire', 'for 1.00 mm wire', 'for 1.00 mm wire', 'for Aluminium'],
+            },
+        ];
+
+        return (
+            <>
+                <div className="mt-16 md:mt-24 prose prose-lg max-w-none text-muted-foreground">
+                    <h2 className="text-3xl font-bold font-headline text-primary not-prose">About Super Enameled Copper</h2>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <p>{product.longDescription}</p>
+                </div>
+                
+                <WhyChooseARP />
+                <ProductFeaturesGrid features={product.features} />
+                <CustomProductSection section={product.customSection} />
+
+                <div className="not-prose mt-16">
+                    <h3 className="text-2xl font-bold text-primary">Wire Specifications</h3>
+                     <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                {wireSpecHeaders.map((header) => (
+                                    <TableHead key={header} className="font-bold">{header.split('\n').map((line, i) => <div key={i}>{line}</div>)}</TableHead>
+                                ))}
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {wireSpecBody.map((row) => (
+                                <TableRow key={row.type}>
+                                    <TableCell className="font-semibold">{row.type}</TableCell>
+                                    {row.specs.map((spec, i) => (
+                                        <TableCell key={i}>{spec.split('\n').map((line, j) => <div key={j}>{line}</div>)}</TableCell>
+                                    ))}
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+            </>
+        )
+    };
 
     const CopperFoilContent = () => {
 
@@ -281,6 +353,8 @@ export default function ProductDetailPage() {
                 return <CastResinTransformerContent />;
             case 'copper-foil':
                 return <CopperFoilContent />;
+            case 'super-enameled-copper':
+                return <SuperEnameledCopperContent />;
             default:
                 return (
                     <>
@@ -441,4 +515,5 @@ export default function ProductDetailPage() {
     
 
     
+
 
