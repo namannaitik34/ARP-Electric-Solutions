@@ -293,12 +293,12 @@ export const productData: ProductCategory[] = [
         title: 'Aluminium Foil',
         description: 'High-quality aluminium foil for conductivity.',
         longDescription: 'A lightweight and cost-effective solution for various electrical applications, our aluminium foil offers good conductivity and corrosion resistance.',
-        image: '/images/Aluminium_foil.png',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_foil.jpg?alt=media&token=c81a2f2b-8a39-43c3-9d41-e9e1c12d4766',
         gallery: [
-            '/images/Aluminium_foil.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_foil.jpg?alt=media&token=c81a2f2b-8a39-43c3-9d41-e9e1c12d4766',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_7.2.jpg?alt=media&token=f014e662-8e7c-47e1-8898-0c6fc9982dc5',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_7.3.jpg?alt=media&token=54005ffc-e547-4976-9c42-2b6217646e34',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_7.4.jpg?alt=media&token=68fc53b1-4bb2-4029-a1b4-7b69c4c47b51'
         ],
         hint: 'aluminium foil roll',
         features: [

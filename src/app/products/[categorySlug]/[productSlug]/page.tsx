@@ -102,7 +102,7 @@ export default function ProductDetailPage() {
                  <h3 className="text-2xl font-bold text-primary mb-8">Key Features & Benefits</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                     {features.map((feature) => (
-                        <div key={feature.title} className="flex gap-6 items-start group">
+                        <div key={feature.title} className="flex gap-6 items-start group transition-transform duration-300 hover:-translate-y-2">
                             <div className="flex-shrink-0">
                                 <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
                                     <feature.icon className="w-8 h-8 transition-transform duration-300 group-hover:rotate-6" />
@@ -387,6 +387,55 @@ export default function ProductDetailPage() {
             </>
         );
     };
+
+    const AluminiumFoilContent = () => {
+        const specifications = [
+            { spec: 'Thickness', details: '0.01 mm to 0.10 mm' },
+            { spec: 'Width', details: 'Up to 1500 mm' },
+            { spec: 'Conductivity', details: 'Excellent electrical conductivity' },
+            { spec: 'Resistance to Corrosion', details: 'Highly resistant to corrosion and oxidation' },
+            { spec: 'Applications', details: 'Food packaging, electrical cables, heat exchangers, insulation, and more' },
+        ];
+
+        return (
+            <div className="mt-16 md:mt-24">
+                <div className="prose prose-lg max-w-none text-muted-foreground">
+                    <p>Our Aluminium Foil is designed for multiple applications. Below are the key technical specifications and features:</p>
+                </div>
+
+                <div className="not-prose mt-8">
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[200px]">Specification</TableHead>
+                                <TableHead>Details</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {specifications.map((item) => (
+                                <TableRow key={item.spec}>
+                                    <TableCell className="font-semibold">{item.spec}</TableCell>
+                                    <TableCell>{item.details}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+
+                <div className="mt-16">
+                    <h3 className="text-2xl font-bold text-primary">Innovative Solutions for Every Need</h3>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <div className="prose prose-lg max-w-none text-muted-foreground">
+                        <p>At ARP Electric Solution, we leverage the latest technologies to produce Aluminium Foil that offers superior performance across various industries. Our commitment to quality ensures that every roll of aluminium foil meets the highest standards of strength, flexibility, and resistance to environmental factors.</p>
+                    </div>
+                </div>
+
+                <WhyChooseARP />
+                <ProductFeaturesGrid features={product.features} />
+                <CustomProductSection section={product.customSection} />
+            </div>
+        );
+    };
     
     const OilImmersedSpecs = () => {
         const [progressValues, setProgressValues] = useState([0, 0, 0, 0]);
@@ -456,6 +505,8 @@ export default function ProductDetailPage() {
                 return <CopperCtcContent />;
             case 'copper-picc':
                 return <CopperPiccContent />;
+            case 'aluminium-foil':
+                return <AluminiumFoilContent />;
             default:
                 return (
                     <>
