@@ -72,7 +72,7 @@ export default function ProductsPage() {
                                        <Link key={product.slug} href={`/products/${category.slug}/${product.slug}`} className="group block h-full">
                                             <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-transparent hover:border-primary">
                                                 <CardHeader className="p-0">
-                                                    <div className="relative w-full h-40">
+                                                    <div className="relative w-full aspect-video">
                                                         <Image
                                                             src={product.image}
                                                             alt={product.title}
