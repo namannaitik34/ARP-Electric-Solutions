@@ -275,40 +275,6 @@ export default function ProductDetailPage() {
                 return <CastResinTransformerContent />;
             case 'copper-foil':
                 return <CopperFoilContent />;
-            case 'oil-immersed-transformers':
-                 return (
-                    <>
-                        <div className="mt-16 md:mt-24">
-                            <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
-                            <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                            <div className="prose prose-lg max-w-none text-muted-foreground">
-                                <p>{product.longDescription}</p>
-                            </div>
-                        </div>
-                        {product.features && (
-                            <div className="mt-16 md:mt-24">
-                                <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
-                                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-                                    {product.features.map((feature, index) => (
-                                        <div key={index} className="flex gap-6">
-                                            <div className="flex-shrink-0">
-                                                <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                                    <feature.icon className="w-8 h-8" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
-                                                <p className="mt-2 text-muted-foreground">{feature.description}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                        {product.slug === 'oil-immersed-transformers' && <OilImmersedSpecs />}
-                    </>
-                );
             default:
                 return (
                     <>
@@ -340,6 +306,7 @@ export default function ProductDetailPage() {
                                 </div>
                             </div>
                         )}
+                         {product.slug === 'oil-immersed-transformers' && <OilImmersedSpecs />}
                     </>
                 );
         }
@@ -438,19 +405,23 @@ export default function ProductDetailPage() {
                             <div className="lg:col-span-2">
                                 <h1 className="text-3xl font-bold font-headline text-primary">{product.title}</h1>
                                 <p className="mt-4 text-muted-foreground">{product.description}</p>
-                                <Card className="mt-6 bg-primary/5 border-primary/20">
-                                    <CardHeader>
-                                        <CardTitle className="text-lg text-primary">Key Features</CardTitle>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <ul className="space-y-3 text-muted-foreground">
-                                            <li className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-green-500" /> High Efficiency & Low Energy Loss</li>
-                                            <li className="flex items-center gap-3"><Zap className="w-5 h-5 text-blue-500" /> Superior Overload Capability</li>
-                                            <li className="flex items-center gap-3"><Shield className="w-5 h-5 text-red-500" /> Enhanced Safety and Protection</li>
-                                            <li className="flex items-center gap-3"><Thermometer className="w-5 h-5 text-orange-500" /> Optimal Thermal Performance</li>
-                                        </ul>
-                                    </CardContent>
-                                </Card>
+                                {product.features && product.features.length > 0 && (
+                                    <Card className="mt-6 bg-primary/5 border-primary/20">
+                                        <CardHeader>
+                                            <CardTitle className="text-lg text-primary">Key Features</CardTitle>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <ul className="space-y-3 text-muted-foreground">
+                                                {product.features.map((feature, index) => (
+                                                    <li key={index} className="flex items-center gap-3">
+                                                        <feature.icon className="w-5 h-5 text-primary" /> 
+                                                        {feature.title}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </CardContent>
+                                    </Card>
+                                )}
                             </div>
                         </div>
 
@@ -468,3 +439,5 @@ export default function ProductDetailPage() {
     )
 
 }
+
+    
