@@ -45,7 +45,7 @@ export default function ProductDetailPage() {
             <h3 className="text-2xl font-bold text-primary">Climatic and Environmental Classes</h3>
             <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
             <p className="text-muted-foreground max-w-3xl mb-8">
-                AKS Dry Type Transformers comply with international standards for climatic and environmental conditions. These transformers are designed to operate under the toughest conditions as outlined in IEC 60076-11. Below are the key classifications:
+                ARP Dry Type Transformers comply with international standards for climatic and environmental conditions. These transformers are designed to operate under the toughest conditions as outlined in IEC 60076-11. Below are the key classifications:
             </p>
             <Table>
                 <TableHeader>
@@ -131,9 +131,9 @@ export default function ProductDetailPage() {
              <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
             <p>Our Transformer Copper Foils are crucial components for high-performance transformers, offering exceptional conductivity and stability for long-term operation.</p>
             <p>Transformer copper foils are a vital part of transformer manufacturing. They are primarily used to connect the transformer core and output terminals. Made from high-quality oxygen-free copper, these foils offer excellent conductivity, low contact resistance, and minimal temperature rise, ensuring minimal power loss and stable transformer operation over time.</p>
-            <h3 className="text-2xl font-bold text-primary">Why Choose AKS Transformer Copper Foils</h3>
+            <h3 className="text-2xl font-bold text-primary">Why Choose ARP Transformer Copper Foils</h3>
              <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-            <p>AKS International provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.</p>
+            <p>ARP Electric Solution provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.</p>
         </div>
     );
     
@@ -200,7 +200,7 @@ export default function ProductDetailPage() {
             case 'copper-foil':
                 return <CopperFoilContent />;
             case 'oil-immersed-transformers':
-                return (
+                 return (
                     <>
                         <div className="mt-16 md:mt-24">
                             <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
@@ -391,4 +391,4 @@ export default function ProductDetailPage() {
         </div>
     )
 
-    
+}
