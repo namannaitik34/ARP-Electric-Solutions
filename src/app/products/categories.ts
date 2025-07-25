@@ -120,7 +120,7 @@ export const productData: ProductCategory[] = [
         slug: 'copper-foil',
         title: 'Copper Foil',
         description: 'High-grade copper foil for superior conductivity.',
-        longDescription: 'Our high-purity copper foil is essential for applications requiring excellent electrical conductivity and thermal management, such as in transformers and circuit boards.',
+        longDescription: 'Our Transformer Copper Foils are crucial components for high-performance transformers, offering exceptional conductivity and stability for long-term operation. Transformer copper foils are a vital part of transformer manufacturing. They are primarily used to connect the transformer core and output terminals. Made from high-quality oxygen-free copper, these foils offer excellent conductivity, low contact resistance, and minimal temperature rise, ensuring minimal power loss and stable transformer operation over time. ARP Electric Solution provides high-quality transformer copper foils that are specifically engineered to meet the rigorous requirements of transformer manufacturing. Our foils are produced using top-grade oxygen-free copper and innovative production techniques to ensure optimal performance and longevity in power transformers, current transformers, and other transformer applications.',
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
