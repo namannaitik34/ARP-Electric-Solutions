@@ -28,10 +28,10 @@ export default function ProductDetailPage() {
     const [mainImage, setMainImage] = useState(product?.image || '');
 
     useEffect(() => {
-        if (product && mainImage !== product.image) {
+        if (product) {
             setMainImage(product.image);
         }
-    }, [product, mainImage]);
+    }, [product]);
     
     if (!product || !category) {
         notFound();
