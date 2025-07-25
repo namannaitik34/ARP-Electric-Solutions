@@ -101,10 +101,10 @@ export default function ProductDetailPage() {
                  <h3 className="text-2xl font-bold text-primary mb-8">Key Features & Benefits</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                     {features.map((feature) => (
-                        <div key={feature.title} className="flex gap-6 items-start">
+                        <div key={feature.title} className="flex gap-6 items-start group">
                             <div className="flex-shrink-0">
-                                <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                    <feature.icon className="w-8 h-8" />
+                                <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+                                    <feature.icon className="w-8 h-8 transition-transform duration-300 group-hover:rotate-6" />
                                 </div>
                             </div>
                             <div>
