@@ -326,6 +326,60 @@ export default function ProductDetailPage() {
             </div>
         </>
     );
+
+    const CopperPiccContent = () => {
+        const specifications = [
+            { spec: 'Conductor Standards', details: 'IEC, IS, DIN, BS' },
+            { spec: 'Width', details: '5 mm to 20 mm' },
+            { spec: 'Thickness', details: '0.8 mm to 9 mm' },
+            { spec: 'Periphery of Rectangular Conductor', details: '50 mm max' },
+            { spec: 'Conductor Width to Thickness Ratio', details: '10:1' },
+            { spec: 'Insulation Thickness', details: '0.3 mm to 6 mm' },
+            { spec: 'Insulation Types', details: 'Kraft Paper, Thermally Stabilised Paper, Diamond Dotted Epoxy Paper, NomexTM, Polyester, Mica' },
+            { spec: 'Type of Lapping', details: 'Butt Lapped, 30-50% Overlapped, Interlocked (in various combinations of paper and tape widths)' },
+            { spec: 'Applications', details: 'Transformer windings, power cables, electrical devices' },
+        ];
+
+        return (
+            <>
+                <div className="mt-16 md:mt-24">
+                    <h2 className="text-3xl font-bold font-headline text-primary">About {product.title}</h2>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <div className="prose prose-lg max-w-none text-muted-foreground">
+                        <p>{product.longDescription}</p>
+                    </div>
+                </div>
+
+                <WhyChooseARP />
+                <ProductFeaturesGrid features={product.features} />
+                <CustomProductSection section={product.customSection} />
+
+                <div className="not-prose mt-16">
+                    <h3 className="text-2xl font-bold text-primary">Technical Specifications</h3>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <p className="text-muted-foreground max-w-3xl mb-8">
+                        Our Copper PICC is available in various specifications, ensuring optimal performance for a wide range of electrical applications. Below are the key technical specifications and features:
+                    </p>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[300px]">Specification</TableHead>
+                                <TableHead>Details</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {specifications.map((item) => (
+                                <TableRow key={item.spec}>
+                                    <TableCell className="font-semibold">{item.spec}</TableCell>
+                                    <TableCell>{item.details}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+            </>
+        );
+    };
     
     const OilImmersedSpecs = () => {
         const [progressValues, setProgressValues] = useState([0, 0, 0, 0]);
@@ -393,6 +447,8 @@ export default function ProductDetailPage() {
                 return <SuperEnameledCopperContent />;
             case 'copper-ctc':
                 return <CopperCtcContent />;
+            case 'copper-picc':
+                return <CopperPiccContent />;
             default:
                 return (
                     <>
@@ -547,6 +603,7 @@ export default function ProductDetailPage() {
     
 
     
+
 
 
 
