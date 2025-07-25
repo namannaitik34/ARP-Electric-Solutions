@@ -1,5 +1,5 @@
 
-import { HardHat, ShieldCheck, ThermometerIcon, Zap } from "lucide-react";
+import { HardHat, Leaf, ShieldCheck, Waves, Zap } from "lucide-react";
 
 export interface Product {
   slug: string;
@@ -56,11 +56,6 @@ export const productData: ProductCategory[] = [
             icon: ShieldCheck
           },
           {
-            title: 'Energy Efficient',
-            description: 'Optimized design to reduce energy loss and improve overall efficiency, saving operational costs in the long run.',
-            icon: ThermometerIcon
-          },
-          {
             title: 'Expert Engineering',
             description: 'Engineered by highly skilled professionals to meet and exceed global industry standards.',
             icon: HardHat
@@ -76,7 +71,7 @@ export const productData: ProductCategory[] = [
         slug: 'cast-resin-transformers',
         title: 'Cast Resin Transformers',
         description: 'Reliable cast resin transformers for safe and efficient operation.',
-        longDescription: 'Cast Resin Transformers are an excellent choice for indoor applications and environmentally sensitive areas. They are fire-resistant, have low maintenance requirements, and offer high reliability, making them ideal for commercial buildings, hospitals, and industrial plants.',
+        longDescription: 'Our Cast Resin Transformers (also known as Dry Type Transformers) are engineered to meet international standards, providing robust and reliable performance under the harshest environmental conditions. Designed for environments where safety, durability, and minimal maintenance are paramount, and manufactured according to IEC 60076-11 standards, these transformers are built to withstand extreme conditions while delivering exceptional performance.',
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fcast_resin.jpg?alt=media&token=1ade5a3c-d8d0-48fb-ac30-4121eeb506ed',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Ftransformer%2Fcast_resin.jpg?alt=media&token=1ade5a3c-d8d0-48fb-ac30-4121eeb506ed',
@@ -86,11 +81,33 @@ export const productData: ProductCategory[] = [
         ],
         hint: 'resin transformer',
         specs: {
-          'Standard': 'IEC, IS',
+          'Standard': 'IEC 60076-11, IS',
           'Capacity': 'Up to 20 MVA',
           'Voltage': 'Up to 36 kV',
           'Insulation': 'Class F/H'
-        }
+        },
+        features: [
+            {
+                title: 'High Reliability',
+                description: 'Engineered to deliver maximum reliability and built to withstand extreme environmental conditions.',
+                icon: ShieldCheck
+            },
+            {
+                title: 'Advanced Environmental Design',
+                description: 'Built to withstand extreme climatic conditions and meet the highest fire behaviour standards.',
+                icon: Leaf
+            },
+            {
+                title: 'Low Maintenance',
+                description: 'Designed for minimal maintenance, reducing downtime and operational costs over its lifespan.',
+                icon: HardHat
+            },
+            {
+                title: 'Superior Overload Capacity',
+                description: 'Capable of handling temporary overloads without compromising performance or safety.',
+                icon: Waves
+            }
+        ]
       },
     ],
   },
