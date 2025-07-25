@@ -290,6 +290,42 @@ export default function ProductDetailPage() {
             </div>
         );
     };
+
+    const CopperCtcContent = () => (
+        <>
+            <div className="mt-16 md:mt-24">
+                <h2 className="text-3xl font-bold font-headline text-primary">About {product.title}</h2>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <div className="prose prose-lg max-w-none text-muted-foreground">
+                    <p>{product.longDescription}</p>
+                </div>
+            </div>
+
+            <WhyChooseARP />
+            <ProductFeaturesGrid features={product.features} />
+            <CustomProductSection section={product.customSection} />
+            
+            <div className="mt-16 md:mt-24 prose prose-lg max-w-none text-muted-foreground">
+                <h3 className="text-2xl font-bold text-primary not-prose">Advantages of Copper CTC</h3>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <p>
+                    By increasing the number of strips in a CTC, the conductor's area is subdivided further compared to a single solid conductor. This leads to several benefits:
+                </p>
+                <ul className="list-disc pl-5 space-y-2">
+                    <li>Reduction of electrical losses.</li>
+                    <li>Increased flexibility, making it easier to wind into tight spaces.</li>
+                    <li>Optimized size of the winding for better utilization of space.</li>
+                    <li>Enhanced transformer efficiency and reduced manufacturing costs.</li>
+                </ul>
+
+                <h3 className="text-2xl font-bold text-primary mt-12 not-prose">Insulation Options</h3>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <p>
+                    CTCs can be insulated with a variety of materials, from pure cellulose kraft paper to high-performance insulators like thermo-stabilized paper, micro-crepe, polyester, and aramids, all of which support higher thermal classes. These insulation options ensure the Copper CTC can meet demanding operational conditions, such as high temperatures and electrical stresses.
+                </p>
+            </div>
+        </>
+    );
     
     const OilImmersedSpecs = () => {
         const [progressValues, setProgressValues] = useState([0, 0, 0, 0]);
@@ -355,6 +391,8 @@ export default function ProductDetailPage() {
                 return <CopperFoilContent />;
             case 'super-enameled-copper':
                 return <SuperEnameledCopperContent />;
+            case 'copper-ctc':
+                return <CopperCtcContent />;
             default:
                 return (
                     <>
@@ -366,13 +404,7 @@ export default function ProductDetailPage() {
                             </div>
                         </div>
                         
-                        <div className="mt-12">
-                            <h3 className="text-2xl font-bold text-primary">Why Choose ARP {product.title}?</h3>
-                            <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                            <p className="text-muted-foreground max-w-3xl">
-                                ARP's {product.title} are engineered for excellence, combining innovative design with high-quality materials to deliver superior performance and reliability. Our commitment to international standards ensures that each product meets the rigorous demands of modern industry, providing a cost-effective and durable solution for your needs.
-                            </p>
-                        </div>
+                        <WhyChooseARP />
                         
                         <ProductFeaturesGrid features={product.features} />
                         
@@ -515,5 +547,6 @@ export default function ProductDetailPage() {
     
 
     
+
 
 
