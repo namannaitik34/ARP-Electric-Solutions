@@ -400,10 +400,17 @@ export default function ProductDetailPage() {
         return (
             <div className="mt-16 md:mt-24">
                 <div className="prose prose-lg max-w-none text-muted-foreground">
-                    <p>Our Aluminium Foil is designed for multiple applications. Below are the key technical specifications and features:</p>
+                     <h2 className="text-3xl font-bold font-headline text-primary not-prose">About Aluminium Foil</h2>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <p>{product.longDescription}</p>
                 </div>
+                <WhyChooseARP />
+                <ProductFeaturesGrid features={product.features} />
+                <CustomProductSection section={product.customSection} />
 
                 <div className="not-prose mt-8">
+                    <h3 className="text-2xl font-bold text-primary">Technical Specifications</h3>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -429,10 +436,61 @@ export default function ProductDetailPage() {
                         <p>At ARP Electric Solution, we leverage the latest technologies to produce Aluminium Foil that offers superior performance across various industries. Our commitment to quality ensures that every roll of aluminium foil meets the highest standards of strength, flexibility, and resistance to environmental factors.</p>
                     </div>
                 </div>
+            </div>
+        );
+    };
 
+    const SuperEnameledAluminiumContent = () => {
+        const specifications = [
+            { spec: 'Thickness', details: '0.10 mm to 3.00 mm' },
+            { spec: 'Coating Type', details: 'Polyurethane, Polyester, or Epoxy' },
+            { spec: 'Electrical Insulation', details: 'Excellent insulation properties for safe electrical performance' },
+            { spec: 'Heat Resistance', details: 'Withstands temperatures up to 200°C' },
+            { spec: 'Applications', details: 'Electrical motors, transformers, generators, and other electrical windings' },
+        ];
+
+        return (
+            <div className="mt-16 md:mt-24">
+                <div className="prose prose-lg max-w-none text-muted-foreground">
+                     <h2 className="text-3xl font-bold font-headline text-primary not-prose">About Super Enameled Aluminium</h2>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <p>{product.longDescription}</p>
+                </div>
                 <WhyChooseARP />
                 <ProductFeaturesGrid features={product.features} />
                 <CustomProductSection section={product.customSection} />
+
+                <div className="not-prose mt-8">
+                    <h3 className="text-2xl font-bold text-primary">Technical Specifications</h3>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                     <p className="text-muted-foreground max-w-3xl mb-8">
+                        Our Super Enameled Aluminium is manufactured to the highest standards and is suitable for a range of applications. Below are the key technical specifications and features:
+                    </p>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[200px]">Specification</TableHead>
+                                <TableHead>Details</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {specifications.map((item) => (
+                                <TableRow key={item.spec}>
+                                    <TableCell className="font-semibold">{item.spec}</TableCell>
+                                    <TableCell>{item.details}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+
+                <div className="mt-16">
+                    <h3 className="text-2xl font-bold text-primary">Reliable Performance in Every Application</h3>
+                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                    <div className="prose prose-lg max-w-none text-muted-foreground">
+                        <p>At ARP Electric Solution, we use advanced technologies and quality control measures to ensure that our Super Enameled Aluminium meets the highest standards of performance and durability. Whether you are manufacturing electrical motors, transformers, or other high-performance electrical components, our product ensures superior performance and reliability.</p>
+                    </div>
+                </div>
             </div>
         );
     };
@@ -507,6 +565,8 @@ export default function ProductDetailPage() {
                 return <CopperPiccContent />;
             case 'aluminium-foil':
                 return <AluminiumFoilContent />;
+            case 'super-enameled-aluminium':
+                return <SuperEnameledAluminiumContent />;
             default:
                 return (
                     <>
@@ -657,3 +717,4 @@ export default function ProductDetailPage() {
     )
 
 }
+

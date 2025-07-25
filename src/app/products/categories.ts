@@ -332,13 +332,10 @@ export const productData: ProductCategory[] = [
         slug: 'super-enameled-aluminium',
         title: 'Super Enameled Aluminium',
         description: 'Insulated aluminium wire for electrical applications.',
-        longDescription: 'A lightweight alternative to copper, our super enameled aluminium wire is perfect for applications where weight is a critical factor without compromising performance.',
-        image: '/images/Super_Enameled_Aluminium.png',
+        longDescription: 'A lightweight alternative to copper, our super enameled aluminium wire is perfect for applications where weight is a critical factor without compromising performance. Our Super Enameled Aluminium is manufactured to the highest standards and is suitable for a range of applications.',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled.jpg?alt=media&token=e168a4cf-9d20-4a90-9d83-7c3ef7bf5b40',
         gallery: [
-            '/images/Super_Enameled_Aluminium.png',
-            'https://placehold.co/600x400.png',
-            'https://placehold.co/400x600.png',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled.jpg?alt=media&token=e168a4cf-9d20-4a90-9d83-7c3ef7bf5b40',
         ],
         hint: 'enameled aluminium wire',
         features: [
