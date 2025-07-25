@@ -67,7 +67,7 @@ export default function ProductsPage() {
                                         </Link>
                                     </Button>
                                 </div>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                                     {category.products.map(product => (
                                        <Link key={product.slug} href={`/products/${category.slug}/${product.slug}`} className="group block h-full">
                                             <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-transparent hover:border-primary">
