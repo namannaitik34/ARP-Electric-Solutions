@@ -12,6 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React, { useState, useEffect } from "react";
+import { Progress } from "@/components/ui/progress";
 
 const performanceData = [
   { name: 'Efficiency', value: 98.5, full: 100 },
@@ -123,6 +124,62 @@ export default function ProductDetailPage() {
             <ClimaticClasses />
         </div>
     );
+    
+    const OilImmersedSpecs = () => {
+        const [progressValues, setProgressValues] = useState([0, 0, 0, 0]);
+
+        useEffect(() => {
+            const timers = performanceData.map((item, index) =>
+                setTimeout(() => {
+                    setProgressValues(prev => {
+                        const newValues = [...prev];
+                        newValues[index] = (item.value / item.full) * 100;
+                        return newValues;
+                    });
+                }, (index + 1) * 200)
+            );
+            return () => timers.forEach(clearTimeout);
+        }, []);
+
+        return (
+            <div className="mt-16 md:mt-24">
+                <h2 className="text-3xl font-bold font-headline text-primary">Technical Specifications</h2>
+                <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                <div className="grid md:grid-cols-2 gap-12 items-start">
+                    <div>
+                         <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Specification</TableHead>
+                                    <TableHead>Value</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {product.specs && Object.entries(product.specs).map(([key, value]) => (
+                                    <TableRow key={key}>
+                                        <TableCell className="font-semibold">{key}</TableCell>
+                                        <TableCell>{value}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
+                    <div className="space-y-6 pt-2">
+                         <h3 className="text-xl font-bold text-accent-foreground mb-4">Performance Metrics</h3>
+                        {performanceData.map((item, index) => (
+                            <div key={item.name}>
+                                <div className="flex justify-between items-center mb-1">
+                                    <span className="text-sm font-medium text-muted-foreground">{item.name}</span>
+                                    <span className="text-sm font-semibold text-primary">{item.value}%</span>
+                                </div>
+                                <Progress value={progressValues[index]} className="h-2" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        );
+    };
 
     return (
         <div className="bg-white dark:bg-gray-900 text-foreground animate-fadeIn">
@@ -235,6 +292,40 @@ export default function ProductDetailPage() {
 
                         {product.slug === 'cast-resin-transformers' ? (
                             <CastResinTransformerContent />
+                        ) : product.slug === 'oil-immersed-transformers' ? (
+                           <>
+                                {/* Full Description Section */}
+                                <div className="mt-16 md:mt-24">
+                                    <h2 className="text-3xl font-bold font-headline text-primary">Full Description</h2>
+                                    <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                                    <div className="prose prose-lg max-w-none text-muted-foreground">
+                                        <p>{product.longDescription}</p>
+                                    </div>
+                                </div>
+                                {/* Why Choose Us Section */}
+                                {product.features && (
+                                    <div className="mt-16 md:mt-24">
+                                        <h2 className="text-3xl font-bold font-headline text-primary">Why Choose {product.title}</h2>
+                                        <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                                        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+                                            {product.features.map((feature, index) => (
+                                                <div key={index} className="flex gap-6">
+                                                    <div className="flex-shrink-0">
+                                                        <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                                            <feature.icon className="w-8 h-8" />
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-xl font-bold text-accent-foreground">{feature.title}</h3>
+                                                        <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                                <OilImmersedSpecs />
+                            </>
                         ) : (
                           <>
                             {/* Full Description Section */}
@@ -267,52 +358,51 @@ export default function ProductDetailPage() {
                                     </div>
                                 </div>
                             )}
+                            {/* Technical Specifications Section */}
+                            <div className="mt-16 md:mt-24">
+                                <h2 className="text-3xl font-bold font-headline text-primary">Technical Specifications</h2>
+                                 <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
+                                 <div className="py-6 grid md:grid-cols-2 gap-8 items-center">
+                                    {product.specs && (
+                                        <Table>
+                                            <TableHeader>
+                                                <TableRow>
+                                                    <TableHead>Specification</TableHead>
+                                                    <TableHead>Value</TableHead>
+                                                </TableRow>
+                                            </TableHeader>
+                                            <TableBody>
+                                                {Object.entries(product.specs).map(([key, value]) => (
+                                                    <TableRow key={key}>
+                                                        <TableCell className="font-semibold">{key}</TableCell>
+                                                        <TableCell>{value}</TableCell>
+                                                    </TableRow>
+                                                ))}
+                                            </TableBody>
+                                        </Table>
+                                    )}
+                                    <div className="h-80 w-full">
+                                        <ResponsiveContainer width="100%" height="100%">
+                                            <BarChart data={performanceData} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                                                <CartesianGrid strokeDasharray="3 3" />
+                                                <XAxis type="number" />
+                                                <YAxis dataKey="name" type="category" width={100} />
+                                                <Tooltip
+                                                  contentStyle={{
+                                                      backgroundColor: 'hsl(var(--background))',
+                                                      borderColor: 'hsl(var(--border))'
+                                                  }}
+                                                />
+                                                <Legend />
+                                                <Bar dataKey="value" name="Performance" fill="hsl(var(--primary))" background={{ fill: 'hsl(var(--muted))' }} />
+                                            </BarChart>
+                                        </ResponsiveContainer>
+                                    </div>
+                                 </div>
+                            </div>
                           </>
                         )}
                         
-                        {/* Technical Specifications Section */}
-                        <div className="mt-16 md:mt-24">
-                            <h2 className="text-3xl font-bold font-headline text-primary">Technical Specifications</h2>
-                             <div className="w-16 h-1 bg-primary/30 mt-2 mb-4"></div>
-                             <div className="py-6 grid md:grid-cols-2 gap-8 items-center">
-                                {product.specs && (
-                                    <Table>
-                                        <TableHeader>
-                                            <TableRow>
-                                                <TableHead>Specification</TableHead>
-                                                <TableHead>Value</TableHead>
-                                            </TableRow>
-                                        </TableHeader>
-                                        <TableBody>
-                                            {Object.entries(product.specs).map(([key, value]) => (
-                                                <TableRow key={key}>
-                                                    <TableCell className="font-semibold">{key}</TableCell>
-                                                    <TableCell>{value}</TableCell>
-                                                </TableRow>
-                                            ))}
-                                        </TableBody>
-                                    </Table>
-                                )}
-                                <div className="h-80 w-full">
-                                    <ResponsiveContainer width="100%" height="100%">
-                                        <BarChart data={performanceData} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                                            <CartesianGrid strokeDasharray="3 3" />
-                                            <XAxis type="number" />
-                                            <YAxis dataKey="name" type="category" width={100} />
-                                            <Tooltip
-                                              contentStyle={{
-                                                  backgroundColor: 'hsl(var(--background))',
-                                                  borderColor: 'hsl(var(--border))'
-                                              }}
-                                            />
-                                            <Legend />
-                                            <Bar dataKey="value" name="Performance" fill="hsl(var(--primary))" background={{ fill: 'hsl(var(--muted))' }} />
-                                        </BarChart>
-                                    </ResponsiveContainer>
-                                </div>
-                             </div>
-                        </div>
-
                          <div className="mt-16 text-center">
                             <Button asChild size="lg" className="transition-transform hover:scale-105">
                                 <Link href="/contact">Request a Quote</Link>
