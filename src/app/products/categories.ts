@@ -173,12 +173,12 @@ export const productData: ProductCategory[] = [
         title: 'Super Enameled Copper',
         description: 'Insulated copper wire for electrical applications.',
         longDescription: 'Super Enameled Copper wire offers excellent insulation and conductivity, making it ideal for windings in motors, transformers, and other electromagnetic devices.',
-        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled_copper.png?alt=media&token=8d277d33-4de7-4e63-a60d-6e8dd183df06',
         gallery: [
-            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_foil.jpg?alt=media&token=bb7de260-270d-4bbb-971c-5aedb2e86fff',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled_copper.png?alt=media&token=8d277d33-4de7-4e63-a60d-6e8dd183df06',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_4.2.jpg?alt=media&token=575e6721-374e-47df-a8e0-4630a390e6f2',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_4.3.jpg?alt=media&token=adc8ba20-9120-4a61-8c93-6b1edc3aefcb',
-            'https://placehold.co/600x600.png'
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled.jpg?alt=media&token=e168a4cf-9d20-4a90-9d83-7c3ef7bf5b40'
         ],
         hint: 'enameled copper wire',
         features: [
@@ -213,9 +213,9 @@ export const productData: ProductCategory[] = [
         title: 'Copper CTC',
         description: 'CTC copper wire for transformer windings.',
         longDescription: 'Continuously Transposed Conductors (CTC) made of copper are designed to reduce losses in high-power transformer windings, improving efficiency and performance.',
-        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled.jpg?alt=media&token=e168a4cf-9d20-4a90-9d83-7c3ef7bf5b40',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_ctc.jpg?alt=media&token=586940d9-b223-45c1-ad57-9d7a22d51590',
         gallery: [
-            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled.jpg?alt=media&token=e168a4cf-9d20-4a90-9d83-7c3ef7bf5b40',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fcopper_ctc.jpg?alt=media&token=586940d9-b223-45c1-ad57-9d7a22d51590',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_5.2.jpg?alt=media&token=f3a50094-f4f2-4899-9a0b-cb858af4fc3f',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_5.3.jpg?alt=media&token=3d44ac62-2367-499e-a0e0-082d6496b653',
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fproduct_5.4.jpg?alt=media&token=630cea22-8eb2-460c-af76-350c3cf2b168'
@@ -333,9 +333,12 @@ export const productData: ProductCategory[] = [
         title: 'Super Enameled Aluminium',
         description: 'Insulated aluminium wire for electrical applications.',
         longDescription: 'A lightweight alternative to copper, our super enameled aluminium wire is perfect for applications where weight is a critical factor without compromising performance. Our Super Enameled Aluminium is manufactured to the highest standards and is suitable for a range of applications.',
-        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled.jpg?alt=media&token=e168a4cf-9d20-4a90-9d83-7c3ef7bf5b40',
+        image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled_aluminium.png?alt=media&token=8753239a-7a54-479c-9f6b-352b217a1c7c',
         gallery: [
-            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled.jpg?alt=media&token=e168a4cf-9d20-4a90-9d83-7c3ef7bf5b40',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled_aluminium.png?alt=media&token=8753239a-7a54-479c-9f6b-352b217a1c7c',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled_aluminium.png?alt=media&token=8753239a-7a54-479c-9f6b-352b217a1c7c',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled_aluminium.png?alt=media&token=8753239a-7a54-479c-9f6b-352b217a1c7c',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Fsuper_enameled_aluminium.png?alt=media&token=8753239a-7a54-479c-9f6b-352b217a1c7c'
         ],
         hint: 'enameled aluminium wire',
         features: [
@@ -373,6 +376,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_ctc.png?alt=media&token=f037a3f8-888e-4a67-96a8-f80e05e55e5c',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_ctc.png?alt=media&token=f037a3f8-888e-4a67-96a8-f80e05e55e5c',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_ctc.png?alt=media&token=f037a3f8-888e-4a67-96a8-f80e05e55e5c',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_ctc.png?alt=media&token=f037a3f8-888e-4a67-96a8-f80e05e55e5c',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_ctc.png?alt=media&token=f037a3f8-888e-4a67-96a8-f80e05e55e5c'
         ],
         hint: 'aluminium conductor',
         specs: {
@@ -417,6 +423,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_piac.jpg?alt=media&token=6f0a6d2f-1262-45e0-b6f7-111059f104d5',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_piac.jpg?alt=media&token=6f0a6d2f-1262-45e0-b6f7-111059f104d5',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_piac.jpg?alt=media&token=6f0a6d2f-1262-45e0-b6f7-111059f104d5',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_piac.jpg?alt=media&token=6f0a6d2f-1262-45e0-b6f7-111059f104d5',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fconductor%2Faluminium_piac.jpg?alt=media&token=6f0a6d2f-1262-45e0-b6f7-111059f104d5'
         ],
         hint: 'paper insulated aluminium',
         specs: {
@@ -468,6 +477,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcrgo.png?alt=media&token=c1995874-9720-410a-b60e-e3cf968e8111',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcrgo.png?alt=media&token=c1995874-9720-410a-b60e-e3cf968e8111',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcrgo.png?alt=media&token=c1995874-9720-410a-b60e-e3cf968e8111',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcrgo.png?alt=media&token=c1995874-9720-410a-b60e-e3cf968e8111',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcrgo.png?alt=media&token=c1995874-9720-410a-b60e-e3cf968e8111'
         ],
         hint: 'steel roll',
         specs: {
@@ -512,6 +524,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Ftransformer_accessories.png?alt=media&token=0457f511-b1e0-40e2-a720-33318251f28b',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Ftransformer_accessories.png?alt=media&token=0457f511-b1e0-40e2-a720-33318251f28b',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Ftransformer_accessories.png?alt=media&token=0457f511-b1e0-40e2-a720-33318251f28b',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Ftransformer_accessories.png?alt=media&token=0457f511-b1e0-40e2-a720-33318251f28b',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Ftransformer_accessories.png?alt=media&token=0457f511-b1e0-40e2-a720-33318251f28b'
         ],
         hint: 'transformer parts',
         specs: {
@@ -555,6 +570,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcable.png?alt=media&token=1c6b8457-3f93-4a0b-90f7-d0d04c27a92b',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcable.png?alt=media&token=1c6b8457-3f93-4a0b-90f7-d0d04c27a92b',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcable.png?alt=media&token=1c6b8457-3f93-4a0b-90f7-d0d04c27a92b',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcable.png?alt=media&token=1c6b8457-3f93-4a0b-90f7-d0d04c27a92b',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fmaterials%2Fcable.png?alt=media&token=1c6b8457-3f93-4a0b-90f7-d0d04c27a92b'
         ],
         hint: 'electrical cables',
         specs: {
@@ -606,6 +624,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fdata_center.png?alt=media&token=222830f3-b6d3-49d7-83d8-e35f79119642',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fdata_center.png?alt=media&token=222830f3-b6d3-49d7-83d8-e35f79119642',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fdata_center.png?alt=media&token=222830f3-b6d3-49d7-83d8-e35f79119642',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fdata_center.png?alt=media&token=222830f3-b6d3-49d7-83d8-e35f79119642',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fdata_center.png?alt=media&token=222830f3-b6d3-49d7-83d8-e35f79119642'
         ],
         hint: 'server room racks',
         specs: {
@@ -650,6 +671,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fmv_lv.png?alt=media&token=85c96065-2767-4d6d-9781-a6b3252a1228',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fmv_lv.png?alt=media&token=85c96065-2767-4d6d-9781-a6b3252a1228',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fmv_lv.png?alt=media&token=85c96065-2767-4d6d-9781-a6b3252a1228',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fmv_lv.png?alt=media&token=85c96065-2767-4d6d-9781-a6b3252a1228',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fmv_lv.png?alt=media&token=85c96065-2767-4d6d-9781-a6b3252a1228'
         ],
         hint: 'electrical panel',
         specs: {
@@ -694,6 +718,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fring_main.png?alt=media&token=7c180902-6019-484c-b5f7-876b4a3a31c1',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fring_main.png?alt=media&token=7c180902-6019-484c-b5f7-876b4a3a31c1',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fring_main.png?alt=media&token=7c180902-6019-484c-b5f7-876b4a3a31c1',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fring_main.png?alt=media&token=7c180902-6019-484c-b5f7-876b4a3a31c1',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fring_main.png?alt=media&token=7c180902-6019-484c-b5f7-876b4a3a31c1'
         ],
         hint: 'switchgear',
         specs: {
@@ -738,6 +765,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fbeverage.png?alt=media&token=ccb07f89-c454-463d-829d-488f78f8e718',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fbeverage.png?alt=media&token=ccb07f89-c454-463d-829d-488f78f8e718',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fbeverage.png?alt=media&token=ccb07f89-c454-463d-829d-488f78f8e718',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fbeverage.png?alt=media&token=ccb07f89-c454-463d-829d-488f78f8e718',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fbeverage.png?alt=media&token=ccb07f89-c454-463d-829d-488f78f8e718'
         ],
         hint: 'bottling plant',
         specs: {
@@ -781,6 +811,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fit_solution.png?alt=media&token=9829f796-7bf7-4c07-b615-af90c2394595',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fit_solution.png?alt=media&token=9829f796-7bf7-4c07-b615-af90c2394595',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fit_solution.png?alt=media&token=9829f796-7bf7-4c07-b615-af90c2394595',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fit_solution.png?alt=media&token=9829f796-7bf7-4c07-b615-af90c2394595',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fit_solution.png?alt=media&token=9829f796-7bf7-4c07-b615-af90c2394595'
         ],
         hint: 'network server',
         specs: {
@@ -824,6 +857,9 @@ export const productData: ProductCategory[] = [
         image: 'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fsurveillance.png?alt=media&token=05c21a97-9092-4933-ac4e-e17f41b2e2d0',
         gallery: [
             'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fsurveillance.png?alt=media&token=05c21a97-9092-4933-ac4e-e17f41b2e2d0',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fsurveillance.png?alt=media&token=05c21a97-9092-4933-ac4e-e17f41b2e2d0',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fsurveillance.png?alt=media&token=05c21a97-9092-4933-ac4e-e17f41b2e2d0',
+            'https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/products%2Fservices%2Fsurveillance.png?alt=media&token=05c21a97-9092-4933-ac4e-e17f41b2e2d0'
         ],
         hint: 'security camera',
         specs: {

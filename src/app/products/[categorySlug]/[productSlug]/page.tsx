@@ -32,7 +32,7 @@ export default function ProductDetailPage() {
 
     useEffect(() => {
         if (product) {
-            setMainImage(product.image);
+            setMainImage(product.gallery?.[0] || product.image);
         }
     }, [product]);
     
@@ -40,7 +40,7 @@ export default function ProductDetailPage() {
         notFound();
     }
 
-    const galleryImages = product.gallery || (product.image ? [product.image] : []);
+    const galleryImages = product.gallery || (product.image ? [product.image, product.image, product.image, product.image] : []);
 
     const ClimaticClasses = () => (
         <div className="mt-16 md:mt-24">
