@@ -295,27 +295,27 @@ const detailedTransformerAccessories = [
 
 const heroSlides = [
   {
-    src: "https://placehold.co/1920x1080.png",
+    src: "https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/home_page%2Fhero1.jpg?alt=media&token=e2057eb8-ec92-446e-8e24-dd2d003746a0",
     hint: "electrical components",
     alt: "Electrical components background"
   },
   {
-    src: "https://placehold.co/1920x1080.png",
+    src: "https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/home_page%2Fhero2.jpg?alt=media&token=d01685cb-4ae8-4455-b328-f4aaa6417d55",
     hint: "power lines sunset",
     alt: "High-voltage power lines at sunset"
   },
   {
-    src: "https://placehold.co/1920x1080.png",
+    src: "https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/home_page%2Fhero3.jpg?alt=media&token=75535663-4046-4140-b37e-5c2b8729964f",
     hint: "modern factory",
     alt: "Interior of a modern manufacturing facility"
   },
   {
-    src: "https://placehold.co/1920x1080.png",
+    src: "https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/home_page%2Fhero4.jpg?alt=media&token=85b0d274-ccd3-4a1e-b615-859c7180a8d7",
     hint: "transformer station",
     alt: "A large electrical transformer station"
   },
   {
-    src: "https://placehold.co/1920x1080.png",
+    src: "https://firebasestorage.googleapis.com/v0/b/arp-electric-solutions.firebasestorage.app/o/home_page%2Fhero5.jpg?alt=media&token=d18a2fc6-c4a0-47c9-b172-cb7808d9dae3",
     hint: "circuit board closeup",
     alt: "Closeup of a complex circuit board"
   },
@@ -450,7 +450,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative w-full text-secondary-foreground" style={{ height: 'calc(100vh - 128px)' }}>
+      <section className="relative w-full text-secondary-foreground" style={{ height: 'calc(140vh - 128px)' }}>
         <FadeCarousel slides={heroSlides} />
 
         <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-teal-900/70 to-transparent"></div>
@@ -788,7 +788,7 @@ export default function Home() {
               </TabsList>
               <TabsContent value="overview" className="mt-6 text-muted-foreground">
                 <p>
-                  AKS International FZC provides high-quality Cast Resin Transformers, ensuring superior performance, safety, and reliability. We collaborate with top manufacturers to offer transformers enclosed in robust resin casings, providing excellent insulation and protection against environmental elements. Their compact design makes them ideal for both indoor and outdoor installations, even in challenging conditions.
+                  ARP Electric Solution provides high-quality Cast Resin Transformers, ensuring superior performance, safety, and reliability. We collaborate with top manufacturers to offer transformers enclosed in robust resin casings, providing excellent insulation and protection against environmental elements. Their compact design makes them ideal for both indoor and outdoor installations, even in challenging conditions.
                 </p>
               </TabsContent>
               <TabsContent value="benefits" className="mt-6 text-muted-foreground">

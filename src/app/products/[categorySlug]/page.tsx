@@ -5,9 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { getCategory } from "../categories";
 import { ChevronRight, Home } from "lucide-react";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 
-export default function ProductCategoryPage({ params }: { params: { categorySlug: string } }) {
+export default function ProductCategoryPage() {
+    const params = useParams() as { categorySlug: string };
     const category = getCategory(params.categorySlug);
 
     if (!category) {
